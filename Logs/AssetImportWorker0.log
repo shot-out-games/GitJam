@@ -3029,3 +3029,9 @@ UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityE
 [C:\buildslave\unity\build\Runtime\Graphics\RenderBufferManager.cpp line 180]
 
  -> (artifact id: '4f1308e3cd0de7af7cef52e04b3fe6d1') in 0.316896 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 32204.934382 seconds.
+  path: Assets/Misc/copper.mat
+  artifactKey: Guid(c3ec6438cd6613749858dff61cc02e03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Misc/copper.mat using Guid(c3ec6438cd6613749858dff61cc02e03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de94d255318869d25117f5c0b28a8d33') in 0.206676 seconds 
