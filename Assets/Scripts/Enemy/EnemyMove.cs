@@ -23,6 +23,8 @@ public class WayPoint
     public Vector3 targetPosition;
     public Vector3 offset;
     public WayPointAction action;
+    public float duration = 1;
+    public float speed = 1;
 
 }
 

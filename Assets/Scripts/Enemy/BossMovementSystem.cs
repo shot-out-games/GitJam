@@ -15,50 +15,46 @@ using Unity.Jobs;
 public class BossMovementSystem : SystemBase
 {
 
-
+    //[ReadOnly]
+    //public BufferFromEntity<BossWaypointBufferElement> positionBuffer;
+    //public BufferFromEntity<BossWaypointDurationBufferElement> durationBuffer;
 
     protected override void OnUpdate()
     {
 
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+        //EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+        BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
 
 
-
-
-
-        //var triggerGroup = GetComponentDataFromEntity<TriggerComponent>(false);
-        //EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
-        //NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
-        //NativeArray<TriggerComponent> triggerGroup = triggerQuery.ToComponentDataArray<TriggerComponent>(Allocator.Persistent);
-        //NativeArray<AmmoComponent> ammoGroup = triggerQuery.ToComponentDataArray<AmmoComponent>(Allocator.Persistent);
-        //int players = playerEntities.Length;
-
-        Entities.WithBurst().ForEach((ref DynamicBuffer<BossWaypointBufferElement> waypointBuffer,
+        Entities.WithBurst().WithoutBurst().ForEach((Entity e,  ref BossMovementComponent bossMovementComponent,
             ref Translation bossTranslation) =>
+
+
         {
-            var intDynamicBuffer = waypointBuffer.Reinterpret<float3>();
-            for (var i = 0; i < intDynamicBuffer.Length; i++)
+            DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[e];
+            if (targetPointBuffer.Length <= 0)
+                return;
+
+
+            float3 targetPositon = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointPosition;
+            float targetSpeed = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointSpeed;
+            if (math.distance(bossTranslation.Value, targetPositon) < .1f)
             {
-                //intDynamicBuffer[i]++;
-                intDynamicBuffer[i] = new float3(bossTranslation.Value.x++, bossTranslation.Value.y++, bossTranslation.Value.z++);
+                if (targetPointBuffer.Length > bossMovementComponent.CurrentIndex + 1)
+                {
+                    bossMovementComponent.CurrentIndex++;
+                }
+                else 
+                {
+                    bossMovementComponent.CurrentIndex = bossMovementComponent.Repeat ? 0 : bossMovementComponent.CurrentIndex;
+                }
             }
-            // for (int i = 0; i < players; i++)
-            //  {
-            //var playerE = playerEntities[i];
-            //if (defensiveStrategyComponent.currentRole == DefensiveRoles.Chase)
-            //{
-            //    //Debug.Log("player entity " + playerE + " chased by enemy entity " + enemyE);
-            //    if(defensiveStrategyComponent.currentRoleTimer < defensiveStrategyComponent.currentRoleMaxTime)
-            //    {
-            //        defensiveStrategyComponent.currentRoleTimer += Time.DeltaTime;
-            //    }
-            //    else
-            //    {
-            //        defensiveStrategyComponent.currentRole = DefensiveRoles.None;
-            //        defensiveStrategyComponent.currentRoleTimer = 0;
-            //    }
-            //}
-            //  }
+            else
+            {
+                bossTranslation.Value =  bossTranslation.Value +  (targetPositon - bossTranslation.Value) * Time.DeltaTime * bossMovementComponent.Speed * targetSpeed;
+                //bossTranslation.Value +=  Time.DeltaTime * bossMovementComponent.Speed * targetSpeed;
+            }
+
 
 
 
@@ -71,11 +67,16 @@ public class BossMovementSystem : SystemBase
 
 
 
-        ecb.Playback(EntityManager);
-        ecb.Dispose();
+        //ecb.Playback(EntityManager);
+        //ecb.Dispose();
 
         //playerEntities.Dispose();
 
+    }
+
+    public float3 GetHeading(float3 begin, float3 destination)
+    {
+        return math.normalize(destination - begin);
     }
 
 
