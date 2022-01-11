@@ -36,6 +36,11 @@ public class LocomotionState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Debug.Log("loco exit");
+        //if (animationType == AnimationType.BossStrike)
+        //{
+          //  animator.SetInteger("Strike Type", 0);
+            //Debug.Log("event aim");
+        //}
 
         if (animationType == AnimationType.Aim)
         {

@@ -25,7 +25,8 @@ public class BossStrategySystem : SystemBase
         {
 
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
-            animator.SetInteger("Animation Type", 0);
+            int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
+            if(strike == 0) animator.SetInteger("Animation Type", 0);//animation will be set by Boss Strike System
             bool chase = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointChase;
             if (targetPointBuffer.Length <= 0 || chase == false)
                 return;
@@ -58,7 +59,7 @@ public class BossStrategySystem : SystemBase
             {
                 animType = 1;
             }
-            animator.SetInteger("Animation Type", animType);
+            if(strike == 0) animator.SetInteger("Animation Type", animType);
             bossMovementComponent.CurrentWayPointTimer += Time.DeltaTime;
             if (bossMovementComponent.CurrentWayPointTimer >= duration)
             {

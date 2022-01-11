@@ -9,7 +9,8 @@ public enum AnimationType
     Swing,
     Aim,
     Locomotion,
-    Lowering
+    Lowering,
+    BossStrike
 }
 
 [System.Serializable]

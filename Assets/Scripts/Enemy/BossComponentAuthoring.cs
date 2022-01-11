@@ -10,6 +10,7 @@ public struct BossWaypointBufferElement : IBufferElementData
     public float3 wayPointPosition;
     public float wayPointSpeed;
     public bool wayPointChase;
+    public int wayPointStrike;
     public int wayPointAnimation;
     public float duration;//n/a
 }
@@ -25,6 +26,7 @@ public struct BossMovementComponent : IComponentData
     public bool CurrentAnimationStarted;
     public float Speed;
     public bool Repeat;
+    public int StartStrike;
 }
 
 
@@ -54,6 +56,7 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
                         wayPointSpeed = wayPoints[i].speed,
                         wayPointChase = wayPoints[i].chase,
                         duration = wayPoints[i].duration,
+                        wayPointStrike = (int) wayPoints[i].wayPointWeaponType,
                         wayPointAnimation = (int)wayPoints[i].animation
                         
                     }
