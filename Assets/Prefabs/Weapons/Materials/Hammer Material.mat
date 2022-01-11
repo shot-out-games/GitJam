@@ -10,8 +10,8 @@ Material:
   m_Name: Hammer Material
   m_Shader: {fileID: -6465566751694194690, guid: af05969d8b1ca6c459e0516494f5fa57,
     type: 3}
-  m_ShaderKeywords: _EMISSION
-  m_LightmapFlags: 2
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1

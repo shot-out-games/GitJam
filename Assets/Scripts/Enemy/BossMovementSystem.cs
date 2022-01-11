@@ -32,7 +32,8 @@ public class BossMovementSystem : SystemBase
 
         {
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[e];
-            if (targetPointBuffer.Length <= 0)
+            bool chase = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointChase;
+            if (targetPointBuffer.Length <= 0 || chase == true)
                 return;
 
 

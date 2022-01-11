@@ -9,6 +9,8 @@ public struct BossWaypointBufferElement : IBufferElementData
 {
     public float3 wayPointPosition;
     public float wayPointSpeed;
+    public bool wayPointChase;
+    public int wayPointAnimation;
     public float duration;//n/a
 }
 //public struct BossWaypointDurationBufferElement : IBufferElementData
@@ -19,6 +21,8 @@ public struct BossWaypointBufferElement : IBufferElementData
 public struct BossMovementComponent : IComponentData
 {
     public int CurrentIndex;
+    public float CurrentWayPointTimer;
+    public bool CurrentAnimationStarted;
     public float Speed;
     public bool Repeat;
 }
@@ -33,13 +37,7 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     float BossSpeed = 1;
     [SerializeField]
     bool Repeat = true;
-    //public bool matchupClosest = true;
-    //public bool leader = false;
-
-    //public float AngleRadians = 180;
-    //public float ViewDistanceSQ = 100;
-
-    //public bool View360 = false;
+ 
 
     public List<WayPoint> wayPoints = new List<WayPoint>();
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
@@ -53,19 +51,15 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
                     new BossWaypointBufferElement
                     {
                         wayPointPosition = wayPoints[i].targetPosition,
-                        wayPointSpeed = wayPoints[i].speed
+                        wayPointSpeed = wayPoints[i].speed,
+                        wayPointChase = wayPoints[i].chase,
+                        duration = wayPoints[i].duration,
+                        wayPointAnimation = (int)wayPoints[i].animation
+                        
                     }
 
                 );
 
-            //dstManager.AddBuffer<BossWaypointDurationBufferElement>(entity).Add
-            //    (
-            //        new BossWaypointDurationBufferElement
-            //        {
-            //            duration = wayPoints[i].duration
-            //        }
-
-            //    );
 
         }
 

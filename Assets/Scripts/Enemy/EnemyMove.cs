@@ -16,6 +16,14 @@ public enum WayPointAction
     Idle
 }
 
+public enum WayPointAnimation
+{
+    Move,
+    Jump,
+    Idle,
+    Attack
+}
+
 
 [System.Serializable]
 public class WayPoint
@@ -23,8 +31,11 @@ public class WayPoint
     public Vector3 targetPosition;
     public Vector3 offset;
     public WayPointAction action;
+    public WayPointAnimation animation;
     public float duration = 1;
     public float speed = 1;
+    public bool chase = false;
+
 
 }
 
