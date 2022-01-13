@@ -125,6 +125,7 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
                 gameRate = Rate,
                 CanFire = true,
                 IsFiring = 0
+                
 
             });
 

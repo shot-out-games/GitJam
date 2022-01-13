@@ -28,11 +28,13 @@ public class BossStrikeSystem : SystemBase
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
             if (targetPointBuffer.Length <= 0)
                 return;
+            //bossWeaponComponent.IsFiring = 0;
             int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
             if (strike > 0)//later set to different numbers for different strikes
             {
                 animator.SetInteger("Animation Type", 2);
-                bossWeaponComponent.IsFiring = 1;
+                //ssWeaponComponent.IsFiring = 1;
+                //bossWeaponComponent.Duration = 0;
             }//animation will be set by Boss Strike System
 
             //Debug.Log("strike " + strike);

@@ -42,13 +42,13 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     float RotateSpeed = 90;
     [SerializeField]
     bool Repeat = true;
- 
+    public Entity bossEntity;
 
     public List<WayPoint> wayPoints = new List<WayPoint>();
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         dstManager.AddComponentData<BossMovementComponent>(entity, new BossMovementComponent { Speed = BossSpeed, Repeat = Repeat, RotateSpeed = RotateSpeed });
-
+        bossEntity = entity;
         for (int i = 0; i < wayPoints.Count; i++)
         {
             dstManager.AddBuffer<BossWaypointBufferElement>(entity).Add

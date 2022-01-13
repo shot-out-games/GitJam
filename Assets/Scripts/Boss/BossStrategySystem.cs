@@ -20,6 +20,7 @@ public class BossStrategySystem : SystemBase
         NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
         int players = playerEntities.Length;
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
+        var playerRotationGroup = GetComponentDataFromEntity<Rotation>(true);
 
         Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation) =>
         {
@@ -59,17 +60,34 @@ public class BossStrategySystem : SystemBase
 
 
 
-            var move = GetComponent<Translation>(playerE);
+            var playerMove = GetComponent<Translation>(playerE);
+            //var playerRotation = GetComponent<Rotation>(playerE);
+            var playerRotation = playerRotationGroup[playerE];
+            var playerForward = GetComponent<LocalToWorld>(playerE).Forward;
+
             var bossTranslation = GetComponent<Translation>(enemyE);
             //float3 targetPositon = move.Value;
             float3 targetPosition = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointPosition;
-            if (chase) targetPosition = new float3( move.Value.x, targetPosition.y, move.Value.z);//keep the Y of the waypoint!
+            if (chase) targetPosition = new float3(playerMove.Value.x, targetPosition.y, playerMove.Value.z);//keep the Y of the waypoint!
 
             //math.normalize(targetPosition);
-            quaternion targetRotation = quaternion.LookRotation(new float3(move.Value.x, 0, move.Value.z), math.up());//always face player
-            float slerpDampTime = bossMovementComponent.RotateSpeed;
-            rotation.Value = math.slerp(rotation.Value, targetRotation, slerpDampTime * Time.DeltaTime);
+            playerForward.y = 0;
+            float3 direction = math.normalize(bossTranslation.Value - targetPosition);
+            float dist = math.distance(bossTranslation.Value, targetPosition);
+            //Debug.Log("bv tp " + bossTranslation.Value + " " + targetPosition);
 
+            //direction.x = 0;
+            //direction.y = 0;
+            if (dist >= 5)
+            {
+                quaternion targetRotation = quaternion.LookRotation(direction, math.up());//always face player
+                //quaternion targetRotation = rotation.Value * math.right();
+                //Debug.Log("dist " + dist);
+                float slerpDampTime = bossMovementComponent.RotateSpeed;
+                //rotation.Value = targetRotation;
+                rotation.Value = math.slerp(rotation.Value, targetRotation, slerpDampTime * Time.DeltaTime);
+                //rotation.Value = math.slerp(rotation.Value, playerForward, slerpDampTime * Time.DeltaTime);
+            }
 
             float targetSpeed = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointSpeed;
             float duration = targetPointBuffer[bossMovementComponent.CurrentIndex].duration;

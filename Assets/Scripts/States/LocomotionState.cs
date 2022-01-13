@@ -11,12 +11,17 @@ public class LocomotionState : StateMachineBehaviour
     public AnimationType animationType;
 
 
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        if (animationType == AnimationType.BossStrike)
+        {
+            Debug.Log("fireball start");
+        }
 
 
-    //}
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -30,7 +35,7 @@ public class LocomotionState : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-     
+
     //}
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -38,8 +43,8 @@ public class LocomotionState : StateMachineBehaviour
         //Debug.Log("loco exit");
         //if (animationType == AnimationType.BossStrike)
         //{
-          //  animator.SetInteger("Strike Type", 0);
-            //Debug.Log("event aim");
+        //  animator.SetInteger("Strike Type", 0);
+        //Debug.Log("event aim");
         //}
 
         if (animationType == AnimationType.Aim)
@@ -53,13 +58,25 @@ public class LocomotionState : StateMachineBehaviour
             animator.SetInteger("WeaponRaised", (int)WeaponMotion.None);
             //Debug.Log("event lowered ");
         }
+
+        if (animationType == AnimationType.BossStrike)
+        {
+            Debug.Log("fireball end");
+            EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
+            var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
+            bossComponent.IsFiring = 1;
+            manager.SetComponentData<BossWeaponComponent>(e, bossComponent);
+
+        }
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
 
-      
+
 
     //}
 

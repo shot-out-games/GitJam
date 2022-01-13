@@ -31,22 +31,39 @@ public class BossAmmoHandlerSystem : SystemBase
 
         if (LevelManager.instance.endGame == true) return;
 
+        EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
+        NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
+        int players = playerEntities.Length;
 
         float dt = UnityEngine.Time.fixedDeltaTime;//gun duration
+        BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
 
-        var commandBuffer = m_EntityCommandBufferSystem.CreateCommandBuffer().AsParallelWriter();
+        //var commandBuffer = m_EntityCommandBufferSystem.CreateCommandBuffer();
+        var commandBuffer = new EntityCommandBuffer(Allocator.Temp);
+
         var ammoGroup = GetComponentDataFromEntity<AmmoComponent>(false);
-        Entities.WithBurst(FloatMode.Default, FloatPrecision.Standard, true).WithNone<Pause>().ForEach(
+        Entities.WithoutBurst().WithNone<Pause>().ForEach(
             (
                  Entity entity,
-                 int entityInQueryIndex,
                  ref BossAmmoManagerComponent bulletManagerComponent,
-                 in PhysicsVelocity playerVelocity,
-                in AttachWeaponComponent attachWeapon
+                in AttachWeaponComponent attachWeapon,
+                in BossMovementComponent bossMovementComponent
                  //in ActorWeaponAimComponent actorWeaponAimComponent
                  ) =>
             {
-                Debug.Log("fire");
+
+                DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[entity];
+                if (targetPointBuffer.Length <= 0)
+                    return;
+                //int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
+
+
+                Entity playerE = Entity.Null;
+                //change to closest
+                for (int i = 0; i < players; i++)
+                {
+                    playerE = playerEntities[i];
+                }
 
 
                 if (!HasComponent<BossWeaponComponent>(entity)) return;
@@ -79,33 +96,37 @@ public class BossAmmoHandlerSystem : SystemBase
                 }
 
 
-                //gun.IsFiring = 1;
 
 
-                if(gun.IsFiring == 1) gun.Duration += dt;
+                //if (gun.IsFiring == 1) gun.Duration += dt;
 
-                if ((gun.Duration > rate) && (gun.IsFiring == 1))
-                {
-                    gun.Duration = 0;
-                    gun.IsFiring = 0;
-                    gun.CanFire = true;
-                }
+                //if ((gun.Duration > rate) && (gun.IsFiring == 1))
+                //{
+                //    gun.Duration = 0;
+                //    gun.IsFiring = 0;
+                //    gun.CanFire = true;
+                //}
 
-                if (gun.CanFire == true)
-                {
+                //if (gun.CanFire == true)
+                if (gun.IsFiring == 1)
+                    {
+                        gun.IsFiring = 0;
 
+                    var move = GetComponent<Translation>(playerE);
 
                     //    if (actorWeaponAimComponent.weaponRaised == WeaponMotion.Raised || isEnemy)
                     //    {
                     gun.CanFire = false;
                     //gun.Duration = 0;
                     //gun.IsFiring = 0;
-                    var e = commandBuffer.Instantiate(entityInQueryIndex, gun.PrimaryAmmo);
+                    var e = commandBuffer.Instantiate(gun.PrimaryAmmo);
                     var translation = new Translation() { Value = gun.AmmoStartLocalToWorld.Position };//use bone mb transform
                     var rotation = new Rotation() { Value = gun.AmmoStartLocalToWorld.Rotation };
                     var velocity = new PhysicsVelocity();
-                    float3 forward = gun.AmmoStartLocalToWorld.Forward;
-                    //float3 forward = math.forward(rotation.Value);
+                    //float3 forward = gun.AmmoStartLocalToWorld.Forward;
+                    float3 forward = math.forward(rotation.Value);
+                    //forward.y = -1;
+                    //forward = forward * math.normalize(translation.Value - move.Value);
                     velocity.Linear = forward * strength;
 
 
@@ -113,26 +134,28 @@ public class BossAmmoHandlerSystem : SystemBase
                     bulletManagerComponent.playSound = true;
                     //bulletManagerComponent.setAnimationLayer = true;
 
-                    commandBuffer.SetComponent(entityInQueryIndex, e, new TriggerComponent
+                    commandBuffer.SetComponent(e, new TriggerComponent
                     { Type = (int)TriggerType.Ammo, ParentEntity = entity, Entity = e, Active = true });
-                    commandBuffer.SetComponent(entityInQueryIndex, e, translation);
-                    commandBuffer.SetComponent(entityInQueryIndex, e, rotation);
-                    commandBuffer.SetComponent(entityInQueryIndex, e, velocity);
+                    commandBuffer.SetComponent(e, translation);
+                    commandBuffer.SetComponent(e, rotation);
+                    commandBuffer.SetComponent(e, velocity);
 
 
                     //    }
                 }
 
-                commandBuffer.SetComponent(entityInQueryIndex, entity, gun);
+                commandBuffer.SetComponent(entity, gun);
 
 
 
             }
-        ).ScheduleParallel();
-
+        ).Run();
 
 
         m_EntityCommandBufferSystem.AddJobHandleForProducer(Dependency);
+        commandBuffer.Playback(EntityManager);
+        commandBuffer.Dispose();
+        playerEntities.Dispose();
 
 
     }
