@@ -47,7 +47,8 @@ public class BossAmmoHandlerSystem : SystemBase
                  Entity entity,
                  ref BossAmmoManagerComponent bulletManagerComponent,
                 in AttachWeaponComponent attachWeapon,
-                in BossMovementComponent bossMovementComponent
+                in BossMovementComponent bossMovementComponent,
+                in BossStrategyComponent bossStrategyComponent
                  //in ActorWeaponAimComponent actorWeaponAimComponent
                  ) =>
             {
@@ -81,7 +82,7 @@ public class BossAmmoHandlerSystem : SystemBase
                 //}
 
 
-                if (HasComponent<DeadComponent>(entity)) return;//fix add
+                //if (HasComponent<DeadComponent>(entity)) return;//fix add
 
                 Entity primaryAmmoEntity = gun.PrimaryAmmo;
                 var ammoDataComponent = GetComponent<AmmoDataComponent>(primaryAmmoEntity);
@@ -116,16 +117,20 @@ public class BossAmmoHandlerSystem : SystemBase
 
                     //    if (actorWeaponAimComponent.weaponRaised == WeaponMotion.Raised || isEnemy)
                     //    {
-                    gun.CanFire = false;
+                    //gun.CanFire = false;
                     //gun.Duration = 0;
                     //gun.IsFiring = 0;
                     var e = commandBuffer.Instantiate(gun.PrimaryAmmo);
                     var translation = new Translation() { Value = gun.AmmoStartLocalToWorld.Position };//use bone mb transform
+                    var playerTranslation = GetComponent<Translation>(playerE).Value;
                     var rotation = new Rotation() { Value = gun.AmmoStartLocalToWorld.Rotation };
                     var velocity = new PhysicsVelocity();
                     //float3 forward = gun.AmmoStartLocalToWorld.Forward;
                     float3 forward = math.forward(rotation.Value);
-                    //forward.y = -1;
+                    if (bossStrategyComponent.AimAtPlayer)
+                    {
+                        forward.y = math.sign(playerTranslation.y - translation.Value.y);
+                    }
                     //forward = forward * math.normalize(translation.Value - move.Value);
                     velocity.Linear = forward * strength;
 

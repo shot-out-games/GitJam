@@ -329,7 +329,6 @@ public class AttackerSystem : SystemBase
             if (dead.isDead == true) return;
 
 
-
             int type_a = collisionComponent.Part_entity;
             int type_b = collisionComponent.Part_other_entity;
             Entity collision_entity_a = collisionComponent.Character_entity;
@@ -338,6 +337,10 @@ public class AttackerSystem : SystemBase
 
             Entity entityA = collision_entity_a;
             Entity entityB = collision_entity_b;
+
+            Debug.Log("a " + collision_entity_a);
+            Debug.Log("b " + collision_entity_b);
+
 
             bool playerA = HasComponent<PlayerComponent>(collision_entity_a);
             bool playerB = HasComponent<PlayerComponent>(collision_entity_b);
