@@ -35,6 +35,11 @@ public struct BossStrategyComponent : IComponentData
     public bool AimAtPlayer;
 }
 
+public struct BossComponent : IComponentData
+{
+
+}
+
 
 
 
@@ -57,7 +62,9 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         dstManager.AddComponentData<BossMovementComponent>(entity, new BossMovementComponent { Speed = BossSpeed, Repeat = Repeat, RotateSpeed = RotateSpeed });
         dstManager.AddComponentData<BossStrategyComponent>(entity, new BossStrategyComponent { AimAtPlayer = AimAtPlayer });
         dstManager.AddComponent<DeadComponent>(entity);
+        dstManager.AddComponent<BossComponent>(entity);
         dstManager.AddComponent<EnemyComponent>(entity);//keep?
+        dstManager.AddComponentData(entity, new CheckedComponent());
         bossEntity = entity;
         for (int i = 0; i < wayPoints.Count; i++)
         {

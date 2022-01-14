@@ -95,10 +95,10 @@ namespace SandBox.Player
                     right.y = 0;
                     fwd = math.normalize(fwd);
                     right = math.normalize(right);
-                    
+
                     if (math.abs(stickSpeed) > .01f)
                     {
-                        pv.Linear =  fwd * stickSpeed * currentSpeed;
+                        pv.Linear = fwd * stickSpeed * currentSpeed;
                         pv.Linear.y = 0;
                     }
 
@@ -139,7 +139,7 @@ namespace SandBox.Player
                     }
 
 
-                    if(!applyImpulseComponent.BumpLeft && !applyImpulseComponent.BumpRight)
+                    if (!applyImpulseComponent.BumpLeft && !applyImpulseComponent.BumpRight)
                         pv.Linear.y += applyImpulseComponent.NegativeForce;
                     else
                         pv.Linear.y += applyImpulseComponent.ApproachStairBoost;
@@ -177,7 +177,7 @@ namespace SandBox.Player
 
 
             Entities.WithoutBurst().WithStructuralChanges().WithAll<PlayerComponent>().WithNone<Pause>().ForEach
-         (
+            (
              (
                  PlayerMove playerMove,
                  ref Rotation rotation,

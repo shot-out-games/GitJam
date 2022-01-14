@@ -11,7 +11,7 @@ using Unity.Physics.Systems;
 
 
 
-public class EnemyAttackerSystem : SystemBase
+public class BossAttackerSystem : SystemBase
 {
     protected override void OnUpdate()
     {
@@ -19,27 +19,27 @@ public class EnemyAttackerSystem : SystemBase
 
 
 
-        Entities.WithoutBurst().ForEach(
-            (
-                ref CheckedComponent checkedComponent
+        //Entities.WithoutBurst().ForEach(
+        //    (
+        //        ref CheckedComponent checkedComponent
 
-            ) =>
-            {
-                int countDown = 60;
-                if (checkedComponent.collisionChecked == true && checkedComponent.timer < countDown)
-                {
-                    checkedComponent.timer++;
-                }
-                else
-                {
-                    checkedComponent.collisionChecked = false;
-                    checkedComponent.timer = 0;
-                }
+        //    ) =>
+        //    {
+        //        int countDown = 60;
+        //        if (checkedComponent.collisionChecked == true && checkedComponent.timer < countDown)
+        //        {
+        //            checkedComponent.timer++;
+        //        }
+        //        else
+        //        {
+        //            checkedComponent.collisionChecked = false;
+        //            checkedComponent.timer = 0;
+        //        }
 
 
 
-            }
-            ).Run();
+        //    }
+        //    ).Run();
 
 
 
@@ -53,7 +53,7 @@ public class EnemyAttackerSystem : SystemBase
         Entities.WithoutBurst().ForEach(
         (
             Animator animator,
-            HealthBar healthBar,
+            //HealthBar healthBar,
             in DeadComponent dead,
             in CollisionComponent collisionComponent,
             in Entity entity
@@ -79,12 +79,13 @@ public class EnemyAttackerSystem : SystemBase
 
             bool playerA = HasComponent<PlayerComponent>(collision_entity_a);
             bool playerB = HasComponent<PlayerComponent>(collision_entity_b);
-            bool enemyA = HasComponent<EnemyComponent>(collision_entity_a);
-            bool enemyB = HasComponent<EnemyComponent>(collision_entity_b);
+            bool enemyA = HasComponent<BossComponent>(collision_entity_a);
+            bool enemyB = HasComponent<BossComponent>(collision_entity_b);
 
-            bool check = false;
+            bool check = true;
 
             float hw = animator.GetFloat("HitWeight");
+
             if (playerA && enemyB || playerB && enemyA) check = true;
 
             if (check == true)
@@ -104,11 +105,10 @@ public class EnemyAttackerSystem : SystemBase
                     {
                         bool alwaysDamage = GetComponent<HealthComponent>(entityA).AlwaysDamage;
                         if (alwaysDamage) hw = 1;//
-                        //Debug.Log("hit power " + hitPower);
+                                                 //Debug.Log("hit power " + hitPower);
                     }
 
-                    //float WeaponPower = 1;
-                    //hw = 1;
+                    hw = 1;//use for now
                     float damage = hitPower * hw;
 
                     ecb.AddComponent<DamageComponent>(entityA,
@@ -136,13 +136,6 @@ public class EnemyAttackerSystem : SystemBase
                         //add specific score component stuff to melee
                         SetComponent(entityA, scoreComponent);
                     }
-
-
-
-
-
-
-
 
 
 
@@ -175,10 +168,10 @@ public class EnemyAttackerSystem : SystemBase
 
                 if (shooter != Entity.Null && HasComponent<AmmoComponent>(collision_entity_b))
                 {
-                    bool isEnemyShooter = HasComponent<EnemyComponent>(shooter);
+                    bool isEnemyShooter = HasComponent<BossComponent>(shooter);
                     Entity target = GetComponent<TriggerComponent>(collision_entity_a)
                         .ParentEntity;
-                    bool isEnemyTarget = HasComponent<EnemyComponent>(target);
+                    bool isEnemyTarget = HasComponent<BossComponent>(target);
                     Debug.Log("sh  " + shooter);
                     Debug.Log("cea " + collision_entity_a);
                     Debug.Log("ceb " + collision_entity_b);
@@ -187,7 +180,7 @@ public class EnemyAttackerSystem : SystemBase
                     AmmoDataComponent ammoData =
                         GetComponent<AmmoDataComponent>(collision_entity_b);
 
-                    float damage = GetComponent<GunComponent>(shooter).gameDamage;
+                    float damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
                     //Debug.Log("damage " + damage);
                     ammo.AmmoDead = true;
 
@@ -198,14 +191,14 @@ public class EnemyAttackerSystem : SystemBase
                         ammo.frameSkipCounter = 0;
                     }
 
-                 
 
 
-                    if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false  ||
+
+                    if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false ||
                         isEnemyShooter == isEnemyTarget
                         )
                     {
-                        
+
                         damage = 0;
                     }
 
@@ -220,7 +213,7 @@ public class EnemyAttackerSystem : SystemBase
 
                     ecb.AddComponent<DamageComponent>(shooter,
                             new DamageComponent
-                            { DamageLanded = damage, DamageReceived = 0});
+                            { DamageLanded = damage, DamageReceived = 0 });
 
 
                     ecb.AddComponent<DamageComponent>(collision_entity_a,
