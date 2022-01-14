@@ -452,7 +452,16 @@ public class AttackerSystem : SystemBase
                     AmmoDataComponent ammoData =
                         GetComponent<AmmoDataComponent>(collision_entity_b);
 
-                    float damage = GetComponent<GunComponent>(shooter).gameDamage;
+                    float damage = 0;
+                    if (HasComponent<BossWeaponComponent>(shooter))
+                    {
+                        damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
+                    }
+                    else if (HasComponent<GunComponent>(shooter))
+
+                    {
+                        damage = GetComponent<GunComponent>(shooter).gameDamage;
+                    }
                     //Debug.Log("damage " + damage);
                     ammo.AmmoDead = true;
 

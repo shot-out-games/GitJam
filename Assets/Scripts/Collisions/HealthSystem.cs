@@ -29,7 +29,8 @@ public class HealthSystem : SystemBase
         float allPlayerDamageTotal = 0;
 
         Entities.WithoutBurst().ForEach((
-            ref LevelCompleteComponent levelCompleteComponent,
+            //ref LevelCompleteComponent levelCompleteComponent,
+            ref Entity e,
             ref DeadComponent deadComponent,
             ref HealthComponent healthComponent, ref DamageComponent damageComponent,
             ref RatingsComponent ratingsComponent,
@@ -69,7 +70,12 @@ public class HealthSystem : SystemBase
 
                 if (healthComponent.TotalDamageReceived >= ratingsComponent.maxHealth && dead.isDead == false)
                 {
-                    levelCompleteComponent.dieLevel = LevelManager.instance.currentLevelCompleted;
+                    if (HasComponent<LevelCompleteComponent>(e))
+                    {
+                        var levelCompleteComponent = GetComponent<LevelCompleteComponent>(e);
+                        levelCompleteComponent.dieLevel = LevelManager.instance.currentLevelCompleted;
+                        SetComponent(e, levelCompleteComponent);
+                    }
                     dead.isDying = true;
                     //dead.isDead = true;
                     dead.playDeadEffects = true;
