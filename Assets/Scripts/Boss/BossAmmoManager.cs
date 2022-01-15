@@ -10,6 +10,19 @@ using Unity.Jobs;
 using Unity.Physics.Extensions;
 using UnityEngine.Jobs;
 
+[InternalBufferCapacity(8)]
+
+public struct BossWaypointBufferElement : IBufferElementData
+{
+    public float3 wayPointPosition;
+    public float wayPointSpeed;
+    public bool wayPointChase;
+    public int wayPointStrike;
+    public int wayPointAnimation;
+    public int weaponListIndex;
+    public int ammoListIndex;
+    public float duration;//n/a
+}
 
 public struct BossWeaponComponent : IComponentData
 {
@@ -67,6 +80,10 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
     public void DeclareReferencedPrefabs(List<GameObject> gameObjects)
     {
         gameObjects.Add(PrimaryAmmoPrefab);
+        for (int i = 0; i < AmmoPrefabList.Count ; i++)
+        {
+            gameObjects.Add(AmmoPrefabList[i]);
+        }
         //gameObjects.Add(WeaponPrefab);
     }
 
@@ -107,6 +124,20 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
         {
             Value = float4x4.TRS(AmmoStartLocation.position, AmmoStartLocation.rotation, Vector3.one)
         };
+
+        for (int i = 0; i < AmmoPrefabList.Count; i++)
+        {
+            dstManager.AddBuffer<BossAmmoListBuffer>(entity).Add
+                (
+                    new BossAmmoListBuffer
+                    {
+                        e = conversionSystem.GetPrimaryEntity(AmmoPrefabList[i])
+                    }
+                );
+
+        }
+
+
 
 
         dstManager.AddComponentData<BossWeaponComponent>(

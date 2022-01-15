@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 2868678820766124567}
   - component: {fileID: 2868678820765026519}
   m_Layer: 0
-  m_Name: Player Hammer.1
+  m_Name: Boss Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2868678820763257399
 Transform:
   m_ObjectHideFlags: 0

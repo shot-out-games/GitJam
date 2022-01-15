@@ -18,7 +18,7 @@ public class BasicWinnerSystem : SystemBase
 
         bool winner = true;
 
-        Debug.Log("test0");
+        //Debug.Log("test0");
 
         Entities.WithAll<EnemyComponent>().WithoutBurst().ForEach
         (

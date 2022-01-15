@@ -5,16 +5,9 @@ using Unity.Mathematics;
 using UnityEngine;
 [InternalBufferCapacity(8)]
 
-public struct BossWaypointBufferElement : IBufferElementData
+public struct BossAmmoListBuffer : IBufferElementData
 {
-    public float3 wayPointPosition;
-    public float wayPointSpeed;
-    public bool wayPointChase;
-    public int wayPointStrike;
-    public int wayPointAnimation;
-    public int weaponListIndex;
-    public int ammoListIndex;
-    public float duration;//n/a
+    public Entity e;
 }
 //public struct BossWaypointDurationBufferElement : IBufferElementData
 //{
@@ -62,7 +55,7 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public List<WayPoint> wayPoints = new List<WayPoint>();
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        dstManager.AddComponentData<BossMovementComponent>(entity, new BossMovementComponent { Speed = BossSpeed, Repeat = Repeat, RotateSpeed = RotateSpeed });
+        dstManager.AddComponentData<BossMovementComponent>(entity, new BossMovementComponent { WayPointReached = false, Speed = BossSpeed, Repeat = Repeat, RotateSpeed = RotateSpeed });
         dstManager.AddComponentData<BossStrategyComponent>(entity, new BossStrategyComponent { AimAtPlayer = AimAtPlayer });
         dstManager.AddComponent<DeadComponent>(entity);
         dstManager.AddComponent<BossComponent>(entity);
@@ -79,11 +72,11 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
                         wayPointSpeed = wayPoints[i].speed,
                         wayPointChase = wayPoints[i].chase,
                         duration = wayPoints[i].duration,
-                        wayPointStrike = (int) wayPoints[i].wayPointWeaponType,
+                        wayPointStrike = (int)wayPoints[i].wayPointWeaponType,
                         wayPointAnimation = (int)wayPoints[i].animation,
                         weaponListIndex = wayPoints[i].weaponListIndex,
                         ammoListIndex = wayPoints[i].ammoListIndex
-                        
+
                     }
 
                 );

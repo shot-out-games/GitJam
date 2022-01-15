@@ -32,6 +32,8 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
     public bool primaryAttached = false;
     [HideInInspector]
     public bool secondaryAttached = false;
+    GameObject primaryWeaponInstance;
+    GameObject secondaryWeaponInstance;
     private bool attachedWeapon;
 
     //public CameraType weaponCamera;
@@ -56,6 +58,9 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
                 AttachPrimaryWeapon();
             }
         }
+
+
+
         if (secondaryWeapon != null)
         {
             if (secondaryWeapon.isAttachedAtStart)
@@ -79,11 +84,12 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
     public void AttachPrimaryWeapon()
     {
         if(primaryWeapon.weaponGameObject == null) return;
+        Debug.Log("pr att " + primaryWeapon.weaponGameObject);
         primaryAttached = true;
-        var weaponInstance = Instantiate(primaryWeapon.weaponGameObject);
-        weaponInstance.transform.SetParent(primaryWeapon.weaponLocation);
-        weaponInstance.transform.localPosition = Vector3.zero;
-        weaponInstance.transform.localRotation = Quaternion.identity;
+        primaryWeaponInstance = Instantiate(primaryWeapon.weaponGameObject);
+        primaryWeaponInstance.transform.SetParent(primaryWeapon.weaponLocation);
+        primaryWeaponInstance.transform.localPosition = Vector3.zero;
+        primaryWeaponInstance.transform.localRotation = Quaternion.identity;
 
 
     }
@@ -93,9 +99,9 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
         if (primaryWeapon != null)
         {
             primaryAttached = false;
-            //primaryWeapon.weaponGameObject.SetActive(false);
-            Debug.Log("pr " + primaryWeapon.weaponGameObject);
+            Debug.Log("pr det " + primaryWeapon.weaponGameObject);
             primaryWeapon.weaponGameObject.transform.SetParent(null);
+            Destroy(primaryWeaponInstance);
         }
 
     }
@@ -103,10 +109,10 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
     public void AttachSecondaryWeapon()
     {
         secondaryAttached = true;
-        var weaponInstance = Instantiate(secondaryWeapon.weaponGameObject);
-        weaponInstance.transform.SetParent(secondaryWeapon.weaponLocation);
-        weaponInstance.transform.localPosition = Vector3.zero;
-        weaponInstance.transform.localRotation = Quaternion.identity;
+        secondaryWeaponInstance = Instantiate(secondaryWeapon.weaponGameObject);
+        secondaryWeaponInstance.transform.SetParent(secondaryWeapon.weaponLocation);
+        secondaryWeaponInstance.transform.localPosition = Vector3.zero;
+        secondaryWeaponInstance.transform.localRotation = Quaternion.identity;
 
 
     }

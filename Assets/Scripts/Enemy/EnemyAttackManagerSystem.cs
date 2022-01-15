@@ -9,25 +9,25 @@ public class EnemyAttackManagerSystem : SystemBase
     protected override void OnUpdate()
     {
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
+        BufferFromEntity<BossAmmoListBuffer> ammoList = GetBufferFromEntity<BossAmmoListBuffer>(true);
 
 
-        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator, BossWeaponComponent bossWeaponComponent,
+        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator,
             BossMovementComponent bossMovementComponent,
-            WeaponManager weaponManager) =>
+            WeaponManager weaponManager, ref BossWeaponComponent bossWeaponComponent) =>
         {
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
+            DynamicBuffer<BossAmmoListBuffer> ammoListBuffer = ammoList[enemyE];
             if (targetPointBuffer.Length <= 0 || bossMovementComponent.WayPointReached == false)
                 return;
-            //bossWeaponComponent.IsFiring = 0;
             int weaponIndex = targetPointBuffer[bossMovementComponent.CurrentIndex].weaponListIndex;
-
+            if (bossMovementComponent.CurrentIndex < 1) return;
 
             weaponManager.DetachPrimaryWeapon(); //need to add way to set to not picked up  afterwards
-            //weaponManager.DetachSecondaryWeapon(); //need to add way to set to not picked up  afterwards
-            //weaponManager.DeactivateWeapons();
             weaponManager.primaryWeapon = weaponManager.weaponsList[weaponIndex];
+            bossWeaponComponent.PrimaryAmmo = ammoListBuffer[weaponIndex].e;
             weaponManager.AttachPrimaryWeapon();
-            Debug.Log("MATCH FOUND " + weaponIndex + " " + bossMovementComponent.CurrentIndex);
+            Debug.Log("MATCH FOUND " + weaponIndex + " " + bossWeaponComponent.PrimaryAmmo);
 
         }).Run();
 
