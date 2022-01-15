@@ -37,6 +37,9 @@ public class WayPoint
     public float duration = 1;
     public float speed = 1;
     public bool chase = false;
+    public int weaponListIndex;// from weapon manager
+    public int ammoListIndex;//from ammo manager
+
 }
 
 

@@ -68,7 +68,7 @@ public class BossAmmoHandlerSystem : SystemBase
 
 
                 if (!HasComponent<BossWeaponComponent>(entity)) return;
-                var gun = GetComponent<BossWeaponComponent>(entity);
+                var bossWeapon = GetComponent<BossWeaponComponent>(entity);
 
 
                 //if (attachWeapon.attachedWeaponSlot < 0 ||
@@ -84,15 +84,15 @@ public class BossAmmoHandlerSystem : SystemBase
 
                 //if (HasComponent<DeadComponent>(entity)) return;//fix add
 
-                Entity primaryAmmoEntity = gun.PrimaryAmmo;
+                Entity primaryAmmoEntity = bossWeapon.PrimaryAmmo;
                 var ammoDataComponent = GetComponent<AmmoDataComponent>(primaryAmmoEntity);
                 float rate = ammoDataComponent.GameRate;
                 float strength = ammoDataComponent.GameStrength;
                 float damage = ammoDataComponent.GameDamage;
                 //change based on game
-                if (gun.ChangeAmmoStats > 0)
+                if (bossWeapon.ChangeAmmoStats > 0)
                 {
-                    strength = strength * (100 - gun.ChangeAmmoStats * 2) / 100;
+                    strength = strength * (100 - bossWeapon.ChangeAmmoStats * 2) / 100;
                     if (strength <= 0) strength = 0;
                 }
 
@@ -109,9 +109,9 @@ public class BossAmmoHandlerSystem : SystemBase
                 //}
 
                 //if (gun.CanFire == true)
-                if (gun.IsFiring == 1)
+                if (bossWeapon.IsFiring == 1)
                     {
-                        gun.IsFiring = 0;
+                        bossWeapon.IsFiring = 0;
 
                     var move = GetComponent<Translation>(playerE);
 
@@ -120,10 +120,10 @@ public class BossAmmoHandlerSystem : SystemBase
                     //gun.CanFire = false;
                     //gun.Duration = 0;
                     //gun.IsFiring = 0;
-                    var e = commandBuffer.Instantiate(gun.PrimaryAmmo);
-                    var translation = new Translation() { Value = gun.AmmoStartLocalToWorld.Position };//use bone mb transform
+                    var e = commandBuffer.Instantiate(bossWeapon.PrimaryAmmo);
+                    var translation = new Translation() { Value = bossWeapon.AmmoStartLocalToWorld.Position };//use bone mb transform
                     var playerTranslation = GetComponent<Translation>(playerE).Value;
-                    var rotation = new Rotation() { Value = gun.AmmoStartLocalToWorld.Rotation };
+                    var rotation = new Rotation() { Value = bossWeapon.AmmoStartLocalToWorld.Rotation };
                     var velocity = new PhysicsVelocity();
                     //float3 forward = gun.AmmoStartLocalToWorld.Forward;
                     float3 forward = math.forward(rotation.Value);
@@ -149,7 +149,7 @@ public class BossAmmoHandlerSystem : SystemBase
                     //    }
                 }
 
-                commandBuffer.SetComponent(entity, gun);
+                commandBuffer.SetComponent(entity, bossWeapon);
 
 
 

@@ -28,8 +28,7 @@ public class BossStrategySystem : SystemBase
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
             int animation = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAnimation;
             int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
-            //if(strike == 0) animator.SetInteger("Animation Type", 0);//animation will be set by Boss Strike System
-            int animType = 0;
+            var animType = 0;
             if (animation == (int)WayPointAnimation.Attack)
             {
                 animType = 1;
@@ -103,11 +102,13 @@ public class BossStrategySystem : SystemBase
                 {
                     bossMovementComponent.CurrentIndex = bossMovementComponent.Repeat ? 0 : bossMovementComponent.CurrentIndex;
                 }
+                bossMovementComponent.WayPointReached = true;
             }
             else
             {
                 bossTranslation.Value = bossTranslation.Value + math.normalize(targetPosition - bossTranslation.Value) * Time.DeltaTime * bossMovementComponent.Speed * targetSpeed;
                 SetComponent<Translation>(enemyE, bossTranslation);
+                bossMovementComponent.WayPointReached = false;
             }
 
 

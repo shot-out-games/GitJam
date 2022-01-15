@@ -30,7 +30,7 @@ public class BossStrikeSystem : SystemBase
                 return;
             //bossWeaponComponent.IsFiring = 0;
             int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
-            if (strike > 0)//later set to different numbers for different strikes
+            if (strike == 2)//later set to different numbers for different strikes - 2 is Fireball
             {
                 animator.SetInteger("Animation Type", 2);
                 //ssWeaponComponent.IsFiring = 1;

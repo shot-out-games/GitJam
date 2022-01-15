@@ -49,7 +49,7 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
     public List<GameObject> AmmoInstances = new List<GameObject>();
     public Transform AmmoStartLocation;
     public GameObject PrimaryAmmoPrefab;
-    //public List<GameObject> AmmoPrefabList = new List<GameObject>();
+    public List<GameObject> AmmoPrefabList = new List<GameObject>();
 
     public AudioClip weaponAudioClip;
 
