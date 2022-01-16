@@ -345,7 +345,9 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             x = worldPosition.x;
             //y = transform.position.y + topDownY;
             y = closetEnemyWeaponTargetPosition.y + topDownY;
+            //Debug.Log("y " + closetEnemyWeaponTargetPosition.y);
             z = worldPosition.z;
+            
 
 
             targetPosition = new Vector3(

@@ -80,6 +80,7 @@ public class GunAmmoHandlerSystem : SystemBase
 
         //Entities.WithBurst(FloatMode.Default, FloatPrecision.Standard, true).WithNone<Pause>().WithNativeDisableContainerSafetyRestriction(ammoGroup).WithNativeDisableParallelForRestriction(ammoGroup).ForEach(
         Entities.WithBurst(FloatMode.Default, FloatPrecision.Standard, true).WithNone<Pause>().ForEach(
+            // Entities.WithBurst().WithNone<Pause>().ForEach(
             (
                  //BulletManager bulletManager,
                  Entity entity,
@@ -131,11 +132,11 @@ public class GunAmmoHandlerSystem : SystemBase
                     if (strength <= 0) strength = 0;
                 }
 
-              
 
 
 
-                if(gun.IsFiring == 1) gun.Duration += dt;
+
+                if (gun.IsFiring == 1) gun.Duration += dt;
 
                 if ((gun.Duration > rate) && (gun.IsFiring == 1))
                 {
@@ -170,7 +171,7 @@ public class GunAmmoHandlerSystem : SystemBase
                         {
                             velocity.Linear = forward * strength;
                         }
-
+                        velocity.Linear.y = 0;
 
                         bulletManagerComponent.playSound = true;
                         bulletManagerComponent.setAnimationLayer = true;
@@ -189,6 +190,8 @@ public class GunAmmoHandlerSystem : SystemBase
 
                         commandBuffer.SetComponent(entityInQueryIndex, e, new TriggerComponent
                         { Type = (int)TriggerType.Ammo, ParentEntity = entity, Entity = e, Active = true });
+                        //Debug.Log("trans " + translation.Value);
+                        //translation.Value.y = 5;
                         commandBuffer.SetComponent(entityInQueryIndex, e, translation);
                         commandBuffer.SetComponent(entityInQueryIndex, e, rotation);
                         commandBuffer.SetComponent(entityInQueryIndex, e, velocity);
@@ -223,9 +226,9 @@ public class GunAmmoHandlerSystem : SystemBase
             if (gun.IsFiring == 1)
             {
                 //Debug.Log(" fired " + physicsVelocity.Linear);
-            }    
-            
-        
+            }
+
+
         }).Run();
 
         // SpawnJob runs in parallel with no sync point until the barrier system executes.
