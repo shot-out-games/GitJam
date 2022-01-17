@@ -78,20 +78,25 @@ public class BossStrategySystem : SystemBase
 
             //math.normalize(targetPosition);
             playerForward.y = 0;
-            float3 direction = math.normalize(bossTranslation.Value - targetPosition);
-            float dist = math.distance(bossTranslation.Value, targetPosition);
-            //Debug.Log("bv tp " + bossTranslation.Value + " " + targetPosition);
+
+            float3 bossXZ = new float3(bossTranslation.Value.x, 0, bossTranslation.Value.z);
+            float3 playerXZ = new float3(playerMove.Value.x, 0, playerMove.Value.z);
+
+            float3 direction = math.normalize(bossXZ - playerXZ);
+            
+            float dist = math.distance(bossXZ, playerXZ);
+            //Debug.Log("pl rot " + playerRotation.Value);
 
             //direction.x = 0;
             //direction.y = 0;
-            if (dist >= 1)
+            if (dist >= .01)
             {
-                quaternion targetRotation = quaternion.LookRotation(direction, math.up());//always face player
+                quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
                 //quaternion targetRotation = rotation.Value * math.right();
                 //Debug.Log("dist " + dist);
                 float slerpDampTime = bossMovementComponent.RotateSpeed;
-                //rotation.Value = -targetRotation.value;
-                rotation.Value = math.slerp(rotation.Value, targetRotation.value, slerpDampTime * Time.DeltaTime);
+                rotation.Value = targetRotation.value;
+                //rotation.Value = math.slerp(rotation.Value, targetRotation.value, slerpDampTime * Time.DeltaTime);
                 //rotation.Value = math.slerp(rotation.Value, playerForward, slerpDampTime * Time.DeltaTime);
             }
 
