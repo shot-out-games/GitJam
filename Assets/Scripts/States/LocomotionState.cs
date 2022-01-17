@@ -21,6 +21,8 @@ public class LocomotionState : StateMachineBehaviour
         }
 
 
+
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -61,12 +63,12 @@ public class LocomotionState : StateMachineBehaviour
 
         if (animationType == AnimationType.BossStrike)
         {
-            Debug.Log("fireball end");
-            EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
-            var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
-            bossComponent.IsFiring = 1;
-            manager.SetComponentData<BossWeaponComponent>(e, bossComponent);
+            //Debug.Log("fireball end");
+            //EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
+            //var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
+            //var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
+            //bossComponent.IsFiring = 1;
+            //manager.SetComponentData<BossWeaponComponent>(e, bossComponent);
 
         }
 

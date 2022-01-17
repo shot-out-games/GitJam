@@ -217,10 +217,16 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         }
 
         Vector3 aimTarget = crossHair.position;
+
+        //cameraZ = target.position.z - transform.position.z;//added but 
         aimTarget.z = cameraZ;
-        //aimTarget = target.position;
+        
+        aimTarget = target.position;
+        aimTarget.x = crossHair.position.x;
+        aimTarget.y = crossHair.position.y;
+        aimTarget.z = crossHair.position.z;
         //aimDir = math.normalize(aimTarget - transform.position);
-        aimDir = math.normalize(aimTarget - testGunLocation.position);
+        aimDir = math.normalize(aimTarget - transform.position);
         //aimDir = (aimTarget - transform.position);
 
 

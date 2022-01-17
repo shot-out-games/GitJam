@@ -32,5 +32,14 @@ public class FinalIkSystem : SystemBase
 
 
         }).Run();
+
+
+        Entities.WithoutBurst().ForEach((BossIKScript bossIK) =>
+        {
+
+            bossIK.LateUpdateSystem();
+
+
+        }).Run();
     }
 }

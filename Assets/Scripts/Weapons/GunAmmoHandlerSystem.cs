@@ -172,7 +172,10 @@ public class GunAmmoHandlerSystem : SystemBase
                         {
                             //velocity.Linear = forward * strength;
                             velocity.Linear = actorWeaponAimComponent.aimDirection * strength;
+                            velocity.Angular = math.float3(0, 0, 0);
+                            //Debug.Log("v " + velocity.Linear);
                         }
+                        
                         //velocity.Linear.y = 5;
 
                         bulletManagerComponent.playSound = true;

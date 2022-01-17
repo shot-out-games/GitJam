@@ -4,6 +4,7 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 
 
@@ -35,6 +36,7 @@ public class PlayerWeaponAimSystemLateUpdate : SystemBase
         {
             mb.LateUpdateSystem(playerWeaponAimComponent.weaponRaised);
             playerWeaponAimComponent.aimDirection = mb.aimDir;
+            //Debug.Log("v " + playerWeaponAimComponent.aimDirection);
         }).Run();
     }
 }
