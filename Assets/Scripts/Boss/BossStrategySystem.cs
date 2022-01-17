@@ -7,6 +7,13 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 
+
+
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateAfter(typeof(ExportPhysicsWorld)), UpdateBefore(typeof(EndFramePhysicsSystem))]
+[UpdateAfter(typeof(SandBox.Player.PlayerMoveSystem))]
+
+
 public class BossStrategySystem : SystemBase
 {
 
@@ -77,14 +84,14 @@ public class BossStrategySystem : SystemBase
 
             //direction.x = 0;
             //direction.y = 0;
-            if (dist >= 5)
+            if (dist >= 1)
             {
                 quaternion targetRotation = quaternion.LookRotation(direction, math.up());//always face player
                 //quaternion targetRotation = rotation.Value * math.right();
                 //Debug.Log("dist " + dist);
                 float slerpDampTime = bossMovementComponent.RotateSpeed;
-                //rotation.Value = targetRotation;
-                rotation.Value = math.slerp(rotation.Value, targetRotation, slerpDampTime * Time.DeltaTime);
+                //rotation.Value = -targetRotation.value;
+                rotation.Value = math.slerp(rotation.Value, targetRotation.value, slerpDampTime * Time.DeltaTime);
                 //rotation.Value = math.slerp(rotation.Value, playerForward, slerpDampTime * Time.DeltaTime);
             }
 

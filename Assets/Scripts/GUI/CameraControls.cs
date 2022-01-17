@@ -28,6 +28,8 @@ public class CameraControls : MonoBehaviour
     [SerializeField]
     bool active;
 
+    [SerializeField]
+    PlayerWeaponAim playerWeaponAimReference;
 
     void Start()
     {
@@ -98,7 +100,7 @@ public class CameraControls : MonoBehaviour
             vcam.m_Lens.FieldOfView = _fov;
         }
 
-
+        if(playerWeaponAimReference) playerWeaponAimReference.cameraZ = fov;
 
     }
 

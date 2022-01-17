@@ -81,7 +81,7 @@ public class PickupWeaponRaycastSystem : SystemBase
                     }
                 };
 
-                Debug.DrawRay(start, Vector3.right, Color.green, distance * 10f);
+                //Debug.DrawRay(start, Vector3.right, Color.green, distance * 10f);
 
 
 

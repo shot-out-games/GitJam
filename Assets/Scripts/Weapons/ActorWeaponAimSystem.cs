@@ -31,9 +31,10 @@ public class PlayerWeaponAimSystemLateUpdate : SystemBase
 {
     protected override void OnUpdate()
     {
-        Entities.WithoutBurst().ForEach((in PlayerWeaponAim mb, in ActorWeaponAimComponent playerWeaponAimComponent) =>
+        Entities.WithoutBurst().ForEach((PlayerWeaponAim mb, ref ActorWeaponAimComponent playerWeaponAimComponent) =>
         {
             mb.LateUpdateSystem(playerWeaponAimComponent.weaponRaised);
+            playerWeaponAimComponent.aimDirection = mb.aimDir;
         }).Run();
     }
 }

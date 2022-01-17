@@ -35,7 +35,7 @@ public struct ActorWeaponAimComponent : IComponentData
     public bool dualMode;
     public bool cursorTargeting;
     public CameraTypes weaponCamera;
-
+    public float3 aimDirection;
 
 }
 
@@ -50,7 +50,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField] AimIK aim;
     [SerializeField] FullBodyBipedIK ik;
     [SerializeField] private LookAtIK lookAtIk;
-    [HideInInspector]
+    //[HideInInspector]
     public Transform target;
     public Transform aimTransform;
     [Range(0.0f, 1.0f)] [SerializeField] private float aimWeight = 1.0f;
@@ -74,7 +74,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField] private Image crosshairImage;
     [SerializeField] private bool cursorTargeting = true;
     [Range(0.0f, 100.0f)]
-    [SerializeField] private float cameraZ = 50f;
+    public float cameraZ = 50f;
     public CameraTypes weaponCamera;
     [SerializeField] bool simController = false;
     [SerializeField]
@@ -87,13 +87,16 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField] private float viewportPct = 90;
     [SerializeField]
     private Vector3 mousePosition;
-    private float aimAngle;
+    public float3 aimDir;
     private Animator animator;
     private float xMin;
     private float xMax;
     private float yMin;
     private float yMax;
+    public Transform testGunLocation;
 
+
+    [SerializeField]
     Vector3 targetPosition = Vector3.zero;
     Vector3 worldPosition = Vector3.zero;
     public Vector3 closetEnemyWeaponTargetPosition;
@@ -178,6 +181,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             aim.solver.Update();
         }
 
+
     }
 
     public void SetIK()
@@ -212,6 +216,12 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             //return;
         }
 
+        Vector3 aimTarget = crossHair.position;
+        aimTarget.z = cameraZ;
+        //aimTarget = target.position;
+        //aimDir = math.normalize(aimTarget - transform.position);
+        aimDir = math.normalize(aimTarget - testGunLocation.position);
+        //aimDir = (aimTarget - transform.position);
 
 
         SetAim();
@@ -324,6 +334,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (weaponCamera == CameraTypes.ThirdPerson)
         {
             mousePosition.z = cameraZ;
+            //mousePosition.z = target.position.z;
             worldPosition = cam.ScreenToWorldPoint(mousePosition);
             //worldPosition = GetMousePositionThirdPersonPlane();
             x = worldPosition.x;

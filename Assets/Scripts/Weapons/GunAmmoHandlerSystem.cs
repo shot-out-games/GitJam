@@ -158,20 +158,22 @@ public class GunAmmoHandlerSystem : SystemBase
                         var translation = new Translation() { Value = gun.AmmoStartLocalToWorld.Position };//use bone mb transform
                         var rotation = new Rotation() { Value = gun.AmmoStartLocalToWorld.Rotation };
                         var velocity = new PhysicsVelocity();
-                        float3 forward = gun.AmmoStartLocalToWorld.Forward;
+                        //float3 forward = gun.AmmoStartLocalToWorld.Forward;
                         //float3 forward = math.forward(rotation.Value);
 
+                        float3 forward = actorWeaponAimComponent.aimDirection;
 
                         if (actorWeaponAimComponent.weaponCamera == CameraTypes.TopDown)
                         {
-                            //velocity.Linear = forward * strength;
+                            velocity.Linear = forward * strength;
                             velocity.Linear = forward * strength + playerVelocity.Linear;
                         }
                         else
                         {
-                            velocity.Linear = forward * strength;
+                            //velocity.Linear = forward * strength;
+                            velocity.Linear = actorWeaponAimComponent.aimDirection * strength;
                         }
-                        velocity.Linear.y = 0;
+                        //velocity.Linear.y = 5;
 
                         bulletManagerComponent.playSound = true;
                         bulletManagerComponent.setAnimationLayer = true;
