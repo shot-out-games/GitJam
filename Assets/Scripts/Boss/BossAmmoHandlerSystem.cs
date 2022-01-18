@@ -122,6 +122,7 @@ public class BossAmmoHandlerSystem : SystemBase
                     //gun.IsFiring = 0;
                     var e = commandBuffer.Instantiate(bossWeapon.PrimaryAmmo);
                     var translation = new Translation() { Value = bossWeapon.AmmoStartLocalToWorld.Position };//use bone mb transform
+                    Debug.Log("tr " + translation.Value);
                     var playerTranslation = GetComponent<Translation>(playerE).Value;
                     var rotation = new Rotation() { Value = bossWeapon.AmmoStartLocalToWorld.Rotation };
                     var velocity = new PhysicsVelocity();
@@ -157,7 +158,7 @@ public class BossAmmoHandlerSystem : SystemBase
         ).Run();
 
 
-        m_EntityCommandBufferSystem.AddJobHandleForProducer(Dependency);
+        //m_EntityCommandBufferSystem.AddJobHandleForProducer(Dependency);
         commandBuffer.Playback(EntityManager);
         commandBuffer.Dispose();
         playerEntities.Dispose();

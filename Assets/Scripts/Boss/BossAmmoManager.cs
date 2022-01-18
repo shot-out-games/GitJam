@@ -42,6 +42,7 @@ public struct BossWeaponComponent : IComponentData
     public Rotation AmmoStartRotation;
     public bool Disable;
     public float ChangeAmmoStats;
+    public float CurrentWaypointIndex; 
 }
 
 public struct BossAmmoManagerComponent : IComponentData //used for managed components - read and then call methods from MB
@@ -59,10 +60,9 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
     //[SerializeField]
     public AudioSource weaponAudioSource;
     [HideInInspector]
-    public List<GameObject> AmmoInstances = new List<GameObject>();
-    public Transform AmmoStartLocation;
-    public GameObject PrimaryAmmoPrefab;
-    public List<GameObject> AmmoPrefabList = new List<GameObject>();
+    //public List<GameObject> AmmoInstances = new List<GameObject>();
+    private GameObject PrimaryAmmoPrefab;
+    public List<AmmoClass> AmmoPrefabList = new List<AmmoClass>();
 
     public AudioClip weaponAudioClip;
 
@@ -75,20 +75,25 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
     float Rate;
 
     
-
+    void Start()
+    {
+        //PrimaryAmmoPrefab = AmmoPrefabList[0].primaryAmmoPrefab;
+    }
     // Referenced prefabs have to be declared so that the conversion system knows about them ahead of time
     public void DeclareReferencedPrefabs(List<GameObject> gameObjects)
     {
-        gameObjects.Add(PrimaryAmmoPrefab);
+        //gameObjects.Add(PrimaryAmmoPrefab);
         for (int i = 0; i < AmmoPrefabList.Count ; i++)
         {
-            gameObjects.Add(AmmoPrefabList[i]);
+            gameObjects.Add(AmmoPrefabList[i].primaryAmmoPrefab);
         }
         //gameObjects.Add(WeaponPrefab);
     }
 
     void Generate(bool randomize)
     {
+        PrimaryAmmoPrefab = AmmoPrefabList[0].primaryAmmoPrefab;
+
         if (randomize)
         {
             float multiplier = .7f;
@@ -120,24 +125,33 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
         Generate(false);
 
 
-        var localToWorld = new LocalToWorld
-        {
-            Value = float4x4.TRS(AmmoStartLocation.position, AmmoStartLocation.rotation, Vector3.one)
-        };
 
         for (int i = 0; i < AmmoPrefabList.Count; i++)
         {
+            var ltw = new LocalToWorld
+            {
+                Value = float4x4.TRS(AmmoPrefabList[i].ammoStartLocation.position, AmmoPrefabList[i].ammoStartLocation.rotation, Vector3.one)
+            };
+
+
             dstManager.AddBuffer<BossAmmoListBuffer>(entity).Add
                 (
                     new BossAmmoListBuffer
                     {
-                        e = conversionSystem.GetPrimaryEntity(AmmoPrefabList[i])
+                        e = conversionSystem.GetPrimaryEntity(AmmoPrefabList[i].primaryAmmoPrefab),
+                        ammoStartLocalToWorld = ltw,
+                        ammoStartPosition = new Translation() { Value = AmmoPrefabList[i].ammoStartLocation.position },
+                        ammoStartRotation = new Rotation() { Value = AmmoPrefabList[i].ammoStartLocation.rotation }
+
                     }
                 );
 
         }
 
-
+        var localToWorld = new LocalToWorld
+        {
+            Value = float4x4.TRS(AmmoPrefabList[0].ammoStartLocation.position, AmmoPrefabList[0].ammoStartLocation.rotation, Vector3.one)
+        };
 
 
         dstManager.AddComponentData<BossWeaponComponent>(
@@ -145,8 +159,8 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
             new BossWeaponComponent()
             {
                 AmmoStartLocalToWorld = localToWorld,
-                AmmoStartPosition = new Translation() { Value = AmmoStartLocation.position },//not used because cant track bone 
-                AmmoStartRotation = new Rotation() { Value = AmmoStartLocation.rotation },
+                AmmoStartPosition = new Translation() { Value = AmmoPrefabList[0].ammoStartLocation.position },
+                AmmoStartRotation = new Rotation() { Value = AmmoPrefabList[0].ammoStartLocation.rotation },
                 PrimaryAmmo = conversionSystem.GetPrimaryEntity(PrimaryAmmoPrefab),
                 Strength = Strength,
                 gameStrength = Strength,
@@ -172,6 +186,7 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
 
 
 [UpdateInGroup(typeof(TransformSystemGroup))]
+//[UpdateBefore(typeof(BossAmmoHandlerSystem))]
 [UpdateAfter(typeof(EndFrameLocalToParentSystem))]
 
 
@@ -186,19 +201,29 @@ class SynchronizeGameObjectTransformsBossAmmoWeaponEntities : SystemBase
 
     protected override void OnUpdate()
     {
+        BufferFromEntity<BossAmmoListBuffer> ammoList = GetBufferFromEntity<BossAmmoListBuffer>(true);
+        BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
+
 
         Entities.WithoutBurst().ForEach(
-            (BossAmmoManager bulletManager, ref BossWeaponComponent gunComponent) =>
+            (Entity enemyE, BossAmmoManager bulletManager, ref BossWeaponComponent gunComponent, in BossMovementComponent bossMovementComponent) =>
             {
+                DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
+                DynamicBuffer<BossAmmoListBuffer> ammoListBuffer = ammoList[enemyE];
+                if (ammoListBuffer.Length <= 0 || bossMovementComponent.CurrentIndex < 0) return;
+
+                int ammoIndex = targetPointBuffer[bossMovementComponent.CurrentIndex].ammoListIndex;
+
+                if (ammoIndex < 0) return;
                 var localToWorld = new LocalToWorld
                 {
-                    Value = float4x4.TRS(bulletManager.AmmoStartLocation.position, bulletManager.AmmoStartLocation.rotation, Vector3.one)
+                    Value = float4x4.TRS(bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.position, bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.rotation, Vector3.one)
                 };
 
 
                 gunComponent.AmmoStartLocalToWorld = localToWorld;
-                gunComponent.AmmoStartPosition.Value = bulletManager.AmmoStartLocation.position;
-                gunComponent.AmmoStartRotation.Value = bulletManager.AmmoStartLocation.rotation;
+                gunComponent.AmmoStartPosition.Value = bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.position;
+                gunComponent.AmmoStartRotation.Value = bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.rotation;
             }
         ).Run();
 

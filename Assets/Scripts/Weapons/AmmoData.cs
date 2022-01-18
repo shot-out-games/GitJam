@@ -17,6 +17,13 @@ public struct AmmoDataComponent : IComponentData
     public bool ChargeRequired;
 
 }
+[System.Serializable]
+public class AmmoClass
+{
+    public Transform ammoStartLocation;
+    public GameObject primaryAmmoPrefab;
+}
+
 
 public class AmmoData : MonoBehaviour, IConvertGameObjectToEntity
 {

@@ -8,6 +8,8 @@ public class BossIKScript : MonoBehaviour
 {
     [Tooltip("Reference to the LookAt component (only used for the head in this instance).")]
     public LookAtIK lookAt;
+    public float lookAtWeight = 1;
+    public Transform lookAtTarget;
     Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -17,9 +19,14 @@ public class BossIKScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        
+
+        //if (lookAt != null)
+        //{
+        //    //lookAt.solver.Update();
+        //    Debug.Log("look LU");
+        //}
     }
     public void StartStrike()
     {
@@ -36,6 +43,9 @@ public class BossIKScript : MonoBehaviour
 
         if (lookAt != null)
         {
+            lookAt.solver.IKPositionWeight = lookAtWeight;
+            lookAt.solver.target = lookAtTarget;
+            lookAt.solver.IKPosition = lookAtTarget.position; 
             lookAt.solver.Update();
             Debug.Log("look");
         }

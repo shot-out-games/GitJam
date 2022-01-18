@@ -4,6 +4,7 @@ using Unity.Physics.Extensions;
 using Unity.Transforms;
 using UnityEngine;
 
+
 public struct AmmoComponent : IComponentData
 {
     public Entity OwnerAmmoEntity;

@@ -21,7 +21,7 @@ public class BossStrikeSystem : SystemBase
         int players = playerEntities.Length;
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
 
-        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator, ref BossWeaponComponent bossWeaponComponent,
+        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator, 
             in BossMovementComponent bossMovementComponent) =>
         {
 

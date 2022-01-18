@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 [InternalBufferCapacity(8)]
 
 public struct BossAmmoListBuffer : IBufferElementData
 {
     public Entity e;
+    public LocalToWorld ammoStartLocalToWorld;
+    public Translation ammoStartPosition;
+    public Rotation ammoStartRotation;
 }
 //public struct BossWaypointDurationBufferElement : IBufferElementData
 //{
