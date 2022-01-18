@@ -33,6 +33,7 @@ public struct BossMovementComponent : IComponentData
 public struct BossStrategyComponent : IComponentData
 {
     public bool AimAtPlayer;
+    public float StopDistance;
 }
 
 public struct BossComponent : IComponentData
@@ -54,13 +55,15 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     bool Repeat = true;
     [SerializeField]
     bool AimAtPlayer = true;
+    [SerializeField]
+    float StopDistance = 5;
     public Entity bossEntity;
 
     public List<WayPoint> wayPoints = new List<WayPoint>();
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         dstManager.AddComponentData<BossMovementComponent>(entity, new BossMovementComponent { WayPointReached = false, Speed = BossSpeed, Repeat = Repeat, RotateSpeed = RotateSpeed });
-        dstManager.AddComponentData<BossStrategyComponent>(entity, new BossStrategyComponent { AimAtPlayer = AimAtPlayer });
+        dstManager.AddComponentData<BossStrategyComponent>(entity, new BossStrategyComponent { AimAtPlayer = AimAtPlayer, StopDistance = StopDistance });
         dstManager.AddComponent<DeadComponent>(entity);
         dstManager.AddComponent<BossComponent>(entity);
         dstManager.AddComponent<EnemyComponent>(entity);//keep?

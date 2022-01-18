@@ -14,7 +14,7 @@ using UnityEngine;
 
 
 [UpdateInGroup(typeof(LateSimulationSystemGroup))]
-[UpdateAfter(typeof(FinalIkSystem))]
+//[UpdateAfter(typeof(FinalIkSystem))]
 
 
 public class BossAmmoHandlerSystem : SystemBase
@@ -121,10 +121,12 @@ public class BossAmmoHandlerSystem : SystemBase
                     //gun.Duration = 0;
                     //gun.IsFiring = 0;
                     var e = commandBuffer.Instantiate(bossWeapon.PrimaryAmmo);
-                    var translation = new Translation() { Value = bossWeapon.AmmoStartLocalToWorld.Position };//use bone mb transform
-                    Debug.Log("tr " + translation.Value);
+                    //var translation = new Translation() { Value = bossWeapon.AmmoStartLocalToWorld.Position };//use bone mb transform
+                    var translation = new Translation() { Value = bossWeapon.AmmoStartPosition.Value };//use bone mb transform
+                    //Debug.Log("tr " + translation.Value);
                     var playerTranslation = GetComponent<Translation>(playerE).Value;
-                    var rotation = new Rotation() { Value = bossWeapon.AmmoStartLocalToWorld.Rotation };
+                    //var rotation = new Rotation() { Value = bossWeapon.AmmoStartLocalToWorld.Rotation };
+                    var rotation = new Rotation() { Value = bossWeapon.AmmoStartRotation.Value };
                     var velocity = new PhysicsVelocity();
                     //float3 forward = gun.AmmoStartLocalToWorld.Forward;
                     float3 forward = math.forward(rotation.Value);
@@ -133,7 +135,7 @@ public class BossAmmoHandlerSystem : SystemBase
                         forward.y = math.sign(playerTranslation.y - translation.Value.y);
                     }
                     //forward = forward * math.normalize(translation.Value - move.Value);
-                    velocity.Linear = forward * strength;
+                    velocity.Linear = math.normalize(forward) * strength;
 
 
 

@@ -3,13 +3,19 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
+using Unity.Rendering;
 using Unity.Transforms;
 
-[UpdateInGroup(typeof(LateSimulationSystemGroup))]
+//[UpdateInGroup(typeof(LateSimulationSystemGroup))]
+//[UpdateAfter(typeof(BossAmmoHandlerSystem))]
+//[UpdateAfter(typeof(GunAmmoHandlerSystem))]
 //[UpdateInGroup(typeof(TransformSystemGroup))]
 //[UpdateAfter(typeof(EndFrameLocalToParentSystem))]
 //[UpdateBefore(typeof(SynchronizeGameObjectTransformsWithTriggerEntities))]
 //[UpdateBefore(typeof(EndFrameTRSToLocalToWorldSystem))]
+[UpdateInGroup(typeof(PresentationSystemGroup))]
+//[UpdateInGroup(typeof(TransformSystemGroup))]
+[UpdateAfter(typeof(HybridRendererSystem))]
 
 public class FinalIkSystem : SystemBase
 {

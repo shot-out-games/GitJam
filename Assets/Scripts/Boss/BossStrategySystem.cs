@@ -29,7 +29,7 @@ public class BossStrategySystem : SystemBase
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
         var playerRotationGroup = GetComponentDataFromEntity<Rotation>(true);
 
-        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation) =>
+        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent) =>
         {
 
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
@@ -74,7 +74,7 @@ public class BossStrategySystem : SystemBase
             var bossTranslation = GetComponent<Translation>(enemyE);
             //float3 targetPositon = move.Value;
             float3 targetPosition = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointPosition;
-            if (chase) targetPosition = new float3(playerMove.Value.x, targetPosition.y, playerMove.Value.z);//keep the Y of the waypoint!
+            if (chase) targetPosition = new float3(playerMove.Value.x, targetPosition.y, playerMove.Value.z + bossStrategyComponent.StopDistance);//keep the Y of the waypoint!
 
             //math.normalize(targetPosition);
             playerForward.y = 0;
@@ -98,7 +98,7 @@ public class BossStrategySystem : SystemBase
             //targetDirection.Normalize();
             //quaternion targetRotation = quaternion.LookRotation(targetDirection, math.up());
             //rotation.Value = targetRotation;
-            if (dist < 1) direction = -math.forward();
+            if (dist < 1) direction = -math.forward();//????????????????? 1
 
             quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
 
@@ -131,7 +131,10 @@ public class BossStrategySystem : SystemBase
             }
             else
             {
-                bossTranslation.Value = bossTranslation.Value + math.normalize(targetPosition - bossTranslation.Value) * Time.DeltaTime * bossMovementComponent.Speed * targetSpeed;
+                //if (dist > bossStrategyComponent.StopDistance)
+                //{
+                    bossTranslation.Value = bossTranslation.Value + math.normalize(targetPosition - bossTranslation.Value) * Time.DeltaTime * bossMovementComponent.Speed * targetSpeed;
+                //}
                 SetComponent<Translation>(enemyE, bossTranslation);
                 bossMovementComponent.WayPointReached = false;
             }

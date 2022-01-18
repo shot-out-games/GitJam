@@ -10,11 +10,18 @@ public class BossIKScript : MonoBehaviour
     public LookAtIK lookAt;
     public float lookAtWeight = 1;
     public Transform lookAtTarget;
+
+    public AimIK aimIk;
+    public float aimIkWeight = 1;
+    public Transform aimIkTarget;
+
+    //int count = 0;
     Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        lookAt.enabled = false;
+        if(lookAt) lookAt.enabled = false;
+        if(aimIk) aimIk.enabled = false;
         animator = GetComponent<Animator>();
     }
 
@@ -27,10 +34,13 @@ public class BossIKScript : MonoBehaviour
         //    //lookAt.solver.Update();
         //    Debug.Log("look LU");
         //}
+        //count++;
+        //Debug.Log("lu " + count);
+
     }
     public void StartStrike()
     {
-        Debug.Log("fireball strike");
+        //Debug.Log("fireball strike");
         EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
         var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
@@ -39,16 +49,29 @@ public class BossIKScript : MonoBehaviour
     }
     public void LateUpdateSystem()
     {
-
-
-        if (lookAt != null)
+        if (lookAt != null && lookAtTarget)
         {
             lookAt.solver.IKPositionWeight = lookAtWeight;
-            lookAt.solver.target = lookAtTarget;
-            lookAt.solver.IKPosition = lookAtTarget.position; 
+            //lookAt.solver.target = lookAtTarget;
+            lookAt.solver.IKPosition = lookAtTarget.position;
             lookAt.solver.Update();
-            Debug.Log("look");
+            //Debug.Log("look");
         }
+
+        if (aimIk != null && aimIkTarget)
+        {
+            aimIk.solver.IKPositionWeight = aimIkWeight;
+            //aimIk.solver.target = aimIkTarget;
+            aimIk.solver.IKPosition = aimIkTarget.position;
+            aimIk.solver.Update();
+        }
+
+        //count++;
+        //Debug.Log("lu system " + count);
+
+
+        //Debug.Log("look sb");
+
 
 
     }

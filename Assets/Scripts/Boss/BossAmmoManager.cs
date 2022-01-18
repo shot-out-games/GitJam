@@ -37,7 +37,7 @@ public struct BossWeaponComponent : IComponentData
     public float Duration;//rate counter for job
     public bool CanFire;
     public int IsFiring;
-    public LocalToWorld AmmoStartLocalToWorld;
+    //public LocalToWorld AmmoStartLocalToWorld;
     public Translation AmmoStartPosition;
     public Rotation AmmoStartRotation;
     public bool Disable;
@@ -158,7 +158,7 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
             entity,
             new BossWeaponComponent()
             {
-                AmmoStartLocalToWorld = localToWorld,
+                //AmmoStartLocalToWorld = localToWorld,
                 AmmoStartPosition = new Translation() { Value = AmmoPrefabList[0].ammoStartLocation.position },
                 AmmoStartRotation = new Rotation() { Value = AmmoPrefabList[0].ammoStartLocation.rotation },
                 PrimaryAmmo = conversionSystem.GetPrimaryEntity(PrimaryAmmoPrefab),
@@ -206,7 +206,7 @@ class SynchronizeGameObjectTransformsBossAmmoWeaponEntities : SystemBase
 
 
         Entities.WithoutBurst().ForEach(
-            (Entity enemyE, BossAmmoManager bulletManager, ref BossWeaponComponent gunComponent, in BossMovementComponent bossMovementComponent) =>
+            (Entity enemyE, BossAmmoManager bulletManager, ref BossWeaponComponent bossWeaponComponent, in BossMovementComponent bossMovementComponent) =>
             {
                 DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
                 DynamicBuffer<BossAmmoListBuffer> ammoListBuffer = ammoList[enemyE];
@@ -215,15 +215,17 @@ class SynchronizeGameObjectTransformsBossAmmoWeaponEntities : SystemBase
                 int ammoIndex = targetPointBuffer[bossMovementComponent.CurrentIndex].ammoListIndex;
 
                 if (ammoIndex < 0) return;
+
+                bossWeaponComponent.PrimaryAmmo = ammoListBuffer[ammoIndex].e;
                 var localToWorld = new LocalToWorld
                 {
                     Value = float4x4.TRS(bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.position, bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.rotation, Vector3.one)
                 };
 
 
-                gunComponent.AmmoStartLocalToWorld = localToWorld;
-                gunComponent.AmmoStartPosition.Value = bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.position;
-                gunComponent.AmmoStartRotation.Value = bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.rotation;
+                //gunComponent.AmmoStartLocalToWorld = localToWorld;
+                bossWeaponComponent.AmmoStartPosition.Value = bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.position;
+                bossWeaponComponent.AmmoStartRotation.Value = bulletManager.AmmoPrefabList[ammoIndex].ammoStartLocation.rotation;
             }
         ).Run();
 

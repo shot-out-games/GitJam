@@ -15,7 +15,7 @@ using UnityEngine;
 
 [UpdateInGroup(typeof(LateSimulationSystemGroup))]
 //[UpdateInGroup(typeof(TransformSystemGroup))]
-[UpdateAfter(typeof(FinalIkSystem))]
+//[UpdateAfter(typeof(FinalIkSystem))]
 
 
 //[UpdateInGroup(typeof(PresentationSystemGroup))]

@@ -43,7 +43,7 @@ public class EnemyAttackManagerSystem : SystemBase
             weaponManager.DetachPrimaryWeapon(); //need to add way to set to not picked up  afterwards
             weaponManager.primaryWeapon = weaponManager.weaponsList[weaponIndex];
 
-            bossWeaponComponent.PrimaryAmmo = ammoListBuffer[ammoIndex].e;
+            //bossWeaponComponent.PrimaryAmmo = ammoListBuffer[ammoIndex].e;
             //bossWeaponComponent.AmmoStartLocalToWorld = ammoListBuffer[ammoIndex].ammoStartLocalToWorld;
             //bossWeaponComponent.AmmoStartPosition = ammoListBuffer[ammoIndex].ammoStartPosition;
             //bossWeaponComponent.AmmoStartRotation = ammoListBuffer[ammoIndex].ammoStartRotation;
