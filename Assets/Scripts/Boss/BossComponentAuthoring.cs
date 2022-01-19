@@ -145,8 +145,8 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
                         wayPointSpeed = wayPoints[i].speed,
                         wayPointChase = wayPoints[i].chase,
                         duration = wayPoints[i].duration,
-                        wayPointStrike = (int)wayPoints[i].wayPointWeaponType,
-                        wayPointAnimation = (int)wayPoints[i].animation,
+                        wayPointAction = (int)wayPoints[i].action,
+                        //wayPointAnimation = (int)wayPoints[i].animation,
                         weaponListIndex = wayPoints[i].weaponListIndex,
                         ammoListIndex = wayPoints[i].ammoListIndex
 

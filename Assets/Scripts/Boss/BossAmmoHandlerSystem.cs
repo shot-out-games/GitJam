@@ -113,7 +113,10 @@ public class BossAmmoHandlerSystem : SystemBase
                     {
                         bossWeapon.IsFiring = 0;
 
-                    var move = GetComponent<Translation>(playerE);
+                    //var move = GetComponent<Translation>(playerE);
+                    var playerMove = GetComponent<Translation>(playerE);
+                    var bossTranslation = GetComponent<Translation>(entity);
+
 
                     //    if (actorWeaponAimComponent.weaponRaised == WeaponMotion.Raised || isEnemy)
                     //    {
@@ -129,11 +132,21 @@ public class BossAmmoHandlerSystem : SystemBase
                     var rotation = new Rotation() { Value = bossWeapon.AmmoStartRotation.Value };
                     var velocity = new PhysicsVelocity();
                     //float3 forward = gun.AmmoStartLocalToWorld.Forward;
+
                     float3 forward = math.forward(rotation.Value);
+
                     if (bossStrategyComponent.AimAtPlayer)
                     {
-                        forward.y = math.sign(playerTranslation.y - translation.Value.y);
+                        float3 bossXZ = new float3(bossTranslation.Value.x, bossTranslation.Value.y, bossTranslation.Value.z);
+                        float3 ammoStartXZ = new float3(translation.Value.x, translation.Value.y, translation.Value.z);
+                        float3 direction = math.normalize(ammoStartXZ - bossXZ);
+                        quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
+                        //forward = targetRotation.value;                        
+                        forward = direction;
+
+                        //forward.y = math.sign(playerTranslation.y - translation.Value.y);
                     }
+
                     //forward = forward * math.normalize(translation.Value - move.Value);
                     velocity.Linear = math.normalize(forward) * strength;
 

@@ -25,31 +25,31 @@ public class BossStrikeSystem : SystemBase
             in BossMovementComponent bossMovementComponent) =>
         {
 
-            DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
-            if (targetPointBuffer.Length <= 0)
-                return;
-            //bossWeaponComponent.IsFiring = 0;
-            int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
-            //if (strike == 2)//later set to different numbers for different strikes - 2 is Fireball
-            //{
-            //    animator.SetInteger("Animation Type", 2);
-            //    //ssWeaponComponent.IsFiring = 1;
-            //    //bossWeaponComponent.Duration = 0;
-            //}//animation will be set by Boss Strike System
-            //if (strike == 1)//later set to different numbers for different strikes - 1 is hammer tail
-            //{
-            //    animator.SetInteger("Animation Type", 1);
-            //    //ssWeaponComponent.IsFiring = 1;
-            //    //bossWeaponComponent.Duration = 0;
-            //}//animation will be set by Boss Strike System
+            //DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
+            //if (targetPointBuffer.Length <= 0)
+            //    return;
+            ////bossWeaponComponent.IsFiring = 0;
+            ////int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
+            ////if (strike == 2)//later set to different numbers for different strikes - 2 is Fireball
+            ////{
+            ////    animator.SetInteger("Animation Type", 2);
+            ////    //ssWeaponComponent.IsFiring = 1;
+            ////    //bossWeaponComponent.Duration = 0;
+            ////}//animation will be set by Boss Strike System
+            ////if (strike == 1)//later set to different numbers for different strikes - 1 is hammer tail
+            ////{
+            ////    animator.SetInteger("Animation Type", 1);
+            ////    //ssWeaponComponent.IsFiring = 1;
+            ////    //bossWeaponComponent.Duration = 0;
+            ////}//animation will be set by Boss Strike System
 
-            //Debug.Log("strike " + strike);
-            Entity playerE = Entity.Null;
-            //change to closest
-            //for (int i = 0; i < players; i++)
-            //{
-            //    playerE = playerEntities[i];                
-            //}
+            ////Debug.Log("strike " + strike);
+            //Entity playerE = Entity.Null;
+            ////change to closest
+            ////for (int i = 0; i < players; i++)
+            ////{
+            ////    playerE = playerEntities[i];                
+            ////}
 
 
 

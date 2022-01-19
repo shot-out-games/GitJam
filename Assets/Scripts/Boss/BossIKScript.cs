@@ -38,7 +38,7 @@ public class BossIKScript : MonoBehaviour
         //Debug.Log("lu " + count);
 
     }
-    public void StartStrike()
+    public void StartStrike()//any animation 
     {
         //Debug.Log("fireball strike");
         EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;

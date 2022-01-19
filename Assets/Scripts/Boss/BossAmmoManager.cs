@@ -17,7 +17,7 @@ public struct BossWaypointBufferElement : IBufferElementData
     public float3 wayPointPosition;
     public float wayPointSpeed;
     public bool wayPointChase;
-    public int wayPointStrike;
+    public int wayPointAction;
     public int wayPointAnimation;
     public int weaponListIndex;
     public int ammoListIndex;
@@ -59,9 +59,9 @@ public class BossAmmoManager : MonoBehaviour, IDeclareReferencedPrefabs, IConver
     private Entity entity;
     //[SerializeField]
     public AudioSource weaponAudioSource;
-    [HideInInspector]
+    //[HideInInspector]
     //public List<GameObject> AmmoInstances = new List<GameObject>();
-    private GameObject PrimaryAmmoPrefab;
+    public GameObject PrimaryAmmoPrefab;
     public List<AmmoClass> AmmoPrefabList = new List<AmmoClass>();
 
     public AudioClip weaponAudioClip;

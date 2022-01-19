@@ -13,7 +13,9 @@ public enum WayPointAction
 {
     Move,
     Jump,
-    Idle
+    Idle,
+    Attack,
+    Fire//strike
 }
 
 public enum WayPointAnimation
@@ -32,8 +34,8 @@ public class WayPoint
     public Vector3 targetPosition;
     public Vector3 offset;
     public WayPointAction action;
-    public WayPointAnimation animation;
-    public WeaponType wayPointWeaponType;//used for strike type
+    //public WayPointAnimation animation;
+    //public WeaponType wayPointWeaponType;//used for strike type
     public float duration = 1;
     public float speed = 1;
     public bool chase = false;

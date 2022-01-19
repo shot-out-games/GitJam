@@ -33,7 +33,7 @@ public class EnemyAttackManagerSystem : SystemBase
             int ammoIndex = targetPointBuffer[bossMovementComponent.CurrentIndex].ammoListIndex;
 
 
-            if (bossMovementComponent.CurrentIndex < 1) return;
+            if (bossMovementComponent.CurrentIndex <= 0) return;
 
 
 

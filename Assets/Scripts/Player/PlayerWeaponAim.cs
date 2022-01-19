@@ -219,13 +219,17 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         Vector3 aimTarget = crossHair.position;
 
         //cameraZ = target.position.z - transform.position.z;//added but 
-        aimTarget.z = cameraZ;
+        //aimTarget.z = cameraZ;
         
         aimTarget = target.position;
         aimTarget.x = crossHair.position.x;
         aimTarget.y = crossHair.position.y;
         aimTarget.z = crossHair.position.z;
         //aimDir = math.normalize(aimTarget - transform.position);
+        if(weaponCamera == CameraTypes.TopDown)
+        {
+            //aimTarget.y = aimTarget.y - testGunLocation.transform.position.y;
+        }
         aimDir = math.normalize(aimTarget - transform.position);
         //aimDir = (aimTarget - transform.position);
 

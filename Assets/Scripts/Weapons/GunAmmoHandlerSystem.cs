@@ -165,8 +165,10 @@ public class GunAmmoHandlerSystem : SystemBase
 
                         if (actorWeaponAimComponent.weaponCamera == CameraTypes.TopDown)
                         {
-                            velocity.Linear = forward * strength;
-                            velocity.Linear = forward * strength + playerVelocity.Linear;
+                            //velocity.Linear = forward * strength;
+                            //velocity.Linear = forward * strength + playerVelocity.Linear;
+                            velocity.Linear = actorWeaponAimComponent.aimDirection * strength + playerVelocity.Linear;
+                            velocity.Angular = math.float3(0, 0, 0);
                         }
                         else
                         {
@@ -175,7 +177,7 @@ public class GunAmmoHandlerSystem : SystemBase
                             velocity.Angular = math.float3(0, 0, 0);
                             //Debug.Log("v " + velocity.Linear);
                         }
-                        
+
                         //velocity.Linear.y = 5;
 
                         bulletManagerComponent.playSound = true;

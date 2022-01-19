@@ -33,23 +33,23 @@ public class BossStrategySystem : SystemBase
         {
 
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
-            int animation = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAnimation;
-            int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;//for show weapon only - the anim is what  triggers whatever ammo may be used
+            //int animation = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAnimation;
+            int action = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAction;//for show weapon only - the anim is what  triggers whatever ammo may be used
             var animType = 0;
             //if (strike == 2)//later set to different numbers for different strikes - 2 is Fireball and the anim event sets .firing weapon to 1
             //{
-              //  animType = 2;//starts firing
+            //  animType = 2;//starts firing
             //}//animation will be set by Boss Strike System
 
-            if (animation == (int)WayPointAnimation.Move)
+            if (action == (int)WayPointAction.Move)
             {
                 animType = 0;
             }
-            if (animation == (int)WayPointAnimation.Attack)
+            if (action == (int)WayPointAction.Attack)
             {
                 animType = 1;
             }
-            if (animation == (int)WayPointAnimation.Strike)
+            if (action == (int)WayPointAction.Fire)
             {
                 animType = 2;
             }
@@ -64,7 +64,7 @@ public class BossStrategySystem : SystemBase
             //{
             //  animType = 0;
             //}
-            animator.SetInteger("Animation Type", animType);
+            animator.SetInteger("Strike", animType);
 
 
             bool chase = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointChase;
@@ -95,6 +95,7 @@ public class BossStrategySystem : SystemBase
             var playerRotation = playerRotationGroup[playerE];
             var playerForward = GetComponent<LocalToWorld>(playerE).Forward;
 
+            //var playerMove = GetComponent<Translation>(playerE);
             var bossTranslation = GetComponent<Translation>(enemyE);
             //float3 targetPositon = move.Value;
             float3 targetPosition = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointPosition;
@@ -123,6 +124,9 @@ public class BossStrategySystem : SystemBase
             //quaternion targetRotation = quaternion.LookRotation(targetDirection, math.up());
             //rotation.Value = targetRotation;
             if (dist < 1) direction = -math.forward();//????????????????? 1
+
+            //float3 bossXZ = new float3(bossTranslation.Value.x, 0, bossTranslation.Value.z);
+            //float3 playerXZ = new float3(playerMove.Value.x, 0, playerMove.Value.z);
 
             quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
 
