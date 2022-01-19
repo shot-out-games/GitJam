@@ -36,6 +36,7 @@ public class DeadSystem : SystemBase //really game over system currently
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
         int currentLevel = LevelManager.instance.currentLevelCompleted;
+        Debug.Log("cur levl " + currentLevel);
         //bool levelComplete = LevelManager.instance.levelSettings[currentLevel].completed;
 
         Entities.WithoutBurst().WithAll<PlayerComponent>().ForEach
@@ -72,7 +73,7 @@ public class DeadSystem : SystemBase //really game over system currently
 
         Entities.WithoutBurst().WithAll<EnemyComponent>().ForEach
         (
-            ( Animator animator, ref DeadComponent deadComponent, ref WinnerComponent winnerComponent, ref PhysicsVelocity pv, ref Translation translation,
+            ( Animator animator, ref DeadComponent deadComponent,
             in Entity entity) =>
             {
                 if (deadComponent.isDead == true) return;
@@ -93,9 +94,16 @@ public class DeadSystem : SystemBase //really game over system currently
                 {
                     //deadComponent.isDying = false;
                     deadComponent.playDeadEffects = true;
-                    if (winnerComponent.checkWinCondition == true)//this  (and all with this true) enemy must be defeated to win the game
+
+                    if (HasComponent<WinnerComponent>(entity))
                     {
-                        winnerComponent.endGameReached = true;
+                        var winnerComponent = GetComponent<WinnerComponent>(entity);
+                        if (winnerComponent.checkWinCondition == true)//this  (and all with this true) enemy must be defeated to win the game
+                        {
+                            winnerComponent.endGameReached = true;
+                            SetComponent<WinnerComponent>(entity, winnerComponent);
+                        }
+                        
                     }
                     enemyJustDead = true;
                     LevelManager.instance.levelSettings[currentLevel].enemiesDead += 1;

@@ -58,6 +58,12 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField]
     float StopDistance = 5;
     public Entity bossEntity;
+    [Header("Misc")]
+    [SerializeField]
+    bool checkWinCondition = true;
+    [SerializeField]
+    bool paused = true;
+
 
     public List<WayPoint> wayPoints = new List<WayPoint>();
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
@@ -68,6 +74,66 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         dstManager.AddComponent<BossComponent>(entity);
         dstManager.AddComponent<EnemyComponent>(entity);//keep?
         dstManager.AddComponentData(entity, new CheckedComponent());
+
+
+        if (paused == true)
+        {
+            dstManager.AddComponent<Pause>(entity);
+        }
+
+        dstManager.AddComponentData(entity, new StatsComponent()
+        {
+            shotsFired = 0,
+            shotsLanded = 0
+        }
+       );
+
+
+
+        dstManager.AddComponentData(entity, new SkillTreeComponent()
+        {
+            e = entity,
+            availablePoints = 0,
+            SpeedPts = 0,
+            PowerPts = 0,
+            ChinPts = 0,
+            baseSpeed = 0,
+            CurrentLevel = 1,
+            CurrentLevelXp = 0,
+            PointsNextLevel = 10
+
+        }
+
+        );
+
+
+
+
+        dstManager.AddComponentData(entity, new WinnerComponent
+        {
+            active = true,
+            goalCounter = 0,
+            goalCounterTarget = 0,//ie how many players you have to save - usually zero
+            targetReached = false,
+            endGameReached = false,
+            checkWinCondition = checkWinCondition
+        }
+    );
+
+        dstManager.AddComponentData(entity,
+            new LevelCompleteComponent
+            {
+                active = true,
+                targetReached = false,
+                checkWinCondition = checkWinCondition
+            }
+        );
+
+
+
+
+
+
         bossEntity = entity;
         for (int i = 0; i < wayPoints.Count; i++)
         {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   power: 100
-  maxHealth: 200
+  maxHealth: 50
   startJumpGravityForce: 32
   addedNegativeForce: -1
   jumpDownGravityMultiplier: -1

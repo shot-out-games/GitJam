@@ -36,7 +36,6 @@ public class EnemyBehaviorSystem : SystemBase
         ) =>
         {
 
-            //if (EntityManager.GetComponentData<Pause>(entity).value == 1) return;
             if (dead.isDead) return;
 
             if (enemyWeaponMovementComponent.switchUp == false) return;

@@ -29,18 +29,42 @@ public class BossStrategySystem : SystemBase
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
         var playerRotationGroup = GetComponentDataFromEntity<Rotation>(true);
 
-        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent) =>
+        Entities.WithoutBurst().WithNone<Pause>().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent) =>
         {
 
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
             int animation = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAnimation;
-            int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;
+            int strike = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointStrike;//for show weapon only - the anim is what  triggers whatever ammo may be used
             var animType = 0;
+            //if (strike == 2)//later set to different numbers for different strikes - 2 is Fireball and the anim event sets .firing weapon to 1
+            //{
+              //  animType = 2;//starts firing
+            //}//animation will be set by Boss Strike System
+
+            if (animation == (int)WayPointAnimation.Move)
+            {
+                animType = 0;
+            }
             if (animation == (int)WayPointAnimation.Attack)
             {
                 animType = 1;
             }
-            if (strike == 0) animator.SetInteger("Animation Type", animType);
+            if (animation == (int)WayPointAnimation.Strike)
+            {
+                animType = 2;
+            }
+            //if (strike == 1)//later set to different numbers for different strikes - 1 is hammer tail
+            //{
+            //  animType = 1;
+            //animator.SetInteger("Animation Type", 1);
+            //ssWeaponComponent.IsFiring = 1;
+            //bossWeaponComponent.Duration = 0;
+            //}//animation will be set by Boss Strike System
+            //if (strike == 0)
+            //{
+            //  animType = 0;
+            //}
+            animator.SetInteger("Animation Type", animType);
 
 
             bool chase = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointChase;
