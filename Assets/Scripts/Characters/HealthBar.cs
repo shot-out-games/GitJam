@@ -150,7 +150,7 @@ public class HealthBar : MonoBehaviour, IConvertGameObjectToEntity
         }
 
         bool en = (entityManager.HasComponent<RatingsComponent>(entity));
-        Debug.Log("td " + damage + " en " + en + " max " + maxHealth);
+        //Debug.Log("td " + damage + " en " + en + " max " + maxHealth);
         _healthBar.gameObject.transform.localScale = new Vector3(pct, 1f, 1f);
 
     }

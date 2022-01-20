@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.2/staging' branch; Version is '2021.2.7f1 (6bd9e232123f) revision 7068130'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19043) 64bit Core' Language: 'en' Physical Memory: 16297 MB
+OS: 'Windows 10  (10.0.19042) 64bit Professional' Language: 'en' Physical Memory: 7939 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.2.7f1\Editor\Unity.exe
 -name
 AssetImportWorker1
 -projectPath
-H:/UNITY/PROJECTS 2020/GitJam
+C:/Projects/GitJam
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-54018
-Successfully changed project path to: H:/UNITY/PROJECTS 2020/GitJam
-H:/UNITY/PROJECTS 2020/GitJam
+56718
+Successfully changed project path to: C:/Projects/GitJam
+C:/Projects/GitJam
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,190 +47,106 @@ H:/UNITY/PROJECTS 2020/GitJam
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 293.48 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 273.39 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.7f1 (6bd9e232123f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path H:/UNITY/PROJECTS 2020/GitJam/Assets
+[Subsystems] Discovering subsystems at path C:/Projects/GitJam/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Radeon RX 590 Series (ID=0x67df)
-    Vendor:   ATI
-    VRAM:     8171 MB
-    Driver:   30.0.13023.1012
+    Renderer: Intel(R) UHD Graphics 630 (ID=0x9bc8)
+    Vendor:   Intel
+    VRAM:     3969 MB
+    Driver:   27.20.100.9664
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56032
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56760
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.012982 seconds.
+Registered in 0.007351 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 286.26 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 223.47 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.990 seconds
+- Completed reload, in  0.918 seconds
 Domain Reload Profiling:
-	ReloadAssembly (991ms)
-		BeginReloadAssembly (103ms)
+	ReloadAssembly (919ms)
+		BeginReloadAssembly (136ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (772ms)
-			LoadAssemblies (99ms)
+			CreateAndSetChildDomain (2ms)
+		EndReloadAssembly (673ms)
+			LoadAssemblies (130ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (126ms)
+			SetupTypeCache (123ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (31ms)
-			SetupLoadedEditorAssemblies (543ms)
+			RebuildScriptCaches (29ms)
+			SetupLoadedEditorAssemblies (450ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (20ms)
+				InitializePlatformSupportModulesInManaged (17ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (286ms)
-				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (178ms)
-				ProcessInitializeOnLoadMethodAttributes (57ms)
+				RefreshPlugins (224ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (149ms)
+				ProcessInitializeOnLoadMethodAttributes (59ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.014921 seconds.
+Registered in 0.019827 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 289.04 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 226.15 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Loader/Loader.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.PeekCore.LudiqCoreResources:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugin/LudiqCoreResources.cs:21)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:233)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Logos/LogoFramework.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.PeekCore.LudiqProduct:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Product/LudiqProduct.cs:30)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Logos/LogoLudiq.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.PeekCore.LudiqProduct:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Product/LudiqProduct.cs:31)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.Peek\Editor/Resources\Logos/LogoPeek.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.Peek.PeekProduct:Initialize () (at Assets/Ludiq/Ludiq.Peek/Editor/Plugin/PeekProduct.cs:45)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.Peek\Editor/Resources\Logos/LogoLudiq.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.Peek.PeekProduct:Initialize () (at Assets/Ludiq/Ludiq.Peek/Editor/Plugin/PeekProduct.cs:46)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-TypeManager.Initialize took: 288ms
+TypeManager.Initialize took: 331ms
 Mono: successfully reloaded assembly
-- Completed reload, in  5.090 seconds
+- Completed reload, in  4.676 seconds
 Domain Reload Profiling:
-	ReloadAssembly (5091ms)
-		BeginReloadAssembly (148ms)
+	ReloadAssembly (4677ms)
+		BeginReloadAssembly (273ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
+			DisableScriptedObjects (6ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (24ms)
-		EndReloadAssembly (4803ms)
-			LoadAssemblies (169ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (4263ms)
+			LoadAssemblies (384ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (653ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (151ms)
-			SetupLoadedEditorAssemblies (3778ms)
+			SetupTypeCache (522ms)
+			ReleaseScriptCaches (6ms)
+			RebuildScriptCaches (211ms)
+			SetupLoadedEditorAssemblies (3202ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (15ms)
+				InitializePlatformSupportModulesInManaged (12ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (289ms)
-				BeforeProcessingInitializeOnLoad (233ms)
-				ProcessInitializeOnLoadAttributes (3118ms)
-				ProcessInitializeOnLoadMethodAttributes (106ms)
-				AfterProcessingInitializeOnLoad (15ms)
+				RefreshPlugins (226ms)
+				BeforeProcessingInitializeOnLoad (212ms)
+				ProcessInitializeOnLoadAttributes (2625ms)
+				ProcessInitializeOnLoadMethodAttributes (115ms)
+				AfterProcessingInitializeOnLoad (11ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
-Refreshing native plugins compatible for Editor in 2.62 ms, found 7 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 2.33 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 9942 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 370 unused Assets / (4.7 MB). Loaded Objects now: 10357.
-Memory consumption went from 383.2 MB to 378.5 MB.
-Total: 30.783700 ms (FindLiveObjects: 1.138400 ms CreateObjectMapping: 0.572000 ms MarkObjects: 27.101700 ms  DeleteObjects: 1.969500 ms)
+Unloading 8979 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 369 unused Assets / (3.6 MB). Loaded Objects now: 9393.
+Memory consumption went from 358.4 MB to 354.8 MB.
+Total: 9.502900 ms (FindLiveObjects: 0.905900 ms CreateObjectMapping: 0.915600 ms MarkObjects: 5.979300 ms  DeleteObjects: 1.700800 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:DOTSType/UnityEngine.EventSystems.EventSystem: 2c81b6c3f3277fcd2c81b6c3f3277fcd -> 
@@ -268,7 +184,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/ScoreComponent: 5e48fc1059ec539f5e48fc1059ec539f -> 
   custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
   custom:DOTSType/UnityEditor.ShaderGraph.Drawing.SearchWindowProvider: f8a30861d99321b8f8a30861d99321b8 -> 
-  custom:DOTSType/Ludiq.PeekCore.DictionaryAsset: bbb8ed5efb46ae5fbbb8ed5efb46ae5f -> 
   custom:DOTSType/UnityEditor.Graphs.Graph: d35cefdd879c306cd35cefdd879c306c -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleTexture2D: c79a4bc917b39d2fc79a4bc917b39d2f -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+TierSettingsEditor: 082365929185a090082365929185a090 -> 
@@ -414,6 +329,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.UI.Toggle: ed2df2392b1b65abed2df2392b1b65ab -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnDropMessageListener: 2ac9064fe83d0d212ac9064fe83d0d21 -> 
   custom:DOTSType/UnityEditor.AvatarPreview+ObjectSelectorOperation: 1278bb54f21602791278bb54f2160279 -> 
+  custom:DOTSType/VisualEffectComponent: 231070631ef658c7231070631ef658c7 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ScriptableRendererDataEditor: 8871a712318d7c4e8871a712318d7c4e -> 
   custom:DOTSType/UnityEditor.Polybrush.ColorPaletteEditor: 571936c39a5994be571936c39a5994be -> 
   custom:DOTSType/UnityEditor.ArticulationBodyJointLimitsTool: e54a13de7cf083b3e54a13de7cf083b3 -> 
@@ -467,8 +383,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.LightProbeGroupInspector: 20d8caecfea817ce20d8caecfea817ce -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotVector: 4761d648571abaf94761d648571abaf9 -> 
   custom:DOTSType/UnityEditor.CapsuleColliderEditor: 26ad230c710a8cf126ad230c710a8cf1 -> 
-  custom:DOTSType/Ludiq.Peek.InconsistentComponentsTool+WarningWindow: 9fb766cedf6545f09fb766cedf6545f0 -> 
-  custom:DOTSType/Ludiq.Peek.HierarchyPopup: 5f769efbcb1ee5a85f769efbcb1ee5a8 -> 
   custom:DOTSType/Unity.Entities.EntityManager+IsolateCopiedEntities: 703c8c39c22b63af703c8c39c22b63af -> 
   custom:DOTSType/RootMotion.Demos.AimBoxing: b843b724a4c5f0a9b843b724a4c5f0a9 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Rotate3D: 6a42e9bc4fe3a5a06a42e9bc4fe3a5a0 -> 
@@ -537,6 +451,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.GUIViewDebuggerWindow: bb370bb17b7fefc4bb370bb17b7fefc4 -> 
   custom:DOTSType/UnityEditor.Graphs.AnimationStateMachine.ExitNodeInspector: e2e791b05f6b365fe2e791b05f6b365f -> 
   custom:DOTSType/Unity.VisualScripting.EditorPreferencesProvider: 2436a3322e37752e2436a3322e37752e -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Remap: ab3d535502561c84ab3d535502561c84 -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchControllerEditor: 467602ec36ba8e0e467602ec36ba8e0e -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStayMessageListener: 3a7d0c33b940aae03a7d0c33b940aae0 -> 
@@ -602,7 +517,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.AssetSaveDialog: dd6ed99bcecd7ddedd6ed99bcecd7dde -> 
   custom:DOTSType/UnityEngine.Rendering.VolumeProfile: 3afdd595d4ce81323afdd595d4ce8132 -> 
   custom:DOTSType/UnityEditor.Timeline.TimelineWindowTimeControl: ca9546c9bc47321aca9546c9bc47321a -> 
-  custom:DOTSType/Ludiq.PeekCore.FuzzyWindow: 095450acd129b8c4095450acd129b8c4 -> 
   custom:DOTSType/UnityEditor.LightAnchorEditor: 7a5ee351ed55c4697a5ee351ed55c469 -> 
   custom:DOTSType/UnityEditor.ProBuilder.MaterialEditor: 0440269e58091fc70440269e58091fc7 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.LaunchURL: 743f8e68681917b3743f8e68681917b3 -> 
@@ -651,7 +565,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Cloth: f92295351c63b8b2f92295351c63b8b2 -> 
   custom:DOTSType/SdfBakerSettingsEditor: f92a6bb09e97fc91f92a6bb09e97fc91 -> 
   custom:DOTSType/UnityEngine.VFX.Utility.VFXVelocityBinder: a044f5dcb66b7690a044f5dcb66b7690 -> 
-  custom:DOTSType/Ludiq.Peek.GroupNamePrompt: 7adec529ac125d917adec529ac125d91 -> 
   custom:DOTSType/UnityEditor.VFX.VFXDataParticle: a28ba2b3a7e1c2c5a28ba2b3a7e1c2c5 -> 
   custom:DOTSType/TMPro.EditorUtilities.TMP_SubMeshUI_Editor: 0acac6a80f13b09a0acac6a80f13b09a -> 
   custom:DOTSType/UnityEditor.ShaderGraph.ShaderSubGraphMetadata: 75325223e74460b375325223e74460b3 -> 
@@ -860,7 +773,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/TMPro.EditorUtilities.TMP_FontAssetEditor: 1d231b0019a0cd831d231b0019a0cd83 -> 
   custom:DOTSType/HealthBar: d6bb52a3b7bf21ddd6bb52a3b7bf21dd -> 
   custom:DOTSType/Unity.PlasticSCM.Editor.Views.PendingChanges.Dialogs.PendingChangesOptionsDialog: 32dbe0ab2ca93d7f32dbe0ab2ca93d7f -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqAssetEditor: 3fc88efa8dca0ded3fc88efa8dca0ded -> 
   custom:DOTSType/UnityEngine.RuntimeAnimatorController: 7eab6748309ba9677eab6748309ba967 -> 
   custom:DOTSType/UnityEditor.ProBuilder.TextureScaleTool: 6537c30b0f0447ef6537c30b0f0447ef -> 
   custom:DOTSType/UnityEditor.SkinnedMeshRendererEditor: 5788cdd9e005404a5788cdd9e005404a -> 
@@ -951,7 +863,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.ProBuilder.TextureToolContext: 6ad1426cd59509f76ad1426cd59509f7 -> 
   custom:DOTSType/Rewired.Data.Mapping.HardwareJoystickTemplateMap: 986fad6fd443f20b986fad6fd443f20b -> 
   custom:DOTSType/UnityEditor.VFX.VisualEffectSubgraphOperator: a56a37b54f351ba5a56a37b54f351ba5 -> 
-  custom:DOTSType/Ludiq.PeekCore.WebWindow: 77abf5b847dd99e777abf5b847dd99e7 -> 
   custom:DOTSType/Rewired.Integration.UnityUI.RewiredEventSystem: ec779b60873caed2ec779b60873caed2 -> 
   custom:DOTSType/Rewired.Data.Mapping.CustomCalculation_FirstNonZero: 7ec4d13188f8a9cd7ec4d13188f8a9cd -> 
   custom:DOTSType/RootMotion.FinalIK.LimbIK: ae57fa3dab02d39aae57fa3dab02d39a -> 
@@ -1039,12 +950,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.ResolveSceneReferenceSystem+AssetDependencyTrackerState: 860434573273e1b2860434573273e1b2 -> 
   custom:DOTSType/Unity.Entities.EditorCompanionHideFlagsSet: 64e46366d5a957c364e46366d5a957c3 -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineMixingCameraEditor: b347a5e07fc4e75db347a5e07fc4e75d -> 
-  custom:DOTSType/Ludiq.PeekCore.CoroutineRunner: d57c1beee6c66f08d57c1beee6c66f08 -> 
   custom:DOTSType/UnityEditor.VFX.VFXQuadStripOutput: 80bd522ee6f883a180bd522ee6f883a1 -> 
   custom:DOTSType/UnityEditor.Rendering.PostProcessing.PostProcessVolumeEditor: d9dd6ffb8fc8ed63d9dd6ffb8fc8ed63 -> 
   custom:DOTSType/VFXParameterEditor: b7c17366582caae6b7c17366582caae6 -> 
   custom:DOTSType/UnityEditor.VFX.Block.GPUEventAlways: 7087474a2fe604357087474a2fe60435 -> 
-  custom:DOTSType/Ludiq.PeekCore.SetupWizard: af5e00cb62424093af5e00cb62424093 -> 
   custom:DOTSType/Rewired.Demos.ControlRemappingDemo1: 50f126dce32442ca50f126dce32442ca -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRenderPipelineEditorResources: 51c679601edcf76c51c679601edcf76c -> 
   custom:DOTSType/UnityEngine.StreamingController: 5debd64051929f235debd64051929f23 -> 
@@ -1086,8 +995,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RewindAuthoringComponent: e2107ee5ab4ecf83e2107ee5ab4ecf83 -> 
   custom:DOTSType/UnityEditor.ModelInspector: d48db549c3654be6d48db549c3654be6 -> 
   custom:DOTSType/RootMotion.Demos.InteractionTargetInspector: 60912067d4b030bf60912067d4b030bf -> 
-  custom:DOTSType/Cinemachine.Editor.CinemachineHardLookAtEditor: 03e6e3d78169454603e6e3d781694546 -> 
   custom:DOTSType/UnityEditor.Editor: fdc36a66a5cddaf9fdc36a66a5cddaf9 -> 
+  custom:DOTSType/Cinemachine.Editor.CinemachineHardLookAtEditor: 03e6e3d78169454603e6e3d781694546 -> 
   custom:DOTSType/UnityEditor.VFX.UI.VFXViewWindow: e1ac2f13ee0164bde1ac2f13ee0164bd -> 
   custom:DOTSType/UnityEditor.ProBuilder.EditShapeTool: 394508d7403a554b394508d7403a554b -> 
   custom:DOTSType/UnityEditor.VFX.VisualEffectSubgraphBlock: d8023b62db3a7090d8023b62db3a7090 -> 
@@ -1288,7 +1197,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.AudioImporter: 6c2a9251b66252e46c2a9251b66252e4 -> 
   custom:DOTSType/UnityEditor.Timeline.EditorClip: fcef9f157b9f02f3fcef9f157b9f02f3 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ScreenSpaceAmbientOcclusionEditor: a12db2cab5649845a12db2cab5649845 -> 
-  custom:DOTSType/Ludiq.PeekCore.AboutWindow: 463fce5efbcb342f463fce5efbcb342f -> 
   custom:DOTSType/UnityEditor.HostView: 01e5ea1d4d01ca0a01e5ea1d4d01ca0a -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertyBumpScaleAuthoring: afd886c9c6e2f12aafd886c9c6e2f12a -> 
   custom:DOTSType/RootMotion.FinalIK.BipedIK: 4e6bbc7fe399cb464e6bbc7fe399cb46 -> 
@@ -1464,14 +1372,12 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Entities.Editor.GameObjectEntityEditor: 9ee355755efdb1e49ee355755efdb1e4 -> 
   custom:DOTSType/UnityEngine.VFX.Utility.VFXLightBinder: 0dd01791cbc365bf0dd01791cbc365bf -> 
   custom:DOTSType/VFXBlockEditor: 7f0d317c0198e5d17f0d317c0198e5d1 -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqComponentEditor: 5833b06aefd5b2ae5833b06aefd5b2ae -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerDropdown: 4a1b60ca9a6abe0e4a1b60ca9a6abe0e -> 
   custom:DOTSType/Unity.Build.Editor.BuildConfigurationScriptedImporterEditor: 5502b3ccf5e913715502b3ccf5e91371 -> 
   custom:DOTSType/UnityEditor.Graphs.AnimationBlendTree.Graph: e2db7f1f2eda2c6ce2db7f1f2eda2c6c -> 
   custom:DOTSType/UnityEngine.UI.Button: a1388f0596fcaff6a1388f0596fcaff6 -> 
   custom:DOTSType/Lighting: 45bdcd95361d5cbb45bdcd95361d5cbb -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleSDF: e775e7101a85780fe775e7101a85780f -> 
-  custom:DOTSType/Ludiq.PeekCore.TaskWindow: be1ab3690b12dca1be1ab3690b12dca1 -> 
   custom:DOTSType/UnityEngine.ProBuilder.Shapes.ProBuilderShape: 264151fc160c68c4264151fc160c68c4 -> 
   custom:DOTSType/UnityEngine.EventSystems.StandaloneInputModule: ec9de3a45a8b8c04ec9de3a45a8b8c04 -> 
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerToggle: 80cd0a9969445b8780cd0a9969445b87 -> 
@@ -1728,7 +1634,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.Demos.UserControlInteractions: 9fc664a3401c820b9fc664a3401c820b -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
   custom:DOTSType/UnityEditor.VisualEffectAssetEditorUtility+DoCreateNewSubgraphBlock: b239d285cd1d5547b239d285cd1d5547 -> 
-  custom:DOTSType/Ludiq.PeekCore.UpdateWizard: 45d136d954a6c38845d136d954a6c388 -> 
   custom:DOTSType/UnityEditor.AnimationModeDriver: 732d6a6cec3817f5732d6a6cec3817f5 -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+ShaderPreloadEditor: 4f0d4249ee548b3a4f0d4249ee548b3a -> 
   custom:DOTSType/RootMotion.Comments: c64d23a851fdf87fc64d23a851fdf87f -> 
@@ -1746,7 +1651,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.TerrainTools.PaintTextureTool: 03184ec2f013505903184ec2f0135059 -> 
   custom:DOTSType/UnityEditor.Rendering.DebugWindow: cdeffa3fa96ee686cdeffa3fa96ee686 -> 
   custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_SHAg: dd37184f3b0d9cebdd37184f3b0d9ceb -> 
-  custom:DOTSAllSystemsVersion: 0f153abff6da319d766d6baa68f04cd8 -> 
+  custom:DOTSAllSystemsVersion: 2e368125c8d425b6bf9e405b1b75473c -> 
   custom:DOTSType/UnityEditor.SplitView: 9fd4800815cbae499fd4800815cbae49 -> 
   custom:DOTSType/UnityEditor.Brush: 32b1c07b05c2a79532b1c07b05c2a795 -> 
   custom:DOTSType/FollowTarget: 4f4880986da854d14f4880986da854d1 -> 
@@ -1796,7 +1701,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.View: 696331f888aa91ec696331f888aa91ec -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.AssetVersion: cbbf064c4bde6a1fcbbf064c4bde6a1f -> 
   custom:DOTSType/UnityEditor.VFX.Block.AttributeMassFromVolume: 2d412324a88610762d412324a8861076 -> 
-  custom:DOTSType/Ludiq.PeekCore.EditorIconViewer: 63ae9d3fa581b31b63ae9d3fa581b31b -> 
   custom:DOTSType/MaterialOverrideAsset: 30e094f2f72d42c230e094f2f72d42c2 -> 
   custom:DOTSType/TMPro.TextMeshPro: 61e10d215eb1b79961e10d215eb1b799 -> 
   custom:DOTSType/Unity.Transforms.CopyInitialTransformFromGameObject: 2e04dba9bc7f665b2e04dba9bc7f665b -> 
@@ -1999,7 +1903,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.CanvasEditor: 65e2743002a8243665e2743002a82436 -> 
   custom:DOTSType/UnityEditor.VideoPlayerEditor: 9b060caa314d8ac29b060caa314d8ac2 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Path2D.ScriptablePathInspector: d98e52b509039f73d98e52b509039f73 -> 
-  custom:DOTSType/Ludiq.PeekCore.GeneratePropertyProvidersWindow: a510e4a6bb754459a510e4a6bb754459 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteOutlineModel: 4d5e4b31149f49a14d5e4b31149f49a1 -> 
   custom:DOTSType/UnityEditor.VFX.Block.PositionSphere: 7f6600b2765dcb967f6600b2765dcb96 -> 
   custom:DOTSType/UnityEditor.DeviceSimulation.DeviceInfoAsset: d11de534da114722d11de534da114722 -> 
@@ -2067,7 +1970,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Transforms.CompositeScale: 078db9cc48876ebd078db9cc48876ebd -> 
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerPanel: 4ca2f5d3d855e3784ca2f5d3d855e378 -> 
   custom:DOTSType/UnityEngine.TestRunner.Utils.TestRunCallbackListener: be8e9fd807bd1303be8e9fd807bd1303 -> 
-  custom:DOTSType/Ludiq.Peek.EditorPopup: 4d2437ec2ddc9be04d2437ec2ddc9be0 -> 
   custom:DOTSType/UnityEditor.UIElements.Debugger.UIElementsDebugger: 30bc2363ab7249f930bc2363ab7249f9 -> 
   custom:DOTSType/UnityEditor.TreeViewExamples.TreeViewTestWindow: 7b444b9c14b8baa07b444b9c14b8baa0 -> 
   custom:DOTSType/BossWeaponComponent: 9500c3f6f29e2ad19500c3f6f29e2ad1 -> 
@@ -2076,7 +1978,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Cinemachine.CinemachineConfiner2D: 705838d1ade4940b705838d1ade4940b -> 
   custom:DOTSType/UnityEditor.ShaderGraph.CreateShaderSubGraph: c87171a94b9fd6ebc87171a94b9fd6eb -> 
   custom:DOTSType/Unity.Scenes.ExternalEntityRefInfo: 43244452628bb63543244452628bb635 -> 
-  custom:DOTSType/Ludiq.Peek.ReparentingPrompt: 7178af188443b0c07178af188443b0c0 -> 
   custom:DOTSType/UnityEngine.Effector2D: 5923a4e47043fd275923a4e47043fd27 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Converters.ColorGradingConverter: 6b9c8c279da41bf56b9c8c279da41bf5 -> 
   custom:DOTSType/RootMotion.FinalIK.LookAtController: 84a784b4cf368b6684a784b4cf368b66 -> 
@@ -2787,6 +2688,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.Networking.PlayerConnection.AttachToPlayerPlayerIPWindow: 48a672c8395454d748a672c8395454d7 -> 
   custom:DOTSType/Rewired.Editor.HardwareJoystickTemplateMapEditor: fc91fac27f9281a6fc91fac27f9281a6 -> 
   custom:DOTSType/VisualEffectAssetEditor: 717a88f0dfc4b30a717a88f0dfc4b30a -> 
+  custom:DOTSType/EntitySpawner: 1020b6c83e08829c1020b6c83e08829c -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Atan: 1e7a2f01db5a0be11e7a2f01db5a0be1 -> 
   custom:DOTSType/RootMotion.FinalIK.FABRIKRoot: a5dba35b3ee89ee0a5dba35b3ee89ee0 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.WhiteBalance: b5701ea2571b9f93b5701ea2571b9f93 -> 
@@ -2852,8 +2754,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/SkinTest: 4af0f321d54bc37b4af0f321d54bc37b -> 
   custom:DOTSType/UnityEditor.VFX.Operator.AgeOverLifetime: 2adacfcde5f50e242adacfcde5f50e24 -> 
   custom:DOTSType/Rewired.Dev.Tools.DebugInformation: e909c52a3584a689e909c52a3584a689 -> 
-  custom:DOTSType/UnityEditor.TextCore.Text.SpriteAssetImporter: ba1633b9e7866cf9ba1633b9e7866cf9 -> 
   custom:DOTSType/Cinemachine.CinemachinePipeline: 28f2d57305b1849028f2d57305b18490 -> 
+  custom:DOTSType/UnityEditor.TextCore.Text.SpriteAssetImporter: ba1633b9e7866cf9ba1633b9e7866cf9 -> 
   custom:DOTSType/RootMotion.FinalIK.ArmIK: d202b0227328cd50d202b0227328cd50 -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnTransformChildrenChangedMessageListener: f6152979bcb9b3daf6152979bcb9b3da -> 
   custom:DOTSType/RootMotion.FinalIK.ArmIKInspector: f1cc25920e8fee35f1cc25920e8fee35 -> 
@@ -2978,9 +2880,3 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.DisableLiveLink: acfec9bf12a4cae8acfec9bf12a4cae8 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteUtilityWindow: 766fc4f2b14d7b62766fc4f2b14d7b62 -> 
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
-========================================================================
-Received Import Request.
-  Time since last request: 38217.854643 seconds.
-  path: Assets/Data
-  artifactKey: Guid(3b1e8bd2800625942ad69f7a445bef9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data using Guid(3b1e8bd2800625942ad69f7a445bef9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '36c2ea02db6c622aedfdc1ebfa0ec02c') in 0.026322 seconds 

@@ -383,6 +383,9 @@ public class AttackerSystem : SystemBase
                     ecb.AddComponent<DamageComponent>(entityB,
                         new DamageComponent { DamageLanded = 0, DamageReceived = damage });
 
+                    Debug.Log("attacker hw " + hw + " hitPower " + hitPower);
+
+
                     if (HasComponent<SkillTreeComponent>(entityA))
                     {
                         var skill = GetComponent<SkillTreeComponent>(entityA);

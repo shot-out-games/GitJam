@@ -99,7 +99,17 @@ public class BossStrategySystem : SystemBase
             var bossTranslation = GetComponent<Translation>(enemyE);
             //float3 targetPositon = move.Value;
             float3 targetPosition = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointPosition;
-            if (chase) targetPosition = new float3(playerMove.Value.x, targetPosition.y, playerMove.Value.z + bossStrategyComponent.StopDistance);//keep the Y of the waypoint!
+            float3 actionStopDistance = new(0, 1, 5);//may need to add to waypoints
+
+
+            if (action == (int)WayPointAction.Attack && chase == true)
+            {
+                targetPosition = new float3(playerMove.Value.x, playerMove.Value.y + actionStopDistance.y, playerMove.Value.z + actionStopDistance.z);
+            }
+            else if (chase)
+            {
+                targetPosition = new float3(playerMove.Value.x, targetPosition.y, playerMove.Value.z + bossStrategyComponent.StopDistance);//keep the Y of the waypoint!
+            }
 
             //math.normalize(targetPosition);
             playerForward.y = 0;
@@ -161,7 +171,7 @@ public class BossStrategySystem : SystemBase
             {
                 //if (dist > bossStrategyComponent.StopDistance)
                 //{
-                    bossTranslation.Value = bossTranslation.Value + math.normalize(targetPosition - bossTranslation.Value) * Time.DeltaTime * bossMovementComponent.Speed * targetSpeed;
+                bossTranslation.Value = bossTranslation.Value + math.normalize(targetPosition - bossTranslation.Value) * Time.DeltaTime * bossMovementComponent.Speed * targetSpeed;
                 //}
                 SetComponent<Translation>(enemyE, bossTranslation);
                 bossMovementComponent.WayPointReached = false;
