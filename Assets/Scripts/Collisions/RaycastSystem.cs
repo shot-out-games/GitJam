@@ -32,7 +32,8 @@ public class RaycastSystem : SystemBase
         Obstacle = 1 << 4,
         NPC = 1 << 5,
         PowerUp = 1 << 6,
-        Stairs = 1 << 7
+        Stairs = 1 << 7,
+        Particle = 1 << 8
     }
 
 

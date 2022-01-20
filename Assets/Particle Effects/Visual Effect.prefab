@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6655163459290021855}
   - component: {fileID: -4616179070417272748}
   - component: {fileID: 7476989953610807505}
+  - component: {fileID: 6994871812473080095}
   m_Layer: 0
   m_Name: Visual Effect
   m_TagString: Untagged
@@ -178,13 +179,13 @@ MonoBehaviour:
       m_Value:
         Category00: 0
         Category01: 0
-        Category02: 1
+        Category02: 0
         Category03: 0
         Category04: 0
         Category05: 0
         Category06: 0
         Category07: 0
-        Category08: 0
+        Category08: 1
         Category09: 0
         Category10: 0
         Category11: 0
@@ -213,13 +214,13 @@ MonoBehaviour:
       m_Value:
         Category00: 1
         Category01: 1
-        Category02: 0
+        Category02: 1
         Category03: 1
         Category04: 1
         Category05: 1
         Category06: 1
         Category07: 1
-        Category08: 1
+        Category08: 0
         Category09: 1
         Category10: 1
         Category11: 1
@@ -281,7 +282,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  m_GravityFactor: 1
+  m_GravityFactor: 0
   m_OverrideDefaultMassDistribution: 0
   m_CenterOfMass:
     x: 0
@@ -318,7 +319,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f6412195c876441801337b1d808706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 8
+  Type: 22
   index: 0
   triggerParticleSystem: {fileID: 0}
   triggerAudioSource: {fileID: 0}
+--- !u!114 &6994871812473080095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9122002266782648941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee27df6e7f633bc43898b12d24372b0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDamaged: 0
+  playerDamaged: 1
+  spawnTime: 3

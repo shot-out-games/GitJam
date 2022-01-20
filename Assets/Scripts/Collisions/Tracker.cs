@@ -36,7 +36,8 @@ public enum TriggerType
     Melee = 18,
     Obstacle = 19,
     Contact = 20,
-    Platform = 21
+    Platform = 21,
+    Particle
 }
 
 

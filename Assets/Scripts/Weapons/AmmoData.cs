@@ -15,6 +15,7 @@ public struct AmmoDataComponent : IComponentData
     public float GameDamage;
     public float GameRate;
     public bool ChargeRequired;
+    public bool SpawnVisualEffect;
 
 }
 [System.Serializable]
@@ -37,6 +38,7 @@ public class AmmoData : MonoBehaviour, IConvertGameObjectToEntity
     public float Damage;
     public float Rate;
     public bool ChargeRequired;
+    public bool SpawnVisualEffect = true;
 
 
 
@@ -55,7 +57,8 @@ public class AmmoData : MonoBehaviour, IConvertGameObjectToEntity
                 GameDamage = Damage,
                 GameRate = Rate,
                 GameAmmoTime = AmmoTime,
-                ChargeRequired = ChargeRequired
+                ChargeRequired = ChargeRequired,
+                SpawnVisualEffect = SpawnVisualEffect
                 
             }
 

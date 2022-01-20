@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6556459429208572140}
   - component: {fileID: 5933094204923746635}
   - component: {fileID: -6693199855356495161}
+  - component: {fileID: 1954111914317370910}
   m_Layer: 0
   m_Name: ammo BOSS
   m_TagString: Ammo
@@ -257,7 +258,7 @@ MonoBehaviour:
         Category05: 0
         Category06: 0
         Category07: 0
-        Category08: 0
+        Category08: 1
         Category09: 0
         Category10: 0
         Category11: 0
@@ -292,7 +293,7 @@ MonoBehaviour:
         Category05: 1
         Category06: 1
         Category07: 1
-        Category08: 1
+        Category08: 0
         Category09: 1
         Category10: 1
         Category11: 1
@@ -347,6 +348,21 @@ MonoBehaviour:
   Damage: 10
   Rate: 1
   ChargeRequired: 0
+  SpawnVisualEffect: 0
+--- !u!114 &1954111914317370910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145492303991245301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a3dd66caf1add44add3798ad8e7613, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VisualEffectPrefab: {fileID: 9122002266782648941, guid: b1e7d1c37d6015c488fff634432dbd3e,
+    type: 3}
 --- !u!1001 &1155093784678171370
 PrefabInstance:
   m_ObjectHideFlags: 0
