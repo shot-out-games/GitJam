@@ -129,14 +129,7 @@ public class ParticleRaycastSystem : SystemBase
             {
                 Entity e = physicsWorldSystem.PhysicsWorld.Bodies[pointHit.RigidBodyIndex].Entity;
 
-                if (HasComponent<VisualEffectComponent>(e))
-                {
-                    //bool enemyDamaged = GetComponent<VisualEffectComponent>(e).enemyDamaged;//can check to validate below
-                    var visualEffectComponent = GetComponent<VisualEffectComponent>(e);
-                    visualEffectComponent.trigger = true;
-                    SetComponent<VisualEffectComponent>(e, visualEffectComponent);
 
-                }
 
             }
             else if (hasPointHitDown)
@@ -145,19 +138,26 @@ public class ParticleRaycastSystem : SystemBase
 
                 //Debug.Log("hit dwn b4 " + hasPointHitDown);
 
-                if (HasComponent<VisualEffectComponent>(entity))
+                if (HasComponent<VisualEffectEntitySpawnerComponent>(entity))
                 {
-                    Debug.Log("hit dwn " + hasPointHitDown);
 
 
-                    var visualEffectComponent = GetComponent<VisualEffectComponent>(entity);
-                    //if (visualEffectComponent.instantiated == false)
-                    //{
-                    //  visualEffectComponent.trigger = true;
-                    SetComponent<VisualEffectComponent>(entity, visualEffectComponent);
-                    var en = ecb.Instantiate(visualEffectComponent.entity);
-                    ecb.SetComponent<Translation>(en, translation);
-                    //}
+                    var visualEffectComponentSpawner = GetComponent<VisualEffectEntitySpawnerComponent>(entity);
+                    if (visualEffectComponentSpawner.instantiated == false)
+                    {
+                        Debug.Log("hit dwn " + hasPointHitDown);
+                        visualEffectComponentSpawner.instantiated = true;
+                        SetComponent<VisualEffectEntitySpawnerComponent>(entity, visualEffectComponentSpawner);
+                        var spawn = ecb.Instantiate(visualEffectComponentSpawner.entity);
+                        ecb.SetComponent<Translation>(spawn, new Translation { Value = hitDown.Position });//spawn visual effect component entity 
+                        //if (HasComponent<VisualEffectEntityComponent>(spawn) == true)
+                        //{
+                          //  Debug.Log("hit dwn 0 " + hasPointHitDown);
+                            //    var visualEffectComponent =  GetComponent<VisualEffectEntityComponent>(spawn);
+                            //    visualEffectComponent.trigger = true;
+                            //    SetComponent<VisualEffectEntityComponent>(spawn, visualEffectComponent);
+                        //}
+                    }
 
 
                 }
@@ -166,13 +166,7 @@ public class ParticleRaycastSystem : SystemBase
             else if (hasPointHitUp)
             {
                 Entity e = physicsWorldSystem.PhysicsWorld.Bodies[hitUp.RigidBodyIndex].Entity;
-                if (HasComponent<VisualEffectComponent>(e))
-                {
-                    var visualEffectComponent = GetComponent<VisualEffectComponent>(e);
-                    visualEffectComponent.trigger = true;
-                    SetComponent<VisualEffectComponent>(e, visualEffectComponent);
 
-                }
 
 
             }

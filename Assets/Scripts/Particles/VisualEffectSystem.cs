@@ -7,20 +7,20 @@ using UnityEngine;
 
 
 
-public struct VisualEffectComponent : IComponentData
+public struct VisualEffectEntitySpawnerComponent : IComponentData
 {
     public Entity entity;
-    public bool enemyDamaged;
-    public bool playerDamaged;
+    //public bool enemyDamaged;
+    //public bool playerDamaged;
     public bool instantiated;
-    public bool trigger;
-    public float currentTime;
-    public float spawnTime;
+    //public bool trigger;
+    //public float currentTime;
+    //public float spawnTime;
 }
 
-public struct ParticleSpawnerComponent : IComponentData
+public struct VisualEffectEntityComponent : IComponentData
 {
-    public Entity entity;
+    //public Entity entity;
     public bool enemyDamaged;
     public bool playerDamaged;
     public bool instantiated;
@@ -34,16 +34,16 @@ public struct ParticleSpawnerComponent : IComponentData
 
 public class VisualEffectSystem : SystemBase
 {
+
     protected override void OnUpdate()
     {
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
 
 
-
         Entities.WithoutBurst().ForEach(
         (
-            ref ParticleSpawnerComponent visualEffectComponent,
+            ref VisualEffectEntityComponent visualEffectComponent,
             in Entity entity
 
         ) =>
@@ -51,7 +51,7 @@ public class VisualEffectSystem : SystemBase
             if (visualEffectComponent.instantiated)
             {
                 visualEffectComponent.currentTime += Time.DeltaTime;
-                Debug.Log("visual TIME " + visualEffectComponent.currentTime);
+                //Debug.Log("visual TIME " + visualEffectComponent.currentTime);
                 if (visualEffectComponent.currentTime > visualEffectComponent.spawnTime)
                 {
                     Debug.Log("destroy");
@@ -77,7 +77,7 @@ public class VisualEffectSystem : SystemBase
         }
         ).Run();
 
-        Entities.ForEach((Entity e, ParticleSpawnerComponent visualEffectComponent) =>
+        Entities.ForEach((Entity e, VisualEffectEntityComponent visualEffectComponent) =>
         {
             if(visualEffectComponent.destroy) ecb.DestroyEntity(e);
 

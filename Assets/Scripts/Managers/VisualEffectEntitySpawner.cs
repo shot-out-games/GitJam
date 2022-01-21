@@ -20,8 +20,8 @@ public class VisualEffectEntitySpawner : MonoBehaviour, IDeclareReferencedPrefab
     public GameObject VisualEffectPrefab;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        dstManager.AddComponentData<VisualEffectComponent>(entity,
-                new VisualEffectComponent()
+        dstManager.AddComponentData<VisualEffectEntitySpawnerComponent>(entity,
+                new VisualEffectEntitySpawnerComponent()
                 {
                     entity = conversionSystem.GetPrimaryEntity(VisualEffectPrefab)
                     //enemyDamaged = enemyDamaged, playerDamaged = playerDamaged,

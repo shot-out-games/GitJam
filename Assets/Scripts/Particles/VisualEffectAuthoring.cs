@@ -10,7 +10,7 @@ using UnityEngine;
 //public bool instantiated;
 //public bool trigger;
 
-public class ParticleEntitySpawner : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
+public class VisualEffectAuthoring : MonoBehaviour, IDeclareReferencedPrefabs, IConvertGameObjectToEntity
 {
     public bool enemyDamaged = false;
     public bool playerDamaged = true;
@@ -20,8 +20,8 @@ public class ParticleEntitySpawner : MonoBehaviour, IDeclareReferencedPrefabs, I
     //public GameObject ParticlePrefab;
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        dstManager.AddComponentData<ParticleSpawnerComponent>(entity,
-                new ParticleSpawnerComponent()
+        dstManager.AddComponentData<VisualEffectEntityComponent>(entity,
+                new VisualEffectEntityComponent
                 {
                     //entity = conversionSystem.GetPrimaryEntity(ParticlePrefab)
                     enemyDamaged = enemyDamaged, playerDamaged = playerDamaged,
