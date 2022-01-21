@@ -56,7 +56,7 @@ public class SaveManager : MonoBehaviour
 
     public SaveWorld LoadSaveWorld()
     {
-        Debug.Log("load Save world");
+        //Debug.Log("load Save world");
         SaveWorld sw;
         string path = Application.persistentDataPath + "/game.wor";
         if (File.Exists(path))

@@ -95,6 +95,8 @@ public class AmmoSystem : SystemBase
                         var score = scoreGroup[shooter];
                         //Debug.Log(" last shot " + score.lastShotConnected);
                         if (score.lastShotConnected == false) score.streak = 0;
+                        score.lastShotConnected = false;
+                        Debug.Log("streak 0");
                         score.combo = 0;
                         scoreGroup[shooter] = score;
                         ammo.ammoHits = 0;
@@ -117,7 +119,7 @@ public class AmmoSystem : SystemBase
                         if (score.pointsScored && score.scoringAmmoEntity == entity)
                         {
                             ammo.ammoHits += 1;
-                            Debug.Log("ammo hits1 " + ammo.ammoHits);
+                            //Debug.Log("ammo hits1 " + ammo.ammoHits);
                             score.combo = ammo.ammoHits;
                             ammo.AmmoTime += ammo.comboTimeAdd;
                         }

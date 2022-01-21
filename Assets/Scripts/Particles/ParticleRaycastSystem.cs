@@ -44,12 +44,12 @@ public class ParticleRaycastSystem : SystemBase
 
 
         Entities.WithoutBurst().ForEach((Entity entity,
-            ref PhysicsCollider collider, ref Rotation rotation, in Translation translation, in PhysicsVelocity pv, in AmmoComponent ammoComponent) =>
+            ref PhysicsCollider collider, ref Rotation rotation, in PhysicsVelocity pv, in AmmoComponent ammoComponent) =>
         {
 
             var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
             var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
-
+            Translation translation = GetComponent<Translation>(entity);
 
             float3 start = translation.Value + new float3(0f, 0, 0);
             float3 direction = new float3(0, 0, 0);
@@ -122,7 +122,7 @@ public class ParticleRaycastSystem : SystemBase
 
             //Debug.Log("hit fwd " + hasPointHit);
             //Debug.Log("hit up " + hasPointHitUp);
-            Debug.Log("hit dwn pre " + hasPointHitDown);
+            //Debug.Log("hit dwn pre " + hasPointHitDown);
 
             //hasPointHit = false; 
             if (hasPointHit)
@@ -145,17 +145,17 @@ public class ParticleRaycastSystem : SystemBase
                     var visualEffectComponentSpawner = GetComponent<VisualEffectEntitySpawnerComponent>(entity);
                     if (visualEffectComponentSpawner.instantiated == false)
                     {
-                        Debug.Log("hit dwn " + hasPointHitDown);
+                        Debug.Log("hit dwn " + hitDown.Position);
                         visualEffectComponentSpawner.instantiated = true;
                         SetComponent<VisualEffectEntitySpawnerComponent>(entity, visualEffectComponentSpawner);
                         var spawn = ecb.Instantiate(visualEffectComponentSpawner.entity);
-                        ecb.SetComponent<Translation>(spawn, new Translation { Value = hitDown.Position });//spawn visual effect component entity 
+                        ecb.SetComponent<Translation>(spawn, new Translation { Value = translation.Value });//spawn visual effect component entity 
                         //if (HasComponent<VisualEffectEntityComponent>(spawn) == true)
                         //{
-                          //  Debug.Log("hit dwn 0 " + hasPointHitDown);
-                            //    var visualEffectComponent =  GetComponent<VisualEffectEntityComponent>(spawn);
-                            //    visualEffectComponent.trigger = true;
-                            //    SetComponent<VisualEffectEntityComponent>(spawn, visualEffectComponent);
+                            //Debug.Log("hit dwn 0 " + hasPointHitDown);
+                            //var visualEffectComponent = GetComponent<VisualEffectEntityComponent>(spawn);
+                            //visualEffectComponent.trigger = true;
+                            //ecb.SetComponent<VisualEffectEntityComponent>(spawn, visualEffectComponent);
                         //}
                     }
 
@@ -174,14 +174,19 @@ public class ParticleRaycastSystem : SystemBase
 
 
 
+        }).Run();
 
-
-
+        Entities.ForEach((Entity e, ref VisualEffectEntityComponent visualEffectComponent) =>
+        {
+            visualEffectComponent.trigger = true;
 
         }).Run();
 
+
         ecb.Playback(EntityManager);
         ecb.Dispose();
+
+
 
 
     }

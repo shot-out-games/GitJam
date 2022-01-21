@@ -30,6 +30,7 @@ public struct VisualEffectEntityComponent : IComponentData
     public bool destroy;
 }
 
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(ParticleRaycastSystem))]
 
 public class VisualEffectSystem : SystemBase
@@ -54,7 +55,7 @@ public class VisualEffectSystem : SystemBase
                 //Debug.Log("visual TIME " + visualEffectComponent.currentTime);
                 if (visualEffectComponent.currentTime > visualEffectComponent.spawnTime)
                 {
-                    Debug.Log("destroy");
+                    //Debug.Log("destroy");
                     visualEffectComponent.currentTime = 0;
                     visualEffectComponent.instantiated = false;
                     visualEffectComponent.destroy = true;

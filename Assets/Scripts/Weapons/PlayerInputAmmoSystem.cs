@@ -62,13 +62,13 @@ public class PlayerInputAmmoSystem : SystemBase
                         SetAnimationLayerWeights(animator, WeaponMotion.Started);
                     }
 
-                    if (HasComponent<ScoreComponent>(entity))
-                    {
-                        var scoreComponent = GetComponent<ScoreComponent>(entity);
-                        scoreComponent.lastShotConnected = false;
-                        SetComponent<ScoreComponent>(entity, scoreComponent);
+                    //if (HasComponent<ScoreComponent>(entity))
+                    //{
+                    //    var scoreComponent = GetComponent<ScoreComponent>(entity);
+                    //    scoreComponent.lastShotConnected = false;
+                    //    SetComponent<ScoreComponent>(entity, scoreComponent);
 
-                    }
+                    //}
 
 
 
@@ -115,8 +115,10 @@ public class PlayerInputAmmoSystem : SystemBase
     public void SetAnimationLayerWeights(Animator animator, WeaponMotion weaponMotion)
     {
 
+
         if (weaponMotion == WeaponMotion.Started)
         {
+            //animator.SetInteger("WeaponRaised", 1);
             animator.SetInteger("WeaponRaised", 1);
             animator.SetLayerWeight(0, 0);
             animator.SetLayerWeight(2, 1);

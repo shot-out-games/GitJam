@@ -36,7 +36,7 @@ public class DeadSystem : SystemBase //really game over system currently
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
         int currentLevel = LevelManager.instance.currentLevelCompleted;
-        Debug.Log("cur levl " + currentLevel);
+        //Debug.Log("cur levl " + currentLevel);
         //bool levelComplete = LevelManager.instance.levelSettings[currentLevel].completed;
 
         Entities.WithoutBurst().WithAll<PlayerComponent>().ForEach

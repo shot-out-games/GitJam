@@ -346,7 +346,7 @@ MonoBehaviour:
   AmmoTime: 0
   Strength: 25
   Damage: 10
-  Rate: 1
+  Rate: 5
   ChargeRequired: 0
   SpawnVisualEffect: 0
 --- !u!114 &1954111914317370910

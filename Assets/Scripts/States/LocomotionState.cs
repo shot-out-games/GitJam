@@ -15,13 +15,14 @@ public class LocomotionState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animationType == AnimationType.BossStrike)
+        
+        if (animationType == AnimationType.Aim)
         {
-            Debug.Log("fireball start");
+            animator.SetInteger("WeaponRaised", (int)WeaponMotion.Raised);
+            //Debug.Log("event aim");
         }
 
-
-
+        
 
     }
 
@@ -42,6 +43,15 @@ public class LocomotionState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (animationType == AnimationType.Lowering)
+        {
+            animator.SetInteger("WeaponRaised", (int)WeaponMotion.None);
+            //Debug.Log("event lowered ");
+        }
+
+
+
+
         //Debug.Log("loco exit");
         //if (animationType == AnimationType.BossStrike)
         //{
@@ -49,28 +59,23 @@ public class LocomotionState : StateMachineBehaviour
         //Debug.Log("event aim");
         //}
 
-        if (animationType == AnimationType.Aim)
-        {
-            animator.SetInteger("WeaponRaised", (int)WeaponMotion.Raised);
-            //Debug.Log("event aim");
-        }
+        //if (animationType == AnimationType.Aim)
+        //{
+        //    animator.SetInteger("WeaponRaised", (int)WeaponMotion.Raised);
+        //    //Debug.Log("event aim");
+        //}
 
-        if (animationType == AnimationType.Lowering)
-        {
-            animator.SetInteger("WeaponRaised", (int)WeaponMotion.None);
-            //Debug.Log("event lowered ");
-        }
 
-        if (animationType == AnimationType.BossStrike)
-        {
-            //Debug.Log("fireball end");
-            //EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
-            //var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
-            //var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
-            //bossComponent.IsFiring = 1;
-            //manager.SetComponentData<BossWeaponComponent>(e, bossComponent);
+        //if (animationType == AnimationType.BossStrike)
+        //{
+        //    //Debug.Log("fireball end");
+        //    //EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        //    //var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
+        //    //var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
+        //    //bossComponent.IsFiring = 1;
+        //    //manager.SetComponentData<BossWeaponComponent>(e, bossComponent);
 
-        }
+        //}
 
     }
 

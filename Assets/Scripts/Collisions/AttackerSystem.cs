@@ -338,8 +338,8 @@ public class AttackerSystem : SystemBase
             Entity entityA = collision_entity_a;
             Entity entityB = collision_entity_b;
 
-            Debug.Log("a " + collision_entity_a);
-            Debug.Log("b " + collision_entity_b);
+            //Debug.Log("a " + collision_entity_a);
+            //Debug.Log("b " + collision_entity_b);
 
 
             bool playerA = HasComponent<PlayerComponent>(collision_entity_a);
@@ -383,7 +383,7 @@ public class AttackerSystem : SystemBase
                     ecb.AddComponent<DamageComponent>(entityB,
                         new DamageComponent { DamageLanded = 0, DamageReceived = damage });
 
-                    Debug.Log("attacker hw " + hw + " hitPower " + hitPower);
+                    //Debug.Log("attacker hw " + hw + " hitPower " + hitPower);
 
 
                     if (HasComponent<SkillTreeComponent>(entityA))
@@ -447,9 +447,9 @@ public class AttackerSystem : SystemBase
                     Entity target = GetComponent<TriggerComponent>(collision_entity_a)
                         .ParentEntity;
                     bool isEnemyTarget = HasComponent<EnemyComponent>(target);
-                    Debug.Log("sh  " + shooter);
-                    Debug.Log("cea " + collision_entity_a);
-                    Debug.Log("ceb " + collision_entity_b);
+                    //Debug.Log("sh  " + shooter);
+                    //Debug.Log("cea " + collision_entity_a);
+                    //Debug.Log("ceb " + collision_entity_b);
                     AmmoComponent ammo =
                         GetComponent<AmmoComponent>(collision_entity_b);
                     AmmoDataComponent ammoData =

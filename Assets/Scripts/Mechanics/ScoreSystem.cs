@@ -9,7 +9,7 @@ using Unity.Transforms;
 using UnityEngine;
 
 
-//[UpdateBefore(typeof(BasicWinnerSystem))]
+[UpdateAfter(typeof(HealthSystem))]
 
 public class ScoreSystem : SystemBase
 {
@@ -23,14 +23,13 @@ public class ScoreSystem : SystemBase
 
         int currentScore = 0;
         int scoreChecked = 0;
-        Entities.WithoutBurst().ForEach((ref ScoreComponent score, in ScoreComponentAuthoring scoreComponentAuthoring, in Entity e,
-            in InputController inputController
+        Entities.WithoutBurst().ForEach((ref ScoreComponent score, in ScoreComponentAuthoring scoreComponentAuthoring, in Entity e
 ) =>
             {
-                if (HasComponent<DamageComponent>(e))
+                if (HasComponent<DamageComponent>(e) && HasComponent<PlayerComponent>(e))
                 {
                     score.streak = 0;
-                    //Debug.Log("streak 0");
+                    Debug.Log("streak 0 damage");
 
                 }
 
@@ -65,11 +64,17 @@ public class ScoreSystem : SystemBase
 
 
 
-                        if(score.combo == 1) score.streak += 1;//add only when combo is 1
+                        if (score.trackStreak && score.trackCombo && score.combo == 1)
+                        {
+                            score.streak += 1;
+                        }
+                        else if (score.trackStreak && score.trackCombo == false)
+                        {
+                            score.streak += 1;
+                            Debug.Log("streak " + score.streak);
+                        }
+
                         score.lastShotConnected = true;
-
-                        //}
-
 
                     }
 
@@ -82,7 +87,7 @@ public class ScoreSystem : SystemBase
 
                     float streakBonus = math.pow(score.streak * defaultScore, 2) / 500;
 
-                    float comboBonus = score.combo > 1 ? math.pow(score.combo * defaultScore ,2) / 200 : 0;
+                    float comboBonus = score.combo > 1 ? math.pow(score.combo * defaultScore, 2) / 200 : 0;
                     //Debug.Log("combo Bonus " + comboBonus);
 
                     score.lastPointValue = score.defaultPointsScored + (int)timeBonus + (int)streakBonus + (int)comboBonus + (int)score.addBonus;
@@ -102,14 +107,6 @@ public class ScoreSystem : SystemBase
                 }
                 else
                 {
-
-                    //if (inputController.leftTriggerPressed)
-                    //{
-                    //  //if (score.lastShotConnected == false) score.streak = 0;
-                    //  score.lastShotConnected = false;
-                    //}
-
-
                     score.timeSinceLastScore += Time.DeltaTime;
                 }
 

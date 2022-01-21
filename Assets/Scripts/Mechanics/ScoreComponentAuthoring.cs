@@ -11,6 +11,8 @@ using UnityEngine;
 
 public struct ScoreComponent : IComponentData
 {
+    public bool trackStreak;
+    public bool trackCombo;
 
     public int score;
     public int rank;
@@ -48,6 +50,9 @@ public class ScoreComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     private TextMeshProUGUI labelLevel;
 
     [SerializeField] private int defaultPointsScored = 100;
+    [Header("Bonuses")]
+    public bool trackStreak;
+    public bool trackCombo;
 
 
     public void ShowLabelStreak(int streak)
@@ -83,7 +88,9 @@ public class ScoreComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     {
         dstManager.AddComponentData(entity, new ScoreComponent()
             {
-                defaultPointsScored = defaultPointsScored
+                defaultPointsScored = defaultPointsScored,
+                trackStreak = trackStreak,
+                trackCombo = trackCombo
             }
         );
 
