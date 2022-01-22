@@ -125,6 +125,11 @@ public class CollisionSystem : SystemBase
             int type_b = triggerComponent_b.Type;
 
             //Debug.Log("tya " + type_a + " tyb  " + type_b);
+            if (type_a == (int)TriggerType.Particle || type_b == (int)TriggerType.Particle)
+            {
+                Debug.Log("tya " + type_a + " tyb  " + type_b);
+                Debug.Log("cha " + ch_a + " chb  " + ch_b);
+            }
 
 
             if (ch_a == ch_b) return;////?????
@@ -213,7 +218,16 @@ public class CollisionSystem : SystemBase
             bool ammoBlockedB = (type_a == (int)TriggerType.Blocks) &&
                          (type_b == (int)TriggerType.Ammo);
 
-            //Debug.Log("aa " + ammoA + " ab " + ammoB);
+            bool effectA = (type_b == (int)TriggerType.Base || type_b == (int)TriggerType.Head || type_b == (int)TriggerType.Body) &&
+                         (type_a == (int)TriggerType.Particle);
+
+            bool effectB = (type_a == (int)TriggerType.Base || type_a == (int)TriggerType.Head || type_a == (int)TriggerType.Body) &&
+                         (type_b == (int)TriggerType.Particle);
+
+
+
+
+            Debug.Log("ea " + effectA + " eb " + effectB);
             if (ammoBlockedA)
             {
                 AmmoComponent ammoComponent = ammoGroup[triggerComponent_a.Entity];
@@ -233,8 +247,9 @@ public class CollisionSystem : SystemBase
 
 
 
-            if (ammoA)
+            if (ammoA || effectA)
             {
+                Debug.Log("ea0 " + effectA + " eb0 " + effectB);
                 //Debug.Log("aa " + ammoA + " pe " + triggerComponent_b.Type + "  ce " + ch_b);
                 //coll component part other always ammo ?
                 CollisionComponent collisionComponent =
@@ -248,9 +263,10 @@ public class CollisionSystem : SystemBase
                     };
                 ecb.AddComponent(triggerComponent_a.ParentEntity, collisionComponent);
             }
-            else if (ammoB)
+            else if (ammoB || effectB)
             {
                 //Debug.Log("ab " + ammoB + " pe " + triggerComponent_a.Type + "  ce " + ch_a);
+                Debug.Log("ea1 " + effectA + " eb1 " + effectB);
 
                 CollisionComponent collisionComponent =
                     new CollisionComponent()

@@ -132,9 +132,9 @@ MonoBehaviour:
     y: 0
     z: 0
   m_PrimitiveSize:
-    x: 1.2
-    y: 1.2
-    z: 1.2
+    x: 2
+    y: 2
+    z: 2
   m_PrimitiveOrientation:
     Value:
       x: -0
@@ -142,15 +142,15 @@ MonoBehaviour:
       z: 0
     RotationOrder: 4
   m_Capsule:
-    Height: 1.2
-    Radius: 0.6
+    Height: 2
+    Radius: 1
     Axis: 2
   m_Cylinder:
-    Height: 1.2
-    Radius: 0.6
+    Height: 2
+    Radius: 1
     Axis: 2
   m_CylinderSideCount: 20
-  m_SphereRadius: 0.6
+  m_SphereRadius: 1
   m_MinimumSkinnedVertexWeight: 0.1
   m_ConvexHullGenerationParameters:
     m_SimplificationTolerance: 0.015
@@ -167,19 +167,19 @@ MonoBehaviour:
     m_Friction:
       m_Override: 0
       m_Value:
-        Value: 0
+        Value: 1
         CombineMode: 0
     m_Restitution:
       m_Override: 0
       m_Value:
-        Value: 1
+        Value: 0
         CombineMode: 2
     m_BelongsToCategories:
       m_Override: 0
       m_Value:
         Category00: 0
         Category01: 0
-        Category02: 0
+        Category02: 1
         Category03: 0
         Category04: 0
         Category05: 0
@@ -337,4 +337,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDamaged: 0
   playerDamaged: 1
-  spawnTime: 3
+  spawnTime: 10

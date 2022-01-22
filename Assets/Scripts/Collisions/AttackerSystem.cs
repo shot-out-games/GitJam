@@ -426,7 +426,7 @@ public class AttackerSystem : SystemBase
 
 
 
-            //Debug.Log("ty b " + type_b + " ty a " + type_a);
+            Debug.Log("ty b " + type_b + " ty a " + type_a);
 
             if (type_b == (int)TriggerType.Ammo && HasComponent<TriggerComponent>(collision_entity_a)
                                                 && HasComponent<TriggerComponent>(collision_entity_b)) //b is ammo so causes damage to entity
@@ -439,7 +439,7 @@ public class AttackerSystem : SystemBase
                 //}
                 //Debug.Log("ta " + type_a + " tb " + type_b);
                 //Debug.Log("ea " + collision_entity_a + " eb " + collision_entity_b);
-                Debug.Log("shooter " + shooter);
+                //Debug.Log("shooter " + shooter);
 
                 if (shooter != Entity.Null && HasComponent<AmmoComponent>(collision_entity_b))
                 {
@@ -455,7 +455,7 @@ public class AttackerSystem : SystemBase
                     AmmoDataComponent ammoData =
                         GetComponent<AmmoDataComponent>(collision_entity_b);
 
-                    float damage = 0;
+                    float damage = 0;//why using enemy data and not ammo data ?? change this
                     if (HasComponent<BossWeaponComponent>(shooter))
                     {
                         damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
@@ -465,6 +465,8 @@ public class AttackerSystem : SystemBase
                     {
                         damage = GetComponent<GunComponent>(shooter).gameDamage;
                     }
+
+                    damage = ammoData.GameDamage;//overrides previous
                     //Debug.Log("damage " + damage);
                     ammo.AmmoDead = true;
 
@@ -541,6 +543,121 @@ public class AttackerSystem : SystemBase
                 }
             }
 
+
+
+            if (type_b == (int)TriggerType.Particle && HasComponent<TriggerComponent>(collision_entity_a)
+                                             && HasComponent<TriggerComponent>(collision_entity_b)) //b is damage effect so causes damage to entity
+            {
+                Entity shooter = Entity.Null;
+                //if (EntityManager.HasComponent<AmmoComponent>(collision_entity_b)) //ammo entity not character if true
+                //{
+                shooter = GetComponent<TriggerComponent>(collision_entity_b)
+                    .ParentEntity;
+                //}
+                //Debug.Log("ta " + type_a + " tb " + type_b);
+                //Debug.Log("ea " + collision_entity_a + " eb " + collision_entity_b);
+                Debug.Log("shooter " + shooter);
+
+                if (shooter != Entity.Null && HasComponent<VisualEffectEntityComponent>(collision_entity_b))
+                {
+                    bool isEnemyShooter = HasComponent<EnemyComponent>(shooter);
+                    Entity target = GetComponent<TriggerComponent>(collision_entity_a)
+                        .ParentEntity;
+                    bool isEnemyTarget = HasComponent<EnemyComponent>(target);
+                    //Debug.Log("sh  " + shooter);
+                    //Debug.Log("cea " + collision_entity_a);
+                    //Debug.Log("ceb " + collision_entity_b);
+                    //AmmoComponent ammo =
+                    //  GetComponent<AmmoComponent>(collision_entity_b);
+                    //AmmoDataComponent ammoData =
+                    //  GetComponent<AmmoDataComponent>(collision_entity_b);
+                    var visualEffectComponent = GetComponent<VisualEffectEntityComponent>(collision_entity_b);
+
+                    float damage = 0;
+                    if (HasComponent<BossWeaponComponent>(shooter))
+                    {
+                        damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
+                    }
+                    else if (HasComponent<GunComponent>(shooter))
+
+                    {
+                        damage = GetComponent<GunComponent>(shooter).gameDamage;
+                    }
+                    Debug.Log("damage " + damage);
+                    //ammo.AmmoDead = true;
+
+
+                    //if (ammo.DamageCausedPreviously && ammo.frameSkipCounter > ammo.framesToSkip)//count in ammosystem
+                    //{
+                      //  ammo.DamageCausedPreviously = false;
+                      //  ammo.frameSkipCounter = 0;
+                    //}
+
+                    //bool skip = ammo.frameSkipCounter < ammo.framesToSkip && ammo.frameSkipCounter >= 1;
+                    //if (skip) ammo.frameSkipCounter = ammo.frameSkipCounter + 1;
+
+
+
+                    //if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false ||
+                      //  isEnemyShooter == isEnemyTarget
+                        //)
+                    //{
+
+                      //  damage = 0;
+                    //}
+
+                    if (HasComponent<DeadComponent>(collision_entity_a) == false ||
+                        GetComponent<DeadComponent>(collision_entity_a).isDying)
+                    {
+                        damage = 0;
+                    }
+
+
+                    //ammo.DamageCausedPreviously = true;
+
+                    ecb.AddComponent<DamageComponent>(shooter,
+                            new DamageComponent
+                            { DamageLanded = damage, DamageReceived = 0 });
+
+
+                    ecb.AddComponent<DamageComponent>(collision_entity_a,
+                            new DamageComponent
+                            { DamageLanded = 0, DamageReceived = damage, StunLanded = damage });
+
+                    if (HasComponent<SkillTreeComponent>(shooter))
+                    {
+                        var skill = GetComponent<SkillTreeComponent>(shooter);
+                        skill.CurrentLevelXp += damage;
+                        //Debug.Log("xp " + skill.CurrentLevelXp);
+                        SetComponent<SkillTreeComponent>(shooter, skill);
+                    }
+
+
+
+                    if (HasComponent<ScoreComponent>(shooter) && damage != 0)
+                    {
+
+                        var scoreComponent = GetComponent<ScoreComponent>(shooter);
+                        scoreComponent.addBonus = 0;
+                        //for gmtk bonus for charged (blocked)
+                      //  if (ammo.Charged == true && isEnemyShooter == false && isEnemyTarget == true)
+                        //{
+                          //  scoreComponent.addBonus = scoreComponent.defaultPointsScored * 1;
+                            //ammo.Charged = false;
+
+                        //}
+
+                        //scoreComponent.scoringAmmoEntity = ammo.ammoEntity;
+                        scoreComponent.pointsScored = true;
+                        scoreComponent.scoredAgainstEntity = collision_entity_a;
+                        SetComponent(shooter, scoreComponent);
+                    }
+
+                    ecb.SetComponent<VisualEffectEntityComponent>(collision_entity_b, visualEffectComponent);
+
+
+                }
+            }
 
 
 

@@ -68,7 +68,7 @@ public class BossAmmoHandlerSystem : SystemBase
                 var ammoDataComponent = GetComponent<AmmoDataComponent>(primaryAmmoEntity);
                 float rate = ammoDataComponent.GameRate;
                 float strength = ammoDataComponent.GameStrength;
-                float damage = ammoDataComponent.GameDamage;
+                //float damage = ammoDataComponent.GameDamage;
                 //change based on game
                 if (bossWeapon.ChangeAmmoStats > 0)
                 {

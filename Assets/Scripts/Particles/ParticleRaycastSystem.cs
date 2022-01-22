@@ -50,6 +50,9 @@ public class ParticleRaycastSystem : SystemBase
             var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
             var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
             Translation translation = GetComponent<Translation>(entity);
+            var parentEntity = GetComponent<TriggerComponent>(entity).ParentEntity;
+           
+
 
             float3 start = translation.Value + new float3(0f, 0, 0);
             float3 direction = new float3(0, 0, 0);
@@ -145,11 +148,13 @@ public class ParticleRaycastSystem : SystemBase
                     var visualEffectComponentSpawner = GetComponent<VisualEffectEntitySpawnerComponent>(entity);
                     if (visualEffectComponentSpawner.instantiated == false)
                     {
-                        Debug.Log("hit dwn " + hitDown.Position);
+                        //Debug.Log("hit dwn " + hitDown.Position);
                         visualEffectComponentSpawner.instantiated = true;
                         SetComponent<VisualEffectEntitySpawnerComponent>(entity, visualEffectComponentSpawner);
                         var spawn = ecb.Instantiate(visualEffectComponentSpawner.entity);
                         ecb.SetComponent<Translation>(spawn, new Translation { Value = translation.Value });//spawn visual effect component entity 
+                        ecb.SetComponent<TriggerComponent>(spawn, new TriggerComponent
+                        { Type = (int)TriggerType.Particle, ParentEntity = parentEntity, Entity = spawn, Active = true });
                         //if (HasComponent<VisualEffectEntityComponent>(spawn) == true)
                         //{
                             //Debug.Log("hit dwn 0 " + hasPointHitDown);

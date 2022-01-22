@@ -345,7 +345,7 @@ MonoBehaviour:
   randomize: 0
   AmmoTime: 0
   Strength: 25
-  Damage: 10
+  Damage: 25
   Rate: 5
   ChargeRequired: 0
   SpawnVisualEffect: 0
