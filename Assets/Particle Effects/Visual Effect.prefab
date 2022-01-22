@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -4616179070417272748}
   - component: {fileID: 7476989953610807505}
   - component: {fileID: 6994871812473080095}
+  - component: {fileID: 3472239967817274431}
   m_Layer: 0
   m_Name: Visual Effect
   m_TagString: Untagged
@@ -337,4 +338,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyDamaged: 0
   playerDamaged: 1
-  spawnTime: 10
+  spawnTime: 30
+  damageAmount: 1
+  framesToSkip: 30
+  effectsIndex: 1
+  deathBlowEffectsIndex: 0
+--- !u!114 &3472239967817274431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9122002266782648941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ad69677d992e94197092a7dc638b4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LockX: 1
+  LockY: 1
+  LockZ: 1
+  LockVelocity: 1

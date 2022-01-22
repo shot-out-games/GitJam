@@ -29,10 +29,13 @@ public struct HealthComponent : IComponentData
 
 public struct DamageComponent : IComponentData
 {
+    public Entity entityCausingDamage;
     public float DamageLanded;
     public float DamageReceived;
     public float ScorePointsReceived;//to track if hit and points scored by player how many and what enemy
     public float StunLanded;
+    public int effectsIndex;
+
 
 }
 

@@ -27,7 +27,7 @@ public class LevelUpMechanicSystem : SystemBase
         //EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
 
-        //var gunGroup = GetComponentDataFromEntity<GunComponent>(true);
+        //var gunGroup = GetComponentDataFromEntity<WeaponComponent>(true);
 
 
         Entities.ForEach(
@@ -64,7 +64,7 @@ public class LevelUpMechanicSystem : SystemBase
         //Entities.WithAll<ControlBarComponent, NdeMechanicComponent>().ForEach
         //(
         //    (
-        //        ref GunComponent gun,
+        //        ref WeaponComponent gun,
         //        in HealthComponent health,
         //        in RatingsComponent ratings
         //        ) =>
@@ -76,7 +76,7 @@ public class LevelUpMechanicSystem : SystemBase
 
 
         //        //bool hasGun = gunGroup.HasComponent(e);
-        //        //bool hasGun = HasComponent<GunComponent>(e);
+        //        //bool hasGun = HasComponent<WeaponComponent>(e);
         //        //if (hasGun)
         //        //{
         //        // var gun = gunGroup[e];

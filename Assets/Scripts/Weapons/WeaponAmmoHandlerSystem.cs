@@ -51,8 +51,8 @@ public class WeaponAmmoHandlerSystem : SystemBase
             {
 
 
-                if (!HasComponent<GunComponent>(entity)) return;
-                var gun = GetComponent<GunComponent>(entity);
+                if (!HasComponent<WeaponComponent>(entity)) return;
+                var gun = GetComponent<WeaponComponent>(entity);
 
 
                 if (attachWeapon.attachedWeaponSlot < 0 ||

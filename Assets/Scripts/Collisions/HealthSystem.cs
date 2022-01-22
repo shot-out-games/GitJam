@@ -36,6 +36,7 @@ public class HealthSystem : SystemBase
             ref RatingsComponent ratingsComponent,
             in Entity entity) =>
             {
+                Entity entityCausingDamage = damageComponent.entityCausingDamage;
                 healthComponent.ShowDamage = false;
                 if (EntityManager.HasComponent(entity, typeof(EnemyComponent)))
                 {
@@ -79,6 +80,20 @@ public class HealthSystem : SystemBase
                     dead.isDying = true;
                     //dead.isDead = true;
                     dead.playDeadEffects = true;
+                    if (HasComponent<AmmoComponent>(entityCausingDamage))
+                    {
+                        var ammo = GetComponent<AmmoComponent>(entityCausingDamage);
+                        dead.effectsIndex = ammo.deathBlowEffectsIndex;
+                        Debug.Log("ecd ammo " + dead.effectsIndex);
+
+                    }
+                    else if (HasComponent<VisualEffectEntityComponent>(entityCausingDamage))
+                    {
+                        Debug.Log("ecd ve");
+                        var ve = GetComponent<VisualEffectEntityComponent>(entityCausingDamage);
+                        dead.effectsIndex = ve.deathBlowEffectsIndex;
+                    }
+                    //dead.effectsIndex = damageComponent.entityCausingDamage
                     ecb.SetComponent(entity, dead);
                 }
 

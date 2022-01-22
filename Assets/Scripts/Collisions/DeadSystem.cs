@@ -19,6 +19,7 @@ public struct DeadComponent : IComponentData
     //public int dieLevel;
     public int tag;
     public bool checkLossCondition;
+    public int effectsIndex;
 }
 
 

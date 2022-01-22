@@ -29,7 +29,7 @@ public class ScoreSystem : SystemBase
                 if (HasComponent<DamageComponent>(e) && HasComponent<PlayerComponent>(e))
                 {
                     score.streak = 0;
-                    Debug.Log("streak 0 damage");
+                    //Debug.Log("streak 0 damage");
 
                 }
 

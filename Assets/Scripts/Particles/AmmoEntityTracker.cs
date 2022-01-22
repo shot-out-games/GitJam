@@ -7,6 +7,8 @@ using UnityEngine;
 
 public struct AmmoComponent : IComponentData
 {
+    public int effectIndex;
+    public int deathBlowEffectsIndex;
     public Entity OwnerAmmoEntity;
     public Entity ammoEntity;
     public bool AmmoDead;
@@ -24,6 +26,8 @@ public struct AmmoComponent : IComponentData
 
 public class AmmoEntityTracker : MonoBehaviour, IConvertGameObjectToEntity
 {
+    public int effectIndex;
+    public int deathBlowEffectsIndex;
     public float ammoTime; //????? 
     [SerializeField] private float comboTimeAdd = 1.0f;
     [SerializeField]int framesToSkip = 2;
@@ -49,6 +53,7 @@ public class AmmoEntityTracker : MonoBehaviour, IConvertGameObjectToEntity
         manager.AddComponentData<AmmoComponent>(ammoEntity,
             new AmmoComponent
             {
+                effectIndex = effectIndex, deathBlowEffectsIndex = deathBlowEffectsIndex,
                 AmmoDead = false,
                 AmmoTimeCounter = 0,
                 AmmoTime = ammoTime,

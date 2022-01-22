@@ -22,7 +22,7 @@ public class EnemyMeleeMovementSystem : SystemBase
             Entity e,
             ref Rotation rotation, ref Translation trans, ref LocalToWorld ltw,
             ref EnemyStateComponent enemyState,
-            ref GunComponent gun
+            ref WeaponComponent gun
             //in EnemyBehaviourComponent enemyBehaviourComponent
 
 

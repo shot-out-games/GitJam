@@ -8,11 +8,20 @@ using UnityEngine.AI;
 
 public enum EffectType
 {
-    None = 0,
-    Dead = 1,
-    Damaged = 2,
-    TwoClose = 3
+    None,
+    Dead,
+    Damaged,
+    TwoClose,
 
+
+}
+[System.Serializable]
+public class EffectClass
+{
+    public EffectType effectType;
+    public ParticleSystem psPrefab;
+    public ParticleSystem psInstance;
+    public AudioClip clip;
 }
 
 
@@ -202,46 +211,69 @@ public class CharacterEffectsSystem : SystemBase
                 {
                     //Debug.Log("play effect two close");
                     //effectsComponent.playEffectType = EffectType.None;
-
-                    if (effects.actorCloseEffectInstance)
+                    int effectsIndex = effectsComponent.effectIndex;
+                    if (effects.actorEffect != null)
                     {
-                        if (effects.actorCloseEffectInstance.isPlaying == false && effectsComponent.playEffectAllowed)
+
+                        if (effects.actorEffect[effectsComponent.effectIndex].psInstance)//tryinmg to match index to effect type - 3 is 2 close
                         {
-                            effects.actorCloseEffectInstance.Play(true);
-                            if (effects.actorCloseAudioClip)
+                            if (effects.actorEffect[effectsComponent.effectIndex].psInstance.isPlaying == false && effectsComponent.playEffectAllowed)
                             {
-                                //effectsComponent.startEffectSound = false;
-                                audioSource.clip = effects.actorCloseAudioClip;
-                                if (!audioSource.isPlaying)
-                                    audioSource.PlayOneShot(audioSource.clip, .5f);
-                                //Debug.Log("play audio " + audioSource.clip);
+                                effects.actorEffect[effectsComponent.effectIndex].psInstance.Play(true);
+                                if (effects.actorEffect[effectsComponent.effectIndex].clip)
+                                {
+                                    //effectsComponent.startEffectSound = false;
+                                    audioSource.clip = effects.actorEffect[effectsComponent.effectIndex].clip;
+                                    if (!audioSource.isPlaying)
+                                        audioSource.PlayOneShot(audioSource.clip, .5f);
+                                    //Debug.Log("play audio " + audioSource.clip);
+                                }
+
                             }
+                            else if (effectsComponent.playEffectAllowed == false)
+                            {
+                                effects.actorEffect[effectsComponent.effectIndex].psInstance.Stop(true);
 
-                        }
-                        else if (effectsComponent.playEffectAllowed == false)
-                        {
-                            effects.actorCloseEffectInstance.Stop(true);
 
+                            }
                         }
                     }
                 }
 
+
                 if (deadComponent.playDeadEffects)//can probably just use playEffectType in effectsComponent TO DO
                 {
                     deadComponent.playDeadEffects = false;
+                    int effectsIndex = deadComponent.effectsIndex;
+                    Debug.Log("eff ind play " + effectsIndex);
 
-                    if (effects.actorDeadEffectInstance)
+                    if (effects.actorEffect != null)
                     {
-                        if (effects.actorDeadEffectInstance.isPlaying == false)
+
+                        if (effects.actorEffect[effectsIndex].psInstance)//tryinmg to match index to effect type - 1 is dead
                         {
-                            effects.actorDeadEffectInstance.Play(true);
+                            if (effects.actorEffect[effectsIndex].psInstance.isPlaying == false && effectsComponent.playEffectAllowed)
+                            {
+                                effects.actorEffect[effectsIndex].psInstance.Play(true);
+                                if (effects.actorEffect[effectsIndex].clip)
+                                {
+                                    //effectsComponent.startEffectSound = false;
+                                    audioSource.clip = effects.actorEffect[effectsIndex].clip;
+                                    if (!audioSource.isPlaying)
+                                        audioSource.PlayOneShot(audioSource.clip, .5f);
+                                    //Debug.Log("play audio " + audioSource.clip);
+                                }
+
+                            }
+                            else if (effectsComponent.playEffectAllowed == false)
+                            {
+                                effects.actorEffect[effectsIndex].psInstance.Stop(true);
+
+                            }
                         }
                     }
-                    if (effects.actorDeadAudioClip)
-                    {
-                        audioSource.clip = effects.actorDeadAudioClip;
-                        audioSource.PlayOneShot(audioSource.clip);
-                    }
+
+
                 }
                 else
                 {
@@ -249,19 +281,23 @@ public class CharacterEffectsSystem : SystemBase
                     if (hasDamage == true)
                     {
                         var damageComponent = GetComponent<DamageComponent>(e);
-                        //Debug.Log("hit react " + damageComponent.DamageReceived);
+                        int effectsIndex = damageComponent.effectsIndex;//set in attackersystem by readin visualeffect component index
+                        Debug.Log("effectsIndex " + effectsIndex);
+
                         if (damageComponent.DamageReceived <= .0001) return;
                         animator.SetInteger("HitReact", 1);
 
-
-                        if (effects.actorHurtEffectInstance)
+                        if (effects.actorEffect != null)
                         {
-                            effects.actorHurtEffectInstance.Play(true);
-                        }
-                        if (effects.actorHurtAudioClip)
-                        {
-                            audioSource.clip = effects.actorHurtAudioClip;
-                            audioSource.PlayOneShot(audioSource.clip);
+                            if (effects.actorEffect[effectsIndex].psInstance)
+                            {
+                                effects.actorEffect[effectsIndex].psInstance.Play(true);
+                            }
+                            if (effects.actorEffect[effectsIndex].clip)
+                            {
+                                audioSource.clip = effects.actorEffect[effectsIndex].clip;
+                                audioSource.PlayOneShot(audioSource.clip);
+                            }
                         }
 
                     }

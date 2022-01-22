@@ -47,7 +47,7 @@ public class MatchupSystem : SystemBase
 
                 Entities.WithoutBurst().WithNone<CloseComponent>().ForEach(
                     (
-                        ref GunComponent gun,
+                        ref WeaponComponent gun,
                         ref RatingsComponent ratingsComponent,
                         in PlayerComponent playerComponent,
                         in Entity playerE,

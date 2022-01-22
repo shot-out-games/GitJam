@@ -255,7 +255,7 @@ public class AttackerSystem : SystemBase
         //                    //Debug.Log("shooter");
         //                    bool isEnemy = (EntityManager.HasComponent(shooter, typeof(EnemyComponent)));
 
-        //                    float damage = EntityManager.GetComponentData<GunComponent>(shooter).gameDamage;
+        //                    float damage = EntityManager.GetComponentData<WeaponComponent>(shooter).gameDamage;
         //                    //   if (shooter != collision_entity_b)
         //                    //{
         //                    //Debug.Log("shooter0");
@@ -377,11 +377,11 @@ public class AttackerSystem : SystemBase
                     float damage = hitPower * hw;
 
                     ecb.AddComponent<DamageComponent>(entityA,
-                        new DamageComponent { DamageLanded = damage, DamageReceived = 0 });
+                        new DamageComponent { DamageLanded = damage, DamageReceived = 0, entityCausingDamage = entityA});
 
 
                     ecb.AddComponent<DamageComponent>(entityB,
-                        new DamageComponent { DamageLanded = 0, DamageReceived = damage });
+                        new DamageComponent { DamageLanded = 0, DamageReceived = damage, entityCausingDamage = entityA });
 
                     //Debug.Log("attacker hw " + hw + " hitPower " + hitPower);
 
@@ -456,15 +456,15 @@ public class AttackerSystem : SystemBase
                         GetComponent<AmmoDataComponent>(collision_entity_b);
 
                     float damage = 0;//why using enemy data and not ammo data ?? change this
-                    if (HasComponent<BossWeaponComponent>(shooter))
-                    {
-                        damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
-                    }
-                    else if (HasComponent<GunComponent>(shooter))
+                    //if (HasComponent<BossWeaponComponent>(shooter))
+                    //{
+                    //    damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
+                    //}
+                    //else if (HasComponent<WeaponComponent>(shooter))
 
-                    {
-                        damage = GetComponent<GunComponent>(shooter).gameDamage;
-                    }
+                    //{
+                    //    damage = GetComponent<WeaponComponent>(shooter).gameDamage;
+                    //}
 
                     damage = ammoData.GameDamage;//overrides previous
                     //Debug.Log("damage " + damage);
@@ -482,11 +482,11 @@ public class AttackerSystem : SystemBase
 
 
 
-                    if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false  ||
+                    if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false ||
                         isEnemyShooter == isEnemyTarget
                         )
                     {
-                        
+
                         damage = 0;
                     }
 
@@ -501,12 +501,15 @@ public class AttackerSystem : SystemBase
 
                     ecb.AddComponent<DamageComponent>(shooter,
                             new DamageComponent
-                            { DamageLanded = damage, DamageReceived = 0});
+                            { DamageLanded = damage, DamageReceived = 0, entityCausingDamage = collision_entity_b });
 
 
                     ecb.AddComponent<DamageComponent>(collision_entity_a,
                             new DamageComponent
-                            { DamageLanded = 0, DamageReceived = damage, StunLanded = damage });
+                            { DamageLanded = 0, DamageReceived = damage, StunLanded = damage, effectsIndex = ammo.effectIndex,
+                            
+                                entityCausingDamage = collision_entity_b
+                            });
 
                     if (HasComponent<SkillTreeComponent>(shooter))
                     {
@@ -574,24 +577,47 @@ public class AttackerSystem : SystemBase
                     var visualEffectComponent = GetComponent<VisualEffectEntityComponent>(collision_entity_b);
 
                     float damage = 0;
-                    if (HasComponent<BossWeaponComponent>(shooter))
+                    int effectsIndex = 0;
+                    //if (HasComponent<BossWeaponComponent>(shooter))
+                    //{
+                    //    damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
+                    //}
+                    //else if (HasComponent<WeaponComponent>(shooter))
+
+                    //{
+                    //    damage = GetComponent<WeaponComponent>(shooter).gameDamage;
+                    //}
+
+
+                    bool skip = false;
+                    //if (visualEffectComponent.frameSkipCounter < visualEffectComponent.framesToSkip)
+                    if (visualEffectComponent.frameSkipCounter == 0)
                     {
-                        damage = GetComponent<BossWeaponComponent>(shooter).gameDamage;
+                        visualEffectComponent.frameSkipCounter += 1;
+                        skip = false;
                     }
-                    else if (HasComponent<GunComponent>(shooter))
+                    else if (visualEffectComponent.frameSkipCounter < visualEffectComponent.framesToSkip)
 
                     {
-                        damage = GetComponent<GunComponent>(shooter).gameDamage;
+                        visualEffectComponent.frameSkipCounter += 1;
+                        skip = true;
                     }
-                    Debug.Log("damage " + damage);
+                    else if (visualEffectComponent.frameSkipCounter >= visualEffectComponent.framesToSkip)
+
+                    {
+                        visualEffectComponent.frameSkipCounter = 0;
+                        skip = true;
+                    }
+
+                    if (skip == false)
+                    {
+                        damage = visualEffectComponent.damageAmount;
+                        //effectsIndex = (int)EffectType.Damaged;
+                        effectsIndex = visualEffectComponent.effectsIndex;//???
+                    }
+                    Debug.Log("effect damage " + damage);
                     //ammo.AmmoDead = true;
 
-
-                    //if (ammo.DamageCausedPreviously && ammo.frameSkipCounter > ammo.framesToSkip)//count in ammosystem
-                    //{
-                      //  ammo.DamageCausedPreviously = false;
-                      //  ammo.frameSkipCounter = 0;
-                    //}
 
                     //bool skip = ammo.frameSkipCounter < ammo.framesToSkip && ammo.frameSkipCounter >= 1;
                     //if (skip) ammo.frameSkipCounter = ammo.frameSkipCounter + 1;
@@ -599,11 +625,11 @@ public class AttackerSystem : SystemBase
 
 
                     //if (ammo.DamageCausedPreviously || ammoData.ChargeRequired == true && ammo.Charged == false ||
-                      //  isEnemyShooter == isEnemyTarget
-                        //)
+                    //  isEnemyShooter == isEnemyTarget
+                    //)
                     //{
 
-                      //  damage = 0;
+                    //  damage = 0;
                     //}
 
                     if (HasComponent<DeadComponent>(collision_entity_a) == false ||
@@ -617,12 +643,15 @@ public class AttackerSystem : SystemBase
 
                     ecb.AddComponent<DamageComponent>(shooter,
                             new DamageComponent
-                            { DamageLanded = damage, DamageReceived = 0 });
+                            { DamageLanded = damage, DamageReceived = 0,
+                                entityCausingDamage = collision_entity_b
+
+                            });
 
 
-                    ecb.AddComponent<DamageComponent>(collision_entity_a,
+                    ecb.AddComponent<DamageComponent>(collision_entity_a, 
                             new DamageComponent
-                            { DamageLanded = 0, DamageReceived = damage, StunLanded = damage });
+                            { DamageLanded = 0, DamageReceived = damage, StunLanded = damage, entityCausingDamage = collision_entity_b, effectsIndex = effectsIndex });
 
                     if (HasComponent<SkillTreeComponent>(shooter))
                     {
@@ -640,10 +669,10 @@ public class AttackerSystem : SystemBase
                         var scoreComponent = GetComponent<ScoreComponent>(shooter);
                         scoreComponent.addBonus = 0;
                         //for gmtk bonus for charged (blocked)
-                      //  if (ammo.Charged == true && isEnemyShooter == false && isEnemyTarget == true)
+                        //  if (ammo.Charged == true && isEnemyShooter == false && isEnemyTarget == true)
                         //{
-                          //  scoreComponent.addBonus = scoreComponent.defaultPointsScored * 1;
-                            //ammo.Charged = false;
+                        //  scoreComponent.addBonus = scoreComponent.defaultPointsScored * 1;
+                        //ammo.Charged = false;
 
                         //}
 

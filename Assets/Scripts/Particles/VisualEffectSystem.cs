@@ -21,6 +21,7 @@ public struct VisualEffectEntitySpawnerComponent : IComponentData
 public struct VisualEffectEntityComponent : IComponentData
 {
     //public Entity entity;
+    public float damageAmount;
     public bool enemyDamaged;
     public bool playerDamaged;
     public bool instantiated;
@@ -28,6 +29,12 @@ public struct VisualEffectEntityComponent : IComponentData
     public float currentTime;
     public float spawnTime;
     public bool destroy;
+    public float framesToSkip;//timer instead?
+    public int frameSkipCounter;
+    public int effectsIndex;
+    public int deathBlowEffectsIndex;
+
+
 }
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]

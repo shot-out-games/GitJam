@@ -11,7 +11,7 @@ using Unity.Physics.Extensions;
 using UnityEngine.Jobs;
 
 
-public struct GunComponent : IComponentData
+public struct WeaponComponent : IComponentData
 {
     public Entity PrimaryAmmo;
     public Entity SecondaryAmmo;
@@ -106,7 +106,7 @@ public class BulletManager : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
     {
         //if (manager == default) return;
 
-        //if (!manager.HasComponent(entity, typeof(GunComponent))) return;
+        //if (!manager.HasComponent(entity, typeof(WeaponComponent))) return;
 
         //var tracker = manager.GetComponentData<TrackerComponent>(entity);
         //tracker.Position = track.transform.position;
@@ -127,9 +127,9 @@ public class BulletManager : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
         };
 
 
-        dstManager.AddComponentData<GunComponent>(
+        dstManager.AddComponentData<WeaponComponent>(
             entity,
-            new GunComponent()
+            new WeaponComponent()
             {
                 AmmoStartLocalToWorld = localToWorld,
                 AmmoStartPosition = new Translation() { Value = AmmoStartLocation.position },//not used because cant track bone 
@@ -178,7 +178,7 @@ class SynchronizeGameObjectTransformsGunEntities : SystemBase
         //{
         //    All = new ComponentType[]
         //    {
-        //        typeof(GunComponent),
+        //        typeof(WeaponComponent),
         //        typeof(Transform),
         //        typeof(LocalToWorld)
         //    }
@@ -191,13 +191,13 @@ class SynchronizeGameObjectTransformsGunEntities : SystemBase
     protected override void OnUpdate()
     {
         //var localToWorlds = m_Query.ToComponentDataArrayAsync<LocalToWorld>(Allocator.TempJob, out var jobHandle);
-        //var gunComponents = m_Query.ToComponentDataArray<GunComponent>(Allocator.TempJob);
+        //var gunComponents = m_Query.ToComponentDataArray<WeaponComponent>(Allocator.TempJob);
         //var localToWorlds = m_Query.ToComponentDataArray<LocalToWorld>(Allocator.TempJob);
 
         //var entities = m_Query.ToEntityArray(Allocator.Temp);
 
         Entities.WithoutBurst().ForEach(
-            (BulletManager bulletManager, ref GunComponent gunComponent) =>
+            (BulletManager bulletManager, ref WeaponComponent gunComponent) =>
             {
                 var localToWorld = new LocalToWorld
                 {

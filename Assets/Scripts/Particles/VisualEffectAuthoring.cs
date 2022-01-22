@@ -15,6 +15,11 @@ public class VisualEffectAuthoring : MonoBehaviour, IDeclareReferencedPrefabs, I
     public bool enemyDamaged = false;
     public bool playerDamaged = true;
     public float spawnTime = 3;
+    public float damageAmount = 1;
+    public float framesToSkip = 12;
+    [Header("Effects Index")]
+    public int effectsIndex = 0;
+    public int deathBlowEffectsIndex;
 
 
     //public GameObject ParticlePrefab;
@@ -24,8 +29,11 @@ public class VisualEffectAuthoring : MonoBehaviour, IDeclareReferencedPrefabs, I
                 new VisualEffectEntityComponent
                 {
                     //entity = conversionSystem.GetPrimaryEntity(ParticlePrefab)
-                    enemyDamaged = enemyDamaged, playerDamaged = playerDamaged,
-                    spawnTime = spawnTime
+                    enemyDamaged = enemyDamaged, playerDamaged = playerDamaged, damageAmount = damageAmount,
+                    spawnTime = spawnTime,
+                    framesToSkip = framesToSkip,
+                    effectsIndex = effectsIndex,
+                    deathBlowEffectsIndex = deathBlowEffectsIndex
                 }
             );
     }

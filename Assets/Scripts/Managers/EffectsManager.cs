@@ -11,6 +11,7 @@ public struct EffectsComponent : IComponentData
     public bool soundPlaying;
     public bool playEffectAllowed;
     public EffectType playEffectType;
+    public int effectIndex;
 }
 
 
@@ -21,47 +22,27 @@ public class EffectsManager : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField] private bool pauseEffect;
 
 
-    public ParticleSystem actorDeadEffectPrefab;
-    [HideInInspector] public ParticleSystem actorDeadEffectInstance;
-    public AudioClip actorDeadAudioClip;
+    public List<EffectClass> actorEffect;
 
-    public ParticleSystem actorHurtEffectPrefab;
-    [HideInInspector] public ParticleSystem actorHurtEffectInstance;
-    public AudioClip actorHurtAudioClip;
 
-    public ParticleSystem actorCloseEffectPrefab;
-    [HideInInspector] public ParticleSystem actorCloseEffectInstance;
-    public AudioClip actorCloseAudioClip;
+
 
     public AudioSource audioSource;
     
     void Start()
     {
 
-
-        if (actorHurtEffectPrefab)
+        for (int i = 0; i < actorEffect.Count; i++)
         {
-            var ps = Instantiate(actorHurtEffectPrefab);
+            if (actorEffect[i] == null) continue;
+            var ps = Instantiate(actorEffect[i].psPrefab);
+            Debug.Log("ps " + ps);
             ps.transform.parent = transform;
             ps.transform.localPosition = new Vector3(0, ps.transform.localPosition.y, 0);
-            actorHurtEffectInstance = ps;
+            actorEffect[i].psInstance = ps;
         }
 
-        if (actorDeadEffectPrefab)
-        {
-            var ps = Instantiate(actorDeadEffectPrefab);
-            ps.transform.parent = transform;
-            ps.transform.localPosition = new Vector3(0, ps.transform.localPosition.y, 0);
-            actorDeadEffectInstance = ps;
-        }
 
-        if (actorCloseEffectPrefab)
-        {
-            var ps = Instantiate(actorCloseEffectPrefab);
-            ps.transform.parent = transform;
-            ps.transform.localPosition = new Vector3(0, ps.transform.localPosition.y, 0);
-            actorCloseEffectInstance = ps;
-        }
 
 
 
