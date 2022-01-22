@@ -71,7 +71,7 @@ public class ScoreSystem : SystemBase
                         else if (score.trackStreak && score.trackCombo == false)
                         {
                             score.streak += 1;
-                            Debug.Log("streak " + score.streak);
+                            //Debug.Log("streak " + score.streak);
                         }
 
                         score.lastShotConnected = true;

@@ -96,7 +96,7 @@ public class AmmoSystem : SystemBase
                         //Debug.Log(" last shot " + score.lastShotConnected);
                         if (score.lastShotConnected == false) score.streak = 0;
                         score.lastShotConnected = false;
-                        Debug.Log("streak 0");
+                        //Debug.Log("streak 0");
                         score.combo = 0;
                         scoreGroup[shooter] = score;
                         ammo.ammoHits = 0;

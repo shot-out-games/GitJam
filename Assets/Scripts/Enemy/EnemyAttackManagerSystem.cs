@@ -52,7 +52,7 @@ public class EnemyAttackManagerSystem : SystemBase
 
 
             weaponManager.AttachPrimaryWeapon();
-            Debug.Log("MATCH FOUND " + weaponIndex + " " + bossWeaponComponent.PrimaryAmmo);
+            //Debug.Log("MATCH FOUND " + weaponIndex + " " + bossWeaponComponent.PrimaryAmmo);
 
         }).Run();
 

@@ -100,15 +100,22 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     Vector3 targetPosition = Vector3.zero;
     Vector3 worldPosition = Vector3.zero;
     public Vector3 closetEnemyWeaponTargetPosition;
-    
+    //Vector3 m_distanceFromCamera;
+    //Plane m_Plane;
     void Start()
     {
         if (!ReInput.isReady) return;
+
+
+
         player = ReInput.players.GetPlayer(playerId);
         animator = GetComponent<Animator>();
         target = crossHair;//default target
 
         cam = Camera.main;
+        //m_distanceFromCamera = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + cameraZ);
+        //m_Plane = new Plane(Vector3.forward, m_distanceFromCamera);
+
         startAimWeight = aimWeight;
         startClampWeight = clampWeight;
         startLookWeight = lookWeight;
@@ -221,10 +228,10 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         //cameraZ = target.position.z - transform.position.z;//added but 
         //aimTarget.z = cameraZ;
         
-        aimTarget = target.position;
-        aimTarget.x = crossHair.position.x;
-        aimTarget.y = crossHair.position.y;
-        aimTarget.z = crossHair.position.z;
+        //aimTarget = target.position;
+        //aimTarget.x = crossHair.position.x;
+        //aimTarget.y = crossHair.position.y;
+        //aimTarget.z = crossHair.position.z;
         //aimDir = math.normalize(aimTarget - transform.position);
         if(weaponCamera == CameraTypes.TopDown)
         {
@@ -262,23 +269,25 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     Vector3 GetMousePositionThirdPersonPlane()
     {
         //Plane plane = new Plane();
-        //Vector3 _distanceFromCamera = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z - cameraZ);
+        Vector3 _distanceFromCamera = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + cameraZ);
 
-        Plane plane = new Plane(transform.forward, transform.forward * cameraZ);
-        Ray r = cam.ScreenPointToRay(mousePosition);
-        float d = 0;
-        if (plane.Raycast(r, out d))
+        Plane plane = new Plane(transform.forward, _distanceFromCamera);
+        //Plane plane = new Plane(Vector3.forward, m_distanceFromCamera);
+        Ray ray = cam.ScreenPointToRay(mousePosition);
+        float distance = 0;
+        if (plane.Raycast(ray, out distance))
         {
-            Vector3 v = r.GetPoint(d);
-            return v;
+            Vector3 hitpoint = ray.GetPoint(distance);
+            Debug.Log("hp " + hitpoint);
+            return hitpoint;
         }
 
-        plane = new Plane(transform.right, transform.right * cameraZ);
-        if (plane.Raycast(r, out d))
-        {
-            Vector3 v = r.GetPoint(d);
-            return v;
-        }
+        ////plane = new Plane(transform.right, transform.right * cameraZ);
+        //if (plane.Raycast(r, out d))
+        //{
+        //    Vector3 v = r.GetPoint(d);
+        //    return v;
+        //}
 
       
         throw new UnityException("Mouse position ray not intersecting launcher plane");
@@ -344,8 +353,12 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (weaponCamera == CameraTypes.ThirdPerson)
         {
             mousePosition.z = cameraZ;
+            //mousePosition.z = cam.nearClipPlane;
             //mousePosition.z = target.position.z;
+            mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
             worldPosition = cam.ScreenToWorldPoint(mousePosition);
+            //worldPosition.z = targetPosition.z;
+
             //worldPosition = GetMousePositionThirdPersonPlane();
             x = worldPosition.x;
             y = worldPosition.y;
