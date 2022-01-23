@@ -52,6 +52,5 @@ public class DestroySystem : SystemBase
         // Make sure that the ECB system knows about our job
         m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
 
-
     }
 }

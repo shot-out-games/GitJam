@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdd53f33bd0c534bb8c104a33146205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectIndex: 0
+  effectIndex: 1
   deathBlowEffectsIndex: 0
   ammoTime: 2
   comboTimeAdd: 6

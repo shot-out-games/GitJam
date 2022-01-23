@@ -700,7 +700,7 @@ public class AttackerSystem : SystemBase
 
 
 
-            ecb.RemoveComponent<CollisionComponent>(entity);
+            //ecb.RemoveComponent<CollisionComponent>(entity);
 
 
 

@@ -37,7 +37,8 @@ public enum TriggerType
     Obstacle = 19,
     Contact = 20,
     Platform = 21,
-    Particle
+    Particle = 22,
+    Breakable = 23
 }
 
 

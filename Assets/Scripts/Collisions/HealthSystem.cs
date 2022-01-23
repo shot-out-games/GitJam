@@ -53,7 +53,7 @@ public class HealthSystem : SystemBase
 
                 healthComponent.TotalDamageReceived += damageComponent.DamageReceived;
                 allPlayerDamageTotal = allPlayerDamageTotal + healthComponent.TotalDamageReceived;
-                ecb.RemoveComponent<DamageComponent>(entity);
+                //ecb.RemoveComponent<DamageComponent>(entity);
                 var dead = EntityManager.GetComponentData<DeadComponent>(entity);
                 if (damageComponent.DamageReceived > 0)
                 {

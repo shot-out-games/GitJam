@@ -248,7 +248,7 @@ public class CharacterEffectsSystem : SystemBase
                     deadComponent.playDeadEffects = false;
                     bool isEnemy = HasComponent<EnemyComponent>(e);
                     bool isPlayer = HasComponent<PlayerComponent>(e);
-                    if(isPlayer) animator.SetInteger("Dead", 1);
+                    if(isPlayer) animator.SetInteger("Dead", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more DEAD animations
                     if (isEnemy) animator.SetInteger("Dead", 5);
                     //animator.SetInteger("HitReact", 0);
                     //deadComponent.playDeadEffects = false;
@@ -269,8 +269,10 @@ public class CharacterEffectsSystem : SystemBase
                                     //effectsComponent.startEffectSound = false;
                                     audioSource.clip = effects.actorEffect[effectsIndex].clip;
                                     if (!audioSource.isPlaying)
+                                    {
                                         audioSource.PlayOneShot(audioSource.clip, .5f);
-                                    //Debug.Log("play audio " + audioSource.clip);
+                                        Debug.Log("play audio dead " + audioSource.clip);
+                                    }
                                 }
 
                             }
@@ -294,7 +296,7 @@ public class CharacterEffectsSystem : SystemBase
                         Debug.Log("effectsIndex " + effectsIndex);
 
                         if (damageComponent.DamageReceived <= .0001) return;
-                        animator.SetInteger("HitReact", 1);
+                        animator.SetInteger("HitReact", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more hitreact animations
 
                         if (effects.actorEffect != null)
                         {
@@ -346,6 +348,28 @@ public class CharacterEffectsSystem : SystemBase
 
             }
         ).Run();
+
+
+        //Clean up ... Move to DestroySystem
+        Entities.WithoutBurst().WithStructuralChanges().ForEach
+        (
+            (Entity e, ref DamageComponent damageComponent) =>
+            {
+                EntityManager.RemoveComponent<DamageComponent>(e);
+
+            }
+        ).Run();
+
+
+        Entities.WithoutBurst().WithStructuralChanges().ForEach
+        (
+            (Entity e, ref CollisionComponent collisionComponent) =>
+            {
+                EntityManager.RemoveComponent<CollisionComponent>(e);
+
+            }
+        ).Run();
+
 
         m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
 
