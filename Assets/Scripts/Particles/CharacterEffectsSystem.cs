@@ -241,9 +241,17 @@ public class CharacterEffectsSystem : SystemBase
                 }
 
 
-                if (deadComponent.playDeadEffects)//can probably just use playEffectType in effectsComponent TO DO
+                //int state = animator.GetInteger("Dead");
+
+                if (deadComponent.isDead && deadComponent.playDeadEffects)//can probably just use playEffectType in effectsComponent TO DO
                 {
                     deadComponent.playDeadEffects = false;
+                    bool isEnemy = HasComponent<EnemyComponent>(e);
+                    bool isPlayer = HasComponent<PlayerComponent>(e);
+                    if(isPlayer) animator.SetInteger("Dead", 1);
+                    if (isEnemy) animator.SetInteger("Dead", 5);
+                    //animator.SetInteger("HitReact", 0);
+                    //deadComponent.playDeadEffects = false;
                     int effectsIndex = deadComponent.effectsIndex;
                     Debug.Log("eff ind play " + effectsIndex);
 
@@ -252,9 +260,10 @@ public class CharacterEffectsSystem : SystemBase
 
                         if (effects.actorEffect[effectsIndex].psInstance)//tryinmg to match index to effect type - 1 is dead
                         {
-                            if (effects.actorEffect[effectsIndex].psInstance.isPlaying == false && effectsComponent.playEffectAllowed)
+                            if (effects.actorEffect[effectsIndex].psInstance.isPlaying == false)
                             {
                                 effects.actorEffect[effectsIndex].psInstance.Play(true);
+                                Debug.Log("ps dead " + effects.actorEffect[effectsIndex].psInstance);
                                 if (effects.actorEffect[effectsIndex].clip)
                                 {
                                     //effectsComponent.startEffectSound = false;
@@ -278,7 +287,7 @@ public class CharacterEffectsSystem : SystemBase
                 else
                 {
                     bool hasDamage = HasComponent<DamageComponent>(e);
-                    if (hasDamage == true)
+                    if (hasDamage == true && deadComponent.isDead == false)
                     {
                         var damageComponent = GetComponent<DamageComponent>(e);
                         int effectsIndex = damageComponent.effectsIndex;//set in attackersystem by readin visualeffect component index
@@ -292,6 +301,7 @@ public class CharacterEffectsSystem : SystemBase
                             if (effects.actorEffect[effectsIndex].psInstance)
                             {
                                 effects.actorEffect[effectsIndex].psInstance.Play(true);
+                                Debug.Log("ps dam " + effects.actorEffect[effectsIndex].psInstance);
                             }
                             if (effects.actorEffect[effectsIndex].clip)
                             {

@@ -9,7 +9,7 @@ using Unity.Collections;
 using Unity.Rendering;
 
 
-[UpdateAfter(typeof(CharacterEffectsSystem))]
+[UpdateBefore(typeof(CharacterEffectsSystem))]
 
 public class HealthSystem : SystemBase
 {
@@ -77,8 +77,8 @@ public class HealthSystem : SystemBase
                         levelCompleteComponent.dieLevel = LevelManager.instance.currentLevelCompleted;
                         SetComponent(e, levelCompleteComponent);
                     }
-                    dead.isDying = true;
-                    //dead.isDead = true;
+                    //dead.isDying = true;
+                    dead.isDead = true;
                     dead.playDeadEffects = true;
                     if (HasComponent<AmmoComponent>(entityCausingDamage))
                     {

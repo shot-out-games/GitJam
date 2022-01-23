@@ -13,7 +13,7 @@ using UnityEngine.AI;
 public struct DeadComponent : IComponentData
 {
     public bool isDead;
-    public bool isDying;
+    //public bool isDying;
     public bool playDeadEffects;
     //public bool justDead;
     //public int dieLevel;
@@ -48,18 +48,19 @@ public class DeadSystem : SystemBase //really game over system currently
 
                 int state = animator.GetInteger("Dead");
 
-                if (state > 0)
-                {
-                    deadComponent.isDying = false;
-                    deadComponent.isDead = true;
+               // if (state > 0)
+               // {
+                    //deadComponent.isDying = false;
+                    //deadComponent.isDead = true;
                     //ecb.RemoveComponent<InputControllerComponent>(entity);
                     //animator.speed = 0;
                     //ecb.DestroyEntity(entity);
-                }
-                else if (deadComponent.isDying)//player
+               // }
+                // else if (deadComponent.isDying)//player
+                if (deadComponent.isDead && state == 0)//player
                 {
-                    deadComponent.playDeadEffects = true;
-                    animator.SetInteger("Dead", 1);
+                    //deadComponent.playDeadEffects = true;
+                    //animator.SetInteger("Dead", 1);
                     LevelManager.instance.levelSettings[currentLevel].playersDead += 1;
                 }
             }
@@ -74,7 +75,7 @@ public class DeadSystem : SystemBase //really game over system currently
 
         Entities.WithoutBurst().WithAll<EnemyComponent>().ForEach
         (
-            ( Animator animator, ref DeadComponent deadComponent,
+            (Animator animator, ref DeadComponent deadComponent,
             in Entity entity) =>
             {
                 if (deadComponent.isDead == true) return;
@@ -84,17 +85,17 @@ public class DeadSystem : SystemBase //really game over system currently
 
                 if (state > 0)
                 {
-                    deadComponent.isDying = false;
-                    deadComponent.isDead = true;
+                    //deadComponent.isDying = false;
+                    //deadComponent.isDead = true;
                     ecb.RemoveComponent<DeadComponent>(entity);
                     //animator.speed = 0;
                     //ecb.DestroyEntity(entity);
                 }
-                else if (deadComponent.isDying
-                        && state == 0)//enemy
+                else if (deadComponent.isDead &&
+                        state == 0)//enemy
                 {
                     //deadComponent.isDying = false;
-                    deadComponent.playDeadEffects = true;
+                    //deadComponent.playDeadEffects = true;
 
                     if (HasComponent<WinnerComponent>(entity))
                     {
@@ -104,12 +105,12 @@ public class DeadSystem : SystemBase //really game over system currently
                             winnerComponent.endGameReached = true;
                             SetComponent<WinnerComponent>(entity, winnerComponent);
                         }
-                        
+
                     }
                     enemyJustDead = true;
                     LevelManager.instance.levelSettings[currentLevel].enemiesDead += 1;
                     Debug.Log("set dead");
-                    animator.SetInteger("Dead", 5);
+                    // animator.SetInteger("Dead", 5);
                 }
             }
         ).Run();

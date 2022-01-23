@@ -377,7 +377,7 @@ public class AttackerSystem : SystemBase
                     float damage = hitPower * hw;
 
                     ecb.AddComponent<DamageComponent>(entityA,
-                        new DamageComponent { DamageLanded = damage, DamageReceived = 0, entityCausingDamage = entityA});
+                        new DamageComponent { DamageLanded = damage, DamageReceived = 0, entityCausingDamage = entityA });
 
 
                     ecb.AddComponent<DamageComponent>(entityB,
@@ -491,7 +491,8 @@ public class AttackerSystem : SystemBase
                     }
 
                     if (HasComponent<DeadComponent>(collision_entity_a) == false ||
-                        GetComponent<DeadComponent>(collision_entity_a).isDying)
+                    //GetComponent<DeadComponent>(collision_entity_a).isDying)
+                    GetComponent<DeadComponent>(collision_entity_a).isDead)
                     {
                         damage = 0;
                     }
@@ -506,8 +507,12 @@ public class AttackerSystem : SystemBase
 
                     ecb.AddComponent<DamageComponent>(collision_entity_a,
                             new DamageComponent
-                            { DamageLanded = 0, DamageReceived = damage, StunLanded = damage, effectsIndex = ammo.effectIndex,
-                            
+                            {
+                                DamageLanded = 0,
+                                DamageReceived = damage,
+                                StunLanded = damage,
+                                effectsIndex = ammo.effectIndex,
+
                                 entityCausingDamage = collision_entity_b
                             });
 
@@ -633,7 +638,7 @@ public class AttackerSystem : SystemBase
                     //}
 
                     if (HasComponent<DeadComponent>(collision_entity_a) == false ||
-                        GetComponent<DeadComponent>(collision_entity_a).isDying)
+                        GetComponent<DeadComponent>(collision_entity_a).isDead)
                     {
                         damage = 0;
                     }
@@ -643,13 +648,15 @@ public class AttackerSystem : SystemBase
 
                     ecb.AddComponent<DamageComponent>(shooter,
                             new DamageComponent
-                            { DamageLanded = damage, DamageReceived = 0,
+                            {
+                                DamageLanded = damage,
+                                DamageReceived = 0,
                                 entityCausingDamage = collision_entity_b
 
                             });
 
 
-                    ecb.AddComponent<DamageComponent>(collision_entity_a, 
+                    ecb.AddComponent<DamageComponent>(collision_entity_a,
                             new DamageComponent
                             { DamageLanded = 0, DamageReceived = damage, StunLanded = damage, entityCausingDamage = collision_entity_b, effectsIndex = effectsIndex });
 

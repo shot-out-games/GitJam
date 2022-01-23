@@ -36,7 +36,7 @@ public class EffectsManager : MonoBehaviour, IConvertGameObjectToEntity
         {
             if (actorEffect[i] == null) continue;
             var ps = Instantiate(actorEffect[i].psPrefab);
-            Debug.Log("ps " + ps);
+            //Debug.Log("ps " + ps);
             ps.transform.parent = transform;
             ps.transform.localPosition = new Vector3(0, ps.transform.localPosition.y, 0);
             actorEffect[i].psInstance = ps;

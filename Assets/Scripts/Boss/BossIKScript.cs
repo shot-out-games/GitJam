@@ -41,8 +41,10 @@ public class BossIKScript : MonoBehaviour
     public void StartStrike()//any animation 
     {
         //Debug.Log("fireball strike");
+        
         EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
+        if (manager == null || e == Entity.Null) return;
         var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
         bossComponent.IsFiring = 1;
         manager.SetComponentData<BossWeaponComponent>(e, bossComponent);
