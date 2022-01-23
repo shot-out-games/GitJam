@@ -9,7 +9,7 @@ using Unity.Physics.Systems;
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 //[UpdateAfter(typeof(EndFramePhysicsSystem))]
 [UpdateBefore(typeof(CollisionSystem))]
-
+//[UpdateBefore(typeof(AttackerSystem))]
 
 
 public class BreakableSystem : SystemBase
@@ -25,16 +25,16 @@ public class BreakableSystem : SystemBase
 
         Entities.WithoutBurst().ForEach(
         (
-            Animator animator,
-            HealthBar healthBar,
-            in DeadComponent dead,
+            //Animator animator,
+            //HealthBar healthBar,
+            //in DeadComponent dead,
             in CollisionComponent collisionComponent,
             in Entity entity
 
 
         ) =>
         {
-            if (dead.isDead == true) return;
+            //if (dead.isDead == true) return;
 
 
             int type_a = collisionComponent.Part_entity;
@@ -43,19 +43,20 @@ public class BreakableSystem : SystemBase
             Entity collision_entity_b = collisionComponent.Character_other_entity;
 
 
-
             Debug.Log("breakable a " + collision_entity_a + " type a " + type_a);
-            Debug.Log("breakable b " + collision_entity_b + " type a " + type_b);
+            Debug.Log("breakable b " + collision_entity_b + " type b" + type_b);
 
 
 
-            if (type_b == (int)TriggerType.Breakable && HasComponent<TriggerComponent>(collision_entity_a)
+
+            if (type_a == (int)TriggerType.Breakable && HasComponent<TriggerComponent>(collision_entity_a)
                                              && HasComponent<TriggerComponent>(collision_entity_b)) //b is damage effect so causes damage to entity
             {
+                //Debug.Log("breakable a " + collision_entity_a + " type a " + type_a);
+                //Debug.Log("breakable b " + collision_entity_b + " type b" + type_b);
 
 
-
-                var breakableComponent = GetComponent<BreakableComponent>(collision_entity_b);
+                var breakableComponent = GetComponent<BreakableComponent>(collision_entity_a);
 
                 float damage = 0;
                 int effectsIndex = 0;
@@ -67,7 +68,7 @@ public class BreakableSystem : SystemBase
                     breakableComponent.frameSkipCounter += 1;
                     skip = false;
                 }
-                else if (breakableComponent.frameSkipCounter <  breakableComponent.framesToSkip)
+                else if (breakableComponent.frameSkipCounter < breakableComponent.framesToSkip)
 
                 {
                     breakableComponent.frameSkipCounter += 1;
@@ -88,8 +89,8 @@ public class BreakableSystem : SystemBase
                 }
                 Debug.Log("breakable damage " + damage);
 
-                if (HasComponent<DeadComponent>(collision_entity_a) == false ||
-                    GetComponent<DeadComponent>(collision_entity_a).isDead)
+                if (HasComponent<DeadComponent>(collision_entity_b) == false ||
+                    GetComponent<DeadComponent>(collision_entity_b).isDead)
                 {
                     damage = 0;
                 }
@@ -98,14 +99,14 @@ public class BreakableSystem : SystemBase
 
 
 
-                ecb.AddComponent<DamageComponent>(collision_entity_a,
+                ecb.AddComponent<DamageComponent>(collision_entity_b,
                         new DamageComponent
                         { DamageLanded = 0, DamageReceived = damage, StunLanded = damage, entityCausingDamage = collision_entity_b, effectsIndex = effectsIndex });
 
 
 
 
-                ecb.SetComponent<BreakableComponent>(collision_entity_b, breakableComponent);
+                ecb.SetComponent<BreakableComponent>(collision_entity_a, breakableComponent);
 
 
             }

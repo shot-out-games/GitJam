@@ -8,7 +8,7 @@ using Unity.Physics.Systems;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 //[UpdateAfter(typeof(EndFramePhysicsSystem))]
-[UpdateBefore(typeof(CollisionSystem))]
+[UpdateAfter(typeof(CollisionSystem))]
 
 
 
@@ -351,6 +351,8 @@ public class AttackerSystem : SystemBase
 
             float hw = animator.GetFloat("HitWeight");
             if (playerA && enemyB || playerB && enemyA) check = true;
+
+            Debug.Log("attacker");
 
             if (check == true)
             {
@@ -707,6 +709,18 @@ public class AttackerSystem : SystemBase
 
         }
         ).Run();
+
+
+        Entities.ForEach((Entity e, ref CollisionComponent collisionComponent) =>
+        {
+
+
+            ecb.RemoveComponent<CollisionComponent>(e);
+            Debug.Log("destroy collision");
+
+
+        }).Run();
+
 
 
         ecb.Playback(EntityManager);

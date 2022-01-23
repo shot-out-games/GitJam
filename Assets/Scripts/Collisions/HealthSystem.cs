@@ -8,8 +8,9 @@ using System;
 using Unity.Collections;
 using Unity.Rendering;
 
-
-[UpdateBefore(typeof(CharacterEffectsSystem))]
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateAfter(typeof(AttackerSystem))]
+[UpdateAfter(typeof(CharacterEffectsSystem))]
 
 public class HealthSystem : SystemBase
 {
@@ -133,6 +134,29 @@ public class HealthSystem : SystemBase
             healthUI.HealthChange();
 
         }).Run();
+
+
+        //Clean up ... Move to DestroySystem
+        Entities.WithoutBurst().WithStructuralChanges().ForEach
+        (
+            (Entity e, ref DamageComponent damageComponent) =>
+            {
+                EntityManager.RemoveComponent<DamageComponent>(e);
+
+            }
+        ).Run();
+
+
+        Entities.WithoutBurst().WithStructuralChanges().ForEach
+        (
+            (Entity e, ref CollisionComponent collisionComponent) =>
+            {
+                ecb.RemoveComponent<CollisionComponent>(e);
+                Debug.Log("destroy collision from ch ef sys");
+
+            }
+        ).Run();
+
 
         ecb.Playback(EntityManager);
         ecb.Dispose();

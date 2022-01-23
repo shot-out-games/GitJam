@@ -24,7 +24,7 @@ public struct DeadComponent : IComponentData
 
 
 //[UpdateAfter(typeof(CollisionSystem))]
-
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
 public class DeadSystem : SystemBase //really game over system currently
 {

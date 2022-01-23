@@ -26,6 +26,9 @@ public class EffectClass
 
 
 [UpdateAfter(typeof(DeadSystem))]
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateAfter(typeof(AttackerSystem))]
+
 
 public class CharacterEffectsSystem : SystemBase
 {
@@ -350,25 +353,26 @@ public class CharacterEffectsSystem : SystemBase
         ).Run();
 
 
-        //Clean up ... Move to DestroySystem
-        Entities.WithoutBurst().WithStructuralChanges().ForEach
-        (
-            (Entity e, ref DamageComponent damageComponent) =>
-            {
-                EntityManager.RemoveComponent<DamageComponent>(e);
+        ////Clean up ... Move to DestroySystem
+        //Entities.WithoutBurst().WithStructuralChanges().ForEach
+        //(
+        //    (Entity e, ref DamageComponent damageComponent) =>
+        //    {
+        //        EntityManager.RemoveComponent<DamageComponent>(e);
 
-            }
-        ).Run();
+        //    }
+        //).Run();
 
 
-        Entities.WithoutBurst().WithStructuralChanges().ForEach
-        (
-            (Entity e, ref CollisionComponent collisionComponent) =>
-            {
-                EntityManager.RemoveComponent<CollisionComponent>(e);
+        //Entities.WithoutBurst().WithStructuralChanges().ForEach
+        //(
+        //    (Entity e, ref CollisionComponent collisionComponent) =>
+        //    {
+        //        ecb.RemoveComponent<CollisionComponent>(e);
+        //        Debug.Log("destroy collision from ch ef sys");
 
-            }
-        ).Run();
+        //    }
+        //).Run();
 
 
         m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);

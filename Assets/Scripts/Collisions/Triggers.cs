@@ -135,7 +135,7 @@ public class CollisionSystem : SystemBase
             if (ch_a == ch_b) return;////?????
 
 
-
+            Debug.Log("collision detected");
 
 
 
