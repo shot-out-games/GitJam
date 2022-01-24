@@ -23,7 +23,7 @@ public struct DeadComponent : IComponentData
 }
 
 
-//[UpdateAfter(typeof(CollisionSystem))]
+[UpdateBefore(typeof(BasicWinnerSystem))]
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
 public class DeadSystem : SystemBase //really game over system currently
@@ -44,24 +44,13 @@ public class DeadSystem : SystemBase //really game over system currently
         (
             (ref DeadComponent deadComponent, in Entity entity, in Animator animator) =>
             {
-                if (deadComponent.isDead == true) return;
 
-                int state = animator.GetInteger("Dead");
-
-               // if (state > 0)
-               // {
-                    //deadComponent.isDying = false;
-                    //deadComponent.isDead = true;
-                    //ecb.RemoveComponent<InputControllerComponent>(entity);
-                    //animator.speed = 0;
-                    //ecb.DestroyEntity(entity);
-               // }
-                // else if (deadComponent.isDying)//player
-                if (deadComponent.isDead && state == 0)//player
+                if (deadComponent.isDead)//player
                 {
-                    //deadComponent.playDeadEffects = true;
-                    //animator.SetInteger("Dead", 1);
+                    Debug.Log("Player Dead");
+
                     LevelManager.instance.levelSettings[currentLevel].playersDead += 1;
+                    ecb.RemoveComponent<DeadComponent>(entity);
                 }
             }
         ).Run();
@@ -78,40 +67,28 @@ public class DeadSystem : SystemBase //really game over system currently
             (Animator animator, ref DeadComponent deadComponent,
             in Entity entity) =>
             {
-                if (deadComponent.isDead == true) return;
-
-                int state = animator.GetInteger("Dead");
-
-
-                if (state > 0)
+                if (deadComponent.isDead == true)
                 {
-                    //deadComponent.isDying = false;
-                    //deadComponent.isDead = true;
-                    ecb.RemoveComponent<DeadComponent>(entity);
-                    //animator.speed = 0;
-                    //ecb.DestroyEntity(entity);
-                }
-                else if (deadComponent.isDead &&
-                        state == 0)//enemy
-                {
-                    //deadComponent.isDying = false;
-                    //deadComponent.playDeadEffects = true;
-
-                    if (HasComponent<WinnerComponent>(entity))
-                    {
-                        var winnerComponent = GetComponent<WinnerComponent>(entity);
-                        if (winnerComponent.checkWinCondition == true)//this  (and all with this true) enemy must be defeated to win the game
-                        {
-                            winnerComponent.endGameReached = true;
-                            SetComponent<WinnerComponent>(entity, winnerComponent);
-                        }
-
-                    }
                     enemyJustDead = true;
                     LevelManager.instance.levelSettings[currentLevel].enemiesDead += 1;
                     Debug.Log("set dead");
-                    // animator.SetInteger("Dead", 5);
+                    ecb.RemoveComponent<DeadComponent>(entity);
                 }
+
+
+                if (HasComponent<WinnerComponent>(entity))
+                {
+                    var winnerComponent = GetComponent<WinnerComponent>(entity);
+                    if (winnerComponent.checkWinCondition == true)//this  (and all with this true) enemy must be defeated to win the game
+                    {
+                        winnerComponent.endGameReached = true;
+                        SetComponent<WinnerComponent>(entity, winnerComponent);
+                    }
+
+                }
+
+                // animator.SetInteger("Dead", 5);
+
             }
         ).Run();
 

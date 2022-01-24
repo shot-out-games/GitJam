@@ -9,6 +9,8 @@ using UnityEngine;
 using Unity.Physics;
 using Unity.Physics.Systems;
 
+
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 public class BasicWinnerSystem : SystemBase
 {
 
@@ -18,7 +20,7 @@ public class BasicWinnerSystem : SystemBase
 
         bool winner = true;
 
-        //Debug.Log("test0");
+        Debug.Log("test0");
 
         Entities.WithAll<EnemyComponent>().WithoutBurst().ForEach
         (
@@ -46,6 +48,7 @@ public class BasicWinnerSystem : SystemBase
 
 
 [UpdateAfter(typeof(ScoreSystem))]
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
 public class ShowMenuSystem : SystemBase
 {
@@ -86,7 +89,7 @@ public class ShowMenuSystem : SystemBase
         if (LevelManager.instance.gameResult == GameResult.Winner)
         {
 
-
+            Debug.Log("winner");
 
             Entities.WithoutBurst().ForEach
             (

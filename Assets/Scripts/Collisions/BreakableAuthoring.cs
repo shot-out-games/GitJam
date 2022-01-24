@@ -32,7 +32,7 @@ public class BreakableAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         //parent needs to be fixed currently self
-        Debug.Log("break " + entity);
+       // Debug.Log("break " + entity);
         BreakableComponent breakable = new BreakableComponent
         {
             damageAmount = damageAmount, framesToSkip = framesToSkip, damageEffectsIndex = damageEffectsIndex, deathBlowEffectsIndex = deathBlowEffectsIndex

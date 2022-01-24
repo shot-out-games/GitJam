@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a3dd66caf1add44add3798ad8e7613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VisualEffectPrefab: {fileID: 9122002266782648941, guid: b1e7d1c37d6015c488fff634432dbd3e,
+  VisualEffectPrefab: {fileID: 3816240217376171586, guid: d0baf56fd22e9fd4586ddaddf7676ff9,
     type: 3}
 --- !u!1001 &1155093784678171370
 PrefabInstance:

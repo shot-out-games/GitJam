@@ -43,8 +43,8 @@ public class BreakableSystem : SystemBase
             Entity collision_entity_b = collisionComponent.Character_other_entity;
 
 
-            Debug.Log("breakable a " + collision_entity_a + " type a " + type_a);
-            Debug.Log("breakable b " + collision_entity_b + " type b" + type_b);
+            //Debug.Log("breakable a " + collision_entity_a + " type a " + type_a);
+           // Debug.Log("breakable b " + collision_entity_b + " type b" + type_b);
 
 
 
