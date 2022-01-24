@@ -11,6 +11,7 @@ using Unity.Physics.Systems;
 
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateAfter(typeof(DeadSystem))]
 public class BasicWinnerSystem : SystemBase
 {
 
@@ -20,24 +21,21 @@ public class BasicWinnerSystem : SystemBase
 
         bool winner = true;
 
-        Debug.Log("test0");
-
         Entities.WithAll<EnemyComponent>().WithoutBurst().ForEach
         (
             (in Entity e) =>
             {
                 if (winner == false) return;
-                if (HasComponent<DeadComponent>(e)) winner = false;//dead component removed when dead and animation complete
-
-                //if (dead.isDead == false)
-                //{
-                    //winner = false;
-                //}
+                if (HasComponent<DeadComponent>(e) == true)
+                {
+                    winner = false;
+                }
+  
             }
         ).Run();
 
         if (winner == false) return;
-        Debug.Log("winner");
+        Debug.Log("basic winner system");
         LevelManager.instance.endGame = true;
         LevelManager.instance.gameResult = GameResult.Winner;
 
@@ -89,7 +87,6 @@ public class ShowMenuSystem : SystemBase
         if (LevelManager.instance.gameResult == GameResult.Winner)
         {
 
-            Debug.Log("winner");
 
             Entities.WithoutBurst().ForEach
             (
@@ -97,6 +94,7 @@ public class ShowMenuSystem : SystemBase
                 {
                     if (winnerMenuComponent.hide == true)
                     {
+                        Debug.Log("show winner menu");
                         winnerMenuGroup.showScoreboard = showScoresOnMenu;
                         winnerMenuGroup.score = score;
                         winnerMenuGroup.rank = rank;
@@ -119,7 +117,7 @@ public class ShowMenuSystem : SystemBase
                 {
                     if (deadMenuComponent.hide == true)
                     {
-                        Debug.Log("show loser");
+                        Debug.Log("show loser menu");
                         deadMenuGroup.showScoreboard = showScoresOnMenu;
                         deadMenuGroup.score = score;
                         deadMenuGroup.rank = rank;

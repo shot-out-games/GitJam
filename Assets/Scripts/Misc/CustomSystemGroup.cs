@@ -7,9 +7,9 @@ using Unity.Transforms;
 
 
 
-//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(LateSimulationSystemGroup))]
 public class CustomSystemGroup : ComponentSystemGroup
 {
     
-
+    
 }

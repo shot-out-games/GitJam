@@ -23,8 +23,12 @@ public struct DeadComponent : IComponentData
 }
 
 
-[UpdateBefore(typeof(BasicWinnerSystem))]
+[UpdateAfter(typeof(CharacterDeadEffectsSystem))]
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+
+
+//[UpdateBefore(typeof(BasicWinnerSystem))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
 public class DeadSystem : SystemBase //really game over system currently
 {
@@ -47,10 +51,12 @@ public class DeadSystem : SystemBase //really game over system currently
 
                 if (deadComponent.isDead)//player
                 {
-                    Debug.Log("Player Dead");
+                    //Debug.Log("Player Dead");
+                    Debug.Log("basic dead system player");
+
 
                     LevelManager.instance.levelSettings[currentLevel].playersDead += 1;
-                    ecb.RemoveComponent<DeadComponent>(entity);
+                    //ecb.RemoveComponent<DeadComponent>(entity);
                 }
             }
         ).Run();
@@ -71,22 +77,25 @@ public class DeadSystem : SystemBase //really game over system currently
                 {
                     enemyJustDead = true;
                     LevelManager.instance.levelSettings[currentLevel].enemiesDead += 1;
-                    Debug.Log("set dead");
-                    ecb.RemoveComponent<DeadComponent>(entity);
-                }
+                    //Debug.Log("set dead");
+                    Debug.Log("basic dead system enemy");
+                    //ecb.RemoveComponent<DeadComponent>(entity);
 
 
-                if (HasComponent<WinnerComponent>(entity))
-                {
-                    var winnerComponent = GetComponent<WinnerComponent>(entity);
-                    if (winnerComponent.checkWinCondition == true)//this  (and all with this true) enemy must be defeated to win the game
+
+                    if (HasComponent<WinnerComponent>(entity))
                     {
-                        winnerComponent.endGameReached = true;
-                        SetComponent<WinnerComponent>(entity, winnerComponent);
+                        var winnerComponent = GetComponent<WinnerComponent>(entity);
+                        if (winnerComponent.checkWinCondition == true)//this  (and all with this true) enemy must be defeated to win the game
+                        {
+                            winnerComponent.endGameReached = true;
+                            SetComponent<WinnerComponent>(entity, winnerComponent);
+                            Debug.Log("basic dead system enemy player wins");
+
+                        }
+
                     }
-
                 }
-
                 // animator.SetInteger("Dead", 5);
 
             }

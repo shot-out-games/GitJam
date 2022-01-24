@@ -11,6 +11,8 @@ using UnityEngine;
 
 
 
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateAfter(typeof(BasicWinnerSystem))]
 
 
 public class BasicLoserSystem : SystemBase
@@ -31,7 +33,7 @@ public class BasicLoserSystem : SystemBase
                 if (dead.isDead == true)
                 {
                     loser = true;
-                    Debug.Log("loser");
+                    Debug.Log("basic loser system");
                 }
             }
         ).Run();
@@ -46,7 +48,7 @@ public class BasicLoserSystem : SystemBase
 }
 
 
-
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(BasicWinnerSystem))]
 
 public class EndGameSystem : SystemBase
@@ -77,7 +79,7 @@ public class EndGameSystem : SystemBase
             
                     if (HasComponent<PhysicsVelocity>(e))
                     {
-                        ecb.RemoveComponent<PhysicsVelocity>(e);
+                        //ecb.RemoveComponent<PhysicsVelocity>(e);
                     }
 
                     if (HasComponent<Pause>(e))

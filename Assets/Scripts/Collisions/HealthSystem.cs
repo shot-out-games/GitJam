@@ -10,7 +10,7 @@ using Unity.Rendering;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 //[UpdateAfter(typeof(AttackerSystem))]
-[UpdateAfter(typeof(CharacterEffectsSystem))]
+//[UpdateAfter(typeof(CharacterDamageEffectsSystem))]
 
 public class HealthSystem : SystemBase
 {
@@ -85,12 +85,12 @@ public class HealthSystem : SystemBase
                     {
                         var ammo = GetComponent<AmmoComponent>(entityCausingDamage);
                         dead.effectsIndex = ammo.deathBlowEffectsIndex;
-                        Debug.Log("ecd ammo " + dead.effectsIndex);
+                        //Debug.Log("ecd ammo " + dead.effectsIndex);
 
                     }
                     else if (HasComponent<VisualEffectEntityComponent>(entityCausingDamage))
                     {
-                        Debug.Log("ecd ve");
+                        //Debug.Log("ecd ve");
                         var ve = GetComponent<VisualEffectEntityComponent>(entityCausingDamage);
                         dead.effectsIndex = ve.deathBlowEffectsIndex;
                     }
@@ -135,27 +135,6 @@ public class HealthSystem : SystemBase
 
         }).Run();
 
-
-        //Clean up ... Move to DestroySystem
-        Entities.WithoutBurst().WithStructuralChanges().ForEach
-        (
-            (Entity e, ref DamageComponent damageComponent) =>
-            {
-                EntityManager.RemoveComponent<DamageComponent>(e);
-
-            }
-        ).Run();
-
-
-        Entities.WithoutBurst().WithStructuralChanges().ForEach
-        (
-            (Entity e, ref CollisionComponent collisionComponent) =>
-            {
-                ecb.RemoveComponent<CollisionComponent>(e);
-                Debug.Log("destroy collision from ch ef sys");
-
-            }
-        ).Run();
 
 
         ecb.Playback(EntityManager);

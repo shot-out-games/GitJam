@@ -50,7 +50,7 @@ public struct PowerTriggerComponent : IComponentData
 }
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(EndFramePhysicsSystem))]
+//[UpdateAfter(typeof(EndFramePhysicsSystem))]
 [UpdateBefore(typeof(PlayerMoveSystem))]
 
 
