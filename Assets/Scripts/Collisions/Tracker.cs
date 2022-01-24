@@ -38,7 +38,8 @@ public enum TriggerType
     Contact = 20,
     Platform = 21,
     Particle = 22,
-    Breakable = 23
+    Breakable = 23,
+    Camera = 24
 }
 
 

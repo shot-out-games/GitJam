@@ -80,6 +80,9 @@ public class EndGameSystem : SystemBase
                     if (HasComponent<PhysicsVelocity>(e))
                     {
                         //ecb.RemoveComponent<PhysicsVelocity>(e);
+                        var velocity = GetComponent<PhysicsVelocity>(e);
+                        velocity.Linear = new float3(0, -9.81f, 0);
+                        ecb.SetComponent<PhysicsVelocity>(e, velocity);
                     }
 
                     if (HasComponent<Pause>(e))

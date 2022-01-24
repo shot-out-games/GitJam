@@ -4,8 +4,16 @@ using UnityEngine;
 using Cinemachine;
 using Rewired;
 using Unity.Mathematics;
+using Unity.Entities;
 
-public class CameraControls : MonoBehaviour
+
+public struct CameraControlsComponent : IComponentData
+{
+    public float fov;
+
+
+}
+public class CameraControls : MonoBehaviour, IConvertGameObjectToEntity
 {
 
     public Player player;
@@ -104,6 +112,8 @@ public class CameraControls : MonoBehaviour
 
     }
 
-
-
+    public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+    {
+        dstManager.AddComponentData(entity, new CameraControlsComponent { fov = fov });
+    }
 }
