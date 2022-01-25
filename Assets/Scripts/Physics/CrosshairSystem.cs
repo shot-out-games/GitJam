@@ -59,14 +59,14 @@ public class CrosshairRaycastSystem : SystemBase
             Translation translation = GetComponent<Translation>(entity);
            
 
-            float3 start = translation.Value + new float3(0, 0, -fov);
+            float3 start = translation.Value + new float3(0, 0, 0);
             float3 direction = new float3(0, 0, 1);
             float distance = crosshair.raycastDistance;
             float3 end = start + direction * distance;
 
             PointDistanceInput pointDistanceInput = new PointDistanceInput
             {
-                Position = start,
+                Position = start, 
                 MaxDistance = distance,//radius
                 //Filter = CollisionFilter.Default
                 Filter = new CollisionFilter()
