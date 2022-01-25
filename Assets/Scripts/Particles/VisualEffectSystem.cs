@@ -85,7 +85,7 @@ public class VisualEffectSystem : SystemBase
         }
         ).Run();
 
-        Entities.ForEach((Entity e, VisualEffectEntityComponent visualEffectComponent) =>
+        Entities.ForEach((Entity e, in VisualEffectEntityComponent visualEffectComponent) =>
         {
             if(visualEffectComponent.destroy) ecb.DestroyEntity(e);
 

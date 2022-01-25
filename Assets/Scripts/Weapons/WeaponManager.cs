@@ -25,7 +25,7 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
     public Weapons secondaryWeapon;
 
     public List<Weapons> weaponsList;//actual weapon
-    private int weaponIndex = 0;//index of weapons list to start with
+    //private int weaponIndex = 0;//index of weapons list to start with
     private EntityManager manager;
     public Entity e;
     [HideInInspector]

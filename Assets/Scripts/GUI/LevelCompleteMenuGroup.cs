@@ -36,7 +36,7 @@ public class LevelCompleteMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField]
     private Button defaultButton;
 
-    private int goalTarget;
+    //private int goalTarget;
     //[SerializeField]
     //private TextMeshProUGUI label;
     private float showTimeLength = 1.0f;
@@ -54,7 +54,7 @@ public class LevelCompleteMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     void Start()
     {
         //goalTarget = manager.GetComponentData<LevelCompleteComponent>(entity).goalCounterTarget;
-        goalTarget = 36;//using this for this game its an optional target only so not suing above commented
+        //goalTarget = 36;//using this for this game its an optional target only so not suing above commented
 
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();

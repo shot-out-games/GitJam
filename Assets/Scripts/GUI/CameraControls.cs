@@ -10,6 +10,7 @@ using Unity.Entities;
 public struct CameraControlsComponent : IComponentData
 {
     public float fov;
+    public bool active;
 
 
 }
@@ -38,6 +39,12 @@ public class CameraControls : MonoBehaviour, IConvertGameObjectToEntity
 
     [SerializeField]
     PlayerWeaponAim playerWeaponAimReference;
+    [SerializeField]
+    bool cameraRaycastActive = false;
+    EntityManager manager;
+    Entity e;
+
+
 
     void Start()
     {
@@ -88,6 +95,8 @@ public class CameraControls : MonoBehaviour, IConvertGameObjectToEntity
 
     public void ChangeFov(float _fov)
     {
+        if (manager == null || e == Entity.Null) return;
+
         //fov = fov > maxFov ?  maxFov : fov;
         //fov = fov < minFov ?  minFov : fov;
         if (freeLook)
@@ -110,10 +119,16 @@ public class CameraControls : MonoBehaviour, IConvertGameObjectToEntity
 
         if(playerWeaponAimReference) playerWeaponAimReference.cameraZ = fov;
 
+        var cameraComponent = manager.GetComponentData<CameraControlsComponent>(e);
+        cameraComponent.fov = fov;
+        manager.SetComponentData<CameraControlsComponent>(e, cameraComponent);
+
     }
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        dstManager.AddComponentData(entity, new CameraControlsComponent { fov = fov });
+        dstManager.AddComponentData(entity, new CameraControlsComponent { fov = fov, active = cameraRaycastActive });
+        manager = dstManager;
+        e = entity;
     }
 }

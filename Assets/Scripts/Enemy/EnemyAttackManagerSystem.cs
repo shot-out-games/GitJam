@@ -14,9 +14,8 @@ public class EnemyAttackManagerSystem : SystemBase
         BufferFromEntity<BossAmmoListBuffer> ammoList = GetBufferFromEntity<BossAmmoListBuffer>(true);
 
 
-        Entities.WithoutBurst().ForEach((Entity enemyE, Animator animator,
-            BossMovementComponent bossMovementComponent,
-            WeaponManager weaponManager, ref BossWeaponComponent bossWeaponComponent) =>
+        Entities.WithoutBurst().ForEach((Entity enemyE, 
+            WeaponManager weaponManager, ref BossWeaponComponent bossWeaponComponent, in BossMovementComponent bossMovementComponent) =>
         {
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
             DynamicBuffer<BossAmmoListBuffer> ammoListBuffer = ammoList[enemyE];
@@ -42,11 +41,6 @@ public class EnemyAttackManagerSystem : SystemBase
 
             weaponManager.DetachPrimaryWeapon(); //need to add way to set to not picked up  afterwards
             weaponManager.primaryWeapon = weaponManager.weaponsList[weaponIndex];
-
-            //bossWeaponComponent.PrimaryAmmo = ammoListBuffer[ammoIndex].e;
-            //bossWeaponComponent.AmmoStartLocalToWorld = ammoListBuffer[ammoIndex].ammoStartLocalToWorld;
-            //bossWeaponComponent.AmmoStartPosition = ammoListBuffer[ammoIndex].ammoStartPosition;
-            //bossWeaponComponent.AmmoStartRotation = ammoListBuffer[ammoIndex].ammoStartRotation;
 
 
 

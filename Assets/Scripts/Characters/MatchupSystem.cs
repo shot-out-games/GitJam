@@ -16,7 +16,7 @@ public class MatchupSystem : SystemBase
 
     protected override void OnUpdate()
     {
-        var effectsGroup = GetComponentDataFromEntity<EffectsComponent>(false);
+        //var effectsGroup = GetComponentDataFromEntity<EffectsComponent>(false);
 
 
 

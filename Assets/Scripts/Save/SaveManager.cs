@@ -90,7 +90,7 @@ public class SaveManager : MonoBehaviour
     public SaveData LoadSaveData()
     {
         //int slot = saveWorld.lastLoadedSlot;
-        int slot = 0;
+        //int slot = 0;
         SaveData sd = new SaveData();
         //string path = Application.persistentDataPath + "/savedGames" + slot.ToString() + ".sog";
         string path = Application.persistentDataPath + "/savedGames" + ".sog";

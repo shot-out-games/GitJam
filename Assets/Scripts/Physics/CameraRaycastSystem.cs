@@ -1,15 +1,10 @@
-﻿using SandBox.Player;
-using TMPro;
-using Unity.Burst;
-using Unity.Collections;
+﻿using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Physics;
-using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
-using SphereCollider = Unity.Physics.SphereCollider;
 
 
 
@@ -46,61 +41,18 @@ public class CameraRaycastSystem : SystemBase
 
 
 
-        Entities.WithoutBurst().ForEach((Entity entity, CameraControlsComponent cameraControls) =>
+        Entities.WithoutBurst().ForEach((Entity entity, in CameraControlsComponent cameraControls) =>
         {
-
+            if (cameraControls.active == false) return;
             var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
             var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
             Translation translation = GetComponent<Translation>(entity);
-            var parentEntity = GetComponent<TriggerComponent>(entity).ParentEntity;
            
-
-
-            //float3 start = translation.Value;
-            //float3 direction = new float3(0, 0, 0);
-            //float distance = cameraControls.fov + 100;
-            //float3 end = start + direction * distance;
-
-
-
-            //PointDistanceInput pointDistanceInput = new PointDistanceInput
-            //{
-            //    Position = start,
-            //    MaxDistance = distance,
-            //    //Filter = CollisionFilter.Default
-            //    Filter = new CollisionFilter()
-            //    {
-            //        BelongsTo = (uint)CollisionLayer.Camera,
-            //        CollidesWith = (uint)CollisionLayer.Enemy,
-            //        GroupIndex = 0
-            //    }
-            //};
-
-
-
-            //bool hasPointHit = collisionWorld.CalculateDistance(pointDistanceInput, out DistanceHit pointHit);//bump left / right n/a
-
-
-            //Unity.Physics.RaycastHit hit = new Unity.Physics.RaycastHit();
-
-
-            //if (hasPointHit)
-            //{
-            //    Entity e = physicsWorldSystem.PhysicsWorld.Bodies[hit.RigidBodyIndex].Entity;
-
-            //    Debug.Log("hit cam " + hit.Position);
-
-
-            //}
-
-
-            //bool hasPointHit = collisionWorld.CalculateDistance(pointDistanceInput, out DistanceHit pointHit);//bump left / right n/a
-
 
 
             float3 start = translation.Value + new float3(0, 0, 0);
             float3 direction = new float3(0, 0, 1);
-            float distance = 100 + cameraControls.fov;
+            float distance = 100;
             float3 end = start + direction * distance;
 
 
@@ -124,7 +76,6 @@ public class CameraRaycastSystem : SystemBase
             if (hasPointHitForward)
             {
                 Entity e = physicsWorldSystem.PhysicsWorld.Bodies[hitForward.RigidBodyIndex].Entity;
-                Debug.Log("hit cam " + hitForward.Position);
 
             }
 

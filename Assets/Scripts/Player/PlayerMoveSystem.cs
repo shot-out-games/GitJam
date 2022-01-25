@@ -26,8 +26,8 @@ namespace SandBox.Player
 
         protected override void OnUpdate()
         {
-            bool rewindPressed = false;
-            float damage = 25;
+            //bool rewindPressed = false;
+            //float damage = 25;
             float stickSpeed = 0;
             Vector3 stickInput = Vector3.zero;
 

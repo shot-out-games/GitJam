@@ -36,6 +36,7 @@ public struct ActorWeaponAimComponent : IComponentData
     public bool cursorTargeting;
     public CameraTypes weaponCamera;
     public float3 aimDirection;
+    public float3 crosshairRaycastTarget;
 
 }
 
@@ -65,7 +66,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     float targetAimWeight;
     float startClampWeight;
     private float startLookWeight;
-    private float aimLerp = .03f;
+    //private float aimLerp = .03f;
     [HideInInspector]
     public Player player;
     [HideInInspector]
@@ -77,8 +78,8 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     public float cameraZ = 50f;
     public CameraTypes weaponCamera;
     [SerializeField] bool simController = false;
-    [SerializeField]
-    [Range(1.0f, 100.0f)] private float mouseSensitivity = 5;
+    //[SerializeField]
+    //[Range(1.0f, 100.0f)] private float mouseSensitivity = 5;
     [SerializeField]
     [Range(0.0f, 100.0f)] private float gamePadSensitivity = 5;
 
@@ -99,7 +100,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField]
     Vector3 targetPosition = Vector3.zero;
     Vector3 worldPosition = Vector3.zero;
-    public Vector3 closetEnemyWeaponTargetPosition;
+    public float3 closetEnemyWeaponTargetPosition;
     //Vector3 m_distanceFromCamera;
     //Plane m_Plane;
     void Start()
@@ -201,7 +202,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     public void LateUpdateSystem(WeaponMotion weaponMotion)
     {
 
-        if (target == null) return;
+        if (target == null || manager == null || e == Entity.Null) return;
         Crosshair();
         aimWeight = startAimWeight;
         clampWeight = startClampWeight;
@@ -217,29 +218,13 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (angle > (180 - clampWeight * 360) || weaponMotion == WeaponMotion.None)
         {
             targetAimWeight = 0;
-            //aimWeight = 0;
             clampWeight = 1;
             lookWeight = 0;
-            //return;
         }
 
         Vector3 aimTarget = crossHair.position;
 
-        //cameraZ = target.position.z - transform.position.z;//added but 
-        //aimTarget.z = cameraZ;
-        
-        //aimTarget = target.position;
-        //aimTarget.x = crossHair.position.x;
-        //aimTarget.y = crossHair.position.y;
-        //aimTarget.z = crossHair.position.z;
-        //aimDir = math.normalize(aimTarget - transform.position);
-        if(weaponCamera == CameraTypes.TopDown)
-        {
-            //aimTarget.y = aimTarget.y - testGunLocation.transform.position.y;
-        }
         aimDir = math.normalize(aimTarget - transform.position);
-        //aimDir = (aimTarget - transform.position);
-
 
         SetAim();
         SetIK();
@@ -282,13 +267,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             return hitpoint;
         }
 
-        ////plane = new Plane(transform.right, transform.right * cameraZ);
-        //if (plane.Raycast(r, out d))
-        //{
-        //    Vector3 v = r.GetPoint(d);
-        //    return v;
-        //}
-
+     
       
         throw new UnityException("Mouse position ray not intersecting launcher plane");
     }
@@ -297,6 +276,12 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     {
 
         if (cursorTargeting == false || crossHair == null) return;
+
+        var actorWeaponAimComponent = manager.GetComponentData<ActorWeaponAimComponent>(e);
+        float3 crosshairRaycastTarget = actorWeaponAimComponent.crosshairRaycastTarget;
+        //float3 crosshairRaycastTarget = closetEnemyWeaponTargetPosition;
+
+
 
         Controller controller = player.controllers.GetLastActiveController();
         if (controller == null && simController == false) return;
@@ -353,13 +338,11 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (weaponCamera == CameraTypes.ThirdPerson)
         {
             mousePosition.z = cameraZ;
-            //mousePosition.z = cam.nearClipPlane;
-            //mousePosition.z = target.position.z;
-            mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
-            worldPosition = cam.ScreenToWorldPoint(mousePosition);
-            //worldPosition.z = targetPosition.z;
+            //mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
+            mousePosition.z = crosshairRaycastTarget.z - cam.transform.position.z;
 
-            //worldPosition = GetMousePositionThirdPersonPlane();
+
+            worldPosition = cam.ScreenToWorldPoint(mousePosition);
             x = worldPosition.x;
             y = worldPosition.y;
             z = worldPosition.z;
@@ -378,7 +361,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             worldPosition = GetMousePositionTopDownPlane();
             x = worldPosition.x;
             //y = transform.position.y + topDownY;
-            y = closetEnemyWeaponTargetPosition.y + topDownY;
+            y = crosshairRaycastTarget.y + topDownY;
             //Debug.Log("y " + closetEnemyWeaponTargetPosition.y);
             z = worldPosition.z;
             

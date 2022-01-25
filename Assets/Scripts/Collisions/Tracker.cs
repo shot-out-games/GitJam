@@ -39,7 +39,8 @@ public enum TriggerType
     Platform = 21,
     Particle = 22,
     Breakable = 23,
-    Camera = 24
+    Camera = 24,
+    Crosshair = 25
 }
 
 

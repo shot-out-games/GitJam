@@ -59,7 +59,6 @@ public class InstructionsMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     private int currentInstructionCount = 1;
     private int totalInstructions = 0;
-    private bool instructionsComplete = false;
 
 
 
@@ -70,14 +69,9 @@ public class InstructionsMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         buttons = gameObject.GetComponentsInChildren<Button>().ToList();
-        //buttons.ForEach((btn) => btn.onClick.AddListener(() =>
-        // PlayMenuClickSound(clickSound)));//shortcut instead of using inspector to add to each button
         startShowTimer = false;
         startHideTimer = true;
 
-        //ShowCurrentInstruction(0);
-
-        //currentInstruction.canvasRenderer.SetAlpha(1);
 
     }
 
@@ -166,11 +160,6 @@ public class InstructionsMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     }
 
-    //void PlayMenuClickSound(AudioClip clip)
-    //{
-    // audioSource.PlayOneShot(clip);
-    //Debug.Log("clip " + clip);
-    //}
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {

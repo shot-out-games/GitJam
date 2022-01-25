@@ -195,7 +195,7 @@ public class PickupPowerUpRaycastSystem : SystemBase
 
     protected override void OnUpdate()
     {
-        bool pickedUp = false;
+        //bool pickedUp = false;
         Entity pickedUpActor = Entity.Null;
         var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
 

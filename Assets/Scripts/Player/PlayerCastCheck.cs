@@ -29,7 +29,7 @@ namespace SandBox.Player
         private Rigidbody rb;
 
         [SerializeField]
-        private float addedNegativeForce = -9.81f;
+        //private float addedNegativeForce = -9.81f;
 
 
         public float maxStepHeight = 0.4f;        // The maximum a player can set upwards in units when they hit a wall that's potentially a step
