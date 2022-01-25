@@ -26,10 +26,18 @@ public class ScoreSystem : SystemBase
         Entities.WithoutBurst().ForEach((ref ScoreComponent score, in ScoreComponentAuthoring scoreComponentAuthoring, in Entity e
 ) =>
             {
-                if (HasComponent<DamageComponent>(e) && HasComponent<PlayerComponent>(e))
+
+
+                if (HasComponent<PlayerComponent>(e))
                 {
-                    score.streak = 0;
-                    //Debug.Log("streak 0 damage");
+                    if (HasComponent<DamageComponent>(e))//should always be but leave anyway
+                    {
+                        var damage = damageGroup[e].DamageReceived;
+                        if (damage > .001)
+                        {
+                            score.streak = 0;
+                        }
+                    }
 
                 }
 

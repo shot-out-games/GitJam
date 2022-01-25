@@ -101,6 +101,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     Vector3 targetPosition = Vector3.zero;
     Vector3 worldPosition = Vector3.zero;
     public float3 closetEnemyWeaponTargetPosition;
+    public float3 crosshairRaycastTarget;
     //Vector3 m_distanceFromCamera;
     //Plane m_Plane;
     void Start()
@@ -203,6 +204,9 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     {
 
         if (target == null || manager == null || e == Entity.Null) return;
+        bool hasComponent = manager.HasComponent<ActorWeaponAimComponent>(e);
+        if (hasComponent == false) return;
+
         Crosshair();
         aimWeight = startAimWeight;
         clampWeight = startClampWeight;
@@ -244,7 +248,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         }
         else
         {
-            Vector3 v = Vector3.forward; 
+            Vector3 v = Vector3.forward;
             //Debug.Log("ray " + v);
             return v;
         }
@@ -267,8 +271,8 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             return hitpoint;
         }
 
-     
-      
+
+
         throw new UnityException("Mouse position ray not intersecting launcher plane");
     }
 
@@ -278,7 +282,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (cursorTargeting == false || crossHair == null) return;
 
         var actorWeaponAimComponent = manager.GetComponentData<ActorWeaponAimComponent>(e);
-        float3 crosshairRaycastTarget = actorWeaponAimComponent.crosshairRaycastTarget;
+        crosshairRaycastTarget = actorWeaponAimComponent.crosshairRaycastTarget;
         //float3 crosshairRaycastTarget = closetEnemyWeaponTargetPosition;
 
 
@@ -337,10 +341,9 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         }
         if (weaponCamera == CameraTypes.ThirdPerson)
         {
-            mousePosition.z = cameraZ;
+            //mousePosition.z = cameraZ;
             //mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
             mousePosition.z = crosshairRaycastTarget.z - cam.transform.position.z;
-
 
             worldPosition = cam.ScreenToWorldPoint(mousePosition);
             x = worldPosition.x;
@@ -364,7 +367,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             y = crosshairRaycastTarget.y + topDownY;
             //Debug.Log("y " + closetEnemyWeaponTargetPosition.y);
             z = worldPosition.z;
-            
+
 
 
             targetPosition = new Vector3(
@@ -395,9 +398,12 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (mousePosition.x > xMax) mousePosition.x = xMax;
         if (mousePosition.y < yMin) mousePosition.y = yMin;
         if (mousePosition.y > yMax) mousePosition.y = yMax;
-
-
-        crossHair.transform.position = targetPosition;
+        float3 xHairPosition = targetPosition;
+        //if (weaponCamera == CameraTypes.ThirdPerson)
+        //{
+          //  xHairPosition = new float3(targetPosition.x, targetPosition.y, cam.transform.position.z);
+        //}
+        crossHair.transform.position = xHairPosition;
         crosshairImage.transform.position = mousePosition;
 
 

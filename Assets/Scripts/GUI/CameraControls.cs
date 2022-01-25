@@ -96,6 +96,9 @@ public class CameraControls : MonoBehaviour, IConvertGameObjectToEntity
     public void ChangeFov(float _fov)
     {
         if (manager == null || e == Entity.Null) return;
+        bool hasComponent = manager.HasComponent<CameraControlsComponent>(e);
+        if (hasComponent == false) return;
+
 
         //fov = fov > maxFov ?  maxFov : fov;
         //fov = fov < minFov ?  minFov : fov;

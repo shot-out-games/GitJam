@@ -16,6 +16,8 @@ public class CrosshairComponentAuthoring : MonoBehaviour, IConvertGameObjectToEn
     void Update()
     {
         if (manager == null || e == Entity.Null) return;
+        bool hasComponent = manager.HasComponent<CrosshairComponent>(e);
+        if (hasComponent == false) return;
 
         var crosshairComponent = manager.GetComponentData<CrosshairComponent>(e);
         crosshairComponent.raycastDistance = raycastDistance;
