@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
+using RaycastHit = Unity.Physics.RaycastHit;
 
 
 
@@ -48,26 +49,34 @@ public class CrosshairRaycastSystem : SystemBase
 
         EntityQuery actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>());//player 0
         NativeArray<Entity> actorWeaponAimEntityList = actorWeaponAimQuery.ToEntityArray(Allocator.Temp);
-        
 
-        float fov = GetComponent<CameraControlsComponent>(cameraEntityList[0]).fov + 1;
+
+        float fov = GetComponent<CameraControlsComponent>(cameraEntityList[0]).fov + 0;
         Translation camTranslation = GetComponent<Translation>(cameraEntityList[0]);
         Translation playerTranslation = GetComponent<Translation>(actorWeaponAimEntityList[0]);
         //Debug.Log("cam trans " + camTranslation.Value);
+        //NativeList<Unity.Physics.RaycastHit> allHits = new NativeList<Unity.Physics.RaycastHit>(Allocator.Temp);
 
 
 
         Entities.WithoutBurst().ForEach((Entity entity, in CrosshairComponent crosshair) =>
         {
 
+
             var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
             var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
+            var actorEntity = actorWeaponAimEntityList[0];
+            var actorWeaponAim = GetComponent<ActorWeaponAimComponent>(actorEntity);
+
             float distance = crosshair.raycastDistance;
             Translation translation = GetComponent<Translation>(entity);
 
-            float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z);
+            //float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z + distance + fov);
+            float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, actorWeaponAim.crosshairRaycastTarget.z);
             //float3 start = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z);
-            float3 start = playerTranslation.Value;
+            //float3 start = playerTranslation.Value + new float3(0, 1, 0);
+            float3 start = actorWeaponAim.weaponLocation;
+
 
             //float3 direction = new float3(0, 0, 1);
             //if (camTranslation.Value.z < 0)
@@ -75,11 +84,17 @@ public class CrosshairRaycastSystem : SystemBase
 
             //}    
             //float3 direction = math.normalize(xHairPosition - start);
-            float3 direction = translation.Value - start;
+            //if (xHairPosition.z <= 0) xHairPosition.z = camTranslation.Value.z + distance;
+            float3 direction = xHairPosition - start;
 
             //float3 end = start + direction * distance;
-            float3 end = start + direction;
-            end.z = camTranslation.Value.z + distance;
+
+
+            //float3 end = start + direction * distance;
+            float3 end = start + direction * distance;
+            //end = actorWeaponAim.crosshairRaycastTarget;
+
+            //end.z = camTranslation.Value.z + distance;
 
             //PointDistanceInput pointDistanceInput = new PointDistanceInput
             //{
@@ -138,18 +153,27 @@ public class CrosshairRaycastSystem : SystemBase
             //Debug.Log("start " + (int)start.x + " " + (int)start.y + " " + (int)start.z);
             //Debug.Log("end " + end);
 
-            Unity.Physics.RaycastHit hitForward = new Unity.Physics.RaycastHit();
+            RaycastHit hitForward = new Unity.Physics.RaycastHit();
             Debug.DrawLine(start, end, Color.green, Time.DeltaTime);
 
             bool hasPointHitForward = collisionWorld.CastRay(inputForward, out hitForward);
-            var actorEntity = actorWeaponAimEntityList[0];
-            var actorWeaponAim = GetComponent<ActorWeaponAimComponent>(actorEntity);
-            actorWeaponAim.hitPointType = HitPointType.None;
-            
 
+
+            actorWeaponAim.hitPointType = HitPointType.None;
+
+            //bool hasHitPoints = collisionWorld.CastRay(inputForward, ref allHits);
+
+
+            //if (hasHitPoints)
             if (hasPointHitForward)
             {
+
+
+                //for (int i = 0; i < allHits.Length; i++)
+                //{
+                //RaycastHit hitForward = allHits[i];
                 Entity e = physicsWorldSystem.PhysicsWorld.Bodies[hitForward.RigidBodyIndex].Entity;
+
                 if (HasComponent<EnemyComponent>(e))
                 {
                     actorWeaponAim.crosshairRaycastTarget = hitForward.Position;
@@ -162,7 +186,17 @@ public class CrosshairRaycastSystem : SystemBase
                     actorWeaponAim.hitPointType = HitPointType.Breakable;
                     Debug.Log("hit breakable position ");
                 }
-               
+                else
+                {
+                    actorWeaponAim.crosshairRaycastTarget = hitForward.Position;
+                    //Debug.Log("hit something " + hitForward.Position);
+                }
+
+
+                //}
+
+
+
             }
 
             ecb.SetComponent(actorEntity, actorWeaponAim);

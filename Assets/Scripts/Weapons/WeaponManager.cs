@@ -99,7 +99,7 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
         if (primaryWeapon != null)
         {
             primaryAttached = false;
-            Debug.Log("pr det " + primaryWeapon.weaponGameObject);
+            //Debug.Log("pr det " + primaryWeapon.weaponGameObject);
             primaryWeapon.weaponGameObject.transform.SetParent(null);
             Destroy(primaryWeaponInstance);
         }

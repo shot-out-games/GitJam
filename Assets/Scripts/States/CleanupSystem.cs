@@ -35,7 +35,7 @@ public class CleanupSystem : SystemBase
             (Entity e, ref DamageComponent damageComponent) =>
             {
                 ecb.RemoveComponent<DamageComponent>(e);
-                Debug.Log("destroy damage component");
+                //Debug.Log("destroy damage component");
 
             }
         ).Run();
@@ -46,7 +46,7 @@ public class CleanupSystem : SystemBase
             (Entity e, ref CollisionComponent collisionComponent) =>
             {
                 ecb.RemoveComponent<CollisionComponent>(e);
-                Debug.Log("destroy collision from ch ef sys");
+                //Debug.Log("destroy collision from ch ef sys");
 
             }
         ).Run();
@@ -59,7 +59,7 @@ public class CleanupSystem : SystemBase
                 if (deadComponent.isDead)
                 {
                     ecb.RemoveComponent<DeadComponent>(e);
-                    Debug.Log("destroy DEAD COMPONENT");
+                    //Debug.Log("destroy DEAD COMPONENT");
                 }
 
             }

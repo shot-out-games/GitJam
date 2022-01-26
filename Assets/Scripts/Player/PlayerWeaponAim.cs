@@ -46,6 +46,7 @@ public struct ActorWeaponAimComponent : IComponentData
     public float3 aimDirection;
     public float3 crosshairRaycastTarget;
     public float3 closetEnemyWeaponTargetPosition;
+    public float3 weaponLocation;
 
 }
 
@@ -217,6 +218,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         var actorWeaponAimComponent = manager.GetComponentData<ActorWeaponAimComponent>(e);
         crosshairRaycastTarget = actorWeaponAimComponent.crosshairRaycastTarget;
         actorWeaponAimComponent.closetEnemyWeaponTargetPosition = closetEnemyWeaponTargetPosition;
+        actorWeaponAimComponent.weaponLocation = testGunLocation.position;
         manager.SetComponentData<ActorWeaponAimComponent>(e, actorWeaponAimComponent);
         //float3 crosshairRaycastTarget = closetEnemyWeaponTargetPosition;
 
@@ -279,11 +281,12 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             //Debug.Log("hit type " + actorWeaponAimComponent.hitPointType);
             //if (actorWeaponAimComponent.hitPointType == HitPointType.None)
             //{
-              //  mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
+            //mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
+            //mousePosition.z = transform.position.z + cam.fieldOfView;
             //}
             //else
             //{
-                mousePosition.z = crosshairRaycastTarget.z - cam.transform.position.z;
+            mousePosition.z = crosshairRaycastTarget.z - cam.transform.position.z;
             //}
 
             worldPosition = cam.ScreenToWorldPoint(mousePosition);
@@ -342,7 +345,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         float3 xHairPosition = targetPosition;
         //if (weaponCamera == CameraTypes.ThirdPerson)
         //{
-          //  xHairPosition = new float3(targetPosition.x, targetPosition.y, cam.transform.position.z);
+        //  xHairPosition = new float3(targetPosition.x, targetPosition.y, cam.transform.position.z);
         //}
         crossHair.transform.position = xHairPosition;
         crosshairImage.transform.position = mousePosition;
@@ -445,7 +448,12 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         manager = dstManager;
 
         dstManager.AddComponentData(entity,
-            new ActorWeaponAimComponent { weaponCamera = weaponCamera });
+            new ActorWeaponAimComponent
+            {
+                weaponCamera = weaponCamera,
+                crosshairRaycastTarget =
+            new float3 { x = transform.position.x, y = transform.position.y, z = transform.position.z + 200 }
+            });
     }
 }
 

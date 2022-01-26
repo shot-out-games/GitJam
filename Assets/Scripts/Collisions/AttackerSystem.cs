@@ -64,9 +64,9 @@ public class AttackerSystem : SystemBase
         ) =>
         {
 
-            Debug.Log("attacker 0");
+            //Debug.Log("attacker 0");
             if (dead.isDead == true) return;
-            Debug.Log("attacker 1");
+            //Debug.Log("attacker 1");
 
 
             int type_a = collisionComponent.Part_entity;
@@ -151,7 +151,7 @@ public class AttackerSystem : SystemBase
 
 
 
-            Debug.Log("ty b attacker " + type_b + " ty a attacker " + type_a);
+            //Debug.Log("ty b attacker " + type_b + " ty a attacker " + type_a);
 
             if (type_b == (int)TriggerType.Ammo && HasComponent<TriggerComponent>(collision_entity_a)
                                                 && HasComponent<TriggerComponent>(collision_entity_b)) //b is ammo so causes damage to entity
