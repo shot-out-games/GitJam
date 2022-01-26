@@ -356,7 +356,7 @@ public class CharacterDamageEffectsSystem : SystemBase
                             if (effects.actorEffect[effectsIndex].psInstance)
                             {
                                 effects.actorEffect[effectsIndex].psInstance.Play(true);
-                                Debug.Log("ps dam " + effects.actorEffect[effectsIndex].psInstance);
+                                //Debug.Log("ps dam " + effects.actorEffect[effectsIndex].psInstance);
                             }
                             if (effects.actorEffect[effectsIndex].clip)
                             {

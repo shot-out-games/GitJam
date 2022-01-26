@@ -9,8 +9,10 @@ using UnityEngine;
 
 
 
-[UpdateAfter(typeof(Unity.Physics.Systems.EndFramePhysicsSystem))]
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//[UpdateAfter(typeof(Unity.Physics.Systems.EndFramePhysicsSystem))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+[UpdateInGroup(typeof(TransformSystemGroup))]
+
 
 
 
@@ -44,11 +46,13 @@ public class CrosshairRaycastSystem : SystemBase
         EntityQuery cameraQuery = GetEntityQuery(ComponentType.ReadOnly<CameraControlsComponent>());
         NativeArray<Entity> cameraEntityList = cameraQuery.ToEntityArray(Allocator.Temp);
 
-        EntityQuery actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>());
+        EntityQuery actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>());//player 0
         NativeArray<Entity> actorWeaponAimEntityList = actorWeaponAimQuery.ToEntityArray(Allocator.Temp);
+        
 
         float fov = GetComponent<CameraControlsComponent>(cameraEntityList[0]).fov + 1;
         Translation camTranslation = GetComponent<Translation>(cameraEntityList[0]);
+        Translation playerTranslation = GetComponent<Translation>(actorWeaponAimEntityList[0]);
         //Debug.Log("cam trans " + camTranslation.Value);
 
 
@@ -58,17 +62,24 @@ public class CrosshairRaycastSystem : SystemBase
 
             var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
             var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
+            float distance = crosshair.raycastDistance;
             Translation translation = GetComponent<Translation>(entity);
 
+            float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z);
+            //float3 start = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z);
+            float3 start = playerTranslation.Value;
 
-            float3 start = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z);
-            float3 direction = new float3(0, 0, 1);
+            //float3 direction = new float3(0, 0, 1);
             //if (camTranslation.Value.z < 0)
             //{
 
             //}    
-            float distance = crosshair.raycastDistance;
-            float3 end = start + direction * distance;
+            //float3 direction = math.normalize(xHairPosition - start);
+            float3 direction = translation.Value - start;
+
+            //float3 end = start + direction * distance;
+            float3 end = start + direction;
+            end.z = camTranslation.Value.z + distance;
 
             //PointDistanceInput pointDistanceInput = new PointDistanceInput
             //{
@@ -124,18 +135,17 @@ public class CrosshairRaycastSystem : SystemBase
                 }
             };
 
-            Debug.Log("start " + (int)start.z);
-            Debug.Log("end " + (int)end.z);
+            //Debug.Log("start " + (int)start.x + " " + (int)start.y + " " + (int)start.z);
+            //Debug.Log("end " + end);
 
             Unity.Physics.RaycastHit hitForward = new Unity.Physics.RaycastHit();
-            Debug.DrawRay(start, direction, Color.green, distance);
+            Debug.DrawLine(start, end, Color.green, Time.DeltaTime);
 
             bool hasPointHitForward = collisionWorld.CastRay(inputForward, out hitForward);
             var actorEntity = actorWeaponAimEntityList[0];
             var actorWeaponAim = GetComponent<ActorWeaponAimComponent>(actorEntity);
-            //actorWeaponAim.crosshairRaycastTarget = end;
-            //actorWeaponAim.crosshairRaycastTarget.z = -fov + distance;
-
+            actorWeaponAim.hitPointType = HitPointType.None;
+            
 
             if (hasPointHitForward)
             {
@@ -143,17 +153,19 @@ public class CrosshairRaycastSystem : SystemBase
                 if (HasComponent<EnemyComponent>(e))
                 {
                     actorWeaponAim.crosshairRaycastTarget = hitForward.Position;
+                    actorWeaponAim.hitPointType = HitPointType.Enemy;
                     Debug.Log("hit enemy position ");
                 }
-                if (HasComponent<BreakableComponent>(e))
+                else if (HasComponent<BreakableComponent>(e))
                 {
                     actorWeaponAim.crosshairRaycastTarget = hitForward.Position;
+                    actorWeaponAim.hitPointType = HitPointType.Breakable;
                     Debug.Log("hit breakable position ");
                 }
-
+               
             }
 
-            SetComponent(actorEntity, actorWeaponAim);
+            ecb.SetComponent(actorEntity, actorWeaponAim);
 
 
 

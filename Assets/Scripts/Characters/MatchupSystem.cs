@@ -7,6 +7,9 @@ using Unity.Mathematics;
 using Unity.Collections;
 using Unity.Transforms;
 
+[UpdateAfter(typeof(Unity.Physics.Systems.EndFramePhysicsSystem))]
+[UpdateBefore(typeof(CrosshairRaycastSystem))]
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
 public class MatchupSystem : SystemBase
 {
