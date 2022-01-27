@@ -47,7 +47,9 @@ public struct ActorWeaponAimComponent : IComponentData
     public float3 crosshairRaycastTarget;
     public float3 closetEnemyWeaponTargetPosition;
     public float3 weaponLocation;
-
+    public float3 screenPosition;
+    public float3 mousePosition;
+    public float3 worldPosition;
 }
 
 public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
@@ -219,7 +221,6 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         crosshairRaycastTarget = actorWeaponAimComponent.crosshairRaycastTarget;
         actorWeaponAimComponent.closetEnemyWeaponTargetPosition = closetEnemyWeaponTargetPosition;
         actorWeaponAimComponent.weaponLocation = testGunLocation.position;
-        manager.SetComponentData<ActorWeaponAimComponent>(e, actorWeaponAimComponent);
         //float3 crosshairRaycastTarget = closetEnemyWeaponTargetPosition;
 
 
@@ -332,7 +333,6 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
 
 
 
-
             mousePosition = cam.WorldToScreenPoint(targetPosition);
         }
 
@@ -349,6 +349,12 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         //}
         crossHair.transform.position = xHairPosition;
         crosshairImage.transform.position = mousePosition;
+
+        actorWeaponAimComponent.screenPosition = cam.WorldToScreenPoint(transform.position);
+        actorWeaponAimComponent.mousePosition = mousePosition;
+        actorWeaponAimComponent.worldPosition = worldPosition;
+        manager.SetComponentData<ActorWeaponAimComponent>(e, actorWeaponAimComponent);
+
 
 
     }

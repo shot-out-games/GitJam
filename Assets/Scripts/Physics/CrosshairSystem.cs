@@ -71,11 +71,13 @@ public class CrosshairRaycastSystem : SystemBase
             float distance = crosshair.raycastDistance;
             Translation translation = GetComponent<Translation>(entity);
 
-            //float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z + distance + fov);
-            float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, actorWeaponAim.crosshairRaycastTarget.z);
-            //float3 start = new float3(translation.Value.x, translation.Value.y, camTranslation.Value.z);
-            //float3 start = playerTranslation.Value + new float3(0, 1, 0);
+
+            //float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, actorWeaponAim.crosshairRaycastTarget.z);
+            float3 xHairPosition = actorWeaponAim.worldPosition;
+            xHairPosition = new float3(translation.Value.x, translation.Value.y, actorWeaponAim.crosshairRaycastTarget.z);
+
             float3 start = actorWeaponAim.weaponLocation;
+            start = new float3(translation.Value.x, translation.Value.y, playerTranslation.Value.z);
 
 
             //float3 direction = new float3(0, 0, 1);
@@ -85,12 +87,14 @@ public class CrosshairRaycastSystem : SystemBase
             //}    
             //float3 direction = math.normalize(xHairPosition - start);
             //if (xHairPosition.z <= 0) xHairPosition.z = camTranslation.Value.z + distance;
-            float3 direction = xHairPosition - start;
+            float3 direction = math.normalize(xHairPosition - start);
 
             //float3 end = start + direction * distance;
             //Debug.Log("dir " + direction);
 
             //float3 end = start + direction * distance;
+            //distance = 1;
+            if (actorWeaponAim.mousePosition.y < actorWeaponAim.screenPosition.y) distance = -distance;
             float3 end = start + direction * distance;
             //end = actorWeaponAim.crosshairRaycastTarget;
 
@@ -167,20 +171,20 @@ public class CrosshairRaycastSystem : SystemBase
             if (hasHitPoints)
             //if (hasPointHitForward)
             {
-                Debug.Log("hits " + allHits.Length);
 
                 int closest = 0; ;
-                double hi = -1;
+                double hi = 1;
                 for (int i = 0; i < allHits.Length; i++)
                 {
                     RaycastHit hitList = allHits[i];
 
-                    if (hitList.Fraction > hi)
+                    if (hitList.Fraction < hi)
                     {
                         closest = i;
                         hi = hitList.Fraction;
                     }
                 }
+                //Debug.Log("closest " + closest);
                 RaycastHit hitForward = allHits[closest];
                 Entity e = physicsWorldSystem.PhysicsWorld.Bodies[hitForward.RigidBodyIndex].Entity;
 

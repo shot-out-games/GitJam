@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomize: 0
   AmmoTime: 0
-  Strength: 40
+  Strength: 100
   Damage: 5
   Rate: 0.25
   ChargeRequired: 0
