@@ -353,6 +353,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         actorWeaponAimComponent.screenPosition = cam.WorldToScreenPoint(transform.position);
         actorWeaponAimComponent.mousePosition = mousePosition;
         actorWeaponAimComponent.worldPosition = worldPosition;
+        actorWeaponAimComponent.weaponCamera = weaponCamera;
         manager.SetComponentData<ActorWeaponAimComponent>(e, actorWeaponAimComponent);
 
 
