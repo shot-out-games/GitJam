@@ -107,10 +107,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectIndex: 0
-  deathBlowEffectsIndex: 1
-  ammoTime: 5
-  comboTimeAdd: 6
-  framesToSkip: 1
+  deathBlowEffectsIndex: 0
+  ammoTime: 0
+  comboTimeAdd: 1
+  framesToSkip: 2
 --- !u!114 &8439595339403142612
 MonoBehaviour:
   m_ObjectHideFlags: 0
