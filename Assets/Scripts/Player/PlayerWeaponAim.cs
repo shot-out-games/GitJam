@@ -234,7 +234,6 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         Controller controller = player.controllers.GetLastActiveController();
         if (controller == null && simController == false) return;
         float x, y, z;
-        int forward = 1;
 
         bool gamePad = false;
         if (controller != null)
@@ -285,35 +284,8 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         }
         if (weaponCamera == CameraTypes.ThirdPerson)
         {
-            //Debug.Log("hit type " + actorWeaponAimComponent.hitPointType);
             float3 screenPosition = cam.WorldToScreenPoint(transform.position);
-
-            if (mousePosition.y < screenPosition.y)
-            {
-                //mousePosition.z = -mousePosition.z;
-            }
-            if (transform.forward.z < 0)
-            {
-                forward = -1;
-            }
-
-
-
-            if (actorWeaponAimComponent.hitPointType == HitPointType.None)
-            {
-                //mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
-                mousePosition.z = actorWeaponAimComponent.crosshairRaycastTarget.z - cam.transform.position.z;
-                //mousePosition.z = cam.fieldOfView + cameraZ;
-            }
-            else
-            {
-                //mousePosition.z = crosshairRaycastTarget.z - cam.transform.position.z;
-                //mousePosition.z = actorWeaponAimComponent.raycastTargetHitDistanceZfromCamera;
-            }
-
-            //mousePosition.z *= forward;
-            //worldPosition.x *= forward;
-
+            mousePosition.z = actorWeaponAimComponent.crosshairRaycastTarget.z - cam.transform.position.z;
             worldPosition = cam.ScreenToWorldPoint(mousePosition);
             x = worldPosition.x;
             y = worldPosition.y;
@@ -332,9 +304,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             mousePosition.z = cameraZ;
             worldPosition = GetMousePositionTopDownPlane();
             x = worldPosition.x;
-            //y = transform.position.y + topDownY;
             y = crosshairRaycastTarget.y + topDownY;
-            //Debug.Log("y " + closetEnemyWeaponTargetPosition.y);
             z = worldPosition.z;
 
 
@@ -366,21 +336,14 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (mousePosition.x > xMax) mousePosition.x = xMax;
         if (mousePosition.y < yMin) mousePosition.y = yMin;
         if (mousePosition.y > yMax) mousePosition.y = yMax;
-        float3 xHairPosition = targetPosition;
-        //if (weaponCamera == CameraTypes.ThirdPerson)
-        //{
-        //  xHairPosition = new float3(targetPosition.x, targetPosition.y, cam.transform.position.z);
-        //}
-        crossHair.transform.position = xHairPosition;
+        crossHair.transform.position = new float3(targetPosition.x, targetPosition.y, 0);
         crosshairImage.transform.position = mousePosition;
-
-        //actorWeaponAimComponent.screenPosition = cam.WorldToScreenPoint(transform.position);
         actorWeaponAimComponent.mousePosition = mousePosition;
         actorWeaponAimComponent.worldPosition = worldPosition;
         actorWeaponAimComponent.weaponCamera = weaponCamera;
-        actorWeaponAimComponent.rayCastStart = testGunLocation.position;
-        //actorWeaponAimComponent.rayCastEnd = actorWeaponAimComponent.aimDirection * 200;
-        actorWeaponAimComponent.rayCastEnd = actorWeaponAimComponent.aimDirection * 100;
+        actorWeaponAimComponent.rayCastStart = crossHair.position;
+        actorWeaponAimComponent.rayCastEnd = crossHair.position;
+        actorWeaponAimComponent.rayCastEnd.z += 200;
 
         manager.SetComponentData<ActorWeaponAimComponent>(e, actorWeaponAimComponent);
 
@@ -415,7 +378,8 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             lookWeight = 0;
         }
 
-        Vector3 aimTarget = crossHair.position;
+        //Vector3 aimTarget = crossHair.position;
+        Vector3 aimTarget = targetPosition;
 
         //aimDir = math.normalize(aimTarget - transform.position);
         aimDir = math.normalize(aimTarget - testGunLocation.position);
@@ -488,7 +452,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             {
                 weaponCamera = weaponCamera,
                 crosshairRaycastTarget =
-            new float3 { x = transform.position.x, y = transform.position.y, z = transform.position.z + 200 }
+            new float3 { x = transform.position.x, y = transform.position.y, z = transform.position.z }
             });
     }
 }

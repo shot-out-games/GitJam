@@ -6,11 +6,15 @@ using UnityEngine;
 public struct CrosshairComponent : IComponentData
 {
     public float raycastDistance;
+    public float targetDelayFrames;
+    public float targetDelayCounter;
 }
 
 public class CrosshairComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 {
     public float raycastDistance = 140;
+    public float targetDelayFrames = 60;
+
     EntityManager manager;
     Entity e;
     void Update()
@@ -29,7 +33,7 @@ public class CrosshairComponentAuthoring : MonoBehaviour, IConvertGameObjectToEn
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        dstManager.AddComponentData<CrosshairComponent>(entity, new CrosshairComponent {raycastDistance = raycastDistance });
+        dstManager.AddComponentData<CrosshairComponent>(entity, new CrosshairComponent {raycastDistance = raycastDistance, targetDelayFrames = targetDelayFrames });
         manager = dstManager;
         e = entity;
     }
