@@ -233,9 +233,9 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
 
         Controller controller = player.controllers.GetLastActiveController();
         if (controller == null && simController == false) return;
-        float x = 0;
-        float y = 0;
-        float z = 0;
+        float x, y, z;
+        int forward = 1;
+
         bool gamePad = false;
         if (controller != null)
         {
@@ -286,25 +286,33 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (weaponCamera == CameraTypes.ThirdPerson)
         {
             //Debug.Log("hit type " + actorWeaponAimComponent.hitPointType);
-            if (actorWeaponAimComponent.hitPointType == HitPointType.None)
-            {
-                //mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
-                //mousePosition.z = transform.position.z + cam.fieldOfView;
-                mousePosition.z = transform.position.z + cam.fieldOfView;
-                mousePosition.z = cam.fieldOfView + cameraZ;
-            }
-            else
-            {
-                //mousePosition.z = crosshairRaycastTarget.z - cam.transform.position.z;
-                mousePosition.z = actorWeaponAimComponent.raycastTargetHitDistanceZfromCamera;
-            }
             float3 screenPosition = cam.WorldToScreenPoint(transform.position);
-
 
             if (mousePosition.y < screenPosition.y)
             {
                 //mousePosition.z = -mousePosition.z;
             }
+            if (transform.forward.z < 0)
+            {
+                forward = -1;
+            }
+
+
+
+            if (actorWeaponAimComponent.hitPointType == HitPointType.None)
+            {
+                //mousePosition.z = closetEnemyWeaponTargetPosition.z - cam.transform.position.z;
+                mousePosition.z = actorWeaponAimComponent.crosshairRaycastTarget.z - cam.transform.position.z;
+                //mousePosition.z = cam.fieldOfView + cameraZ;
+            }
+            else
+            {
+                //mousePosition.z = crosshairRaycastTarget.z - cam.transform.position.z;
+                //mousePosition.z = actorWeaponAimComponent.raycastTargetHitDistanceZfromCamera;
+            }
+
+            //mousePosition.z *= forward;
+            //worldPosition.x *= forward;
 
             worldPosition = cam.ScreenToWorldPoint(mousePosition);
             x = worldPosition.x;
@@ -372,7 +380,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         actorWeaponAimComponent.weaponCamera = weaponCamera;
         actorWeaponAimComponent.rayCastStart = testGunLocation.position;
         //actorWeaponAimComponent.rayCastEnd = actorWeaponAimComponent.aimDirection * 200;
-        actorWeaponAimComponent.rayCastEnd = actorWeaponAimComponent.aimDirection * 200;
+        actorWeaponAimComponent.rayCastEnd = actorWeaponAimComponent.aimDirection * 100;
 
         manager.SetComponentData<ActorWeaponAimComponent>(e, actorWeaponAimComponent);
 

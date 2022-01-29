@@ -72,6 +72,7 @@ public class CrosshairRaycastSystem : SystemBase
             Translation translation = GetComponent<Translation>(entity);
 
             actorWeaponAim.closetEnemyWeaponTargetPosition = new float3(0, 0, distance);
+            //actorWeaponAim.crosshairRaycastTarget = new float3(0, 0, distance);
 
             //float3 xHairPosition = actorWeaponAim.worldPosition;
             float3 xHairPosition = new float3(translation.Value.x, translation.Value.y + 0f, actorWeaponAim.crosshairRaycastTarget.z);
@@ -150,21 +151,23 @@ public class CrosshairRaycastSystem : SystemBase
 
                 if (HasComponent<EnemyComponent>(e))
                 {
-                    //actorWeaponAim.crosshairRaycastTarget = hitForward.Position;
-                    actorWeaponAim.raycastTargetHitDistanceZfromCamera = hitForward.Position.z - camTranslation.Value.z;
-                    actorWeaponAim.hitPointType = HitPointType.Enemy;
-                    Debug.Log("hit enemy position ");
+                    actorWeaponAim.crosshairRaycastTarget.z = hitForward.Position.z;
+                    //actorWeaponAim.raycastTargetHitDistanceZfromCamera = hitForward.Position.z - camTranslation.Value.z;
+                    //actorWeaponAim.hitPointType = HitPointType.Enemy;
+                    Debug.Log("hit enemy position " + hitForward.Position.z);
                 }
                 else if (HasComponent<BreakableComponent>(e))
                 {
+                    actorWeaponAim.crosshairRaycastTarget.z = hitForward.Position.z;
                     //actorWeaponAim.crosshairRaycastTarget = hitForward.Position;
-                    actorWeaponAim.raycastTargetHitDistanceZfromCamera = hitForward.Position.z - camTranslation.Value.z;
-                    actorWeaponAim.hitPointType = HitPointType.Breakable;
+                    //actorWeaponAim.raycastTargetHitDistanceZfromCamera = hitForward.Position.z - camTranslation.Value.z;
+                    //actorWeaponAim.hitPointType = HitPointType.Breakable;
                     Debug.Log("hit breakable position ");
                 }
                 else if (HasComponent<TriggerComponent>(e))
                 {
                     //actorWeaponAim.crosshairRaycastTarget = hitForward.Position;
+                    actorWeaponAim.crosshairRaycastTarget.z = hitForward.Position.z;
                     //actorWeaponAim.raycastTargetHitDistanceZfromCamera = hitForward.Position.z - camTranslation.Value.z;
                     Debug.Log("hit something ");
                 }
@@ -176,7 +179,7 @@ public class CrosshairRaycastSystem : SystemBase
 
             }
 
-            ecb.SetComponent(actorEntity, actorWeaponAim);
+            SetComponent(actorEntity, actorWeaponAim);
 
 
 
