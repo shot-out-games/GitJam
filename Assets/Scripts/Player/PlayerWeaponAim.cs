@@ -122,6 +122,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     public float3 crosshairRaycastTarget;
     //Vector3 m_distanceFromCamera;
     //Plane m_Plane;
+    
     void Start()
     {
         if (!ReInput.isReady) return;
@@ -135,7 +136,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         cam = Camera.main;
         //m_distanceFromCamera = new Vector3(cam.transform.position.x, cam.transform.position.y, cam.transform.position.z + cameraZ);
         //m_Plane = new Plane(Vector3.forward, m_distanceFromCamera);
-
+    
         startAimWeight = aimWeight;
         startClampWeight = clampWeight;
         startLookWeight = lookWeight;
@@ -319,9 +320,9 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
             {
                 targetPosition = new Vector3
                 (
-                    x = worldPosition.x,
-                    y = worldPosition.y,
-                    z = worldPosition.z
+                    _ = worldPosition.x,
+                    _ = worldPosition.y,
+                    _ = worldPosition.z
                     );
             }
 
@@ -336,14 +337,19 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (mousePosition.x > xMax) mousePosition.x = xMax;
         if (mousePosition.y < yMin) mousePosition.y = yMin;
         if (mousePosition.y > yMax) mousePosition.y = yMax;
-        crossHair.transform.position = new float3(targetPosition.x, targetPosition.y, 0);
+        crossHair.transform.position =
+            new float3(targetPosition.x, targetPosition.y, transform.position.z - 80);
         crosshairImage.transform.position = mousePosition;
         actorWeaponAimComponent.mousePosition = mousePosition;
         actorWeaponAimComponent.worldPosition = worldPosition;
         actorWeaponAimComponent.weaponCamera = weaponCamera;
-        actorWeaponAimComponent.rayCastStart = crossHair.position;
-        actorWeaponAimComponent.rayCastEnd = crossHair.position;
-        actorWeaponAimComponent.rayCastEnd.z += 200;
+
+
+        float3 start = cam.ScreenToWorldPoint(new float3(mousePosition.x, mousePosition.y, 0));
+        float3 end = cam.ScreenToWorldPoint(new float3(mousePosition.x, mousePosition.y, 100));
+        actorWeaponAimComponent.rayCastStart = start;
+        actorWeaponAimComponent.rayCastEnd = end;
+       // actorWeaponAimComponent.rayCastEnd.z += 10000;
 
         manager.SetComponentData<ActorWeaponAimComponent>(e, actorWeaponAimComponent);
 
