@@ -56,8 +56,8 @@ namespace SandBox.Player
         [HideInInspector]
         public Camera mainCam;
 
-        public float startSpeed = 4f;
-        public float currentSpeed = 4f;
+        float startSpeed = 4f;
+        float currentSpeed = 4f;
         private EntityManager _entityManager;
         private Entity _entity;
 

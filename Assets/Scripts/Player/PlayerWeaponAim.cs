@@ -120,6 +120,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     Vector3 worldPosition = Vector3.zero;
     public float3 closetEnemyWeaponTargetPosition;
     public float3 crosshairRaycastTarget;
+    public float targetRange = 100;
     //Vector3 m_distanceFromCamera;
     //Plane m_Plane;
     
@@ -318,17 +319,17 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
 
             if (gamePad == true)
             {
-                targetPosition = new Vector3
-                (
-                    _ = worldPosition.x,
-                    _ = worldPosition.y,
-                    _ = worldPosition.z
-                    );
+                //targetPosition = new Vector3
+                //(
+                //    _ = worldPosition.x,
+                //    _ = worldPosition.y,
+                //    _ = worldPosition.z
+                //    );
             }
 
 
 
-            mousePosition = cam.WorldToScreenPoint(targetPosition);
+            //mousePosition = cam.WorldToScreenPoint(targetPosition);
         }
 
 
@@ -346,7 +347,10 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
 
 
         float3 start = cam.ScreenToWorldPoint(new float3(mousePosition.x, mousePosition.y, 0));
-        float3 end = cam.ScreenToWorldPoint(new float3(mousePosition.x, mousePosition.y, 100));
+        float3 end = cam.ScreenToWorldPoint(new float3(mousePosition.x, mousePosition.y, targetRange));
+
+
+
         actorWeaponAimComponent.rayCastStart = start;
         actorWeaponAimComponent.rayCastEnd = end;
        // actorWeaponAimComponent.rayCastEnd.z += 10000;

@@ -122,16 +122,29 @@ public class CrosshairRaycastSystem : SystemBase
                 if (HasComponent<EnemyComponent>(e))
                 {
                     actorWeaponAim.crosshairRaycastTarget.z = hitForward.Position.z;
+                    if (actorWeaponAim.weaponCamera == CameraTypes.TopDown)
+                    {
+                        actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                    }
+
                     Debug.Log("hit enemy position ");
                 }
                 else if (HasComponent<BreakableComponent>(e))
                 {
                     actorWeaponAim.crosshairRaycastTarget.z = hitForward.Position.z;
+                    if (actorWeaponAim.weaponCamera == CameraTypes.TopDown)
+                    {
+                        actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                    }
                     Debug.Log("hit breakable position ");
                 }
                 else if (HasComponent<TriggerComponent>(e))
                 {
                     actorWeaponAim.crosshairRaycastTarget.z = hitForward.Position.z;
+                    if (actorWeaponAim.weaponCamera == CameraTypes.TopDown)
+                    {
+                        actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
+                    }
                     Debug.Log("hit something ");
                 }
 
