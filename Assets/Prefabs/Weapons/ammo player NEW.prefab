@@ -106,7 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectIndex: 1
   deathBlowEffectsIndex: 0
-  ammoTime: 0.5
+  ammoTime: 2
   comboTimeAdd: 6
   framesToSkip: 1
 --- !u!114 &8439595339403142612
