@@ -32,13 +32,14 @@ public class AmmoSystem : SystemBase
 
         var scoreGroup = GetComponentDataFromEntity<ScoreComponent>(false);
 
-        
+
         //var triggerGroup = GetComponentDataFromEntity<TriggerComponent>(false);
         EntityQuery triggerQuery = GetEntityQuery(ComponentType.ReadOnly<TriggerComponent>(),
             ComponentType.ReadOnly<AmmoComponent>());
         NativeArray<Entity> triggerEntities = triggerQuery.ToEntityArray(Allocator.Persistent);
         NativeArray<TriggerComponent> triggerGroup = triggerQuery.ToComponentDataArray<TriggerComponent>(Allocator.Persistent);
         NativeArray<AmmoComponent> ammoGroup = triggerQuery.ToComponentDataArray<AmmoComponent>(Allocator.Persistent);
+
 
 
         Entities.WithoutBurst().WithAny<EnemyComponent>().ForEach((ref DefensiveStrategyComponent defensiveStrategy, in Translation enemyTranslation) =>

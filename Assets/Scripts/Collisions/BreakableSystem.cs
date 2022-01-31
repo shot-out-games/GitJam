@@ -12,7 +12,7 @@ using Unity.Physics.Systems;
 //[UpdateBefore(typeof(AttackerSystem))]
 
 
-public class BreakableSystem : SystemBase
+public class BreakableDamageSystem : SystemBase
 {
 
     protected override void OnUpdate()
@@ -57,6 +57,7 @@ public class BreakableSystem : SystemBase
 
 
                 var breakableComponent = GetComponent<BreakableComponent>(collision_entity_a);
+
 
                 float damage = 0;
                 int effectsIndex = 0;

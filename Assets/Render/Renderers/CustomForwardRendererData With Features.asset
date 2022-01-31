@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c59ec77be13762f44bce6155cc493e75, type: 3}
   m_Name: Outline Custom Render Pass
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   passSettings:
     passTag: CustomRenderPassFeature
     Event: 300

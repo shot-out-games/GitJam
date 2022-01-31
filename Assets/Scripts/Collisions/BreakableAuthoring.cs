@@ -16,6 +16,8 @@ public struct BreakableComponent : IComponentData
     public int frameSkipCounter;
     public int damageEffectsIndex;
     public int deathBlowEffectsIndex;
+    public float gravityFactorAfterBreaking;
+    public int groupIndex;
 
 
 }
@@ -28,6 +30,10 @@ public class BreakableAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public float framesToSkip = 30;//timer instead?
     public int damageEffectsIndex;
     public int deathBlowEffectsIndex;
+    public float gravityFactorAfterBreaking = 1;
+    public int groupIndex = 1;
+
+
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
@@ -35,7 +41,9 @@ public class BreakableAuthoring : MonoBehaviour, IConvertGameObjectToEntity
        // Debug.Log("break " + entity);
         BreakableComponent breakable = new BreakableComponent
         {
-            damageAmount = damageAmount, framesToSkip = framesToSkip, damageEffectsIndex = damageEffectsIndex, deathBlowEffectsIndex = deathBlowEffectsIndex
+            damageAmount = damageAmount, framesToSkip = framesToSkip, damageEffectsIndex = damageEffectsIndex, deathBlowEffectsIndex = deathBlowEffectsIndex, gravityFactorAfterBreaking = gravityFactorAfterBreaking,
+            groupIndex = groupIndex
+            
         };
 
         dstManager.AddComponentData(entity, breakable);

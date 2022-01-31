@@ -2,13 +2,21 @@ fileFormatVersion: 2
 guid: 184d20fd60522974fab26486f21a6bf2
 ModelImporter:
   serializedVersion: 21202
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -135952331956449747
+    second: Main
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material_1
-    second: {fileID: 2100000, guid: 03ddc7e460b33402eb7640fab3881ac9, type: 2}
+      name: bricks
+    second: {fileID: 2100000, guid: 8064540fef1afaf42b22e17c048ae432, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: copper
+    second: {fileID: 2100000, guid: b57115907b7ae014088f022ca91c6970, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
