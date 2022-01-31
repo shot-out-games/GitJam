@@ -15,7 +15,7 @@ C:/Unity3D/GitJam
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-49515
+59725
 Successfully changed project path to: C:/Unity3D/GitJam
 C:/Unity3D/GitJam
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ C:/Unity3D/GitJam
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 234.59 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 291.37 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.7f1 (6bd9e232123f)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Resources/UnitySubsystems
@@ -63,90 +63,90 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56904
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56676
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.7f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.004626 seconds.
+Registered in 0.014160 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 189.87 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 288.53 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.728 seconds
+- Completed reload, in  0.852 seconds
 Domain Reload Profiling:
-	ReloadAssembly (729ms)
-		BeginReloadAssembly (77ms)
+	ReloadAssembly (852ms)
+		BeginReloadAssembly (80ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (582ms)
-			LoadAssemblies (74ms)
+		EndReloadAssembly (671ms)
+			LoadAssemblies (77ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (123ms)
+			SetupTypeCache (83ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (27ms)
-			SetupLoadedEditorAssemblies (373ms)
+			RebuildScriptCaches (19ms)
+			SetupLoadedEditorAssemblies (519ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (16ms)
+				InitializePlatformSupportModulesInManaged (12ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (190ms)
+				RefreshPlugins (289ms)
 				BeforeProcessingInitializeOnLoad (1ms)
-				ProcessInitializeOnLoadAttributes (116ms)
-				ProcessInitializeOnLoadMethodAttributes (50ms)
+				ProcessInitializeOnLoadAttributes (168ms)
+				ProcessInitializeOnLoadMethodAttributes (48ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.017506 seconds.
+Registered in 0.016879 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image C:\Unity3D\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image C:\Unity3D\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 172.81 ms, found 7 plugins.
+Refreshing native plugins compatible for Editor in 309.21 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-TypeManager.Initialize took: 239ms
+TypeManager.Initialize took: 271ms
 Mono: successfully reloaded assembly
-- Completed reload, in  3.091 seconds
+- Completed reload, in  3.713 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3091ms)
-		BeginReloadAssembly (96ms)
+	ReloadAssembly (3714ms)
+		BeginReloadAssembly (89ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (21ms)
-		EndReloadAssembly (2887ms)
-			LoadAssemblies (99ms)
+			CreateAndSetChildDomain (18ms)
+		EndReloadAssembly (3503ms)
+			LoadAssemblies (96ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (466ms)
+			SetupTypeCache (458ms)
 			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (139ms)
-			SetupLoadedEditorAssemblies (2127ms)
+			RebuildScriptCaches (114ms)
+			SetupLoadedEditorAssemblies (2754ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (12ms)
+				InitializePlatformSupportModulesInManaged (13ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (173ms)
-				BeforeProcessingInitializeOnLoad (183ms)
-				ProcessInitializeOnLoadAttributes (1674ms)
-				ProcessInitializeOnLoadMethodAttributes (78ms)
-				AfterProcessingInitializeOnLoad (6ms)
+				RefreshPlugins (309ms)
+				BeforeProcessingInitializeOnLoad (196ms)
+				ProcessInitializeOnLoadAttributes (2128ms)
+				ProcessInitializeOnLoadMethodAttributes (97ms)
+				AfterProcessingInitializeOnLoad (10ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (4ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
-Refreshing native plugins compatible for Editor in 2.52 ms, found 7 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 3.28 ms, found 7 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 8989 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 369 unused Assets / (4.1 MB). Loaded Objects now: 9405.
-Memory consumption went from 360.3 MB to 356.2 MB.
-Total: 7.666500 ms (FindLiveObjects: 0.936500 ms CreateObjectMapping: 0.789600 ms MarkObjects: 4.485900 ms  DeleteObjects: 1.453200 ms)
+Unloading 369 unused Assets / (3.5 MB). Loaded Objects now: 9406.
+Memory consumption went from 370.8 MB to 367.4 MB.
+Total: 9.355000 ms (FindLiveObjects: 0.948800 ms CreateObjectMapping: 0.797000 ms MarkObjects: 6.476500 ms  DeleteObjects: 1.131400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:DOTSType/UnityEngine.EventSystems.EventSystem: 2c81b6c3f3277fcd2c81b6c3f3277fcd -> 
@@ -2888,10 +2888,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 676798.360581 seconds.
-  path: Assets/Powers/EnergyBall_FBX/EnergyBall_FBX.FBX
-  artifactKey: Guid(264e2f074d56bcb4eac21d75f23a5045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Powers/EnergyBall_FBX/EnergyBall_FBX.FBX using Guid(264e2f074d56bcb4eac21d75f23a5045) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Attempting to get Camera relative temporary RenderTexture (width || height <= 0) via a CommandBuffer  in a Sriptable Render Pipeline.
+  Time since last request: 696974.888143 seconds.
+  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Meshes_M/Buildings_M/lighthouse.fbx
+  artifactKey: Guid(1d96f2105c9944752a7deef88f8a8b09) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Meshes_M/Buildings_M/lighthouse.fbx using Guid(1d96f2105c9944752a7deef88f8a8b09) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Attempting to get Camera relative temporary RenderTexture (width || height <= 0) via a CommandBuffer  in a Sriptable Render Pipeline.
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.Rendering.ScriptableRenderContext:ExecuteCommandBuffer_Internal (UnityEngine.Rendering.CommandBuffer)
 UnityEngine.Rendering.ScriptableRenderContext:ExecuteCommandBuffer (UnityEngine.Rendering.CommandBuffer)
@@ -2946,134 +2946,4 @@ UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityE
 
 [C:\buildslave\unity\build\Runtime\Graphics\RenderBufferManager.cpp line 180]
 
- -> (artifact id: '568ef8c77e41b5920e85397fef0af904') in 0.304170 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000203 seconds.
-  path: Assets/Plugins/RootMotion/Shared Demo Assets/Characters/Pilot/Pilot.FBX
-  artifactKey: Guid(7a2e6c216d01d1649b50691291befc2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/RootMotion/Shared Demo Assets/Characters/Pilot/Pilot.FBX using Guid(7a2e6c216d01d1649b50691291befc2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bef3e131420dade3f708bd0b395fe9f4') in 0.090114 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000143 seconds.
-  path: Assets/Plugins/RootMotion/Shared Demo Assets/Characters/Angry Bots Generic/Mech Bot Idle.FBX
-  artifactKey: Guid(a051f9ee8d34e4038b0539c5ab5f6e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/RootMotion/Shared Demo Assets/Characters/Angry Bots Generic/Mech Bot Idle.FBX using Guid(a051f9ee8d34e4038b0539c5ab5f6e43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23c1b21ef4ed7c2f9c3c4b08d61e0202') in 0.167557 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000145 seconds.
-  path: Assets/Ventuar/RPGWeaponsPack - DEMO/FileAssets/Models/MetalBroadsword.fbx
-  artifactKey: Guid(b1fe2464c22dc994ca6fd84e711e5fa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ventuar/RPGWeaponsPack - DEMO/FileAssets/Models/MetalBroadsword.fbx using Guid(b1fe2464c22dc994ca6fd84e711e5fa2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8938e47d1d0c6c6da92bde784a88cbde') in 0.028207 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000156 seconds.
-  path: Assets/Animations/Pro Sword and Shield Pack/Ch09_nonPBR.fbx
-  artifactKey: Guid(aff7ad71c8014bb48b1c93777cda9d43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Pro Sword and Shield Pack/Ch09_nonPBR.fbx using Guid(aff7ad71c8014bb48b1c93777cda9d43) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91c7851cbedf8c68e5d751322eff49d9') in 0.127509 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000132 seconds.
-  path: Assets/Epic Toon FX/Models/ETFX_CirclePlaneHalf.FBX
-  artifactKey: Guid(8e620388dfe970e4882c798a0b3849dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Epic Toon FX/Models/ETFX_CirclePlaneHalf.FBX using Guid(8e620388dfe970e4882c798a0b3849dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9de17fdfe0790305d860263a125b6df5') in 0.030585 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000161 seconds.
-  path: Assets/Ventuar/RPGWeaponsPack - DEMO/FileAssets/Models/MetalBattleaxe.fbx
-  artifactKey: Guid(1e7ab3302be4c59499bd1659ccd73b35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Ventuar/RPGWeaponsPack - DEMO/FileAssets/Models/MetalBattleaxe.fbx using Guid(1e7ab3302be4c59499bd1659ccd73b35) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f80a2e79a41568e25534a764ae53a70') in 0.024040 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000188 seconds.
-  path: Assets/Plugins/RootMotion/Shared Demo Assets/Characters/Angry Bots Generic/Mine Bot Walk Forward.FBX
-  artifactKey: Guid(e8b07d5cd888746fd8a00b1cc40c5cdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/RootMotion/Shared Demo Assets/Characters/Angry Bots Generic/Mine Bot Walk Forward.FBX using Guid(e8b07d5cd888746fd8a00b1cc40c5cdb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5ca28503d170b9cabe70f8e3eabeef0') in 0.108806 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000164 seconds.
-  path: Assets/Characters/Frankie 2021/frankie_skinned.fbx
-  artifactKey: Guid(f2e71b4dc7e1e6142ae4bdf5ea37c81c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Frankie 2021/frankie_skinned.fbx using Guid(f2e71b4dc7e1e6142ae4bdf5ea37c81c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7517642c197ee144b8d1e14c17cf2181') in 0.297970 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000177 seconds.
-  path: Assets/Animations/Pro Longbow Pack/Ch09_nonPBR.fbx
-  artifactKey: Guid(8624bf2b61e3902489ae97ff81ecf053) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Pro Longbow Pack/Ch09_nonPBR.fbx using Guid(8624bf2b61e3902489ae97ff81ecf053) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '490d761a105066d65ac40b5aadf014e1') in 0.080777 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000137 seconds.
-  path: Assets/Animations/Misc/Run_0.fbx
-  artifactKey: Guid(b6cfa4daae630804587ebdffbc496b36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Misc/Run_0.fbx using Guid(b6cfa4daae630804587ebdffbc496b36) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8db10bf00a442d60387fd78142b865a8') in 0.128398 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000140 seconds.
-  path: Assets/Epic Toon FX/Models/aura_inward.FBX
-  artifactKey: Guid(910606942ccdb814c90b90013b553ffa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Epic Toon FX/Models/aura_inward.FBX using Guid(910606942ccdb814c90b90013b553ffa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e14f27cb8b24742bc0f272dbe18ce992') in 0.021303 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000158 seconds.
-  path: Assets/Misc/prefabs/rounded rect.fbx
-  artifactKey: Guid(09243705f18da8d4b8f692b21325cae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Misc/prefabs/rounded rect.fbx using Guid(09243705f18da8d4b8f692b21325cae0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56fd07b05c1e3b7d8438361aa9fd3ca7') in 0.030846 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000128 seconds.
-  path: Assets/Animations/Misc/Run_Back_180 gen.fbx
-  artifactKey: Guid(1d311297010fd254e9a226d85ef5d9a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Misc/Run_Back_180 gen.fbx using Guid(1d311297010fd254e9a226d85ef5d9a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '922ce988deae38964b9eb2858ff968d6') in 0.113493 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000119 seconds.
-  path: Assets/Animations/Misc/Run_0 Generic.fbx
-  artifactKey: Guid(7d7679251e04b26438ec354834f25d2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Misc/Run_0 Generic.fbx using Guid(7d7679251e04b26438ec354834f25d2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f589974704e2f36da630f7f14b3c5ef2') in 0.128226 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/Levels/houdini level.fbx
-  artifactKey: Guid(7127086e1b2de014c8a82e518c28d43c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Levels/houdini level.fbx using Guid(7127086e1b2de014c8a82e518c28d43c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '02e33f1b309db6b0c7c7d3035dd1b848') in 0.042294 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000120 seconds.
-  path: Assets/Animations/Pro Melee Axe Pack/Ch09_nonPBR.fbx
-  artifactKey: Guid(2bc2a9e43b505c64baf88b9acd4f2b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Pro Melee Axe Pack/Ch09_nonPBR.fbx using Guid(2bc2a9e43b505c64baf88b9acd4f2b4a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d35b4eb10507339404036f9f54dc70f') in 0.082893 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000152 seconds.
-  path: Assets/Misc/breakable animation.fbx
-  artifactKey: Guid(5560d6d4f3e19a3479f45f1892350b45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Misc/breakable animation.fbx using Guid(5560d6d4f3e19a3479f45f1892350b45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4db6a173d754139522351116e9a6aafd') in 0.652721 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000184 seconds.
-  path: Assets/Animations/Misc/LilRobot root.FBX
-  artifactKey: Guid(17de07728fe795d44ab0bb202b9a470b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Animations/Misc/LilRobot root.FBX using Guid(17de07728fe795d44ab0bb202b9a470b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7a9a15ca65ac41b063903a855507885') in 0.084544 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000126 seconds.
-  path: Assets/Epic Toon FX/Models/ETFX_CirclePlane2.FBX
-  artifactKey: Guid(a98fc6255fba6aa4f9629b8b2fe76a25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Epic Toon FX/Models/ETFX_CirclePlane2.FBX using Guid(a98fc6255fba6aa4f9629b8b2fe76a25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '294fd4ed7ce8d513cc1f930ac5424027') in 0.035104 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000121 seconds.
-  path: Assets/Plugins/RootMotion/FinalIK/_DEMOS/Assets/Mech Spider/MechSpider.FBX
-  artifactKey: Guid(82208e5c7c5f0435f95611cf7eb61237) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Plugins/RootMotion/FinalIK/_DEMOS/Assets/Mech Spider/MechSpider.FBX using Guid(82208e5c7c5f0435f95611cf7eb61237) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fbc9a93d8ebd05a19833dfac11b5859c') in 0.215262 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.000141 seconds.
-  path: Assets/Misc/Characters/kid.fbx
-  artifactKey: Guid(aa57ee436eeb52348904ab888b820528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Misc/Characters/kid.fbx using Guid(aa57ee436eeb52348904ab888b820528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '226c461292c3ee10bbf13efc249eee2d') in 0.073945 seconds 
-Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
-AssetImportWorker is now disconnected from the server
-Process exiting
-Exiting without the bug reporter. Application will terminate with return code 0
+ -> (artifact id: '7aa4d50668b9be7968e0998be23317c3') in 0.282379 seconds 
