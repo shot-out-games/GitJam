@@ -18,6 +18,7 @@ public struct BreakableComponent : IComponentData
     public int deathBlowEffectsIndex;
     public float gravityFactorAfterBreaking;
     public int groupIndex;
+    public bool broken;
 
 
 }

@@ -21,7 +21,7 @@ public class BreakableDamageSystem : SystemBase
 
 
 
-        
+
 
         Entities.WithoutBurst().ForEach(
         (
