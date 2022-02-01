@@ -391,6 +391,7 @@ public class CharacterDamageEffectsSystem : SystemBase
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(HealthSystem))]
 
+
 public class CharacterDeadEffectsSystem : SystemBase
 {
 
@@ -481,6 +482,115 @@ public class CharacterDeadEffectsSystem : SystemBase
 
 
     
+
+
+        m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
+
+
+
+
+    }
+
+
+
+
+}
+
+[UpdateAfter(typeof(BreakableCollisionHandlerSystem))]
+
+public class BreakableEffectsSystem : SystemBase
+{
+
+    EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
+
+    //private float timer;
+
+    protected override void OnCreate()
+    {
+        base.OnCreate();
+        // Find the ECB system once and store it for later usage
+        m_EndSimulationEcbSystem = World
+            .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+    }
+
+    protected override void OnUpdate()
+    {
+        //timer += Time.DeltaTime;
+
+        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+
+
+
+
+
+
+        Entities.WithoutBurst().ForEach(
+            (
+                Light light
+                //Entity e,
+                //ref BrokenEffectComponent brokenEffectComponent,
+                //ref EffectsComponent effectsComponent,
+                //in Animator animator,
+                //in EffectsManager effects
+                ) =>
+            {
+
+                Debug.Log("light " + light.intensity);
+
+                //AudioSource audioSource = effects.audioSource;
+
+
+                //int state = animator.GetInteger("Dead");
+
+                //if (deadComponent.isDead && deadComponent.playDeadEffects)//can probably just use playEffectType in effectsComponent TO DO
+                //{
+                //    deadComponent.playDeadEffects = false;
+                //    bool isEnemy = HasComponent<EnemyComponent>(e);
+                //    bool isPlayer = HasComponent<PlayerComponent>(e);
+                //    if (isPlayer) animator.SetInteger("Dead", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more DEAD animations
+                //    if (isEnemy) animator.SetInteger("Dead", 2);
+                //    //animator.SetInteger("HitReact", 0);
+                //    //deadComponent.playDeadEffects = false;
+                //    int effectsIndex = deadComponent.effectsIndex;
+                //    //Debug.Log("eff ind play " + effectsIndex);
+
+                //    if (effects.actorEffect != null)
+                //    {
+
+                //        if (effects.actorEffect[effectsIndex].psInstance)//tryinmg to match index to effect type - 1 is dead
+                //        {
+                //            if (effects.actorEffect[effectsIndex].psInstance.isPlaying == false)
+                //            {
+                //                effects.actorEffect[effectsIndex].psInstance.Play(true);
+                //                Debug.Log("ps dead " + effects.actorEffect[effectsIndex].psInstance);
+                //                if (effects.actorEffect[effectsIndex].clip)
+                //                {
+                //                    //effectsComponent.startEffectSound = false;
+                //                    audioSource.clip = effects.actorEffect[effectsIndex].clip;
+                //                    if (!audioSource.isPlaying)
+                //                    {
+                //                        audioSource.PlayOneShot(audioSource.clip, .5f);
+                //                        Debug.Log("play audio dead " + audioSource.clip);
+                //                    }
+                //                }
+
+                //            }
+                //            else if (effectsComponent.playEffectAllowed == false)
+                //            {
+                //                effects.actorEffect[effectsIndex].psInstance.Stop(true);
+
+                //            }
+                //        }
+                //    }
+
+
+                //}
+
+            }
+        ).Run();
+
+
+
 
 
         m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);

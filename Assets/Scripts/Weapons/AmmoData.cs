@@ -16,6 +16,7 @@ public struct AmmoDataComponent : IComponentData
     public float GameRate;
     public bool ChargeRequired;
     public bool SpawnVisualEffect;
+    public Entity Shooter;
 
 }
 [System.Serializable]

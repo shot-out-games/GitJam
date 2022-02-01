@@ -10,6 +10,10 @@ public struct BrokenComponent : IComponentData
 {
     public bool Value;
 }
+public struct BrokenEffectComponent : IComponentData
+{
+    public bool Value;
+}
 
 public class BreakableCollisionSystem : SystemBase
 {
@@ -51,11 +55,12 @@ public class BreakableCollisionSystem : SystemBase
             breakableGroup = GetComponentDataFromEntity<BreakableComponent>(false),
             ammoGroup = GetComponentDataFromEntity<AmmoDataComponent>(true),
             gravityGroup = GetComponentDataFromEntity<PhysicsGravityFactor>(false)
+            //triggerGroup = GetComponentDataFromEntity<TriggerComponent>(true)
             //breakableGroupIndex = BreakableGroupIndex
         };
         JobHandle collisionHandle = collisionJob.Schedule(stepPhysicsWorld.Simulation, ref physicsWorld, inputDeps);
         collisionHandle.Complete();
-
+        
 
     } 
 
@@ -64,6 +69,7 @@ public class BreakableCollisionSystem : SystemBase
     {
         [ReadOnly] public PhysicsWorld physicsWorld;
         [ReadOnly] public ComponentDataFromEntity<AmmoDataComponent> ammoGroup;
+        //[ReadOnly] public ComponentDataFromEntity<TriggerComponent> triggerGroup;
         public ComponentDataFromEntity<BreakableComponent> breakableGroup;
         public ComponentDataFromEntity<PhysicsGravityFactor> gravityGroup;
         //public NativeArray<int> breakableGroupIndex;
@@ -83,29 +89,43 @@ public class BreakableCollisionSystem : SystemBase
 
                 Debug.Log("collide a ");
                 var breakable = breakableGroup[a];
-                var gravity = gravityGroup[a];
-                gravity.Value = breakable.gravityFactorAfterBreaking;
-                ecb.SetComponent<PhysicsGravityFactor>(a, gravity);
-                breakable.broken = true;
-                ecb.SetComponent<BreakableComponent>(a, breakable);
-                ecb.AddComponent<BrokenComponent>(a);
+                if (breakable.broken == false)
+                {
+                    var shooter = ammoGroup[b].Shooter;
+
+                    var gravity = gravityGroup[a];
+                    gravity.Value = breakable.gravityFactorAfterBreaking;
+                    ecb.SetComponent<PhysicsGravityFactor>(a, gravity);
+                    breakable.broken = true;
+                    breakable.playEffect = true;
+                    //if (triggerGroup.HasComponent(b))
+                    //{
+                    //  var breakerEntity = triggerGroup[b].ParentEntity;
+
+                    breakable.breakerEntity = shooter;
+                    Debug.Log("breaker " + shooter);
+                    //}
+                    ecb.SetComponent<BreakableComponent>(a, breakable);
+                    ecb.AddComponent<BrokenComponent>(a);
+                }
             }
             else if (ammoGroup.HasComponent(a) == true && gravityGroup.HasComponent(b) && breakableGroup.HasComponent(b))
             {
 
-                Debug.Log("collide b ");
-                var breakable = breakableGroup[b];
-                var gravity = gravityGroup[b];
-                gravity.Value = breakable.gravityFactorAfterBreaking;
-                ecb.SetComponent<PhysicsGravityFactor>(b, gravity);
-                breakable.broken = true;
-                ecb.SetComponent<BreakableComponent>(b, breakable);
-                ecb.AddComponent<BrokenComponent>(b);
+                    Debug.Log("collide b ");
+            //    var breakable = breakableGroup[b];
+            //    var gravity = gravityGroup[b];
+            //    gravity.Value = breakable.gravityFactorAfterBreaking;
+            //    ecb.SetComponent<PhysicsGravityFactor>(b, gravity);
+            //    breakable.broken = true;
+            //    ecb.SetComponent<BreakableComponent>(b, breakable);
+            //    ecb.AddComponent<BrokenComponent>(b);
             }
 
 
-
         }
+
+        
 
 
 
@@ -129,14 +149,14 @@ public class BreakableCollisionHandlerSystem : SystemBase
 
     protected override void OnUpdate()
     {
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.TempJob);
 
         //var breakableGroup = GetComponentDataFromEntity<BreakableComponent>(false);
         EntityQuery breakablesQuery = GetEntityQuery(ComponentType.ReadOnly<BreakableComponent>());
         NativeArray<Entity> breakableEntities = breakablesQuery.ToEntityArray(Allocator.TempJob);
 
 
-        Entities.WithoutBurst().ForEach((Entity e, ref BrokenComponent brokenComponent) =>
+        JobHandle inputDeps = Entities.ForEach((Entity e, ref BrokenComponent brokenComponent) =>
         {
             if (HasComponent<BreakableComponent>(e))
             {
@@ -150,7 +170,9 @@ public class BreakableCollisionHandlerSystem : SystemBase
                         var gravity = GetComponent<PhysicsGravityFactor>(breakableEntity);
                         gravity.Value = breakableComponent.gravityFactorAfterBreaking;
                         ecb.SetComponent(breakableEntity, gravity);
-                        Debug.Log("break " + brokenGroupIndex);
+                        breakableComponent.broken = true;
+                        ecb.SetComponent(breakableEntity, breakableComponent);
+                        //Debug.Log("break " + brokenGroupIndex);
                     }
                 }
                 ecb.RemoveComponent<BrokenComponent>(e);
@@ -158,8 +180,8 @@ public class BreakableCollisionHandlerSystem : SystemBase
             }
 
         }
-        ).Run();
-
+        ).Schedule(this.Dependency);
+        inputDeps.Complete();
 
         ecb.Playback(EntityManager);
         ecb.Dispose();

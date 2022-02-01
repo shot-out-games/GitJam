@@ -118,6 +118,9 @@ public class WeaponAmmoHandlerSystem : SystemBase
                     bulletManagerComponent.playSound = true;
                     bulletManagerComponent.setAnimationLayer = true;
 
+                    ammoDataComponent.Shooter = entity;
+                    commandBuffer.SetComponent(entityInQueryIndex, e, ammoDataComponent);
+
                     commandBuffer.SetComponent(entityInQueryIndex, e, new TriggerComponent
                     { Type = (int)TriggerType.Ammo, ParentEntity = entity, Entity = e, Active = true });
                     commandBuffer.SetComponent(entityInQueryIndex, e, translation);

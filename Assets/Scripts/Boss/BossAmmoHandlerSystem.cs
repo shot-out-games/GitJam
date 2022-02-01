@@ -102,6 +102,10 @@ public class BossAmmoHandlerSystem : SystemBase
 
                     bulletManagerComponent.playSound = true;
 
+                    ammoDataComponent.Shooter = entity;
+                    commandBuffer.SetComponent(e, ammoDataComponent);
+
+
                     commandBuffer.SetComponent(e, new TriggerComponent
                     { Type = (int)TriggerType.Ammo, ParentEntity = entity, Entity = e, Active = true });
                     commandBuffer.SetComponent(e, translation);
