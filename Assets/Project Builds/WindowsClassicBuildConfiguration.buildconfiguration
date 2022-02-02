@@ -13,15 +13,7 @@
             "BuildCurrentScene": false,
             "SceneInfos": [
                 {
-                    "Scene": "GlobalObjectId_V1-1-8013fa1940157f14a963197c3e864770-102900000-0",
-                    "AutoLoad": false
-                },
-                {
-                    "Scene": "GlobalObjectId_V1-1-31560a9a98037f94480603de93249260-102900000-0",
-                    "AutoLoad": false
-                },
-                {
-                    "Scene": "GlobalObjectId_V1-1-4226e77067807c342840ad0a3dcb8d60-102900000-0",
+                    "Scene": "GlobalObjectId_V1-1-5333f125a38aaf84bbba17c94fa4b906-102900000-0",
                     "AutoLoad": false
                 }
             ]
@@ -30,7 +22,7 @@
             "$type": "Unity.Build.Classic.ClassicBuildProfile, Unity.Build.Classic",
             "$version": 1,
             "Platform": "win",
-            "Configuration": 3
+            "Configuration": 1
         }
     ]
 }

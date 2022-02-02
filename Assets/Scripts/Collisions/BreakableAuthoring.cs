@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Unity.Entities;
+using Unity.Transforms;
+using Unity.Mathematics;
 
 public struct BreakableComponent : IComponentData
 {
@@ -22,6 +24,8 @@ public struct BreakableComponent : IComponentData
     public bool playEffect;
     public int effectIndex;
     public Entity breakerEntity;
+    public Translation parentTranslation;
+    public Entity parentEntity;
 
 
 }
@@ -36,6 +40,7 @@ public class BreakableAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public float gravityFactorAfterBreaking = 1;
     public int groupIndex = 1;
     public int effectIndex = 0;
+    public Transform parent;
 
 
 
@@ -47,12 +52,19 @@ public class BreakableAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         //conversionSystem.AddHybridComponent(audioSource);
         //conversionSystem.AddHybridComponent(this);
 
-
         BreakableComponent breakable = new BreakableComponent
         {
-            damageAmount = damageAmount, framesToSkip = framesToSkip, damageEffectsIndex = damageEffectsIndex, deathBlowEffectsIndex = deathBlowEffectsIndex, gravityFactorAfterBreaking = gravityFactorAfterBreaking,
-            groupIndex = groupIndex, effectIndex = effectIndex
-            
+            damageAmount = damageAmount,
+            framesToSkip = framesToSkip,
+            damageEffectsIndex = damageEffectsIndex,
+            deathBlowEffectsIndex = deathBlowEffectsIndex,
+            gravityFactorAfterBreaking = gravityFactorAfterBreaking,
+            groupIndex = groupIndex,
+            effectIndex = effectIndex,
+            parentTranslation = new Translation { Value = new float3(transform.position.x, transform.position.x, transform.position.z) },
+            parentEntity = conversionSystem.GetPrimaryEntity(parent.gameObject)
+
+
         };
 
         dstManager.AddComponentData(entity, breakable);
