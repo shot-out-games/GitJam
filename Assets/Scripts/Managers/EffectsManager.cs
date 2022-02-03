@@ -35,10 +35,10 @@ public class EffectsManager : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < actorEffect.Count; i++)
         {
             if (actorEffect[i] == null) continue;
-            var ps = Instantiate(actorEffect[i].psPrefab);
+            var ps = Instantiate(actorEffect[i].psPrefab, transform);
             //Debug.Log("ps " + ps);
-            ps.transform.parent = transform;
-            ps.transform.localPosition = new Vector3(0, ps.transform.localPosition.y, 0);
+            //ps.transform.parent = transform;
+            //ps.transform.localPosition = new Vector3(0, ps.transform.localPosition.y, 0);
             actorEffect[i].psInstance = ps;
         }
 

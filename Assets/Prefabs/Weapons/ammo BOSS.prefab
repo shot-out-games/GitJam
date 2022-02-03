@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectIndex: 0
   deathBlowEffectsIndex: 0
-  ammoTime: 0
+  ammoTime: 5
   comboTimeAdd: 1
   framesToSkip: 2
 --- !u!114 &8439595339403142612
@@ -346,9 +346,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomize: 0
   AmmoTime: 0
-  Strength: 25
-  Damage: 25
-  Rate: 5
+  Strength: 50
+  Damage: 10
+  Rate: 1
   ChargeRequired: 0
   SpawnVisualEffect: 0
 --- !u!114 &1954111914317370910

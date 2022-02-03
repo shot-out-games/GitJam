@@ -5,6 +5,7 @@ using Unity.Jobs;
 using UnityEngine;
 using Unity.Physics;
 using UnityEngine.AI;
+using Unity.Collections;
 
 public enum EffectType
 {
@@ -22,6 +23,14 @@ public class EffectClass
     public ParticleSystem psPrefab;
     public ParticleSystem psInstance;
     public AudioClip clip;
+}
+
+public struct PlayAndDestroyEffectComponent : IComponentData
+{
+    public int effectIndex;
+    public bool play;
+
+
 }
 
 
@@ -501,7 +510,7 @@ public class CharacterDeadEffectsSystem : SystemBase
 public class BreakableEffectsSystem : SystemBase
 {
 
-    EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
+    //EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
 
     //private float timer;
 
@@ -509,16 +518,17 @@ public class BreakableEffectsSystem : SystemBase
     {
         base.OnCreate();
         // Find the ECB system once and store it for later usage
-        m_EndSimulationEcbSystem = World
-            .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        //  m_EndSimulationEcbSystem = World
+        //    .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
     protected override void OnUpdate()
     {
         //timer += Time.DeltaTime;
 
-        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
 
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
 
 
@@ -526,74 +536,58 @@ public class BreakableEffectsSystem : SystemBase
 
         Entities.WithoutBurst().ForEach(
             (
-                Light light
-                //Entity e,
-                //ref BrokenEffectComponent brokenEffectComponent,
-                //ref EffectsComponent effectsComponent,
-                //in Animator animator,
-                //in EffectsManager effects
+                Entity e,
+                ref PlayAndDestroyEffectComponent playAndDestroyEffect,
+                in ParentAuthoring effects
                 ) =>
             {
 
-                Debug.Log("light " + light.intensity);
 
-                //AudioSource audioSource = effects.audioSource;
+                AudioSource audioSource = effects.audioSource;
+                int effectsIndex = playAndDestroyEffect.effectIndex;
+                Debug.Log("e index " + effectsIndex);
+                if (effects.parentEffect != null && effects.parentEffect.Count > 0)
+                {
 
+                    if (effects.parentEffect[effectsIndex].psInstance)//tryinmg to match index to effect type - 1 is dead
+                    {
+                        if (effects.parentEffect[effectsIndex].psInstance.isPlaying == false)
+                        {
+                            effects.parentEffect[effectsIndex].psInstance.Play(true);
+                            Debug.Log("ps breakable " + effects.parentEffect[effectsIndex].psInstance);
+                            if (effects.parentEffect[effectsIndex].clip)
+                            {
+                                //effectsComponent.startEffectSound = false;
+                                audioSource.clip = effects.parentEffect[effectsIndex].clip;
+                                if (!audioSource.isPlaying)
+                                {
+                                    audioSource.PlayOneShot(audioSource.clip, 1.0f);
+                                    Debug.Log("play audio breakable " + audioSource.clip);
+                                }
+                            }
 
-                //int state = animator.GetInteger("Dead");
-
-                //if (deadComponent.isDead && deadComponent.playDeadEffects)//can probably just use playEffectType in effectsComponent TO DO
-                //{
-                //    deadComponent.playDeadEffects = false;
-                //    bool isEnemy = HasComponent<EnemyComponent>(e);
-                //    bool isPlayer = HasComponent<PlayerComponent>(e);
-                //    if (isPlayer) animator.SetInteger("Dead", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more DEAD animations
-                //    if (isEnemy) animator.SetInteger("Dead", 2);
-                //    //animator.SetInteger("HitReact", 0);
-                //    //deadComponent.playDeadEffects = false;
-                //    int effectsIndex = deadComponent.effectsIndex;
-                //    //Debug.Log("eff ind play " + effectsIndex);
-
-                //    if (effects.actorEffect != null)
-                //    {
-
-                //        if (effects.actorEffect[effectsIndex].psInstance)//tryinmg to match index to effect type - 1 is dead
-                //        {
-                //            if (effects.actorEffect[effectsIndex].psInstance.isPlaying == false)
-                //            {
-                //                effects.actorEffect[effectsIndex].psInstance.Play(true);
-                //                Debug.Log("ps dead " + effects.actorEffect[effectsIndex].psInstance);
-                //                if (effects.actorEffect[effectsIndex].clip)
-                //                {
-                //                    //effectsComponent.startEffectSound = false;
-                //                    audioSource.clip = effects.actorEffect[effectsIndex].clip;
-                //                    if (!audioSource.isPlaying)
-                //                    {
-                //                        audioSource.PlayOneShot(audioSource.clip, .5f);
-                //                        Debug.Log("play audio dead " + audioSource.clip);
-                //                    }
-                //                }
-
-                //            }
-                //            else if (effectsComponent.playEffectAllowed == false)
-                //            {
-                //                effects.actorEffect[effectsIndex].psInstance.Stop(true);
-
-                //            }
-                //        }
-                //    }
+                        }
+                        else
+                        {
+                            effects.parentEffect[effectsIndex].psInstance.Stop(true);
+                            ecb.RemoveComponent<PlayAndDestroyEffectComponent>(e);
+                        }
+                    }
+                }
+              
 
 
-                //}
 
             }
         ).Run();
 
 
+        ecb.Playback(EntityManager);
+        ecb.Dispose();
 
 
 
-        m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
+        //m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
 
 
 
