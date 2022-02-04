@@ -15,14 +15,17 @@ public struct PlayerJumpComponent : IComponentData
 {
     public float startJumpGravityForce;
     public float gameStartJumpGravityForce;
-    public float jumpFramesToPeak;
+    //public float jumpFramesToPeak;
+    public float heightOneFrames;
+    public float heightTwoTime;
+    public float heightThreeTime;
     public float addedNegativeForce;
     public float jumpDownGravityMultiplier;
     public float jumpY;
     public float airForce;
     public int jumpPoints;
     public JumpStages JumpStage;
-    public float hiJumpMultiplier;
+    //public float hiJumpMultiplier;
     public bool disabled;
 }
 
@@ -55,12 +58,14 @@ namespace SandBox.Player
         [HideInInspector]
         [SerializeField] private bool disabled = false;
 
-        public float jumpFramesToPeak = 5;
+        [Header("Jump Settings")]
         [Range(1, 3)]
         public int jumpPoints;
-
+        public float heightOneFrames = 6;
         [Range(.05f, 5f)]
-        public float hiJumpMultiplier = 1;
+        public float heightTwoTime = .5f;
+        [Range(.1f, 10f)]
+        public float heightThreeTime = 1;
 
 
         Animator anim;
@@ -93,7 +98,7 @@ namespace SandBox.Player
 
 
             //float framesToPeakRatio = startJumpGravityForce / jumpFramesToPeak;
-            float framesToPeakRatio = jumpFramesToPeak;
+            //float framesToPeakRatio = jumpFramesToPeak;
             dstManager.AddComponentData
             (
                 entity,
@@ -101,16 +106,17 @@ namespace SandBox.Player
                 {
                     startJumpGravityForce = startJumpGravityForce,
                     gameStartJumpGravityForce = startJumpGravityForce,
-                    jumpFramesToPeak = framesToPeakRatio,
                     addedNegativeForce = addedNegativeForce,
                     jumpDownGravityMultiplier = jumpDownGravityMultiplier,
                     jumpY = jumpY,
                     airForce = airForce,
                     jumpPoints = jumpPoints,
-                    hiJumpMultiplier =  hiJumpMultiplier,
+                    heightOneFrames = heightOneFrames,
+                    heightTwoTime = heightTwoTime,
+                    heightThreeTime = heightThreeTime,
                     disabled = disabled
                 }
-            );
+            ); ;
 
 
         }
