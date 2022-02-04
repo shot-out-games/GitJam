@@ -15,18 +15,23 @@ public struct PlayerJumpComponent : IComponentData
 {
     public float startJumpGravityForce;
     public float gameStartJumpGravityForce;
-    //public float jumpFramesToPeak;
     public float heightOneFrames;
     public float heightTwoTime;
     public float heightThreeTime;
+    public float doubleHeightOneFrames;
+    public float doubleHeightTwoTime;
+    public float doubleHeightThreeTime;
     public float addedNegativeForce;
     public float jumpDownGravityMultiplier;
     public float jumpY;
     public float airForce;
     public int jumpPoints;
+    public bool CancelJump;
     public JumpStages JumpStage;
-    //public float hiJumpMultiplier;
     public bool disabled;
+    public bool doubleJump;
+    public bool DoubleJumpStarted;
+    public bool DoubleJumpAllowed;
 }
 
 
@@ -66,6 +71,15 @@ namespace SandBox.Player
         public float heightTwoTime = .5f;
         [Range(.1f, 10f)]
         public float heightThreeTime = 1;
+
+
+        [Header("Double Jump Settings")]
+        public bool doubleJump;
+        public float doubleHeightOneFrames = 18;
+        [Range(.05f, 5f)]
+        public float doubleHeightTwoTime = .5f;
+        [Range(.1f, 10f)]
+        public float doubleHeightThreeTime = 1;
 
 
         Animator anim;
@@ -114,9 +128,13 @@ namespace SandBox.Player
                     heightOneFrames = heightOneFrames,
                     heightTwoTime = heightTwoTime,
                     heightThreeTime = heightThreeTime,
+                    doubleHeightOneFrames = doubleHeightOneFrames,
+                    doubleHeightTwoTime = doubleHeightTwoTime,
+                    doubleHeightThreeTime = doubleHeightThreeTime,
+                    doubleJump = doubleJump,
                     disabled = disabled
                 }
-            ); ;
+            ); ; ;
 
 
         }
