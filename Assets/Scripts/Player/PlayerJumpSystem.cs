@@ -71,7 +71,7 @@ namespace SandBox.Player
                         float originalJumpFrames = playerJumpComponent.JumpStartFrames;
                         float originalJumpPower = playerJumpComponent.startJumpGravityForce;
                         bool height_II_timer = timeButtonPressed > 0 && timeButtonPressed < playerJumpComponent.JumpStartHeightTwoTime && jumpPoints >= 2;
-                        bool height_III_timer = timeButtonPressed >= playerJumpComponent.JumpStartHeightThreeTime
+                        bool height_III_timer = timeButtonPressed >= playerJumpComponent.JumpStartHeightTwoTime
                             && timeButtonPressed < playerJumpComponent.heightThreeTime && jumpPoints == 3;
 
 
@@ -99,7 +99,7 @@ namespace SandBox.Player
 
                             frames = 1;
                             playerJump.GetComponent<Animator>().SetTrigger("JumpStage");
-                            playerJump.GetComponent<Animator>().applyRootMotion = false;
+                            //playerJump.GetComponent<Animator>().applyRootMotion = false;
                             playerJumpComponent.JumpStage = JumpStages.JumpStart;
                             velocity = new float3(pv.Linear.x, originalJumpPower, pv.Linear.z);
                         }

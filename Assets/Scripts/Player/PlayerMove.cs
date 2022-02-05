@@ -57,7 +57,7 @@ namespace SandBox.Player
         public Camera mainCam;
 
         float startSpeed = 4f;
-        float currentSpeed = 4f;
+        //float currentSpeed = 4f;
         private EntityManager _entityManager;
         private Entity _entity;
 
