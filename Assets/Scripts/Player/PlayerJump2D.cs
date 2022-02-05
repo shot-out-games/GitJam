@@ -32,6 +32,10 @@ public struct PlayerJumpComponent : IComponentData
     public bool doubleJump;
     public bool DoubleJumpStarted;
     public bool DoubleJumpAllowed;
+    public float JumpStartFrames;
+    public float JumpStartHeightTwoTime;
+    public float JumpStartHeightThreeTime;
+    //public int ButtonPressedCounter;
 }
 
 
@@ -126,8 +130,11 @@ namespace SandBox.Player
                     airForce = airForce,
                     jumpPoints = jumpPoints,
                     heightOneFrames = heightOneFrames,
+                    JumpStartFrames = heightOneFrames,
                     heightTwoTime = heightTwoTime,
+                    JumpStartHeightTwoTime = heightTwoTime,
                     heightThreeTime = heightThreeTime,
+                    JumpStartHeightThreeTime = heightThreeTime,
                     doubleHeightOneFrames = doubleHeightOneFrames,
                     doubleHeightTwoTime = doubleHeightTwoTime,
                     doubleHeightThreeTime = doubleHeightThreeTime,

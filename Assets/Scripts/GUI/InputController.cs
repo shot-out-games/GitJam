@@ -63,6 +63,8 @@ public struct InputControllerComponent : IComponentData
     public bool buttonSelect_held;
     public bool buttonSelect_Released;
 
+    public double buttonTimePressed;
+
 
 }
 
@@ -142,6 +144,8 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
     public bool buttonSelect_held;
     public bool buttonSelect_Released;
 
+    public double buttonTimePressed;
+
 
     void Start()
     {
@@ -172,12 +176,6 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         }
 
 
-        //if (Application.platform == RuntimePlatform.Android)
-        //#if UNITY_ANDROID
-        //{
-        //     Debug.Log("Do something special here!");
-        //}
-        //#endif
 
 
         leftStickX = player.GetAxis("Move Horizontal");
@@ -247,6 +245,10 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
         leftStickX = Mathf.Abs(leftStickX) < deadZone ? 0 : leftStickX;
         leftStickY = Mathf.Abs(leftStickY) < deadZone ? 0 : leftStickY;
+
+        buttonTimePressed = player.GetButtonTimePressed("FireA");
+
+
         UpdateInputControllerComponent();
 
 
@@ -324,6 +326,8 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         inputControllerComponent.buttonSelect_Pressed = buttonSelect_Pressed;
         inputControllerComponent.buttonSelect_held = buttonSelect_held;
         inputControllerComponent.buttonSelect_Released = buttonSelect_Released;
+
+        inputControllerComponent.buttonTimePressed = buttonTimePressed;
 
         manager.SetComponentData<InputControllerComponent>(playerEntity, inputControllerComponent);
     }
