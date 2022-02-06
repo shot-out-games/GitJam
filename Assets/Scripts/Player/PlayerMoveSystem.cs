@@ -108,7 +108,7 @@ namespace SandBox.Player
 
                     AudioSource audioSource = playerMove.audioSource;
 
-                    if (math.abs(stickSpeed) >= .01f && math.abs(pv.Linear.y) <= .000001f)
+                    if (math.abs(stickSpeed) >= .01f && applyImpulseComponent.Grounded == true)
                     {
                         if (playerMove.clip && audioSource)
                         {

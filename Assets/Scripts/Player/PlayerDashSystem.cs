@@ -26,11 +26,14 @@ namespace SandBox.Player
                     ref PlayerDashComponent playerDash,
                     in InputControllerComponent inputController,
                     in ApplyImpulseComponent apply,
-                    in LocalToWorld ltw
+                    in LocalToWorld ltw,
+                    in Animator animator,
+                    in PlayerDashAuthoring player
 
                 ) =>
                 {
-                    if(playerDash.DelayTimeTicker > 0)
+                    AudioSource audioSource = player.audioSource;
+                    if (playerDash.DelayTimeTicker > 0)
                     {
                         playerDash.DelayTimeTicker -= dt;
                         return;
@@ -47,8 +50,34 @@ namespace SandBox.Player
                         {
                             //t.Value += ltw.Forward * dt * playerDash.power;
                             //pv.Linear += ltw.Forward * playerDash.power;
-
                             playerDash.DashTimeTicker += dt;
+                            if (animator.GetInteger("Dash") == 0)
+                            {
+                                animator.SetInteger("Dash", 1);
+                            }
+
+                            if (player.clip && audioSource)
+                            {
+                                if (audioSource.isPlaying == false)
+                                {
+                                    audioSource.clip = player.clip;
+                                    audioSource.Play();
+
+                                }
+
+                            }
+
+                            if (player.ps)
+                            {
+                                if (player.ps.isPlaying == false)
+                                {
+                                    player.ps.transform.SetParent(player.transform);
+                                    player.ps.Play(true);
+                                }
+                            }
+
+
+
                         }
                     }
                     else if (playerDash.DashTimeTicker < playerDash.dashTime)
@@ -65,6 +94,10 @@ namespace SandBox.Player
                     {
                         playerDash.DashTimeTicker = 0;
                         playerDash.DelayTimeTicker = playerDash.delayTime;
+                        animator.SetInteger("Dash", 0);
+                        if (audioSource != null) audioSource.Stop();
+                        if (player.ps != null) player.ps.Stop();
+
                     }
 
 
