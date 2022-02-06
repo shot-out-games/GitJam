@@ -20,7 +20,7 @@ namespace SandBox.Player
             float dt = Time.DeltaTime;
 
             Entities.WithoutBurst().ForEach(
-                (   
+                (
                     Entity e,
                     ref Translation t,
                     ref PlayerDashComponent playerDash,

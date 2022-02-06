@@ -10,7 +10,8 @@ public enum AnimationType
     Aim,
     Locomotion,
     Lowering,
-    BossStrike
+    BossStrike,
+    JumpStart
 }
 
 [System.Serializable]
