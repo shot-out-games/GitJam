@@ -7,7 +7,7 @@ using Unity.Transforms;
 
 
 
-[UpdateInGroup(typeof(SimulationSystemGroup), OrderFirst = true)]
+[UpdateInGroup(typeof(SimulationSystemGroup))]
 
 public class InputControllerSystemUpdate : SystemBase
 {

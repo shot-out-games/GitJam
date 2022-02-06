@@ -185,7 +185,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         {
             lookAtIk.solver.clampWeight = clampWeight;
             lookAtIk.solver.IKPositionWeight = lookWeight;
-            //lookAtIk.solver.IKPosition = aimTarget;
+            lookAtIk.solver.IKPosition = targetPosition;
             lookAtIk.solver.IKPosition = Vector3.Lerp(lookAtIk.solver.IKPosition, aimTarget, Time.deltaTime * lerpSpeed);
             lookAtIk.solver.Update();
         }
@@ -206,7 +206,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
                 currentAimWeight = aimWeight;
                 aim.solver.IKPositionWeight = currentAimWeight;
             }
-            //aim.solver.IKPosition = aimTarget;
+            aim.solver.IKPosition = targetPosition;
             aim.solver.Update();
         }
 

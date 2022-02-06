@@ -19,7 +19,7 @@ namespace SandBox.Player
 
 
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateBefore(typeof(StepPhysicsWorld))]
+    //[UpdateBefore(typeof(StepPhysicsWorld))]
 
     public class PlayerJumpSystem2D : SystemBase
     {
@@ -55,7 +55,7 @@ namespace SandBox.Player
                         float leftStickY = inputController.leftStickY;
                         bool button_a_held = inputController.buttonA_held;
                         bool button_a_released = inputController.buttonA_Released;
-                        bool button_a = Rewired.ReInput.players.GetPlayer(0).GetButtonDown("FireA");
+                        bool button_a = inputController.buttonA_Pressed;
 
                         if (button_a_released == true)
                         {
@@ -82,6 +82,8 @@ namespace SandBox.Player
                             playerJumpComponent.CancelJump = false;
                             playerJumpComponent.DoubleJumpStarted = false;
                             playerJumpComponent.DoubleJumpAllowed = false;
+                            playerJumpComponent.JumpCount = 0;
+
                         }
                         if (applyImpulseComponent.Falling)
                         {
@@ -102,6 +104,7 @@ namespace SandBox.Player
                             //playerJump.GetComponent<Animator>().applyRootMotion = false;
                             playerJumpComponent.JumpStage = JumpStages.JumpStart;
                             velocity = new float3(pv.Linear.x, originalJumpPower, pv.Linear.z);
+                            Debug.Log("jump 1");
                         }
                         else if (button_a && playerJumpComponent.DoubleJumpAllowed == true)
                         {
@@ -119,6 +122,7 @@ namespace SandBox.Player
                             playerJump.GetComponent<Animator>().applyRootMotion = false;
                             playerJumpComponent.JumpStage = JumpStages.JumpStart;
                             velocity = new float3(pv.Linear.x, originalJumpPower * 1, pv.Linear.z);//ADD DBL JUMP FACTOR
+                            Debug.Log("jump 2");
                         }
                         else if (frames >= 1 && frames <= originalJumpFrames && applyImpulseComponent.InJump == true &&
                                  applyImpulseComponent.Grounded == false && applyImpulseComponent.Falling == false)

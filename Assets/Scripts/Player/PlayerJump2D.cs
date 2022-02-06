@@ -35,7 +35,7 @@ public struct PlayerJumpComponent : IComponentData
     public float JumpStartFrames;
     public float JumpStartHeightTwoTime;
     public float JumpStartHeightThreeTime;
-    //public int ButtonPressedCounter;
+    public int JumpCount;
 }
 
 

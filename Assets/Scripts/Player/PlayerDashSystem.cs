@@ -9,7 +9,7 @@ using Unity.Physics.Systems;
 namespace SandBox.Player
 {
     [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-    [UpdateBefore(typeof(StepPhysicsWorld))]
+    [UpdateAfter(typeof(PlayerJumpSystem2D))]
 
     public class PlayerDashSystem : SystemBase
     {
@@ -23,7 +23,6 @@ namespace SandBox.Player
                 (   
                     Entity e,
                     ref Translation t,
-                    ref PhysicsVelocity pv,
                     ref PlayerDashComponent playerDash,
                     in InputControllerComponent inputController,
                     in ApplyImpulseComponent apply,
@@ -47,17 +46,20 @@ namespace SandBox.Player
                         if (rtPressed)
                         {
                             //t.Value += ltw.Forward * dt * playerDash.power;
-                            pv.Linear += math.normalize(ltw.Forward) * playerDash.power;
-                            //pv.Linear.y -= apply.NegativeForce;
+                            //pv.Linear += ltw.Forward * playerDash.power;
 
                             playerDash.DashTimeTicker += dt;
                         }
                     }
                     else if (playerDash.DashTimeTicker < playerDash.dashTime)
                     {
+                        var pv = new PhysicsVelocity();
+
+                        //Debug.Log("fw  " + ltw.Forward);
                         //t.Value += ltw.Forward * dt * playerDash.power;
-                        pv.Linear += math.normalize(ltw.Forward) * playerDash.power;
+                        pv.Linear = ltw.Forward * playerDash.power;
                         playerDash.DashTimeTicker += dt;
+                        SetComponent(e, pv);
                     }
                     else if (playerDash.DashTimeTicker >= playerDash.dashTime)
                     {
