@@ -31,20 +31,10 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.cinemachine": {
-      "version": "2.8.3",
+      "version": "2.8.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.collab-proxy": {
-      "version": "1.15.7",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.nuget.newtonsoft-json": "2.0.0",
-        "com.unity.services.core": "1.0.1"
-      },
       "url": "https://packages.unity.com"
     },
     "com.unity.collections": {
@@ -83,7 +73,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-      "version": "3.0.9",
+      "version": "3.0.12",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -108,11 +98,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.jobs": {
-      "version": "0.8.0-preview.23",
+      "version": "0.11.0-preview.6",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.collections": "0.15.0-preview.21",
+        "com.unity.collections": "1.0.0-pre.5",
         "com.unity.mathematics": "1.2.1"
       },
       "url": "https://packages.unity.com"
@@ -133,7 +123,7 @@
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "2.0.0",
-      "depth": 1,
+      "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -302,15 +292,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.unity.services.core": {
-      "version": "1.0.1",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.settings-manager": {
       "version": "1.0.3",
       "depth": 0,
@@ -358,7 +339,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-      "version": "1.6.3",
+      "version": "1.6.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {

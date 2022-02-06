@@ -106,7 +106,7 @@ public class WeaponAmmoHandlerSystem : SystemBase
 
                     if (actorWeaponAimComponent.weaponCamera == CameraTypes.TopDown)
                     {
-                        velocity.Linear = actorWeaponAimComponent.aimDirection * strength + playerVelocity.Linear;
+                        velocity.Linear = actorWeaponAimComponent.aimDirection * strength;
                         velocity.Angular = math.float3(0, 0, 0);
                     }
                     else
