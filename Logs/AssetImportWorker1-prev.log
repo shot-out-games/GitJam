@@ -15,7 +15,7 @@ H:/UNITY/PROJECTS 2020/GitJam
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-64835
+65342
 Successfully changed project path to: H:/UNITY/PROJECTS 2020/GitJam
 H:/UNITY/PROJECTS 2020/GitJam
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -47,7 +47,7 @@ H:/UNITY/PROJECTS 2020/GitJam
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 355.26 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 351.81 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.10f1 (ee872746220e)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Resources/UnitySubsystems
@@ -63,50 +63,50 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56688
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56912
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.012741 seconds.
+Registered in 0.014816 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 333.90 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 342.88 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.063 seconds
+- Completed reload, in  1.121 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1064ms)
-		BeginReloadAssembly (109ms)
+	ReloadAssembly (1121ms)
+		BeginReloadAssembly (120ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (831ms)
-			LoadAssemblies (104ms)
+		EndReloadAssembly (881ms)
+			LoadAssemblies (116ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (133ms)
+			SetupTypeCache (135ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (32ms)
-			SetupLoadedEditorAssemblies (589ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (628ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (21ms)
+				InitializePlatformSupportModulesInManaged (22ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (334ms)
+				RefreshPlugins (343ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (176ms)
-				ProcessInitializeOnLoadMethodAttributes (57ms)
+				ProcessInitializeOnLoadAttributes (199ms)
+				ProcessInitializeOnLoadMethodAttributes (62ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.014249 seconds.
+Registered in 0.014036 seconds.
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
 Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 351.77 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 355.23 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Missing editor texture: 
 Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Loader/Loader.png
@@ -192,45 +192,45 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 
 (Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
 
-TypeManager.Initialize took: 332ms
+TypeManager.Initialize took: 340ms
 Mono: successfully reloaded assembly
-- Completed reload, in  5.151 seconds
+- Completed reload, in  5.210 seconds
 Domain Reload Profiling:
-	ReloadAssembly (5152ms)
-		BeginReloadAssembly (158ms)
+	ReloadAssembly (5211ms)
+		BeginReloadAssembly (156ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
+			DisableScriptedObjects (8ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (27ms)
-		EndReloadAssembly (4849ms)
-			LoadAssemblies (162ms)
+			CreateAndSetChildDomain (24ms)
+		EndReloadAssembly (4918ms)
+			LoadAssemblies (152ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (563ms)
+			SetupTypeCache (571ms)
 			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (158ms)
-			SetupLoadedEditorAssemblies (3908ms)
+			RebuildScriptCaches (161ms)
+			SetupLoadedEditorAssemblies (3979ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (16ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (352ms)
-				BeforeProcessingInitializeOnLoad (243ms)
-				ProcessInitializeOnLoadAttributes (3169ms)
-				ProcessInitializeOnLoadMethodAttributes (110ms)
-				AfterProcessingInitializeOnLoad (17ms)
-				EditorAssembliesLoaded (0ms)
+				RefreshPlugins (355ms)
+				BeforeProcessingInitializeOnLoad (246ms)
+				ProcessInitializeOnLoadAttributes (3239ms)
+				ProcessInitializeOnLoadMethodAttributes (106ms)
+				AfterProcessingInitializeOnLoad (16ms)
+				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (12ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.08 seconds
-Refreshing native plugins compatible for Editor in 4.04 ms, found 5 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
+Refreshing native plugins compatible for Editor in 3.58 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 9465 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 363 unused Assets / (4.5 MB). Loaded Objects now: 9888.
-Memory consumption went from 383.3 MB to 378.8 MB.
-Total: 30.888800 ms (FindLiveObjects: 1.059700 ms CreateObjectMapping: 0.442200 ms MarkObjects: 26.890700 ms  DeleteObjects: 2.494100 ms)
+Unloading 363 unused Assets / (4.4 MB). Loaded Objects now: 9888.
+Memory consumption went from 383.3 MB to 378.9 MB.
+Total: 27.912600 ms (FindLiveObjects: 1.232400 ms CreateObjectMapping: 0.871500 ms MarkObjects: 23.914400 ms  DeleteObjects: 1.891400 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:DOTSType/UnityEngine.EventSystems.EventSystem: 2c81b6c3f3277fcd2c81b6c3f3277fcd -> 
@@ -264,10 +264,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.UIElements.StyleSheets.StyleSheetImporterEditor: 192320d95e4bf2a1192320d95e4bf2a1 -> 
   custom:DOTSType/UnityEngine.AudioLowPassFilter: ae33cb3d05c9f256ae33cb3d05c9f256 -> 
   custom:DOTSType/UnityEditor.ShaderIncludeImporter: 8fbdb40f5e3dee688fbdb40f5e3dee68 -> 
-  custom:DOTSType/CharacterSaveComponent: cece7ea5193c0477cece7ea5193c0477 -> 
   custom:DOTSType/ScoreComponent: 1ed056d1b244017f1ed056d1b244017f -> 
-  custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
+  custom:DOTSType/CharacterSaveComponent: cece7ea5193c0477cece7ea5193c0477 -> 
   custom:DOTSType/UnityEditor.ShaderGraph.Drawing.SearchWindowProvider: f8a30861d99321b8f8a30861d99321b8 -> 
+  custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
   custom:DOTSType/Ludiq.PeekCore.DictionaryAsset: bbb8ed5efb46ae5fbbb8ed5efb46ae5f -> 
   custom:DOTSType/UnityEditor.Graphs.Graph: d35cefdd879c306cd35cefdd879c306c -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleTexture2D: c79a4bc917b39d2fc79a4bc917b39d2f -> 
@@ -326,11 +326,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.TrailRendererInspector: 6cd62f30bf2de8f96cd62f30bf2de8f9 -> 
   custom:DOTSType/UnityEditor.Experimental.GraphView.SearchWindow: c580fedf644085d8c580fedf644085d8 -> 
   custom:DOTSType/UnityEditor.UIElements.UIElementsEditorWindowCreator: b5614dee3a2adbefb5614dee3a2adbef -> 
-  custom:DOTSType/UnityEditor.Timeline.Signals.SignalAssetInspector+DoCreateSignalAsset: 0a9bedbbb37049f00a9bedbbb37049f0 -> 
+  custom:DOTSType/UnityEditor.ProBuilder.PolyShapeEditor: 4eb37c855190510c4eb37c855190510c -> 
   custom:DOTSType/Cinemachine.Editor.WaveformWindow: 541d687ec4e059b6541d687ec4e059b6 -> 
   custom:DOTSType/UnityEditor.UI.CanvasScalerEditor: e177cbf177bdcf76e177cbf177bdcf76 -> 
+  custom:DOTSType/UnityEditor.Timeline.Signals.SignalAssetInspector+DoCreateSignalAsset: 0a9bedbbb37049f00a9bedbbb37049f0 -> 
   custom:DOTSType/UnityEditor.Search.SearchDatabaseImporter: c57af5b2996b8da0c57af5b2996b8da0 -> 
-  custom:DOTSType/UnityEditor.ProBuilder.PolyShapeEditor: 4eb37c855190510c4eb37c855190510c -> 
   custom:DOTSType/UnityEditor.ProjectWindowCallback.DoCreateAssetWithContent: ea4d0d87b78d806dea4d0d87b78d806d -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerButtonEditor: 0e6df5bccc894efd0e6df5bccc894efd -> 
   custom:DOTSType/UnityEditor.BumpMapSettingsFixingWindow: 407671aa04b06a4f407671aa04b06a4f -> 
@@ -350,10 +350,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.VisualScripting.UnityOnScrollbarValueChangedMessageListener: c6ff510c6ecf3abac6ff510c6ecf3aba -> 
   custom:DOTSType/TMPro.Examples.ShaderPropAnimator: d22fce56f0618ad2d22fce56f0618ad2 -> 
   custom:DOTSType/WinnerMenuGroup: 0e3afcbecacd61280e3afcbecacd6128 -> 
-  custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_SHC: fa1ce72689f0f9d8fa1ce72689f0f9d8 -> 
-  custom:DOTSType/Cinemachine.CinemachineComposer: d0e9776eed776050d0e9776eed776050 -> 
-  custom:DOTSType/UnityEditor.ReferencesArtifactGenerator: b91bb528774f4811b91bb528774f4811 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManager: d1fbdcf53927c34fd1fbdcf53927c34f -> 
+  custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_SHC: fa1ce72689f0f9d8fa1ce72689f0f9d8 -> 
+  custom:DOTSType/UnityEditor.ReferencesArtifactGenerator: b91bb528774f4811b91bb528774f4811 -> 
+  custom:DOTSType/Cinemachine.CinemachineComposer: d0e9776eed776050d0e9776eed776050 -> 
   custom:DOTSType/EnemyRatingsScriptableObject: bd07009ff578c608bd07009ff578c608 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRenderPipelineGlobalSettings: 1b242fc9343d16091b242fc9343d1609 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI0B: 319fe68823c7ad8c319fe68823c7ad8c -> 
@@ -681,8 +681,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.VisualScripting.GlobalMessageListenerEditor: 2b60b6ffd7ba7fc32b60b6ffd7ba7fc3 -> 
   custom:DOTSType/Polybrush.z_AdditionalVertexStreams: 0989f2ad69d4ad3c0989f2ad69d4ad3c -> 
   custom:DOTSType/UnityEngine.UI.PositionAsUV1: a6ee513f794769bba6ee513f794769bb -> 
-  custom:DOTSType/UnityEditor.Rendering.Universal.Path2D.ScriptablePath: 2ade06cac4c38dfa2ade06cac4c38dfa -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.UniversalRendererDataEditor: 90058b0ff0eccacb90058b0ff0eccacb -> 
+  custom:DOTSType/UnityEditor.Rendering.Universal.Path2D.ScriptablePath: 2ade06cac4c38dfa2ade06cac4c38dfa -> 
   custom:DOTSType/TMPro.Examples.Benchmark01: 1701a9bb322b8de01701a9bb322b8de0 -> 
   custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_LODFade: 593fcfdda11e6fde593fcfdda11e6fde -> 
   custom:DOTSType/UnityEditor.IMGUI.Controls.AdvancedDropdownWindow: 6c6b743f1066ad1e6c6b743f1066ad1e -> 
@@ -800,15 +800,15 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.ProBuilder.AssetIdRemapUtility.AssetIdRemapEditor: 8c59319253690bfd8c59319253690bfd -> 
   custom:DOTSType/Unity.UI.Builder.BuilderStyleSheetsWindow: 967e36a7e921cee7967e36a7e921cee7 -> 
   custom:DOTSType/UnityEditor.VFX.VFXContext: 91398f55c9ef7a3b91398f55c9ef7a3b -> 
-  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyThicknessRemapAuthoring: 9de20a123ad2d8049de20a123ad2d804 -> 
+  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyBaseColorAuthoring: c4d25efefbd4ad86c4d25efefbd4ad86 -> 
   custom:DOTSType/UnityEditor.VFX.Block.CollisionSDF: 40aa07e1443ac5f440aa07e1443ac5f4 -> 
   custom:DOTSType/Unity.Transforms.NonUniformScale: ae37020024db8640ae37020024db8640 -> 
   custom:DOTSType/RootMotion.GenericBaker: 7ce148d5408cc6837ce148d5408cc683 -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotFloat3: d10e06f85d6d6836d10e06f85d6d6836 -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineExternalCameraEditor: 06cbc333ac22e22706cbc333ac22e227 -> 
-  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyBaseColorAuthoring: c4d25efefbd4ad86c4d25efefbd4ad86 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleBuffer: d24bba0b45294b7fd24bba0b45294b7f -> 
   custom:DOTSType/Rewired.Editor.GlobalOptionsWindow: c671465456ff1addc671465456ff1add -> 
+  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyThicknessRemapAuthoring: 9de20a123ad2d8049de20a123ad2d804 -> 
   custom:DOTSType/UnityEngine.EventSystems.BaseInput: e235f5db1cebef17e235f5db1cebef17 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.LoadTexture2D: 4fc095a0daf157374fc095a0daf15737 -> 
   custom:DOTSType/UnityEditor.ShaderGraph.ShaderGraphProjectSettings: 80b437e8cf8f5a8c80b437e8cf8f5a8c -> 
@@ -881,8 +881,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.VFX.Utility.VFXPlaneBinder: 4dea5cb52d01499e4dea5cb52d01499e -> 
   custom:DOTSType/Cinemachine.CinemachineHardLookAt: 1790423be5742c2f1790423be5742c2f -> 
   custom:DOTSType/ShaderComponentAuthoring: dcfdcac36b57d6cbdcfdcac36b57d6cb -> 
-  custom:DOTSType/UnityEditor.Rendering.Universal.Renderer2DMenus+Create2DRendererDataAsset: 4d15c4df17f0ce734d15c4df17f0ce73 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.CinemachineUniversalPixelPerfectEditor: 2e08f9cc6603be7e2e08f9cc6603be7e -> 
+  custom:DOTSType/UnityEditor.Rendering.Universal.Renderer2DMenus+Create2DRendererDataAsset: 4d15c4df17f0ce734d15c4df17f0ce73 -> 
   custom:DOTSType/UnityEngine.OcclusionArea: d387a438eb765076d387a438eb765076 -> 
   custom:DOTSType/Unity.Rendering.Authoring.MaterialColor: 6ccfc2f6998ecc1e6ccfc2f6998ecc1e -> 
   custom:DOTSType/UnityEditor.VFX.Block.KillAABox: 30c7360cc49fe6bc30c7360cc49fe6bc -> 
@@ -1442,8 +1442,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.ReferencedUnityObjects: b8073d4731436522b8073d4731436522 -> 
   custom:DOTSType/RewindComponent: 0f75ab33127417480f75ab3312741748 -> 
   custom:DOTSType/Unity.Rendering.BlendShapeTag: b76df7e273aca6a0b76df7e273aca6a0 -> 
-  custom:DOTSType/Cinemachine.CinemachineImpulseListener: 770c331c9aaa3258770c331c9aaa3258 -> 
   custom:DOTSType/Unity.Rendering.PerInstanceCullingTag: 45a7b9030cde606d45a7b9030cde606d -> 
+  custom:DOTSType/Cinemachine.CinemachineImpulseListener: 770c331c9aaa3258770c331c9aaa3258 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Sequential3D: ba74442dfdbc253dba74442dfdbc253d -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.DecalRendererFeature: c27cdbc625104ddac27cdbc625104dda -> 
   custom:DOTSType/UnityEngine.RenderSettings: 12e22dc69a3db32012e22dc69a3db320 -> 
@@ -1718,11 +1718,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.CharacterJoint: 5242f2054d174eeb5242f2054d174eeb -> 
   custom:DOTSType/UnityEditorInternal.ProjectSettingsBaseEditor: d1701839d930f918d1701839d930f918 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.PerParticleTotalTime: ec6b651de636d529ec6b651de636d529 -> 
-  custom:DOTSType/Ludiq.PeekCore.UpdateWizard: 45d136d954a6c38845d136d954a6c388 -> 
+  custom:DOTSType/Unity.Physics.Authoring.PhysicsCategoryNames: 227ac3246aba464d227ac3246aba464d -> 
   custom:DOTSType/UnityEditor.TestTools.TestRunner.TestListCacheData: 2190cb9b2f5b81462190cb9b2f5b8146 -> 
   custom:DOTSType/Cinemachine.CinemachineGroupComposer: 9f2be532d01072879f2be532d0107287 -> 
   custom:DOTSType/UnityEngine.WheelCollider: 443e73f517ad63d6443e73f517ad63d6 -> 
-  custom:DOTSType/Unity.Physics.Authoring.PhysicsCategoryNames: 227ac3246aba464d227ac3246aba464d -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineGroupComposerEditor: 2bedc7fda8cae8712bedc7fda8cae871 -> 
   custom:DOTSType/UnityEngine.UIElements.PanelSettings: d31f9af5c4d114dbd31f9af5c4d114db -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.DecalProjectorEditor: cf83487cf74d32fccf83487cf74d32fc -> 
@@ -1730,6 +1729,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.Demos.UserControlInteractions: 9fc664a3401c820b9fc664a3401c820b -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
   custom:DOTSType/UnityEditor.VisualEffectAssetEditorUtility+DoCreateNewSubgraphBlock: b239d285cd1d5547b239d285cd1d5547 -> 
+  custom:DOTSType/Ludiq.PeekCore.UpdateWizard: 45d136d954a6c38845d136d954a6c388 -> 
   custom:DOTSType/UnityEditor.AnimationModeDriver: 732d6a6cec3817f5732d6a6cec3817f5 -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+ShaderPreloadEditor: 4f0d4249ee548b3a4f0d4249ee548b3a -> 
   custom:DOTSType/RootMotion.Comments: c64d23a851fdf87fc64d23a851fdf87f -> 
@@ -2971,74 +2971,13 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.AudioReverbZone: a9cb03f27a6045faa9cb03f27a6045fa -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Saturate: dd936e298685d8fddd936e298685d8fd -> 
   custom:DOTSType/WeaponItemComponent: 41168f32d2406fd841168f32d2406fd8 -> 
-  custom:DOTSType/UnityEditor.Timeline.TimelineWindow+DoCreateTimeline: 6cf6528c648b52856cf6528c648b5285 -> 
   custom:DOTSType/UnityEditor.AudioImporterInspector: 4f6b63b8ce601ea64f6b63b8ce601ea6 -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotFloat4: ae86f2dc282788e1ae86f2dc282788e1 -> 
   custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_LightmapST: 4d9240626ada950c4d9240626ada950c -> 
-  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyEmissiveColor: 9a5f8f808acf48e39a5f8f808acf48e3 -> 
+  custom:DOTSType/UnityEditor.Timeline.TimelineWindow+DoCreateTimeline: 6cf6528c648b52856cf6528c648b5285 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI05: 1e4f3c5bdbaffd761e4f3c5bdbaffd76 -> 
   custom:DOTSType/RootMotion.FinalIK.AimPoserInspector: 67b0dfc4b83546c967b0dfc4b83546c9 -> 
+  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyEmissiveColor: 9a5f8f808acf48e39a5f8f808acf48e3 -> 
   custom:DOTSType/Unity.Scenes.DisableLiveLink: acfec9bf12a4cae8acfec9bf12a4cae8 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteUtilityWindow: 766fc4f2b14d7b62766fc4f2b14d7b62 -> 
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
-========================================================================
-Received Import Request.
-  Time since last request: 14792.302104 seconds.
-  path: Packages/com.unity.render-pipelines.universal/Runtime/Materials/ParticlesUnlit.mat
-  artifactKey: Guid(e823cd5b5d27c0f4b8256e7c12ee3e6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.render-pipelines.universal/Runtime/Materials/ParticlesUnlit.mat using Guid(e823cd5b5d27c0f4b8256e7c12ee3e6d) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Attempting to get Camera relative temporary RenderTexture (width || height <= 0) via a CommandBuffer  in a Sriptable Render Pipeline.
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.Rendering.ScriptableRenderContext:ExecuteCommandBuffer_Internal (UnityEngine.Rendering.CommandBuffer)
-UnityEngine.Rendering.ScriptableRenderContext:ExecuteCommandBuffer (UnityEngine.Rendering.CommandBuffer)
-UnityEngine.Rendering.Universal.Internal.CopyColorPass:Execute (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Rendering.Universal.RenderingData&) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/Passes/CopyColorPass.cs:111)
-UnityEngine.Rendering.Universal.ScriptableRenderer:ExecuteRenderPass (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Rendering.Universal.ScriptableRenderPass,UnityEngine.Rendering.Universal.RenderingData&) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/ScriptableRenderer.cs:966)
-UnityEngine.Rendering.Universal.ScriptableRenderer:ExecuteBlock (int,UnityEngine.Rendering.Universal.ScriptableRenderer/RenderBlocks&,UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Rendering.Universal.RenderingData&,bool) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/ScriptableRenderer.cs:925)
-UnityEngine.Rendering.Universal.ScriptableRenderer:Execute (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Rendering.Universal.RenderingData&) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/ScriptableRenderer.cs:729)
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:RenderSingleCamera (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Rendering.Universal.CameraData,bool) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:414)
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:RenderSingleCamera (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Camera) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:323)
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:Render (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:278)
-UnityEngine.Rendering.RenderPipeline:InternalRender (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>)
-UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,System.Collections.Generic.List`1<UnityEngine.Camera/RenderRequest>,Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle)
-UnityEditor.PreviewRenderUtility:Render (bool,bool)
-UnityEditor.MaterialEditor:DoRenderPreview (UnityEditor.PreviewRenderUtility,bool)
-UnityEditor.MaterialEditor:RenderStaticPreview (string,UnityEngine.Object[],int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-[ line 0]
-
-Trying to get RenderBuffer with invalid antiAliasing (must be at least 1)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.Rendering.ScriptableRenderContext:Submit_Internal ()
-UnityEngine.Rendering.ScriptableRenderContext:Submit ()
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:RenderSingleCamera (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Rendering.Universal.CameraData,bool) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:430)
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:RenderSingleCamera (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Camera) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:323)
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:Render (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:278)
-UnityEngine.Rendering.RenderPipeline:InternalRender (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>)
-UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,System.Collections.Generic.List`1<UnityEngine.Camera/RenderRequest>,Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle)
-UnityEditor.PreviewRenderUtility:Render (bool,bool)
-UnityEditor.MaterialEditor:DoRenderPreview (UnityEditor.PreviewRenderUtility,bool)
-UnityEditor.MaterialEditor:RenderStaticPreview (string,UnityEngine.Object[],int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-[C:\buildslave\unity\build\Runtime\Graphics\RenderBufferManager.cpp line 180]
-
-Trying to get RenderBuffer with invalid antiAliasing (must be at least 1)
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.Rendering.ScriptableRenderContext:Submit_Internal ()
-UnityEngine.Rendering.ScriptableRenderContext:Submit ()
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:RenderSingleCamera (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Rendering.Universal.CameraData,bool) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:430)
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:RenderSingleCamera (UnityEngine.Rendering.ScriptableRenderContext,UnityEngine.Camera) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:323)
-UnityEngine.Rendering.Universal.UniversalRenderPipeline:Render (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>) (at Library/PackageCache/com.unity.render-pipelines.universal@12.1.4/Runtime/UniversalRenderPipeline.cs:278)
-UnityEngine.Rendering.RenderPipeline:InternalRender (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>)
-UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,System.Collections.Generic.List`1<UnityEngine.Camera/RenderRequest>,Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle)
-UnityEditor.PreviewRenderUtility:Render (bool,bool)
-UnityEditor.MaterialEditor:DoRenderPreview (UnityEditor.PreviewRenderUtility,bool)
-UnityEditor.MaterialEditor:RenderStaticPreview (string,UnityEngine.Object[],int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
-UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
-
-[C:\buildslave\unity\build\Runtime\Graphics\RenderBufferManager.cpp line 180]
-
- -> (artifact id: '79ae7bf4fc98845f2eed2e1d42bb466d') in 0.364567 seconds 
