@@ -7,7 +7,7 @@ using Unity.Transforms;
 
 
 
-[UpdateInGroup(typeof(LateSimulationSystemGroup))]
+//[UpdateInGroup(typeof(LateSimulationSystemGroup))]
 public class CustomSystemGroup : ComponentSystemGroup
 {
     

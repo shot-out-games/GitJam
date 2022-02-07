@@ -1,6 +1,7 @@
 ﻿using System;
 using TMPro;
 using Unity.Entities;
+using Unity.Physics;
 using UnityEngine;
 
 
@@ -14,6 +15,8 @@ public struct PlayerDashComponent : IComponentData
     public float DashTimeTicker;
     public float delayTime;
     public float DelayTimeTicker;
+    public PhysicsCollider Collider;
+    public BlobAssetReference<Unity.Physics.Collider> box;
 
 }
 

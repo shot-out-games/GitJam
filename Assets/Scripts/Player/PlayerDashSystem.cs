@@ -54,6 +54,7 @@ namespace SandBox.Player
                             if (animator.GetInteger("Dash") == 0)
                             {
                                 animator.SetInteger("Dash", 1);
+                                playerDash.Collider = GetComponent<PhysicsCollider>(e);
                             }
 
                             if (player.clip && audioSource)

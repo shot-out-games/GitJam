@@ -197,6 +197,9 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         buttonA_held = player.GetButton("FireA");
         buttonA_Released = player.GetButtonUp("FireA");
 
+        //buttonA_Released = player.GetButtonTimeUnpressed("FireA") == 0;
+
+
         buttonB_Pressed = player.GetButtonDown("FireB");
         buttonB_held = player.GetButton("FireB");
         buttonB_Released = player.GetButtonUp("FireB");

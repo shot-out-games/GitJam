@@ -47,7 +47,8 @@ namespace SandBox.Player
 
                     ) =>
                     {
-                        //double raw = Rewired.ReInput.players.GetPlayer(0).GetAxisRaw("FireA");
+                        //bool check = Rewired.ReInput.players.GetPlayer(0)
+                        //bool check = true;
                         double timeButtonPressed = inputController.buttonTimePressed;
                         int jumpPoints = playerJumpComponent.jumpPoints;
 
@@ -55,18 +56,21 @@ namespace SandBox.Player
                         float leftStickY = inputController.leftStickY;
                         bool button_a_held = inputController.buttonA_held;
                         bool button_a_released = inputController.buttonA_Released;
+                        //bool button_a_released = Rewired.ReInput.players.GetPlayer(0).GetButtonUp("FireA");
                         bool button_a = inputController.buttonA_Pressed;
 
-                        Debug.Log("button a " + button_a);
-                        if (button_a)
+                        if (button_a == true)
                         {
+                            Debug.Log("button a " + button_a);
                             playerJumpComponent.JumpCount += 1;
+                            //Debug.Log("jump count " + playerJumpComponent.JumpCount);
                         }
-                        //Debug.Log("button a RAW " + raw);
+                        //Debug.Log("button prev " + check);
 
                         if (button_a_released == true)
                         {
                             playerJumpComponent.CancelJump = true;
+                            Debug.Log("released");
                         }
                         if (button_a_released == true && playerJumpComponent.DoubleJumpStarted == false && playerJumpComponent.doubleJump )
                         {
@@ -75,7 +79,7 @@ namespace SandBox.Player
                         }
                         if (playerJumpComponent.JumpCount > 2)
                         {
-                            playerJumpComponent.CancelJump = true;
+                            //playerJumpComponent.CancelJump = true;
                         }
 
                         float3 velocity = pv.Linear;
@@ -143,7 +147,7 @@ namespace SandBox.Player
                         else if (frames >= 1 && frames <= originalJumpFrames && applyImpulseComponent.InJump == true &&
                                  applyImpulseComponent.Grounded == false && applyImpulseComponent.Falling == false)
                         {
-                            Debug.Log("frames");
+                            //Debug.Log("frames");
                             frames = frames + 1;
                             velocity = new float3(pv.Linear.x, originalJumpPower, leftStickY);
                         }
@@ -151,7 +155,7 @@ namespace SandBox.Player
                                 playerJumpComponent.CancelJump == false &&
                                 applyImpulseComponent.Grounded == false && applyImpulseComponent.Falling == false)
                         {
-                            Debug.Log("frames ii");
+                            //Debug.Log("frames ii");
                             frames = frames + 1;
                             velocity = new float3(pv.Linear.x, originalJumpPower, leftStickY);
                         }
@@ -159,7 +163,7 @@ namespace SandBox.Player
                                 playerJumpComponent.CancelJump == false &&
                                 applyImpulseComponent.Grounded == false && applyImpulseComponent.Falling == false)
                         {
-                            Debug.Log("frames iii");
+                            //Debug.Log("frames iii");
                             frames = frames + 1;
                             velocity = new float3(pv.Linear.x, originalJumpPower, leftStickY);
                         }
