@@ -19,6 +19,8 @@ namespace SandBox.Player
     public class ToggleColliderSystem : SystemBase
     {
 
+       
+
         private enum CollisionLayer
         {
             Player = 1 << 0,
@@ -29,7 +31,10 @@ namespace SandBox.Player
             NPC = 1 << 5,
             PowerUp = 1 << 6,
             Stairs = 1 << 7,
-            Particle = 1 << 8
+            Particle = 1 << 8,
+            Camera = 1 << 9,
+            Crosshair = 1 << 10,
+            Breakable = 1 << 11
         }
 
         protected override void OnCreate()
@@ -38,7 +43,7 @@ namespace SandBox.Player
         }
 
 
-    
+
 
         protected override void OnUpdate()
         {
@@ -47,42 +52,69 @@ namespace SandBox.Player
             Entities.WithoutBurst().ForEach((Entity e, ref PlayerDashComponent playerDashComponent, in ActorCollisionComponent actorCollisionComponent) =>
             {
                 bool hasCollider = HasComponent<PhysicsCollider>(e);
+                //bool hasToggleCollision = HasComponent<ToggleCollisionComponent>(e);
                 if (hasCollider && playerDashComponent.box == BlobAssetReference<Unity.Physics.Collider>.Null)
                 {
                     var collider = GetComponent<PhysicsCollider>(e);
-                    playerDashComponent.box = collider.Value;
+                    playerDashComponent.box = collider.Value.Value.Clone();
                     unsafe
                     {
                         var header = (ConvexCollider*)collider.ColliderPtr;
                         var filter = header->Filter;
 
-                        filter.BelongsTo = (uint) CollisionLayer.Player;
-                        filter.CollidesWith = (uint) CollisionLayer.Ground;
+                        filter.BelongsTo = (uint)CollisionLayer.Player;
+                        filter.CollidesWith = (uint)CollisionLayer.Ground | (uint)CollisionLayer.Obstacle | (uint)CollisionLayer.Breakable | (uint)CollisionLayer.Enemy;
 
                         header->Filter = filter;
                     }
 
 
                 }
+
+                bool hasToggleCollision = HasComponent<ToggleCollisionComponent>(e);
                 playerDashComponent.Invincible = false;
                 if (playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleStart && playerDashComponent.DashTimeTicker < playerDashComponent.invincibleEnd)
                 {
-                    //playerDashComponent.colliderAdded = false;
-                    //playerDashComponent.colliderRemoved = true;
+
                     playerDashComponent.Invincible = true;
-                    if (hasCollider)
+                    if (hasToggleCollision)
                     {
                         Debug.Log("remove " + playerDashComponent.box);
-                        //ecb.RemoveComponent<PhysicsCollider>(e);
+                        ecb.RemoveComponent<ToggleCollisionComponent>(e);
+                        var collider = GetComponent<PhysicsCollider>(e);
+                        unsafe
+                        {
+                            var header = (ConvexCollider*)collider.ColliderPtr;
+                            var filter = header->Filter;
+
+                            filter.BelongsTo = (uint)CollisionLayer.Player;
+                            filter.CollidesWith = (uint)CollisionLayer.Ground;
+
+                            header->Filter = filter;
+                        }
                     }
                 }
-                else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd || playerDashComponent.DashTimeTicker == 0) && hasCollider == false)
+                else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd || playerDashComponent.DashTimeTicker == 0) && hasToggleCollision == false)
                 {
-                    //playerDashComponent.colliderAdded = true;
-                    //playerDashComponent.colliderRemoved = false;
+
                     Debug.Log("add " + playerDashComponent.box);
-                    //ecb.AddComponent<PhysicsCollider>(e, new PhysicsCollider { Value = playerDashComponent.box });
+                    ecb.AddComponent<ToggleCollisionComponent>(e, new ToggleCollisionComponent { });
+                    var collider = GetComponent<PhysicsCollider>(e);
+                    unsafe
+                    {
+                        var header = (ConvexCollider*)collider.ColliderPtr;
+                        var filter = header->Filter;
+
+                        filter.BelongsTo = (uint)CollisionLayer.Player;
+                        filter.CollidesWith = (uint)CollisionLayer.Ground | (uint)CollisionLayer.Obstacle | (uint)CollisionLayer.Breakable | (uint)CollisionLayer.Enemy; 
+
+                        header->Filter = filter;
+                    }
+                    //ecb.SetComponent<PhysicsCollider>(e, new PhysicsCollider { Value = playerDashComponent.box });
                 }
+
+               
+
 
             }
             ).Run();

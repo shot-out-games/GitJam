@@ -15,6 +15,7 @@ public struct ActorCollisionComponent : IComponentData
 {
 
     public bool isPlayer;
+    public Entity _parent;
 }
 
 public class ToggleCollisionAuthoring : MonoBehaviour, IConvertGameObjectToEntity
@@ -22,14 +23,17 @@ public class ToggleCollisionAuthoring : MonoBehaviour, IConvertGameObjectToEntit
 
 
     public bool isPlayer = true;
-
+    public GameObject _parent;
 
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
+        Entity parentEntity = conversionSystem.GetPrimaryEntity(_parent.transform.root.gameObject);
         dstManager.AddComponentData(entity, new ActorCollisionComponent
         {
-            isPlayer = isPlayer
+            isPlayer = isPlayer, 
+            _parent = parentEntity
+            
 
         });
 
