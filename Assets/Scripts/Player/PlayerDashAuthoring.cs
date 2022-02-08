@@ -15,8 +15,12 @@ public struct PlayerDashComponent : IComponentData
     public float DashTimeTicker;
     public float delayTime;
     public float DelayTimeTicker;
+    public float invincibleStart;
+    public float invincibleEnd;
     public PhysicsCollider Collider;
     public BlobAssetReference<Unity.Physics.Collider> box;
+    public bool Invincible;
+    public bool InDash;
 
 }
 
@@ -24,10 +28,13 @@ public struct PlayerDashComponent : IComponentData
 public class PlayerDashAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 
 {
-
+    public BlobAssetReference<Unity.Physics.Collider> box;
     public float power = 10;
     public float dashTime = 1;
     public float delayTime = .5f;
+    public float invincibleStart = .1f;
+    public float invincibleEnd = 1f;
+
     public AudioSource audioSource;
     public AudioClip clip;
     public ParticleSystem ps;
@@ -36,7 +43,6 @@ public class PlayerDashAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 
     void Start()
     {
-    
     }
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
@@ -45,9 +51,11 @@ public class PlayerDashAuthoring : MonoBehaviour, IConvertGameObjectToEntity
         {
             power = power,
             dashTime = dashTime,
-            delayTime = delayTime
+            delayTime = delayTime,
+            invincibleStart = invincibleStart,
+            invincibleEnd = invincibleEnd
         }
-        );
+        ); ; ; ;
 
 
 

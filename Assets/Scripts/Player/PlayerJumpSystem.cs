@@ -49,6 +49,11 @@ namespace SandBox.Player
                     {
                         //bool check = Rewired.ReInput.players.GetPlayer(0)
                         //bool check = true;
+                        bool hasDash = HasComponent<PlayerDashComponent>(e);
+                        bool invincible = false;
+
+
+
                         double timeButtonPressed = inputController.buttonTimePressed;
                         int jumpPoints = playerJumpComponent.jumpPoints;
 
@@ -72,7 +77,7 @@ namespace SandBox.Player
                             playerJumpComponent.CancelJump = true;
                             Debug.Log("released");
                         }
-                        if (button_a_released == true && playerJumpComponent.DoubleJumpStarted == false && playerJumpComponent.doubleJump )
+                        if (button_a_released == true && playerJumpComponent.DoubleJumpStarted == false && playerJumpComponent.doubleJump)
                         {
                             playerJumpComponent.DoubleJumpAllowed = true;
                             playerJumpComponent.CancelJump = false;
@@ -103,8 +108,20 @@ namespace SandBox.Player
                         }
                         if (applyImpulseComponent.Falling)
                         {
-                            //Debug.Log("falling");
-                            pv.Linear.y += applyImpulseComponent.NegativeForce;
+                            if (hasDash == false)
+                            {
+                                pv.Linear.y += applyImpulseComponent.NegativeForce;
+                                Debug.Log("falling");
+                            }
+                            else
+                            {
+                                var playerDash = GetComponent<PlayerDashComponent>(e);
+                                if (playerDash.InDash == false)
+                                {
+                                    pv.Linear.y += applyImpulseComponent.NegativeForce;
+                                    Debug.Log("falling");
+                                }
+                            }
                             return;
                         }
                         if (button_a && frames == 0)
@@ -122,7 +139,7 @@ namespace SandBox.Player
                             //playerJump.GetComponent<Animator>().applyRootMotion = false;
                             playerJumpComponent.JumpStage = JumpStages.JumpStart;
                             velocity = new float3(pv.Linear.x, originalJumpPower, pv.Linear.z);
-                    
+
                             Debug.Log("jump 1");
                         }
                         else if (button_a && playerJumpComponent.DoubleJumpAllowed == true)
@@ -141,7 +158,7 @@ namespace SandBox.Player
                             //playerJump.GetComponent<Animator>().applyRootMotion = false;
                             playerJumpComponent.JumpStage = JumpStages.JumpStart;
                             velocity = new float3(pv.Linear.x, originalJumpPower * 1, pv.Linear.z);//ADD DBL JUMP FACTOR
-                           
+
                             Debug.Log("jump 2");
                         }
                         else if (frames >= 1 && frames <= originalJumpFrames && applyImpulseComponent.InJump == true &&
@@ -172,7 +189,21 @@ namespace SandBox.Player
                         pv.Linear = new float3(velocity.x, velocity.y, velocity.z);
                         if (playerJumpComponent.JumpStage != JumpStages.Ground)
                         {
-                            pv.Linear.y += applyImpulseComponent.NegativeForce;
+                            if (hasDash == false)
+                            {
+                                pv.Linear.y += applyImpulseComponent.NegativeForce;
+                            }
+                            else
+                            {
+                                var playerDash = GetComponent<PlayerDashComponent>(e);
+                                invincible = playerDash.Invincible;
+
+                                if (invincible == false)
+                                {
+                                    Debug.Log("negative");
+                                    pv.Linear.y += applyImpulseComponent.NegativeForce;
+                                }
+                            }
                         }
 
 
@@ -181,9 +212,10 @@ namespace SandBox.Player
 
                         if (button_a == true && frames == 1)
                         {
-                            if (HasComponent<PlayerDashComponent>(e))// break dash
+                            if (hasDash)// break dash
                             {
                                 var playerDash = GetComponent<PlayerDashComponent>(e);
+                                playerDash.InDash = false;
                                 playerDash.DashTimeTicker = 0;
                                 playerDash.DelayTimeTicker = 0;
                                 SetComponent<PlayerDashComponent>(e, playerDash);

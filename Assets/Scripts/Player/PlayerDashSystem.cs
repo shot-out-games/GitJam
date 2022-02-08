@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using Unity.Physics;
 using Unity.Physics.Systems;
+using Unity.Collections;
 
 namespace SandBox.Player
 {
@@ -17,6 +18,8 @@ namespace SandBox.Player
 
         protected override void OnUpdate()
         {
+            EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+
             float dt = Time.DeltaTime;
 
             Entities.WithoutBurst().ForEach(
@@ -55,6 +58,8 @@ namespace SandBox.Player
                             {
                                 animator.SetInteger("Dash", 1);
                                 playerDash.Collider = GetComponent<PhysicsCollider>(e);
+                                playerDash.InDash = true;
+
                             }
 
                             if (player.clip && audioSource)
@@ -84,6 +89,7 @@ namespace SandBox.Player
                     else if (playerDash.DashTimeTicker < playerDash.dashTime)
                     {
                         var pv = new PhysicsVelocity();
+                        playerDash.InDash = true;
 
                         //Debug.Log("fw  " + ltw.Forward);
                         //t.Value += ltw.Forward * dt * playerDash.power;
@@ -93,9 +99,17 @@ namespace SandBox.Player
                     }
                     else if (playerDash.DashTimeTicker >= playerDash.dashTime)
                     {
+                        //playerDash.colliderAdded = true;
+                        //playerDash.colliderRemoved = false;
+                        //if(HasComponent<PhysicsCollider>(e) == false)
+                        //{
+                            //var collider = GetComponent<PhysicsCollider>(e);
+                            //playerDash.box = collider.Value;
+                        //}    
                         playerDash.DashTimeTicker = 0;
                         playerDash.DelayTimeTicker = playerDash.delayTime;
                         animator.SetInteger("Dash", 0);
+                        playerDash.InDash = false;
                         if (audioSource != null) audioSource.Stop();
                         if (player.ps != null) player.ps.Stop();
 
@@ -104,6 +118,10 @@ namespace SandBox.Player
 
                 }
             ).Run();
+
+            ecb.Playback(EntityManager);
+            ecb.Dispose();
+
 
         }
 
