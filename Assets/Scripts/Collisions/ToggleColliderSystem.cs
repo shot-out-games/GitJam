@@ -44,7 +44,7 @@ namespace SandBox.Player
         {
             EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
-            Entities.WithoutBurst().WithAll<PlayerComponent>().ForEach((Entity e, ref PlayerDashComponent playerDashComponent) =>
+            Entities.WithoutBurst().ForEach((Entity e, ref PlayerDashComponent playerDashComponent, in ActorCollisionComponent actorCollisionComponent) =>
             {
                 bool hasCollider = HasComponent<PhysicsCollider>(e);
                 if (hasCollider && playerDashComponent.box == BlobAssetReference<Unity.Physics.Collider>.Null)
@@ -73,7 +73,7 @@ namespace SandBox.Player
                     if (hasCollider)
                     {
                         Debug.Log("remove " + playerDashComponent.box);
-                        ecb.RemoveComponent<PhysicsCollider>(e);
+                        //ecb.RemoveComponent<PhysicsCollider>(e);
                     }
                 }
                 else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd || playerDashComponent.DashTimeTicker == 0) && hasCollider == false)
@@ -81,7 +81,7 @@ namespace SandBox.Player
                     //playerDashComponent.colliderAdded = true;
                     //playerDashComponent.colliderRemoved = false;
                     Debug.Log("add " + playerDashComponent.box);
-                    ecb.AddComponent<PhysicsCollider>(e, new PhysicsCollider { Value = playerDashComponent.box });
+                    //ecb.AddComponent<PhysicsCollider>(e, new PhysicsCollider { Value = playerDashComponent.box });
                 }
 
             }
