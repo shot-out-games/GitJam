@@ -47,7 +47,7 @@ namespace SandBox.Player
 
         protected override void OnUpdate()
         {
-            EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
+            EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.TempJob);
 
             BufferFromEntity<ActorCollisionBufferElement> actorCollisionBufferElement = GetBufferFromEntity<ActorCollisionBufferElement>(true);
 

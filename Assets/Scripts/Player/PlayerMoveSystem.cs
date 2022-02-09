@@ -7,10 +7,7 @@ using Unity.Physics;
 using Unity.Physics.Systems;
 using Unity.Transforms;
 using UnityEngine;
-
-
-
-
+using UnityEngine.VFX;
 
 namespace SandBox.Player
 {
@@ -65,7 +62,7 @@ namespace SandBox.Player
 
 
 
-                    Camera cam = playerMove.mainCam;
+                    Camera cam = Camera.main;
                     Animator animator = playerMove.GetComponent<Animator>();
 
 
@@ -108,10 +105,13 @@ namespace SandBox.Player
 
                     AudioSource audioSource = playerMove.audioSource;
 
+                    Debug.Log("as " + audioSource.isPlaying);
+
                     if (math.abs(stickSpeed) >= .01f && applyImpulseComponent.Grounded == true)
                     {
                         if (playerMove.clip && audioSource)
                         {
+                            Debug.Log("as0 " + audioSource.isPlaying);
                             audioSource.pitch = stickSpeed * 2;
                             if (audioSource.isPlaying == false)
                             {
@@ -124,17 +124,22 @@ namespace SandBox.Player
 
                         if (playerMove.psInstance)
                         {
-                            if (playerMove.psInstance.isPlaying == false)
-                            {
-                                playerMove.psInstance.transform.SetParent(playerMove.transform);
-                                playerMove.psInstance.Play(true);
-                            }
+                            //    if (playerMove.psInstance.GetComponent<VisualEffect>().isActiveAndEnabled == false)
+                            //    {
+                            //playerMove.psInstance.transform.SetParent(playerMove.transform);
+                            playerMove.psInstance.GetComponent<VisualEffect>().SetFloat("Spawn Rate", 20);
+                            //    }
                         }
                     }
                     else
                     {
                         if (audioSource != null) audioSource.Stop();
-                        if (playerMove.psInstance != null) playerMove.psInstance.Stop();
+                        Debug.Log("spawn 0");
+                        if (playerMove.psInstance != null)
+                        {
+                            Debug.Log("spawn 1");
+                            playerMove.psInstance.GetComponent<VisualEffect>().SetFloat("Spawn Rate", 0);
+                        }
 
                     }
 
@@ -174,12 +179,12 @@ namespace SandBox.Player
         protected override void OnUpdate()
         {
 
+            float time = Time.DeltaTime;
 
 
-            Entities.WithoutBurst().WithStructuralChanges().WithAll<PlayerComponent>().WithNone<Pause>().ForEach
+            Entities.WithoutBurst().WithAll<PlayerComponent>().WithNone<Pause>().ForEach
             (
              (
-                 PlayerMove playerMove,
                  ref Rotation rotation,
                  ref Translation translation,
                  ref PhysicsVelocity pv,
@@ -221,8 +226,8 @@ namespace SandBox.Player
 
                              //var forward = playerMove.mainCam.transform.TransformDirection(Vector3.forward);
                              //var right = playerMove.mainCam.transform.TransformDirection(Vector3.right);
-                             var forward = playerMove.mainCam.transform.forward;
-                             var right = playerMove.mainCam.transform.right;
+                             var forward = Camera.main.transform.forward;
+                             var right = Camera.main.transform.right;
                              //forward = Vector3.forward;
                              //right = Vector3.right;
 
@@ -233,7 +238,7 @@ namespace SandBox.Player
                              {
                                  targetDirection.Normalize();
                                  quaternion targetRotation = quaternion.LookRotation(targetDirection, math.up());
-                                 rotation.Value = math.slerp(rotation.Value, targetRotation, slerpDampTime * Time.DeltaTime);
+                                 rotation.Value = math.slerp(rotation.Value, targetRotation, slerpDampTime * time);
                              }
                          }
 
@@ -250,13 +255,6 @@ namespace SandBox.Player
                  }
              }
          ).Run();
-
-
-
-
-
-
-
 
 
 

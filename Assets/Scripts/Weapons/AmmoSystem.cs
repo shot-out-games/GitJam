@@ -42,8 +42,9 @@ public class AmmoSystem : SystemBase
 
 
 
-        Entities.WithoutBurst().WithAny<EnemyComponent>().ForEach((ref DefensiveStrategyComponent defensiveStrategy, in Translation enemyTranslation) =>
+        Entities.WithoutBurst().WithAny<EnemyComponent>().ForEach((Entity enemy, ref DefensiveStrategyComponent defensiveStrategy, in Translation enemyTranslation) =>
         {
+            Debug.Log("dt0 ");
 
             for (int i = 0; i < ammoGroup.Length; i++)
             {
@@ -55,14 +56,18 @@ public class AmmoSystem : SystemBase
                 bool isEnemy = HasComponent<EnemyComponent>(shooter);
                 if (isEnemy) return;
 
+
+
                 var playerTranslation = GetComponent<Translation>(shooter);//not used
 
                 float distance = math.distance(triggerTranslation.Value, enemyTranslation.Value);
-                //Debug.Log("dt " + (int)distance);
+                Debug.Log("dt " + (int)distance);
                 if (distance < defensiveStrategy.breakRouteVisionDistance && defensiveStrategy.breakRoute == true && ammoE != defensiveStrategy.closeBulletEntity)
                 {
                     defensiveStrategy.closeBulletEntity = ammoE;
+                    bool hasEvade = HasComponent<EvadeComponent>(enemy);
                     defensiveStrategy.currentRole = DefensiveRoles.Chase;
+                    if (hasEvade == true) defensiveStrategy.currentRole = DefensiveRoles.Evade;
                     defensiveStrategy.currentRoleTimer = 0;
                 }
 

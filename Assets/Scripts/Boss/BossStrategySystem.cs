@@ -120,39 +120,14 @@ public class BossStrategySystem : SystemBase
             float3 direction = math.normalize(playerXZ - bossXZ);
 
             float dist = math.distance(bossXZ, playerXZ);
-            //Debug.Log("pl rot " + playerRotation.Value);
-
-            //direction.x = 0;
-            //direction.y = 0;
-            //if (dist >= .001)
-            //// {
-            //Vector3 forward = Vector3.forward;
-            //forward.y = 0;
-            //Vector3 right = Vector3.right;
-            //Vector3 targetDirection = (leftStickX * right + leftStickY * forward);
-            //targetDirection.Normalize();
-            //quaternion targetRotation = quaternion.LookRotation(targetDirection, math.up());
-            //rotation.Value = targetRotation;
             if (dist < 1) direction = -math.forward();//????????????????? 1
-
-            //float3 bossXZ = new float3(bossTranslation.Value.x, 0, bossTranslation.Value.z);
-            //float3 playerXZ = new float3(playerMove.Value.x, 0, playerMove.Value.z);
-
             quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
-
-            //quaternion targetRotation = quaternion.LookRotationSafe(math.forward(), math.up());//always face player
-
-
-            //quaternion targetRotation = rotation.Value * math.right();
-            //Debug.Log("dist " + dist);
             float slerpDampTime = bossMovementComponent.RotateSpeed;
-            //rotation.Value = targetRotation.value;
             rotation.Value = math.slerp(rotation.Value, targetRotation.value, slerpDampTime * Time.DeltaTime);
-            //rotation.Value = math.slerp(rotation.Value, playerForward, slerpDampTime * Time.DeltaTime);
-            // }
 
             float targetSpeed = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointSpeed;
             float duration = targetPointBuffer[bossMovementComponent.CurrentIndex].duration;
+
             bossMovementComponent.CurrentWayPointTimer += Time.DeltaTime;
             if (bossMovementComponent.CurrentWayPointTimer >= duration)
             {

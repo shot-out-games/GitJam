@@ -20,7 +20,7 @@ MonoBehaviour:
     x: -1786
     y: -1241
     width: 2580
-    height: 2430
+    height: 2384
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8388,9 +8388,9 @@ MonoBehaviour:
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615213}
       inputSlot: {fileID: 8926484042661615219}
-    position: {x: -523.913, y: -1213.9131}
+    position: {x: -526, y: -1212}
     expandedSlots: []
-    expanded: 0
+    expanded: 1
   - m_Id: 3
     linkedSlots:
     - outputSlot: {fileID: 8926484042661615213}

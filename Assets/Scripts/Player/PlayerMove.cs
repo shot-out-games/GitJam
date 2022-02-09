@@ -10,7 +10,7 @@ using Unity.Physics;
 using Unity.Physics.Extensions;
 using Unity.Physics.Systems;
 using Unity.Transforms;
-
+using UnityEngine.VFX;
 
 public struct PlayerMoveComponent : IComponentData
 {
@@ -28,7 +28,7 @@ public struct PlayerMoveComponent : IComponentData
 
 namespace SandBox.Player
 {
-    
+
 
 
     public class PlayerMove : MonoBehaviour, IConvertGameObjectToEntity
@@ -38,8 +38,11 @@ namespace SandBox.Player
 
         public AudioSource audioSource;
         public AudioClip clip;
-        public ParticleSystem psPrefab;
-        public ParticleSystem psInstance;
+        //public ParticleSystem psPrefab;
+        //public ParticleSystem psInstance;
+
+        public GameObject psPrefab;
+        public GameObject psInstance;
 
 
         public float fallingFramesMax;
@@ -73,7 +76,10 @@ namespace SandBox.Player
             {
                 Application.targetFrameRate = targetFrameRate;
             }
-            psInstance = Instantiate(psPrefab, transform);
+            var ps = Instantiate(psPrefab, transform);
+            ps.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+            psInstance = ps;
+            psInstance.GetComponent<VisualEffect>().Play();
             animator = GetComponent<Animator>();
             mainCam = Camera.main;
 
@@ -84,9 +90,11 @@ namespace SandBox.Player
         //private void OnAnimatorMove()
         private void Update()
         {
+
             if (_entity == Entity.Null) return;
             //changing so we need root animation here only
             if (!ReInput.isReady) return;
+
 
 
         }
@@ -122,12 +130,12 @@ namespace SandBox.Player
             startSpeed = GetComponent<PlayerRatings>() ? GetComponent<PlayerRatings>().Ratings.speed : 4f;
             //if (move2d)
             //{
-                //snapRotation = true;
-                //dampTime = 0;
+            //snapRotation = true;
+            //dampTime = 0;
             //}
 
 
-        dstManager.AddComponentData(entity, new PlayerMoveComponent()
+            dstManager.AddComponentData(entity, new PlayerMoveComponent()
             {
                 //negativeForce = negativeForce,
                 //currentSpeed = startSpeed,
@@ -136,12 +144,12 @@ namespace SandBox.Player
                 dampTime = dampTime,
                 move2d = move2d,
                 startPosition = transform.position
-                
+
 
             });
 
 
-        dstManager.AddComponentData(entity, new ApplyImpulseComponent { Force = 0, Direction = Vector3.zero, Grounded = false, fallingFramesMaximuim = fallingFramesMax, NegativeForce = negativeForce, ApproachStairBoost = approachStairBoost });
+            dstManager.AddComponentData(entity, new ApplyImpulseComponent { Force = 0, Direction = Vector3.zero, Grounded = false, fallingFramesMaximuim = fallingFramesMax, NegativeForce = negativeForce, ApproachStairBoost = approachStairBoost });
 
 
         }
