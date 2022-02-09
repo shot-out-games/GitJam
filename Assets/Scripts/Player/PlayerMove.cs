@@ -38,7 +38,8 @@ namespace SandBox.Player
 
         public AudioSource audioSource;
         public AudioClip clip;
-        public ParticleSystem ps;
+        public ParticleSystem psPrefab;
+        public ParticleSystem psInstance;
 
 
         public float fallingFramesMax;
@@ -72,7 +73,7 @@ namespace SandBox.Player
             {
                 Application.targetFrameRate = targetFrameRate;
             }
-
+            psInstance = Instantiate(psPrefab, transform);
             animator = GetComponent<Animator>();
             mainCam = Camera.main;
 

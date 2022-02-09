@@ -66,7 +66,7 @@ namespace SandBox.Player
 
                         if (button_a == true)
                         {
-                            Debug.Log("button a " + button_a);
+                            //Debug.Log("button a " + button_a);
                             playerJumpComponent.JumpCount += 1;
                             //Debug.Log("jump count " + playerJumpComponent.JumpCount);
                         }
@@ -75,7 +75,7 @@ namespace SandBox.Player
                         if (button_a_released == true)
                         {
                             playerJumpComponent.CancelJump = true;
-                            Debug.Log("released");
+                            //Debug.Log("released");
                         }
                         if (button_a_released == true && playerJumpComponent.DoubleJumpStarted == false && playerJumpComponent.doubleJump)
                         {
@@ -111,7 +111,7 @@ namespace SandBox.Player
                             if (hasDash == false)
                             {
                                 pv.Linear.y += applyImpulseComponent.NegativeForce;
-                                Debug.Log("falling");
+                                //Debug.Log("falling");
                             }
                             else
                             {
@@ -119,7 +119,7 @@ namespace SandBox.Player
                                 if (playerDash.InDash == false)
                                 {
                                     pv.Linear.y += applyImpulseComponent.NegativeForce;
-                                    Debug.Log("falling");
+                                    //Debug.Log("falling");
                                 }
                             }
                             return;
@@ -140,7 +140,7 @@ namespace SandBox.Player
                             playerJumpComponent.JumpStage = JumpStages.JumpStart;
                             velocity = new float3(pv.Linear.x, originalJumpPower, pv.Linear.z);
 
-                            Debug.Log("jump 1");
+                            //Debug.Log("jump 1");
                         }
                         else if (button_a && playerJumpComponent.DoubleJumpAllowed == true)
                         {
@@ -159,7 +159,7 @@ namespace SandBox.Player
                             playerJumpComponent.JumpStage = JumpStages.JumpStart;
                             velocity = new float3(pv.Linear.x, originalJumpPower * 1, pv.Linear.z);//ADD DBL JUMP FACTOR
 
-                            Debug.Log("jump 2");
+                            //Debug.Log("jump 2");
                         }
                         else if (frames >= 1 && frames <= originalJumpFrames && applyImpulseComponent.InJump == true &&
                                  applyImpulseComponent.Grounded == false && applyImpulseComponent.Falling == false)

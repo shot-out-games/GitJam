@@ -51,7 +51,7 @@ public class LocomotionState : StateMachineBehaviour
         if (animationType == AnimationType.JumpStart)
         {
             animator.SetInteger("JumpState", 0);
-            animator.SetInteger("Dash", 0);
+            //animator.SetInteger("Dash", 0);
             //Debug.Log("event lowered ");
         }
 

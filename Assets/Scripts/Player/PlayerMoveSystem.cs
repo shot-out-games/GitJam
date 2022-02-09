@@ -122,19 +122,19 @@ namespace SandBox.Player
 
                         }
 
-                        if (playerMove.ps)
+                        if (playerMove.psInstance)
                         {
-                            if (playerMove.ps.isPlaying == false)
+                            if (playerMove.psInstance.isPlaying == false)
                             {
-                                playerMove.ps.transform.SetParent(playerMove.transform);
-                                playerMove.ps.Play(true);
+                                playerMove.psInstance.transform.SetParent(playerMove.transform);
+                                playerMove.psInstance.Play(true);
                             }
                         }
                     }
                     else
                     {
                         if (audioSource != null) audioSource.Stop();
-                        if (playerMove.ps != null) playerMove.ps.Stop();
+                        if (playerMove.psInstance != null) playerMove.psInstance.Stop();
 
                     }
 

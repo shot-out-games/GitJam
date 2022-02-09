@@ -52,7 +52,7 @@ namespace SandBox.Player
             BufferFromEntity<ActorCollisionBufferElement> actorCollisionBufferElement = GetBufferFromEntity<ActorCollisionBufferElement>(true);
 
 
-            Entities.WithoutBurst().ForEach((Entity e, ref PlayerDashComponent playerDashComponent) =>
+            JobHandle inputDeps = Entities.ForEach((Entity e, ref PlayerDashComponent playerDashComponent) =>
             {
                 DynamicBuffer<ActorCollisionBufferElement> actorCollisionElement = actorCollisionBufferElement[e];
                 if (actorCollisionElement.Length <= 0)
@@ -117,8 +117,9 @@ namespace SandBox.Player
 
 
             }
-            ).Run();
+            ).Schedule(this.Dependency);
 
+            inputDeps.Complete();
             ecb.Playback(EntityManager);
             ecb.Dispose();
 

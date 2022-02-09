@@ -29,7 +29,7 @@ public class BossStrategySystem : SystemBase
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
         var playerRotationGroup = GetComponentDataFromEntity<Rotation>(true);
 
-        Entities.WithoutBurst().WithNone<Pause>().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent) =>
+        Entities.WithoutBurst().WithAll<EnemyComponent>().WithNone<Pause>().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent) =>
         {
 
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];

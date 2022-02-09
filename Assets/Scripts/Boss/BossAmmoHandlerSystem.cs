@@ -40,7 +40,7 @@ public class BossAmmoHandlerSystem : SystemBase
         var commandBuffer = new EntityCommandBuffer(Allocator.Persistent);
 
         var ammoGroup = GetComponentDataFromEntity<AmmoComponent>(false);
-        Entities.WithoutBurst().WithNone<Pause>().ForEach(
+        Entities.WithNone<Pause>().ForEach(
             (
                  Entity entity,
                  ref BossAmmoManagerComponent bulletManagerComponent,
@@ -110,8 +110,6 @@ public class BossAmmoHandlerSystem : SystemBase
 
                     ammoDataComponent.Shooter = entity;
                     commandBuffer.SetComponent(e, ammoDataComponent);
-                    Debug.Log("boss " + e);
-
 
                     commandBuffer.SetComponent(e, new TriggerComponent
                     { Type = (int)TriggerType.Ammo, ParentEntity = entity, Entity = e, Active = true });

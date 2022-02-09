@@ -69,26 +69,31 @@ public class EndGameSystem : SystemBase
 
         if (LevelManager.instance.gameResult == GameResult.Winner || LevelManager.instance.gameResult == GameResult.Loser)
         {
-
+            bool win = (LevelManager.instance.gameResult == GameResult.Winner);
 
 
 
             Entities.WithoutBurst().WithAny<PlayerComponent, EnemyComponent>().ForEach
             ((in Entity e) =>
                 {
-            
-                    if (HasComponent<PhysicsVelocity>(e))
+
+                    var velocity = GetComponent<PhysicsVelocity>(e);
+                    if (HasComponent<PhysicsVelocity>(e) && win == true && HasComponent<EnemyComponent>(e))
                     {
-                        //ecb.RemoveComponent<PhysicsVelocity>(e);
-                        var velocity = GetComponent<PhysicsVelocity>(e);
-                        velocity.Linear = new float3(0, -9.81f, 0);
-                        ecb.SetComponent<PhysicsVelocity>(e, velocity);
+                        velocity.Linear = new float3(0, 0, 0);
+                        ecb.RemoveComponent<EnemyComponent>(e);
+                    }
+                    else
+                    {
+                        velocity.Linear = new float3(0, 0, 0);
                     }
 
                     if (HasComponent<Pause>(e))
                     {
                         ecb.RemoveComponent<Pause>(e);
                     }
+                    ecb.SetComponent<PhysicsVelocity>(e, velocity);
+
                 }
             ).Run();
 
