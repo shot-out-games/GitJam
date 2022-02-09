@@ -19,7 +19,7 @@ namespace SandBox.Player
     public class ToggleColliderSystem : SystemBase
     {
 
-       
+
 
         private enum CollisionLayer
         {
@@ -49,27 +49,17 @@ namespace SandBox.Player
         {
             EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
-            Entities.WithoutBurst().ForEach((Entity e, ref PlayerDashComponent playerDashComponent, in ActorCollisionComponent actorCollisionComponent) =>
+            BufferFromEntity<ActorCollisionBufferElement> actorCollisionBufferElement = GetBufferFromEntity<ActorCollisionBufferElement>(true);
+
+
+            Entities.WithoutBurst().ForEach((Entity e, ref PlayerDashComponent playerDashComponent) =>
             {
-                bool hasCollider = HasComponent<PhysicsCollider>(e);
-                //bool hasToggleCollision = HasComponent<ToggleCollisionComponent>(e);
-                if (hasCollider && playerDashComponent.box == BlobAssetReference<Unity.Physics.Collider>.Null)
-                {
-                    var collider = GetComponent<PhysicsCollider>(e);
-                    playerDashComponent.box = collider.Value.Value.Clone();
-                    unsafe
-                    {
-                        var header = (ConvexCollider*)collider.ColliderPtr;
-                        var filter = header->Filter;
+                DynamicBuffer<ActorCollisionBufferElement> actorCollisionElement = actorCollisionBufferElement[e];
+                if (actorCollisionElement.Length <= 0)
+                    return;
 
-                        filter.BelongsTo = (uint)CollisionLayer.Player;
-                        filter.CollidesWith = (uint)CollisionLayer.Ground | (uint)CollisionLayer.Obstacle | (uint)CollisionLayer.Breakable | (uint)CollisionLayer.Enemy;
-
-                        header->Filter = filter;
-                    }
-
-
-                }
+                bool addColliders = false;
+                bool removeColliders = false;
 
                 bool hasToggleCollision = HasComponent<ToggleCollisionComponent>(e);
                 playerDashComponent.Invincible = false;
@@ -79,9 +69,37 @@ namespace SandBox.Player
                     playerDashComponent.Invincible = true;
                     if (hasToggleCollision)
                     {
-                        Debug.Log("remove " + playerDashComponent.box);
+
                         ecb.RemoveComponent<ToggleCollisionComponent>(e);
-                        var collider = GetComponent<PhysicsCollider>(e);
+                        removeColliders = true;
+                    }
+                }
+                else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd || playerDashComponent.DashTimeTicker == 0) && hasToggleCollision == false)
+                {
+
+                    ecb.AddComponent<ToggleCollisionComponent>(e, new ToggleCollisionComponent { });
+                    addColliders = true;
+                }
+
+                for (int i = 0; i < actorCollisionElement.Length; i++)
+                {
+                    var childEntity = actorCollisionElement[i]._child;
+                    var collider = GetComponent<PhysicsCollider>(childEntity);
+                    if (addColliders)
+                    {
+                        unsafe
+                        {
+                            var header = (ConvexCollider*)collider.ColliderPtr;
+                            var filter = header->Filter;
+
+                            filter.BelongsTo = (uint)CollisionLayer.Player;
+                            filter.CollidesWith = (uint)CollisionLayer.Ground | (uint)CollisionLayer.Obstacle | (uint)CollisionLayer.Breakable | (uint)CollisionLayer.Enemy;
+
+                            header->Filter = filter;
+                        }
+                    }
+                    else if (removeColliders)
+                    {
                         unsafe
                         {
                             var header = (ConvexCollider*)collider.ColliderPtr;
@@ -93,27 +111,9 @@ namespace SandBox.Player
                             header->Filter = filter;
                         }
                     }
-                }
-                else if ((playerDashComponent.DashTimeTicker >= playerDashComponent.invincibleEnd || playerDashComponent.DashTimeTicker == 0) && hasToggleCollision == false)
-                {
 
-                    Debug.Log("add " + playerDashComponent.box);
-                    ecb.AddComponent<ToggleCollisionComponent>(e, new ToggleCollisionComponent { });
-                    var collider = GetComponent<PhysicsCollider>(e);
-                    unsafe
-                    {
-                        var header = (ConvexCollider*)collider.ColliderPtr;
-                        var filter = header->Filter;
-
-                        filter.BelongsTo = (uint)CollisionLayer.Player;
-                        filter.CollidesWith = (uint)CollisionLayer.Ground | (uint)CollisionLayer.Obstacle | (uint)CollisionLayer.Breakable | (uint)CollisionLayer.Enemy; 
-
-                        header->Filter = filter;
-                    }
-                    //ecb.SetComponent<PhysicsCollider>(e, new PhysicsCollider { Value = playerDashComponent.box });
                 }
 
-               
 
 
             }

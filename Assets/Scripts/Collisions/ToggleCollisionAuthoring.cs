@@ -11,11 +11,12 @@ public struct ToggleCollisionComponent : IComponentData
 
 
 }
-public struct ActorCollisionComponent : IComponentData
+public struct ActorCollisionBufferElement : IBufferElementData
 {
 
     public bool isPlayer;
     public Entity _parent;
+    public Entity _child;
 }
 
 public class ToggleCollisionAuthoring : MonoBehaviour, IConvertGameObjectToEntity
@@ -29,15 +30,28 @@ public class ToggleCollisionAuthoring : MonoBehaviour, IConvertGameObjectToEntit
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         Entity parentEntity = conversionSystem.GetPrimaryEntity(_parent.transform.root.gameObject);
-        dstManager.AddComponentData(entity, new ActorCollisionComponent
-        {
-            isPlayer = isPlayer, 
-            _parent = parentEntity
-            
+        //dstManager.AddComponentData(parentEntity, new ActorCollisionComponent
+        //{
+        //    isPlayer = isPlayer,
+        //    _parent = parentEntity,
+        //    _child = entity
 
-        });
 
-        dstManager.AddComponent<ToggleCollisionComponent>(entity);
+        //});
+
+        dstManager.AddBuffer<ActorCollisionBufferElement>(parentEntity).Add
+             (
+                 new ActorCollisionBufferElement
+                 {
+                     isPlayer = isPlayer,
+                     _parent = parentEntity,
+                     _child = entity
+
+                 }
+             );
+
+
+        dstManager.AddComponent<ToggleCollisionComponent>(parentEntity);
 
     }
 
