@@ -44,7 +44,7 @@ public class AmmoSystem : SystemBase
 
         Entities.WithoutBurst().WithAny<EnemyComponent>().ForEach((Entity enemy, ref DefensiveStrategyComponent defensiveStrategy, in Translation enemyTranslation) =>
         {
-            Debug.Log("dt0 ");
+            //Debug.Log("dt0 ");
 
             for (int i = 0; i < ammoGroup.Length; i++)
             {

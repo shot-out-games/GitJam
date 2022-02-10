@@ -39,12 +39,20 @@ public class RaycastSystem : SystemBase
 
     protected override void OnUpdate()
     {
+        //BufferFromEntity<ActorCollisionBufferElement> actorCollisionBufferElement = GetBufferFromEntity<ActorCollisionBufferElement>(true);
 
 
 
         Entities.WithoutBurst().ForEach((Entity entity, ref ApplyImpulseComponent applyImpulse,
-            ref Translation translation, ref PhysicsVelocity pv, ref PhysicsCollider collider, ref Rotation rotation, in PlayerComponent playerComponent) =>
+            ref Translation translation, ref PhysicsVelocity pv, ref Rotation rotation, in PlayerComponent playerComponent) =>
         {
+
+            //DynamicBuffer<ActorCollisionBufferElement> actorCollisionElement = actorCollisionBufferElement[entity];
+            //if (actorCollisionElement.Length <= 0)
+                //return;
+            //entity = actorCollisionElement[0]._parent;
+            //Debug.Log("base entity " + entity);
+
 
             var physicsWorldSystem = World.GetExistingSystem<Unity.Physics.Systems.BuildPhysicsWorld>();
             var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
@@ -141,6 +149,7 @@ public class RaycastSystem : SystemBase
                     {
                         applyImpulse.InJump = false;
                         applyImpulse.Grounded = true;
+                        Debug.Log("ground");
                     }
 
                     applyImpulse.fallingFramesCounter = 0;

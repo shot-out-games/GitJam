@@ -545,7 +545,7 @@ public class BreakableEffectsSystem : SystemBase
 
                 AudioSource audioSource = effects.audioSource;
                 int effectsIndex = playAndDestroyEffect.effectIndex;
-                Debug.Log("e index " + effectsIndex);
+                //Debug.Log("e index " + effectsIndex);
                 if (effects.parentEffect != null && effects.parentEffect.Count > 0)
                 {
 
@@ -554,7 +554,7 @@ public class BreakableEffectsSystem : SystemBase
                         if (effects.parentEffect[effectsIndex].psInstance.isPlaying == false)
                         {
                             effects.parentEffect[effectsIndex].psInstance.Play(true);
-                            Debug.Log("ps breakable " + effects.parentEffect[effectsIndex].psInstance);
+                            //Debug.Log("ps breakable " + effects.parentEffect[effectsIndex].psInstance);
                             if (effects.parentEffect[effectsIndex].clip)
                             {
                                 //effectsComponent.startEffectSound = false;
@@ -562,7 +562,7 @@ public class BreakableEffectsSystem : SystemBase
                                 if (!audioSource.isPlaying)
                                 {
                                     audioSource.PlayOneShot(audioSource.clip, 1.0f);
-                                    Debug.Log("play audio breakable " + audioSource.clip);
+                                    //Debug.Log("play audio breakable " + audioSource.clip);
                                 }
                             }
 

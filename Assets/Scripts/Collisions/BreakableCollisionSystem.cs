@@ -110,7 +110,7 @@ public class BreakableCollisionSystem : SystemBase
                     //  var breakerEntity = triggerGroup[b].ParentEntity;
 
                     breakable.breakerEntity = shooter;
-                    Debug.Log("breaker " + shooter);
+                    //Debug.Log("breaker " + shooter);
                     //}
                     ecb.SetComponent<BreakableComponent>(a, breakable);
                     ecb.AddComponent<BrokenComponent>(a);

@@ -134,10 +134,10 @@ namespace SandBox.Player
                     else
                     {
                         if (audioSource != null) audioSource.Stop();
-                        Debug.Log("spawn 0");
+                        //Debug.Log("spawn 0");
                         if (playerMove.psInstance != null)
                         {
-                            Debug.Log("spawn 1");
+                            //Debug.Log("spawn 1");
                             playerMove.psInstance.GetComponent<VisualEffect>().SetFloat("Spawn Rate", 0);
                         }
 

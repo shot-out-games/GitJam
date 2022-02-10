@@ -42,6 +42,7 @@ namespace SandBox.Player
         //public ParticleSystem psInstance;
 
         public GameObject psPrefab;
+        public Transform psParent;
         public GameObject psInstance;
 
 
@@ -76,8 +77,8 @@ namespace SandBox.Player
             {
                 Application.targetFrameRate = targetFrameRate;
             }
-            var ps = Instantiate(psPrefab, transform);
-            ps.transform.position = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+            var ps = Instantiate(psPrefab, psParent);
+            ps.transform.position = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z);
             psInstance = ps;
             psInstance.GetComponent<VisualEffect>().Play();
             animator = GetComponent<Animator>();
@@ -85,13 +86,13 @@ namespace SandBox.Player
 
         }
 
-        void OnAnimatorMove()
-        {
-            transform.position += animator.deltaPosition;
-            transform.forward = animator.deltaRotation * transform.forward;
-            //transform.rotation = animator.deltaRotation;
+        //void OnAnimatorMove()
+        //{
+        //    transform.position += animator.deltaPosition;
+        //    transform.forward = animator.deltaRotation * transform.forward;
+        //    //transform.rotation = animator.deltaRotation;
 
-        }
+        //}
 
         //private void OnAnimatorMove()
         private void Update()
