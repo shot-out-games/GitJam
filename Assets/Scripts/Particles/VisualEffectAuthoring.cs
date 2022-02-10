@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
+using UnityEngine.VFX;
 
 //public Entity entity;
 //public bool enemyDamaged;
@@ -20,6 +21,9 @@ public class VisualEffectAuthoring : MonoBehaviour, IDeclareReferencedPrefabs, I
     [Header("Effects Index")]
     public int effectsIndex = 0;
     public int deathBlowEffectsIndex;
+    public float destroyCountdown = 2;
+
+
 
 
     //public GameObject ParticlePrefab;
@@ -33,7 +37,8 @@ public class VisualEffectAuthoring : MonoBehaviour, IDeclareReferencedPrefabs, I
                     spawnTime = spawnTime,
                     framesToSkip = framesToSkip,
                     effectsIndex = effectsIndex,
-                    deathBlowEffectsIndex = deathBlowEffectsIndex
+                    deathBlowEffectsIndex = deathBlowEffectsIndex,
+                    destroyCountdown = destroyCountdown
                 }
             );
     }

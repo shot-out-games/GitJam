@@ -4,8 +4,7 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Transforms;
 using UnityEngine;
-
-
+using UnityEngine.VFX;
 
 public struct VisualEffectEntitySpawnerComponent : IComponentData
 {
@@ -29,6 +28,7 @@ public struct VisualEffectEntityComponent : IComponentData
     public float currentTime;
     public float spawnTime;
     public bool destroy;
+    public float destroyCountdown;
     public float framesToSkip;//timer instead?
     public int frameSkipCounter;
     public int effectsIndex;
@@ -52,10 +52,13 @@ public class VisualEffectSystem : SystemBase
         Entities.WithoutBurst().ForEach(
         (
             ref VisualEffectEntityComponent visualEffectComponent,
-            in Entity entity
+            in Entity entity,
+            in VisualEffect ve
 
         ) =>
         {
+            //Debug.Log("ve" + ve.GetComponent<VisualEffect>());
+            //ve.GetComponent<VisualEffect>();
             if (visualEffectComponent.instantiated)
             {
                 visualEffectComponent.currentTime += Time.DeltaTime;
@@ -85,9 +88,19 @@ public class VisualEffectSystem : SystemBase
         }
         ).Run();
 
-        Entities.ForEach((Entity e, in VisualEffectEntityComponent visualEffectComponent) =>
+        Entities.WithoutBurst().ForEach((Entity e, VisualEffect ve, ref VisualEffectEntityComponent visualEffectComponent) =>
         {
-            if(visualEffectComponent.destroy) ecb.DestroyEntity(e);
+            if (visualEffectComponent.destroy && visualEffectComponent.destroyCountdown > 0)
+            {
+                ve.SetFloat("Spawn Rate", 0);
+                visualEffectComponent.destroyCountdown -= Time.DeltaTime;
+                //ecb.DestroyEntity(e);
+            }
+            else if (visualEffectComponent.destroy && visualEffectComponent.destroyCountdown <= 0)
+            {
+                Debug.Log("destroy");
+                ecb.DestroyEntity(e);
+            }
 
         }).Run();
 

@@ -105,13 +105,13 @@ namespace SandBox.Player
 
                     AudioSource audioSource = playerMove.audioSource;
 
-                    Debug.Log("as " + audioSource.isPlaying);
+                    //Debug.Log("as " + audioSource.isPlaying);
 
                     if (math.abs(stickSpeed) >= .01f && applyImpulseComponent.Grounded == true)
                     {
                         if (playerMove.clip && audioSource)
                         {
-                            Debug.Log("as0 " + audioSource.isPlaying);
+                            //Debug.Log("as0 " + audioSource.isPlaying);
                             audioSource.pitch = stickSpeed * 2;
                             if (audioSource.isPlaying == false)
                             {

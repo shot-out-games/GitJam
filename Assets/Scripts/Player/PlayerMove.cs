@@ -85,7 +85,13 @@ namespace SandBox.Player
 
         }
 
+        void OnAnimatorMove()
+        {
+            transform.position += animator.deltaPosition;
+            transform.forward = animator.deltaRotation * transform.forward;
+            //transform.rotation = animator.deltaRotation;
 
+        }
 
         //private void OnAnimatorMove()
         private void Update()

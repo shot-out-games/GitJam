@@ -32,6 +32,14 @@ public class BossStrategySystem : SystemBase
         Entities.WithoutBurst().WithAll<EnemyComponent>().WithNone<Pause>().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent) =>
         {
 
+            if(HasComponent<EvadeComponent>(enemyE))
+            {
+                if(GetComponent<EvadeComponent>(enemyE).InEvade == true)
+                {
+                    return;
+                }    
+            }
+
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
             //int animation = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAnimation;
             int action = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAction;//for show weapon only - the anim is what  triggers whatever ammo may be used

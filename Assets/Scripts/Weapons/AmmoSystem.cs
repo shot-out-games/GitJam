@@ -61,14 +61,19 @@ public class AmmoSystem : SystemBase
                 var playerTranslation = GetComponent<Translation>(shooter);//not used
 
                 float distance = math.distance(triggerTranslation.Value, enemyTranslation.Value);
-                Debug.Log("dt " + (int)distance);
+                //Debug.Log("dt " + (int)distance);
                 if (distance < defensiveStrategy.breakRouteVisionDistance && defensiveStrategy.breakRoute == true && ammoE != defensiveStrategy.closeBulletEntity)
                 {
                     defensiveStrategy.closeBulletEntity = ammoE;
                     bool hasEvade = HasComponent<EvadeComponent>(enemy);
                     defensiveStrategy.currentRole = DefensiveRoles.Chase;
-                    if (hasEvade == true) defensiveStrategy.currentRole = DefensiveRoles.Evade;
+                    if (hasEvade == true)
+                    {
+                        defensiveStrategy.currentRole = DefensiveRoles.Evade;
+                    }
                     defensiveStrategy.currentRoleTimer = 0;
+                    //Debug.Log("role " + defensiveStrategy.currentRole);
+
                 }
 
             }

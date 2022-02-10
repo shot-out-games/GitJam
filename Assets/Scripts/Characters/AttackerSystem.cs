@@ -295,7 +295,7 @@ public class AttackerSystem : SystemBase
                         //effectsIndex = (int)EffectType.Damaged;
                         effectsIndex = visualEffectComponent.effectsIndex;//???
                     }
-                    Debug.Log("effect damage " + damage);
+                    //Debug.Log("effect damage " + damage);
 
                     if (HasComponent<DeadComponent>(collision_entity_a) == false ||
                         GetComponent<DeadComponent>(collision_entity_a).isDead)
