@@ -141,7 +141,7 @@ public class BossComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
                 (
                     new BossWaypointBufferElement
                     {
-                        wayPointPosition = wayPoints[i].targetPosition,
+                        wayPointPosition = wayPoints[i].targetPosition + transform.position,
                         wayPointSpeed = wayPoints[i].speed,
                         wayPointChase = wayPoints[i].chase,
                         duration = wayPoints[i].duration,

@@ -127,7 +127,7 @@ public class CrosshairRaycastSystem : SystemBase
                         actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                     }
 
-                    //Debug.Log("hit enemy position ");
+                    Debug.Log("hit enemy position ");
                 }
                 else if (HasComponent<BreakableComponent>(e))
                 {
@@ -136,7 +136,7 @@ public class CrosshairRaycastSystem : SystemBase
                     {
                         actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                     }
-                    //Debug.Log("hit breakable position ");
+                    Debug.Log("hit breakable position ");
                 }
                 else if (HasComponent<TriggerComponent>(e))
                 {
@@ -145,7 +145,7 @@ public class CrosshairRaycastSystem : SystemBase
                     {
                         actorWeaponAim.crosshairRaycastTarget.y = hitForward.Position.y;
                     }
-                    //Debug.Log("hit something ");
+                    Debug.Log("hit something ");
                 }
 
                 crosshair.targetDelayCounter = 0;
