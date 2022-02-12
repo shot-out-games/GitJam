@@ -47,7 +47,7 @@ public class CrosshairRaycastSystem : SystemBase
         EntityQuery cameraQuery = GetEntityQuery(ComponentType.ReadOnly<CameraControlsComponent>());
         NativeArray<Entity> cameraEntityList = cameraQuery.ToEntityArray(Allocator.Temp);
 
-        EntityQuery actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>());//player 0
+        EntityQuery actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>(), ComponentType.ReadOnly<PlayerComponent>());//player 0
         NativeArray<Entity> actorWeaponAimEntityList = actorWeaponAimQuery.ToEntityArray(Allocator.Temp);
 
 
@@ -74,6 +74,7 @@ public class CrosshairRaycastSystem : SystemBase
             actorWeaponAim.closetEnemyWeaponTargetPosition = new float3(0, 0, distance);
             float3 xHairPosition = new float3(translation.Value.x, translation.Value.y + 0f, actorWeaponAim.crosshairRaycastTarget.z);
             float3 start = new float3(translation.Value.x, translation.Value.y + 0f, playerTranslation.Value.z - distance/2);
+
             if (actorWeaponAim.weaponCamera == CameraTypes.TopDown)
             {
                 start = new float3(translation.Value.x, actorWeaponAim.closetEnemyWeaponTargetPosition.y, playerTranslation.Value.z);
@@ -81,11 +82,11 @@ public class CrosshairRaycastSystem : SystemBase
             }
             float3 direction = math.normalize(xHairPosition - start);
             float3 end = start + direction * distance;
+            //Debug.Log("st " + start + "en " + end);
 
 
             start = actorWeaponAim.rayCastStart;
             end = actorWeaponAim.rayCastEnd;
-
 
             RaycastInput inputForward = new RaycastInput()
             {

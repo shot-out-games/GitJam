@@ -26,13 +26,8 @@ public class AgentLinkMover : MonoBehaviour
         agent.autoTraverseOffMeshLink = false;
         while (true)
         {
-            //Debug.Log("onLink " + agent.isOnOffMeshLink);
-
             if (agent.isOnOffMeshLink && agent.enabled)
             {
-                //Debug.Log("rem " + agent.remainingDistance);
-
-                //Vector3 worldDeltaPosition = agent.nextPosition - transform.position;
                 anim.SetInteger("JumpState", 1);
 
                 if (method == OffMeshLinkMoveMethod.NormalSpeed)
@@ -41,16 +36,9 @@ public class AgentLinkMover : MonoBehaviour
                     yield return StartCoroutine(Parabola(agent, height, duration));
                 else if (method == OffMeshLinkMoveMethod.Curve)
                     yield return StartCoroutine(Curve(agent, duration));
-
-
-                //if (agent.isOnOffMeshLink)
-                //{
                 agent.enabled = true;
                 agent.CompleteOffMeshLink();
                 anim.SetInteger("JumpState", 0);
-                Debug.Log("jump");
-                //}
-
             }
             yield return null;
         }
@@ -94,9 +82,7 @@ public class AgentLinkMover : MonoBehaviour
         float normalizedTime = 0.0f;
         while (normalizedTime < 1.0f)
         {
-            //Debug.Log("next0 " + agent.nextPosition);
-            //Debug.Log("rem0 " + agent.remainingDistance);
-
+          
 
             float yOffset = curve.Evaluate(normalizedTime);
             agent.transform.position = Vector3.Lerp(startPos, endPos, normalizedTime) + yOffset * Vector3.up;

@@ -331,7 +331,7 @@ public class CharacterDamageEffectsSystem : SystemBase
 
 
         //attempt effect hit pause
-       
+
 
 
 
@@ -347,18 +347,20 @@ public class CharacterDamageEffectsSystem : SystemBase
 
                 AudioSource audioSource = effects.audioSource;
 
-                
 
-               
-                    bool hasDamage = HasComponent<DamageComponent>(e);
-                    if (hasDamage == true && deadComponent.isDead == false)
+
+
+                bool hasDamage = HasComponent<DamageComponent>(e);
+                if (hasDamage == true && deadComponent.isDead == false)
+                {
+                    var damageComponent = GetComponent<DamageComponent>(e);
+                    int effectsIndex = damageComponent.effectsIndex;//set in attackersystem by readin visualeffect component index
+                                                                    //Debug.Log("effectsIndex " + effectsIndex);
+
+                    if (damageComponent.DamageReceived <= .0001) return;
+                    animator.SetInteger("HitReact", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more hitreact animations
+                    if (effects.actorEffect.Count > 0)
                     {
-                        var damageComponent = GetComponent<DamageComponent>(e);
-                        int effectsIndex = damageComponent.effectsIndex;//set in attackersystem by readin visualeffect component index
-                        //Debug.Log("effectsIndex " + effectsIndex);
-
-                        if (damageComponent.DamageReceived <= .0001) return;
-                        animator.SetInteger("HitReact", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more hitreact animations
 
                         if (effects.actorEffect != null)
                         {
@@ -373,14 +375,15 @@ public class CharacterDamageEffectsSystem : SystemBase
                                 audioSource.PlayOneShot(audioSource.clip);
                             }
                         }
-
                     }
-                
+
+                }
+
             }
         ).Run();
 
 
-       
+
 
 
 
@@ -439,7 +442,7 @@ public class CharacterDeadEffectsSystem : SystemBase
 
                 AudioSource audioSource = effects.audioSource;
 
-             
+
                 //int state = animator.GetInteger("Dead");
 
                 if (deadComponent.isDead && deadComponent.playDeadEffects)//can probably just use playEffectType in effectsComponent TO DO
@@ -485,12 +488,12 @@ public class CharacterDeadEffectsSystem : SystemBase
 
 
                 }
-             
+
             }
         ).Run();
 
 
-    
+
 
 
         m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
@@ -574,7 +577,7 @@ public class BreakableEffectsSystem : SystemBase
                         }
                     }
                 }
-              
+
 
 
 

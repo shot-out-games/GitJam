@@ -115,6 +115,8 @@ public class WeaponAmmoHandlerSystem : SystemBase
                         velocity.Angular = math.float3(0, 0, 0);
                     }
 
+                    Debug.Log("vel " + velocity.Linear);
+
                     bulletManagerComponent.playSound = true;
                     bulletManagerComponent.setAnimationLayer = true;
 

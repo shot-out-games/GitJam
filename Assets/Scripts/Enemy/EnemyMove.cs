@@ -15,7 +15,8 @@ public enum WayPointAction
     Jump,
     Idle,
     Attack,
-    Fire//strike
+    Fire,
+    N_A//strike
 }
 
 public enum WayPointAnimation
@@ -24,7 +25,8 @@ public enum WayPointAnimation
     Jump,
     Idle,
     Attack,
-    Strike
+    Strike,
+    N_A
 }
 
 
@@ -134,20 +136,11 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
     public NavMeshAgent agent;
     [HideInInspector]
     public Animator anim;
-
-    //private NavMeshPath path;
-    //public float chaseRange;
-    //public float combatRangeDistance;
-    //public float shootRangeDistance;
-
-    //[HideInInspector]
     public List<WayPoint> wayPoints = new List<WayPoint>();
     [SerializeField]
     private int currentWayPointIndex = 0;
     [SerializeField]
     private WayPoint currentWayPoint;
-    //[SerializeField]
-    //private bool isCurrentWayPointJump;
 
     public bool randomWayPoints = false;
     public EnemyRoles enemyRole;
@@ -197,9 +190,6 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         RatingsComponent ratings = manager.GetComponentData<RatingsComponent>(entity);
         if (enemyRatings)
         {
-            //chaseRange = ratings.chaseRangeDistance;
-            //combatRangeDistance = ratings.combatRangeDistance;
-            //shootRangeDistance = ratings.shootRangeDistance;
             if (agent)
             {
                 agent.speed = ratings.speed;
@@ -248,9 +238,9 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
             wayPoints[i] = wayPoint;
         }
 
-        if(wayPoints.Count == 0)
+        if (wayPoints.Count == 0)
         {
-            wayPoints.Add(new WayPoint { targetPosition = transform.position, action = WayPointAction.Idle } );
+            wayPoints.Add(new WayPoint { targetPosition = transform.position, action = WayPointAction.Idle });
         }
 
 
@@ -285,33 +275,29 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         if (wayPoints[currentWayPointIndex].action == WayPointAction.Idle)
         {
             agent.speed = 0;
+            var state = manager.GetComponentData<EnemyStateComponent>(entity);
+            state.MoveState = MoveStates.Idle;
+            manager.SetComponentData<EnemyStateComponent>(entity, state);
+            Debug.Log("agent  " + agent.enabled + " " + wayPoints.Count);
             AnimationMovement();
             return;
         }
 
+        int nextWayPointIndex = wayPoints.Count <= (currentWayPointIndex + 1) ? nextWayPointIndex = 0 : currentWayPointIndex + 1;
         bool isCurrentWayPointJump = wayPoints[currentWayPointIndex].action == WayPointAction.Jump;
+        //bool isNextWayPointJump = wayPoints[nextWayPointIndex].action == WayPointAction.Jump;
         //float distance = .5f;
         float distance = isCurrentWayPointJump ? 1.0f : 1.0f;
 
-        //if (jumpTrigger == true )
-        //{
-        //  anim.SetInteger("JumpState", 1);
-        //            normalizedTime = 0.0f;
-        //startPos = agent.transform.position;
-        //endPos = wayPoints[currentWayPointIndex].targetPosition + Vector3.up * agent.baseOffset;
-        //return;
-        //}
 
+        //anim.SetInteger("JumpState", 0);
 
-        //if (currentWayPointIndex == 0) distance = math.INFINITY;
-        anim.SetInteger("JumpState", 0);
-
+        Debug.Log("reached0  " + agent.pathPending + " " + agent.remainingDistance);
 
         if (agent.pathPending == false && agent.remainingDistance <= distance && isCurrentWayPointJump == false)
         {
 
             //  jumpTrigger = false;
-            //Debug.Log("reached  " + agent.transform.position + " " + currentWayPointIndex);
             currentWayPointIndex++;
             if (currentWayPointIndex >= wayPoints.Count) currentWayPointIndex = 0;
             agent.destination = wayPoints[currentWayPointIndex].targetPosition;
@@ -328,7 +314,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
             && jumpLanded == true)
         {
             //Debug.Log("reached  " + agent.transform.position + " " + currentWayPointIndex);
-            //anim.SetInteger("JumpState", 0);
+            anim.SetInteger("JumpState", 0);
 
             jumpLanded = false;
             currentWayPointIndex++;
@@ -351,7 +337,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         }
 
 
-        isCurrentWayPointJump = wayPoints[currentWayPointIndex].action == WayPointAction.Jump;
+        //isCurrentWayPointJump = wayPoints[currentWayPointIndex].action == WayPointAction.Jump;
         //Debug.Log("current pt " + currentWayPointIndex);
         //if (isCurrentWayPointJump == false)
         //{
@@ -380,12 +366,9 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         }
         else
         {
-            //isCurrentWayPointJump = false;
-            //anim.SetInteger("JumpState", 0);
-            //anim.SetInteger("Zone", 0);
-            //Debug.Log("jump landed");
+
             jumpLanded = true;
-            anim.SetInteger("JumpState", 0);
+            //anim.SetInteger("JumpState", 0);
 
 
         }
@@ -410,7 +393,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         if (!agent.enabled) return;
         Vector3 lookDir = agent.destination - transform.position;
         lookDir.y = 0;
-        if (lookDir.magnitude < .019f) return;
+        if (lookDir.magnitude < .011f) return;
         Quaternion rot = Quaternion.LookRotation(lookDir);
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, rotateSpeed * Time.deltaTime);
 
@@ -430,7 +413,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
 
         Vector3 lookDir = target.position - transform.position;
         lookDir.y = 0;
-        if (lookDir.magnitude < .019f) return;
+        if (lookDir.magnitude < .011f) return;
         Quaternion rot = Quaternion.LookRotation(lookDir);
         transform.rotation = Quaternion.Slerp(transform.rotation, rot, rotateSpeed * Time.deltaTime);
 
@@ -457,7 +440,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         if (agent.enabled)
         {
 
-          
+
 
 
 
@@ -491,7 +474,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
 
 
             bool nearEdge = false;
-            if(manager.HasComponent<EnemyMovementComponent>(entity) == true)
+            if (manager.HasComponent<EnemyMovementComponent>(entity) == true)
             {
                 nearEdge = manager.GetComponentData<EnemyMovementComponent>(entity).nearEdge;
             }
@@ -544,13 +527,17 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
     void Update()
     {
 
-        if (agent == null) return;
+        if (manager == null || entity == Entity.Null || agent == null) return;
+
         if (manager.HasComponent<Pause>(entity) == true)
         {
             agent.speed = 0;
             anim.speed = 0;
             return;
         }
+
+        if (manager.HasComponent<EnemyStateComponent>(entity) == false) return;
+
 
         if (wayPoints.Count <= currentWayPointIndex) return;
         //if (anim.GetFloat("velz") == 0) agent.speed = 0;
@@ -565,7 +552,6 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         else if (isCurrentWayPointJump)
         {
             agent.updatePosition = false;
-            //anim.SetInteger("JumpState", 1);
             Curve();
         }
 
