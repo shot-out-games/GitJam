@@ -13,6 +13,7 @@ using UnityEngine;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(BasicWinnerSystem))]
+[UpdateBefore(typeof(EndGameSystem))]
 
 
 public class BasicLoserSystem : SystemBase
@@ -93,6 +94,7 @@ public class EndGameSystem : SystemBase
                         ecb.RemoveComponent<Pause>(e);
                     }
                     ecb.SetComponent<PhysicsVelocity>(e, velocity);
+                    //ecb.RemoveComponent<PhysicsVelocity>(e);
 
                 }
             ).Run();

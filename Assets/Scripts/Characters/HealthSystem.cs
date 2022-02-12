@@ -9,7 +9,7 @@ using Unity.Collections;
 using Unity.Rendering;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-//[UpdateAfter(typeof(AttackerSystem))]
+[UpdateBefore(typeof(BasicWinnerSystem))]
 //[UpdateAfter(typeof(CharacterDamageEffectsSystem))]
 
 public class HealthSystem : SystemBase
@@ -79,6 +79,8 @@ public class HealthSystem : SystemBase
                         SetComponent(e, levelCompleteComponent);
                     }
                     //dead.isDying = true;
+                    Debug.Log("IS DEAD ");
+
                     dead.isDead = true;
                     dead.playDeadEffects = true;
                     if (HasComponent<AmmoComponent>(entityCausingDamage))

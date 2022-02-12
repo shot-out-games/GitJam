@@ -444,18 +444,24 @@ public class CharacterDeadEffectsSystem : SystemBase
 
 
                 //int state = animator.GetInteger("Dead");
+                if(deadComponent.isDead)
+                {
+                    Debug.Log("DEATH PRE");
+                }
 
                 if (deadComponent.isDead && deadComponent.playDeadEffects)//can probably just use playEffectType in effectsComponent TO DO
                 {
-                    deadComponent.playDeadEffects = false;
                     bool isEnemy = HasComponent<EnemyComponent>(e);
                     bool isPlayer = HasComponent<PlayerComponent>(e);
                     if (isPlayer) animator.SetInteger("Dead", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more DEAD animations
                     if (isEnemy) animator.SetInteger("Dead", 2);
+
+
+                    deadComponent.playDeadEffects = false;
                     //animator.SetInteger("HitReact", 0);
                     //deadComponent.playDeadEffects = false;
                     int effectsIndex = deadComponent.effectsIndex;
-                    //Debug.Log("eff ind play " + effectsIndex);
+                    Debug.Log("DEATH ");
 
                     if (effects.actorEffect != null)
                     {

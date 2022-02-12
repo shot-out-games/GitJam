@@ -43,7 +43,7 @@ public class BossAmmoHandlerSystem : SystemBase
         Entities.WithNone<Pause>().ForEach(
             (
                  Entity entity,
-                 ref BossAmmoManagerComponent bulletManagerComponent,
+                 ref BossAmmoManagerComponent bossAmmoManagerComponent,
                 in AttachWeaponComponent attachWeapon,
                 in BossMovementComponent bossMovementComponent,
                 in BossStrategyComponent bossStrategyComponent
@@ -65,6 +65,12 @@ public class BossAmmoHandlerSystem : SystemBase
                 if (!HasComponent<BossWeaponComponent>(entity)) return;
                 var bossWeapon = GetComponent<BossWeaponComponent>(entity);
 
+
+
+
+
+
+
                 Entity primaryAmmoEntity = bossWeapon.PrimaryAmmo;
                 var ammoDataComponent = GetComponent<AmmoDataComponent>(primaryAmmoEntity);
                 float rate = ammoDataComponent.GameRate;
@@ -84,7 +90,7 @@ public class BossAmmoHandlerSystem : SystemBase
                 if (bossWeapon.IsFiring == 1)
                 {
                     bossWeapon.IsFiring = 0;
-                    var playerMove = GetComponent<Translation>(playerE);
+                    //var playerMove = GetComponent<Translation>(playerE);
                     var bossTranslation = GetComponent<Translation>(entity);
                     var e = commandBuffer.Instantiate(bossWeapon.PrimaryAmmo);
 
@@ -106,7 +112,7 @@ public class BossAmmoHandlerSystem : SystemBase
 
                     velocity.Linear = math.normalize(forward) * strength;
 
-                    bulletManagerComponent.playSound = true;
+                    bossAmmoManagerComponent.playSound = true;
 
                     ammoDataComponent.Shooter = entity;
                     commandBuffer.SetComponent(e, ammoDataComponent);

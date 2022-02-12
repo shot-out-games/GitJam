@@ -292,7 +292,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
 
         //anim.SetInteger("JumpState", 0);
 
-        Debug.Log("reached0  " + agent.pathPending + " " + agent.remainingDistance);
+        //Debug.Log("reached0  " + agent.pathPending + " " + agent.remainingDistance);//
 
         if (agent.pathPending == false && agent.remainingDistance <= distance && isCurrentWayPointJump == false)
         {
