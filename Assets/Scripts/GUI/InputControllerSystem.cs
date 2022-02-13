@@ -28,7 +28,7 @@ public class InputControllerSystemUpdate : SystemBase
     {
 
 
-        Entities.WithoutBurst().ForEach((InputController inputController, ref Translation translation, in Rotation rotation) =>
+        Entities.WithoutBurst().WithAll<PlayerComponent, DeadComponent>().ForEach((InputController inputController) =>
         {
 
                 inputController.UpdateSystem();

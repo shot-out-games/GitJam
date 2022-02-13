@@ -31,6 +31,7 @@ public class HealthSystem : SystemBase
 
         Entities.WithoutBurst().ForEach((
             //ref LevelCompleteComponent levelCompleteComponent,
+            Animator animator,
             ref Entity e,
             ref DeadComponent deadComponent,
             ref HealthComponent healthComponent, ref DamageComponent damageComponent,
@@ -81,6 +82,11 @@ public class HealthSystem : SystemBase
                     //dead.isDying = true;
                     dead.isDead = true;
                     dead.playDeadEffects = true;
+                    bool isEnemy = HasComponent<EnemyComponent>(e);
+                    bool isPlayer = HasComponent<PlayerComponent>(e);
+                    if (isPlayer) animator.SetInteger("Dead", 1);// can easily change to effect index (maybe new field in component ammo and visual effect) if we add more DEAD animations
+                    if (isEnemy) animator.SetInteger("Dead", 2);
+                    //animator.SetInteger("Dead", 1);
                     if (HasComponent<AmmoComponent>(entityCausingDamage))
                     {
                         var ammo = GetComponent<AmmoComponent>(entityCausingDamage);

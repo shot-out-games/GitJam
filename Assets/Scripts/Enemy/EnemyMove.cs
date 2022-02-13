@@ -278,7 +278,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
             var state = manager.GetComponentData<EnemyStateComponent>(entity);
             state.MoveState = MoveStates.Idle;
             manager.SetComponentData<EnemyStateComponent>(entity, state);
-            Debug.Log("agent  " + agent.enabled + " " + wayPoints.Count);
+            //Debug.Log("agent  " + agent.enabled + " " + wayPoints.Count);
             AnimationMovement();
             return;
         }
@@ -292,7 +292,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
 
         //anim.SetInteger("JumpState", 0);
 
-        Debug.Log("reached0  " + agent.pathPending + " " + agent.remainingDistance);
+        //Debug.Log("reached0  " + agent.pathPending + " " + agent.remainingDistance);
 
         if (agent.pathPending == false && agent.remainingDistance <= distance && isCurrentWayPointJump == false)
         {

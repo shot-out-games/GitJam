@@ -45,7 +45,7 @@ public class BasicWinnerSystem : SystemBase
 
 
 
-[UpdateAfter(typeof(ScoreSystem))]
+[UpdateAfter(typeof(EndGameSystem))]
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
 public class ShowMenuSystem : SystemBase

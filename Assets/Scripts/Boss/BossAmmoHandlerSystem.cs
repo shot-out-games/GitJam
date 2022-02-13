@@ -33,7 +33,7 @@ public class BossAmmoHandlerSystem : SystemBase
         NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
         int players = playerEntities.Length;
 
-        float dt = UnityEngine.Time.fixedDeltaTime;//gun duration
+        float dt = Time.DeltaTime;//gun duration
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
 
         //var commandBuffer = m_EntityCommandBufferSystem.CreateCommandBuffer();
@@ -44,7 +44,7 @@ public class BossAmmoHandlerSystem : SystemBase
             (
                  Entity entity,
                  ref BossAmmoManagerComponent bulletManagerComponent,
-                in AttachWeaponComponent attachWeapon,
+               // in AttachWeaponComponent attachWeapon,
                 in BossMovementComponent bossMovementComponent,
                 in BossStrategyComponent bossStrategyComponent
                  ) =>

@@ -158,6 +158,7 @@ public class EnemyMeleeMovementSystem : SystemBase
                     MoveState = MoveStates.Chase;
                     //Debug.Log("zone 1 melee");
                     animator.SetInteger("Zone", 1);
+                    animator.SetInteger("JumpState", 0);
                     enemyMove.SetDestination();
                     enemyMove.FacePlayer();
 
@@ -165,6 +166,7 @@ public class EnemyMeleeMovementSystem : SystemBase
                 else if (dist >= chaseRange && (role == EnemyRoles.Chase || defensiveRole == DefensiveRoles.Chase))
                 {
                     animator.SetInteger("Zone", 1);
+                    animator.SetInteger("JumpState", 0);
                     MoveState = MoveStates.Idle;
                     enemyMove.AnimationMovement();//dont chase just idle animation - sets animation param Z=0
                     enemyMove.FaceWaypoint();

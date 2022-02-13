@@ -49,7 +49,7 @@ public class BasicLoserSystem : SystemBase
 
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(BasicWinnerSystem))]
+[UpdateAfter(typeof(BasicLoserSystem))]
 
 public class EndGameSystem : SystemBase
 {

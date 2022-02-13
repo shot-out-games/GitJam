@@ -1,0 +1,147 @@
+﻿using SandBox.Player;
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Entities;
+using Unity.Jobs;
+using Unity.Mathematics;
+using Unity.Physics;
+using Unity.Physics.Extensions;
+using Unity.Physics.Systems;
+using Unity.Transforms;
+using UnityEngine;
+
+
+
+
+[UpdateInGroup(typeof(LateSimulationSystemGroup))]
+
+
+public class EnemyAmmoHandlerSystem : SystemBase
+{
+    BeginInitializationEntityCommandBufferSystem m_EntityCommandBufferSystem;
+
+    protected override void OnCreate()
+    {
+        m_EntityCommandBufferSystem = World.GetOrCreateSystem<BeginInitializationEntityCommandBufferSystem>();
+    }
+    protected override void OnUpdate()
+    {
+
+        if (LevelManager.instance.endGame == true) return;
+
+        EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
+        NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
+        int players = playerEntities.Length;
+
+        float dt = Time.DeltaTime;
+
+        //var commandBuffer = m_EntityCommandBufferSystem.CreateCommandBuffer();
+        var commandBuffer = new EntityCommandBuffer(Allocator.Persistent);
+
+        var ammoGroup = GetComponentDataFromEntity<AmmoComponent>(false);
+        Entities.WithNone<Pause>().WithAll<EnemyComponent>().ForEach(
+            (
+                 Entity entity,
+                 ref BulletManagerComponent bulletManagerComponent
+                
+                 ) =>
+            {
+
+
+
+                Entity playerE = Entity.Null;
+                //change to closest
+                for (int i = 0; i < players; i++)
+                {
+                    playerE = playerEntities[i];
+                }
+
+                if (!HasComponent<WeaponComponent>(entity)) return;
+                var bossWeapon = GetComponent<WeaponComponent>(entity);
+
+                Entity primaryAmmoEntity = bossWeapon.PrimaryAmmo;
+                var ammoDataComponent = GetComponent<AmmoDataComponent>(primaryAmmoEntity);
+                float rate = ammoDataComponent.GameRate;
+                float strength = ammoDataComponent.GameStrength;
+                
+
+                if (bossWeapon.ChangeAmmoStats > 0)
+                {
+                    strength = strength * (100 - bossWeapon.ChangeAmmoStats * 2) / 100;
+                    if (strength <= 0) strength = 0;
+                }
+
+
+
+                if (bossWeapon.IsFiring == 1 && bossWeapon.Duration == 0)
+                {
+                    bossWeapon.Duration += dt;
+                    bossWeapon.IsFiring = 0;
+                    var playerMove = GetComponent<Translation>(playerE);
+                    var bossTranslation = GetComponent<Translation>(entity);
+                    var e = commandBuffer.Instantiate(bossWeapon.PrimaryAmmo);
+
+                    var translation = new Translation() { Value = bossWeapon.AmmoStartPosition.Value };//use bone mb transform
+                    var playerTranslation = GetComponent<Translation>(playerE).Value;
+                    var rotation = new Rotation() { Value = bossWeapon.AmmoStartRotation.Value };
+                    var velocity = new PhysicsVelocity();
+
+                    float3 forward = math.forward(rotation.Value);
+
+                    //if (bossStrategyComponent.AimAtPlayer)
+                    //{
+                    float3 bossXZ = new float3(bossTranslation.Value.x, bossTranslation.Value.y, bossTranslation.Value.z);
+                    float3 ammoStartXZ = new float3(playerTranslation.x, playerTranslation.y, playerTranslation.z);
+                    float3 direction = math.forward();
+                    if (math.distancesq(ammoStartXZ, bossXZ) > 0)
+                    {
+                        direction = math.normalize(ammoStartXZ - bossXZ);
+                    }
+                    quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
+                    forward = direction;
+                    //}
+
+                    velocity.Linear = math.normalize(forward) * strength;
+
+                    bulletManagerComponent.playSound = true;
+
+                    ammoDataComponent.Shooter = entity;
+                    commandBuffer.SetComponent(e, ammoDataComponent);
+
+                    commandBuffer.SetComponent(e, new TriggerComponent
+                    { Type = (int)TriggerType.Ammo, ParentEntity = entity, Entity = e, Active = true });
+                    commandBuffer.SetComponent(e, translation);
+                    commandBuffer.SetComponent(e, rotation);
+                    commandBuffer.SetComponent(e, velocity);
+                }
+                else if (bossWeapon.IsFiring == 1 && bossWeapon.Duration > 0)
+                {
+                    bossWeapon.Duration += dt;
+                    if ((bossWeapon.Duration > rate) && (bossWeapon.IsFiring == 1))
+                    {
+                        bossWeapon.Duration = 0;
+                        bossWeapon.IsFiring = 0;
+                    }
+
+
+                }
+              
+
+                commandBuffer.SetComponent(entity, bossWeapon);
+
+
+
+            }
+        ).Run();
+
+
+        commandBuffer.Playback(EntityManager);
+        commandBuffer.Dispose();
+        playerEntities.Dispose();
+
+
+    }
+
+
+
+}
