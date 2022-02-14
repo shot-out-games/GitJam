@@ -121,12 +121,12 @@
             {
                 "type": "System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "ScatteringEditor.PreviewThumSize",
-                "value": "{\"m_Value\":71}"
+                "value": "{\"m_Value\":60}"
             },
             {
                 "type": "UnityEditor.Polybrush.PrefabLoadout, Unity.Polybrush.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ScatteringEditor.userLoadout",
-                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"867b4b93a52422241833566e4fbdfa7c\",\"type\":2},\"prefab\":{\"fileID\":4745773968531015471,\"guid\":\"7d21bb97cde722646b1105dfea6dc800\",\"type\":3}},{\"palette\":{\"fileID\":11400000,\"guid\":\"867b4b93a52422241833566e4fbdfa7c\",\"type\":2},\"prefab\":{\"fileID\":5764148946875347780,\"guid\":\"c69058204a0cbb749819df51c75ae001\",\"type\":3}}]}}"
+                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"2cf7220dc8116a743865b1b763d0bdc6\",\"type\":2},\"prefab\":{\"fileID\":4745773968531015471,\"guid\":\"7d21bb97cde722646b1105dfea6dc800\",\"type\":3}}]}}"
             }
         ]
     }

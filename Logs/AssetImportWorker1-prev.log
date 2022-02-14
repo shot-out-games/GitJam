@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.2/staging' branch; Version is '2021.2.10f1 (ee872746220e) revision 15632167'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19042) 64bit Core' Language: 'en' Physical Memory: 16147 MB
+OS: 'Windows 10  (10.0.19043) 64bit Core' Language: 'en' Physical Memory: 16297 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.2.10f1\Editor\Unity.exe
 -name
 AssetImportWorker1
 -projectPath
-C:/Unity3D/GitJam
+H:/UNITY/PROJECTS 2020/GitJam
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-63268
-Successfully changed project path to: C:/Unity3D/GitJam
-C:/Unity3D/GitJam
+57590
+Successfully changed project path to: H:/UNITY/PROJECTS 2020/GitJam
+H:/UNITY/PROJECTS 2020/GitJam
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,126 +47,58 @@ C:/Unity3D/GitJam
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 1094.23 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 3096.24 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.10f1 (ee872746220e)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Unity3D/GitJam/Assets
+[Subsystems] Discovering subsystems at path H:/UNITY/PROJECTS 2020/GitJam/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2520)
-    Vendor:   NVIDIA
-    VRAM:     6023 MB
-    Driver:   27.21.14.6262
+    Renderer: Radeon RX 590 Series (ID=0x67df)
+    Vendor:   ATI
+    VRAM:     8171 MB
+    Driver:   30.0.13023.1012
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56620
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56780
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.032718 seconds.
+Registered in 0.014469 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 977.32 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 349.01 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  3.256 seconds
+- Completed reload, in  1.152 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3257ms)
-		BeginReloadAssembly (286ms)
+	ReloadAssembly (1152ms)
+		BeginReloadAssembly (163ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (3ms)
-		EndReloadAssembly (2598ms)
-			LoadAssemblies (275ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (864ms)
+			LoadAssemblies (158ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (470ms)
+			SetupTypeCache (132ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (113ms)
-			SetupLoadedEditorAssemblies (1764ms)
+			RebuildScriptCaches (32ms)
+			SetupLoadedEditorAssemblies (621ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (74ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (978ms)
-				BeforeProcessingInitializeOnLoad (4ms)
-				ProcessInitializeOnLoadAttributes (524ms)
-				ProcessInitializeOnLoadMethodAttributes (183ms)
+				InitializePlatformSupportModulesInManaged (25ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (349ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (179ms)
+				ProcessInitializeOnLoadMethodAttributes (66ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.062132 seconds.
-Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Unity3D\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image C:\Unity3D\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 1138.20 ms, found 5 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-IOException: Sharing violation on path C:\Unity3D\GitJam\Library\ScriptAssemblies\Assembly-CSharp.dll
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <7b935204f5ff4bcab44b3b0ebca330bf>:0 
-  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) [0x00000] in <7b935204f5ff4bcab44b3b0ebca330bf>:0 
-  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare)
-  at Mono.Cecil.ModuleDefinition.GetFileStream (System.String fileName, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share) [0x00006] in <ebb9e4250ed24cbfa42055e3532ef311>:0 
-  at Mono.Cecil.ModuleDefinition.ReadModule (System.String fileName, Mono.Cecil.ReaderParameters parameters) [0x00008] in <ebb9e4250ed24cbfa42055e3532ef311>:0 
-  at Mono.Cecil.BaseAssemblyResolver.GetAssembly (System.String file, Mono.Cecil.ReaderParameters parameters) [0x0000f] in <ebb9e4250ed24cbfa42055e3532ef311>:0 
-  at Mono.Cecil.BaseAssemblyResolver.SearchDirectory (Mono.Cecil.AssemblyNameReference name, System.Collections.Generic.IEnumerable`1[T] directories, Mono.Cecil.ReaderParameters parameters) [0x00073] in <ebb9e4250ed24cbfa42055e3532ef311>:0 
-  at Mono.Cecil.BaseAssemblyResolver.Resolve (Mono.Cecil.AssemblyNameReference name, Mono.Cecil.ReaderParameters parameters) [0x0000c] in <ebb9e4250ed24cbfa42055e3532ef311>:0 
-  at zzzUnity.Burst.CodeGen.AssemblyLoader.Resolve (Mono.Cecil.AssemblyNameReference name) [0x00083] in <b6aa8fdf6d8144e588cc59c2555fb2d5>:0 
-  at zzzUnity.Burst.CodeGen.AssemblyLoader.TryGetFullPath (Mono.Cecil.AssemblyNameReference name, System.String& fullPath) [0x00000] in <b6aa8fdf6d8144e588cc59c2555fb2d5>:0 
-  at Burst.Compiler.IL.Jit.JitCacheManager.LoadLibraryCache (Burst.Compiler.IL.Jit.GetExternalFunctionPointerDelegate getExternalFunctionPointer, System.String[] assemblyPaths, zzzUnity.Burst.CodeGen.AssemblyLoader assemblyLoader, System.Action`1[T] logDebug) [0x000f3] in <b6aa8fdf6d8144e588cc59c2555fb2d5>:0 
-  at Burst.Compiler.IL.Jit.JitCompilerService.EnsureLibraryCacheLoaded (System.String assemblyPaths) [0x0003c] in <b6aa8fdf6d8144e588cc59c2555fb2d5>:0 
-  at Burst.Compiler.IL.Jit.JitCompilerService.CompileInternal (System.String fullMethodName, System.String assemblyPaths, System.IntPtr userdata, Unity.Burst.NativeDumpFlags dumpFlags, System.IntPtr compilerCallbackPointer, System.IntPtr logCallBack, System.String compilerFlags) [0x0004a] in <b6aa8fdf6d8144e588cc59c2555fb2d5>:0 
-Unity.Burst.LowLevel.BurstCompilerService:GetDisassembly(MethodInfo, String)
-Unity.Burst.BurstCompiler:SendCommandToCompiler(String, String)
-Unity.Burst.BurstCompiler:IsApiAvailable(String)
-Unity.Burst.Editor.BurstLoader:.cctor()
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor(IntPtr)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor(RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes(Type[])
-
-Assertion failed on expression: 'exception == SCRIPTING_NULL'
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-Unity.Burst.BurstCompiler:SendCommandToCompiler (string,string) (at C:/Unity3D/GitJam/Library/PackageCache/com.unity.burst@1.6.4/Runtime/BurstCompiler.cs:603)
-Unity.Burst.BurstCompiler:IsApiAvailable (string) (at C:/Unity3D/GitJam/Library/PackageCache/com.unity.burst@1.6.4/Runtime/BurstCompiler.cs:458)
-Unity.Burst.Editor.BurstLoader:.cctor () (at C:/Unity3D/GitJam/Library/PackageCache/com.unity.burst@1.6.4/Runtime/Editor/BurstLoader.cs:244)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-[C:/Unity3D/GitJam/Library/PackageCache/com.unity.burst@1.6.4/Runtime/BurstCompiler.cs line 603]
-
-TypeManager.Initialize took: 1624ms
-Mono: successfully reloaded assembly
-- Completed reload, in 14.412 seconds
-Domain Reload Profiling:
-	ReloadAssembly (14415ms)
-		BeginReloadAssembly (416ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (18ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (1ms)
-			CreateAndSetChildDomain (66ms)
-		EndReloadAssembly (13557ms)
-			LoadAssemblies (363ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (1834ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (487ms)
-			SetupLoadedEditorAssemblies (10672ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (48ms)
-				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (1138ms)
-				BeforeProcessingInitializeOnLoad (1202ms)
-				ProcessInitializeOnLoadAttributes (7930ms)
-				ProcessInitializeOnLoadMethodAttributes (331ms)
-				AfterProcessingInitializeOnLoad (21ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (18ms)
-Platform modules already initialized, skipping
+Registered in 0.015876 seconds.
