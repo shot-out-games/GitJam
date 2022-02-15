@@ -457,7 +457,7 @@ public class CharacterDeadEffectsSystem : SystemBase
                     int effectsIndex = deadComponent.effectsIndex;
                     //Debug.Log("eff ind play " + effectsIndex);
 
-                    if (effects.actorEffect != null)
+                    if (effects.actorEffect != null && effects.actorEffect.Count > 0)
                     {
 
                         if (effects.actorEffect[effectsIndex].psInstance)//tryinmg to match index to effect type - 1 is dead

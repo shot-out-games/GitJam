@@ -126,6 +126,7 @@ public class EnemyMeleeMovementSystem : SystemBase
                 {
                     MoveState = MoveStates.Default;
                     animator.SetInteger("Zone", 3);
+                    animator.SetInteger("JumpState", 0);
                     //Debug.Log("zone 1 strike move");
                     enemyMove.SetDestination();
                     enemyMove.FacePlayer();
@@ -135,6 +136,7 @@ public class EnemyMeleeMovementSystem : SystemBase
                 {
                     MoveState = MoveStates.Default;
                     animator.SetInteger("Zone", 2);
+                    animator.SetInteger("JumpState", 0);
                     enemyMove.SetBackup();
                     enemyMove.FacePlayer();
 
@@ -144,6 +146,7 @@ public class EnemyMeleeMovementSystem : SystemBase
                     MoveState = MoveStates.Default;
                     //Debug.Log("zone 1 melee move");
                     animator.SetInteger("Zone", 2);
+                    animator.SetInteger("JumpState", 0);
                     enemyMove.SetDestination();
                     enemyMove.FacePlayer();
 

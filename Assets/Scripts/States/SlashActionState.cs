@@ -22,9 +22,9 @@ public class SlashActionState : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("slash exit");
-        animator.SetInteger("SlashState", 0);
+        //animator.SetInteger("SlashState", 0);
         animator.SetInteger("CombatAction", 0);
-        animator.SetLayerWeight(1, 0);
+        //animator.SetLayerWeight(1, 0);
 
     }
 

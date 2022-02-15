@@ -176,6 +176,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
     //bool wayPointComplete;
     public AnimationCurve curve = new AnimationCurve();
     bool jumpLanded;
+    MoveStates state = MoveStates.Default;
 
     void Init()
     {
@@ -368,6 +369,8 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         {
 
             jumpLanded = true;
+            Debug.Log("jump landed " + true);
+
             //anim.SetInteger("JumpState", 0);
 
 
@@ -491,7 +494,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
             }
 
 
-            MoveStates state = manager.GetComponentData<EnemyStateComponent>(entity).MoveState;
+            state = manager.GetComponentData<EnemyStateComponent>(entity).MoveState;
             int pursuitMode = anim.GetInteger("Zone");
             agent.speed = pursuitMode >= 2 ? moveSpeed : moveSpeed * 2;
             Vector3 forward =

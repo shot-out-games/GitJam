@@ -98,6 +98,7 @@ public class AttackerSystem : SystemBase
                 if (trigger_a.collisionChecked == false)
                 {
 
+
                     float hitPower = 10;//need to be able to change eventually
                     if (HasComponent<RatingsComponent>(entityA))
                     {
@@ -109,6 +110,9 @@ public class AttackerSystem : SystemBase
                         if (alwaysDamage) hw = 1;//
                     }
                     float damage = hitPower * hw;
+
+                    Debug.Log("damage " + damage);
+
 
                     ecb.AddComponent<DamageComponent>(entityA,
                         new DamageComponent { DamageLanded = damage, DamageReceived = 0, entityCausingDamage = entityA });

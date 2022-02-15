@@ -502,7 +502,8 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 64aed127e6368b54eaa36dd790673802, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 84359ec0618a9a04abafd92ae7597d17,
+      type: 3}
     m_Threshold: 0.6666667
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -510,7 +511,8 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 1
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 81f5fc9fd8696b343be6ef94903c5bc4, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 7a074820ed993bd498133932fd21335f,
+      type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 1}
     m_TimeScale: 1
@@ -518,7 +520,8 @@ BlendTree:
     m_DirectBlendParameter: vely
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: f855db6ce6d86724f9009e8a86fff874, type: 3}
+    m_Motion: {fileID: -203655887218126122, guid: 73ea5bf7d9945fd4d85dece4a8a6c7ce,
+      type: 3}
     m_Threshold: 1.6666665
     m_Position: {x: 0, y: -1}
     m_TimeScale: 1
@@ -1133,7 +1136,8 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 679c9beaf0a1f6f459576170b506d913, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 632d85136a57b784f8c73645dc1a3134,
+    type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -1247,11 +1251,11 @@ AnimatorStateMachine:
     m_Position: {x: -3180, y: -3230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1042736791620067326}
-    m_Position: {x: -3780, y: -3260, z: 0}
+    m_Position: {x: -3650, y: -3210, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107207875399562484}
-    m_Position: {x: -3930, y: -3360, z: 0}
+    m_Position: {x: -3930, y: -3260, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 1107438325616211404}
     m_Position: {x: -3630, y: -3350, z: 0}
@@ -1280,7 +1284,7 @@ AnimatorStateMachine:
     - {fileID: 7894211219712173314}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -3190, y: -3360, z: 0}
-  m_EntryPosition: {x: -3940, y: -3810, z: 0}
+  m_EntryPosition: {x: -3990, y: -3630, z: 0}
   m_ExitPosition: {x: -3288, y: -2820, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 1102505597879421220}

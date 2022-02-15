@@ -39,11 +39,11 @@ public class BulletManagerSystem : SystemBase
                     bulletManagerComponent.playSound = false;
                 }
 
-                if (bulletManagerComponent.setAnimationLayer)
-                {
-                    animator.SetLayerWeight(0, 0);
-                    bulletManagerComponent.setAnimationLayer = false;
-                }
+                //if (bulletManagerComponent.setAnimationLayer)
+                //{
+                //    animator.SetLayerWeight(0, 0);
+                //    bulletManagerComponent.setAnimationLayer = false;
+                //}
 
 
 
