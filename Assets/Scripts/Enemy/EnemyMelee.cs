@@ -205,6 +205,7 @@ public class EnemyMelee : MonoBehaviour, IConvertGameObjectToEntity, ICombat
 
         if (ik == null || aim == null || moveUsing.target == null) return;
         //if (aim == null || !ik.enabled || !aim.enabled) return;
+        Debug.Log("target " + moveUsing.target);
         if (moveUsing.usingAim && aim.enabled && moveUsing.pin)
         {
             aim.solver.transform = AimTransform;

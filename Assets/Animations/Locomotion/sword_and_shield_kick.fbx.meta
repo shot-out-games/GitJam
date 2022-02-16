@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 4f9b56e0c376714478c7bed424263e84
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 21202
   internalIDToNameTable:
   - first:
       1: 100000
@@ -422,6 +422,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -470,15 +471,15 @@ ModelImporter:
           - serializedVersion: 3
             time: 0
             value: 0
-            inSlope: 0
-            outSlope: 0
+            inSlope: 4.6916666
+            outSlope: 4.6916666
             tangentMode: 34
             weightedMode: 0
             inWeight: 0
             outWeight: 0.33333334
           - serializedVersion: 3
             time: 0.21314387
-            value: 0
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -496,7 +497,7 @@ ModelImporter:
             outWeight: 0
           - serializedVersion: 3
             time: 0.53641206
-            value: 0
+            value: 1
             inSlope: 0
             outSlope: 0
             tangentMode: 0
@@ -506,8 +507,8 @@ ModelImporter:
           - serializedVersion: 3
             time: 1
             value: 0
-            inSlope: 0
-            outSlope: 0
+            inSlope: -2.157088
+            outSlope: -2.157088
             tangentMode: 34
             weightedMode: 0
             inWeight: 0.33333334
@@ -532,20 +533,27 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
     preserveHierarchy: 0
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
@@ -1338,6 +1346,7 @@ ModelImporter:
   animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
   additionalBone: 0
   userData: 
   assetBundleName: 

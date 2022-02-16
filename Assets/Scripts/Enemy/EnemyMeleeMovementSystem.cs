@@ -85,7 +85,7 @@ public class EnemyMeleeMovementSystem : SystemBase
                     strike = true;
                 }
 
-                if (enemyMove.backup && dist > backupZoneFar && meleeMovement)
+                if (enemyMove.backup && dist > backupZoneFar  && meleeMovement)
                 {
                     MoveState = MoveStates.Default;
                     enemyMove.backup = false;//only time to turn off
@@ -96,10 +96,11 @@ public class EnemyMeleeMovementSystem : SystemBase
                     enemyMove.speedMultiple = 1;
                     MoveState = MoveStates.Default;
                     int n = Random.Range(0, 10);
-                    //if (enemyMove.backup == true && n <= 2)
-                    //{
-                    strike = true;
-                    //enemyMove.backup = false;//try
+                    if (enemyMove.backup == true && n <= 2)
+                    {
+                        strike = true;
+                        enemyMove.backup = false;//try
+                    }
 
                     //}
                     //else if (enemyMove.backup == false && n <= 5)

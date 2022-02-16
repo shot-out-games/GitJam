@@ -8,8 +8,8 @@ using Unity.Transforms;
 
 
 
-//[UpdateInGroup(typeof(SimulationSystemGroup))]
-[UpdateInGroup(typeof(FixedStepSimulationSystemGroup), OrderFirst = true)]
+[UpdateInGroup(typeof(SimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup), OrderFirst = true)]
 
 public class InputControllerSystemUpdate : SystemBase
 {

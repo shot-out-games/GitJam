@@ -218,7 +218,7 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         buttonSelect_Released = player.GetButtonUp("Select");
 
 
-
+        Debug.Log("select pressed " + buttonSelect_Pressed);
 
 
         leftBumperValue = player.GetAxis("LeftBumper");

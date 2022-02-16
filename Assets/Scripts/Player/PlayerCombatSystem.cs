@@ -4,8 +4,9 @@ using Unity.Jobs;
 using Unity.Mathematics;
 
 //[UpdateBefore(typeof(UnityEngine.Experimental.PlayerLoop.PreLateUpdate))]
-namespace SandBox.Player
-{
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+//namespace SandBox.Player
+//{
 
     public class PlayerCombatSystem : SystemBase
     {
@@ -51,6 +52,6 @@ namespace SandBox.Player
 
 
     }
-}
+//}
 
 

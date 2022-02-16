@@ -56,9 +56,14 @@ public class CleanupSystem : SystemBase
         (
             (Entity e, ref DeadComponent deadComponent) =>
             {
-                if (deadComponent.isDead)
+            if (deadComponent.isDead)
+            {
+                ecb.RemoveComponent<DeadComponent>(e);
+                if (HasComponent<PhysicsGravityFactor>(e))
                 {
-                    ecb.RemoveComponent<DeadComponent>(e);
+                    ecb.SetComponent<PhysicsGravityFactor>(e, new PhysicsGravityFactor { Value = -1 });
+                    }
+                    //ecb.RemoveComponent<Velocity>(e);
                     //Debug.Log("destroy DEAD COMPONENT");
                 }
 

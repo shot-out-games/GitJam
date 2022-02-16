@@ -7,6 +7,7 @@ using UnityEngine.Events;
 using UnityEngine.AI;
 using Unity.Jobs;
 using Unity.Physics.Systems;
+using Rewired;
 
 public struct GameInterfaceComponent : IComponentData
 {
@@ -87,7 +88,10 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
 }
 
 
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
+[UpdateInGroup(typeof(SimulationSystemGroup))]
+[UpdateAfter(typeof(InputControllerSystemUpdate))]
 
 public class GameInterfaceSystem : SystemBase
 {
@@ -122,15 +126,18 @@ public class GameInterfaceSystem : SystemBase
                 (
                     Entity entity,
                     GameInterface gameInterface,
-                    in InputControllerComponent inputController
+                    InputControllerComponent inputController
 
                 ) =>
                 {
-                    selectPressed = inputController.buttonSelect_Pressed;
+                    //selectPressed = inputController.buttonSelect_Pressed;
+
+                    selectPressed = ReInput.players.GetPlayer(0).GetButtonDown("Select");
+
+                    Debug.Log("select " + selectPressed);
                     if (selectPressed && deadMenuDisplayed == false && winnerMenuDisplayed == false)
                     {
                         gameInterface.SelectClicked();
-                        //Debug.Log("select " + selectPressed);
                     }
                     paused = gameInterface.paused;//should probably be component
 

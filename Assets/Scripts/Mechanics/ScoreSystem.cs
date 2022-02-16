@@ -9,7 +9,7 @@ using Unity.Transforms;
 using UnityEngine;
 
 [UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
-[UpdateAfter(typeof(HealthSystem))]
+[UpdateAfter(typeof(EndGameSystem))]
 
 public class ScoreSystem : SystemBase
 {
