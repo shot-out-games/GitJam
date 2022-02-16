@@ -49,7 +49,7 @@ public class TimeStep : SystemBase
     protected override void OnCreate()
     {
         var group = World.GetExistingSystem<FixedStepSimulationSystemGroup>();
-        //group.Timestep = 1/120f;
+        group.Timestep = 1/120f;
     }
 
 

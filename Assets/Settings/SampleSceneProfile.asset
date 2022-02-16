@@ -52,16 +52,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   color:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {r: 1, g: 0.9254902, b: 0.8392157, a: 1}
   center:
     m_OverrideState: 0
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.242
+    m_Value: 0.5
   smoothness:
     m_OverrideState: 1
     m_Value: 0.5
@@ -155,7 +155,7 @@ MonoBehaviour:
     m_Value: 10
   scatter:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0.064
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -493,10 +493,10 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.35
+    m_Value: 1
   contrast:
     m_OverrideState: 1
-    m_Value: -30
+    m_Value: 4.4
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 0.9254902, b: 0.8392157, a: 1}
@@ -505,7 +505,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: -50
+    m_Value: 6.8
 --- !u!114 &3586867134057911281
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   mode:
     m_OverrideState: 1
     m_Value: 0
@@ -583,16 +583,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.98951185, z: 0.9742754, w: -0.2964959}
+    m_Value: {x: 1, y: 0.98951185, z: 0.9742754, w: 0.18239276}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.18867923}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.8430276}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.5256064}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.44090214}
   shadowsStart:
     m_OverrideState: 0
     m_Value: 0

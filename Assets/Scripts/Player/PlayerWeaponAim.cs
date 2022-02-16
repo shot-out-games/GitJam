@@ -112,7 +112,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
     private float xMax;
     private float yMin;
     private float yMax;
-    public Transform testGunLocation;
+    public Transform playerWeaponLocation;
 
 
     [SerializeField]
@@ -228,7 +228,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         var actorWeaponAimComponent = manager.GetComponentData<ActorWeaponAimComponent>(e);
         crosshairRaycastTarget = actorWeaponAimComponent.crosshairRaycastTarget;
         actorWeaponAimComponent.closetEnemyWeaponTargetPosition = closetEnemyWeaponTargetPosition;
-        actorWeaponAimComponent.weaponLocation = testGunLocation.position;
+        actorWeaponAimComponent.weaponLocation = playerWeaponLocation.position;
         //float3 crosshairRaycastTarget = closetEnemyWeaponTargetPosition;
 
 
@@ -392,7 +392,7 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         Vector3 aimTarget = targetPosition;
 
         //aimDir = math.normalize(aimTarget - transform.position);
-        aimDir = math.normalize(aimTarget - testGunLocation.position);
+        aimDir = math.normalize(aimTarget - playerWeaponLocation.position);
 
         SetAim();
         SetIK();

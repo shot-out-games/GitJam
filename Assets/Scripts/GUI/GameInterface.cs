@@ -125,8 +125,7 @@ public class GameInterfaceSystem : SystemBase
             (
                 (
                     Entity entity,
-                    GameInterface gameInterface,
-                    InputControllerComponent inputController
+                    in GameInterface gameInterface
 
                 ) =>
                 {

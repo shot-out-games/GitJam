@@ -45,6 +45,7 @@ public class BossIKScript : MonoBehaviour
         EntityManager manager = World.DefaultGameObjectInjectionWorld.EntityManager;
         var e = animator.GetComponent<BossComponentAuthoring>().bossEntity;
         if (manager == null || e == Entity.Null) return;
+        if (manager.HasComponent<BossWeaponComponent>(e) == false) return;
         var bossComponent = manager.GetComponentData<BossWeaponComponent>(e);
         bossComponent.IsFiring = 1;
         manager.SetComponentData<BossWeaponComponent>(e, bossComponent);

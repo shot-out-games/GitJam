@@ -1,6 +1,6 @@
 Using pre-set license
 Built from '2021.2/staging' branch; Version is '2021.2.10f1 (ee872746220e) revision 15632167'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19042) 64bit Professional' Language: 'en' Physical Memory: 7939 MB
+OS: 'Windows 10  (10.0.19043) 64bit Core' Language: 'en' Physical Memory: 16297 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
@@ -11,13 +11,13 @@ C:\Program Files\Unity\Hub\Editor\2021.2.10f1\Editor\Unity.exe
 -name
 AssetImportWorker0
 -projectPath
-C:/Projects/GitJam
+H:/UNITY/PROJECTS 2020/GitJam
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-64198
-Successfully changed project path to: C:/Projects/GitJam
-C:/Projects/GitJam
+55608
+Successfully changed project path to: H:/UNITY/PROJECTS 2020/GitJam
+H:/UNITY/PROJECTS 2020/GitJam
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,106 +47,190 @@ C:/Projects/GitJam
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 303.61 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 354.63 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2021.2.10f1 (ee872746220e)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Projects/GitJam/Assets
+[Subsystems] Discovering subsystems at path H:/UNITY/PROJECTS 2020/GitJam/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Intel(R) UHD Graphics 630 (ID=0x9bc8)
-    Vendor:   Intel
-    VRAM:     3969 MB
-    Driver:   27.20.100.9664
+    Renderer: Radeon RX 590 Series (ID=0x67df)
+    Vendor:   ATI
+    VRAM:     8171 MB
+    Driver:   30.0.13023.1012
 Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56064
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56856
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.010402 seconds.
+Registered in 0.012896 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 326.36 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 352.62 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.171 seconds
+- Completed reload, in  1.100 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1172ms)
-		BeginReloadAssembly (167ms)
+	ReloadAssembly (1101ms)
+		BeginReloadAssembly (106ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (901ms)
-			LoadAssemblies (161ms)
+		EndReloadAssembly (876ms)
+			LoadAssemblies (102ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (166ms)
+			SetupTypeCache (133ms)
 			ReleaseScriptCaches (0ms)
 			RebuildScriptCaches (38ms)
-			SetupLoadedEditorAssemblies (605ms)
+			SetupLoadedEditorAssemblies (621ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (22ms)
+				InitializePlatformSupportModulesInManaged (25ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (326ms)
+				RefreshPlugins (353ms)
 				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (189ms)
-				ProcessInitializeOnLoadMethodAttributes (64ms)
+				ProcessInitializeOnLoadAttributes (183ms)
+				ProcessInitializeOnLoadMethodAttributes (58ms)
 				AfterProcessingInitializeOnLoad (0ms)
-				EditorAssembliesLoaded (1ms)
+				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.018683 seconds.
+Registered in 0.014193 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 315.99 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 354.49 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-TypeManager.Initialize took: 378ms
+Missing editor texture: 
+Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Loader/Loader.png
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
+Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
+Ludiq.PeekCore.LudiqCoreResources:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugin/LudiqCoreResources.cs:21)
+Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:233)
+Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
+
+Missing editor texture: 
+Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Logos/LogoFramework.png
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
+Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
+Ludiq.PeekCore.LudiqProduct:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Product/LudiqProduct.cs:30)
+Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
+Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
+Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
+
+Missing editor texture: 
+Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Logos/LogoLudiq.png
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
+Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
+Ludiq.PeekCore.LudiqProduct:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Product/LudiqProduct.cs:31)
+Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
+Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
+Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
+
+Missing editor texture: 
+Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.Peek\Editor/Resources\Logos/LogoPeek.png
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
+Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
+Ludiq.Peek.PeekProduct:Initialize () (at Assets/Ludiq/Ludiq.Peek/Editor/Plugin/PeekProduct.cs:45)
+Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
+Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
+Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
+
+Missing editor texture: 
+Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.Peek\Editor/Resources\Logos/LogoLudiq.png
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogWarning (object)
+Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
+Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
+Ludiq.Peek.PeekProduct:Initialize () (at Assets/Ludiq/Ludiq.Peek/Editor/Plugin/PeekProduct.cs:46)
+Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
+Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
+Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
+
+TypeManager.Initialize took: 345ms
 Mono: successfully reloaded assembly
-- Completed reload, in  5.160 seconds
+- Completed reload, in  5.529 seconds
 Domain Reload Profiling:
-	ReloadAssembly (5161ms)
-		BeginReloadAssembly (177ms)
+	ReloadAssembly (5530ms)
+		BeginReloadAssembly (166ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (7ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (26ms)
-		EndReloadAssembly (4836ms)
-			LoadAssemblies (272ms)
+			CreateAndSetChildDomain (25ms)
+		EndReloadAssembly (5213ms)
+			LoadAssemblies (164ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (522ms)
-			ReleaseScriptCaches (3ms)
-			RebuildScriptCaches (139ms)
-			SetupLoadedEditorAssemblies (3876ms)
+			SetupTypeCache (593ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (158ms)
+			SetupLoadedEditorAssemblies (4253ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (16ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (316ms)
-				BeforeProcessingInitializeOnLoad (242ms)
-				ProcessInitializeOnLoadAttributes (3169ms)
-				ProcessInitializeOnLoadMethodAttributes (122ms)
-				AfterProcessingInitializeOnLoad (10ms)
+				RefreshPlugins (355ms)
+				BeforeProcessingInitializeOnLoad (244ms)
+				ProcessInitializeOnLoadAttributes (3516ms)
+				ProcessInitializeOnLoadMethodAttributes (105ms)
+				AfterProcessingInitializeOnLoad (17ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (7ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.10 seconds
-Refreshing native plugins compatible for Editor in 4.02 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 5.25 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 8509 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 362 unused Assets / (3.7 MB). Loaded Objects now: 8935.
-Memory consumption went from 356.4 MB to 352.6 MB.
-Total: 12.363000 ms (FindLiveObjects: 0.895800 ms CreateObjectMapping: 0.843800 ms MarkObjects: 8.440000 ms  DeleteObjects: 2.181600 ms)
+Unloading 9477 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 363 unused Assets / (4.0 MB). Loaded Objects now: 9910.
+Memory consumption went from 386.8 MB to 382.8 MB.
+Total: 28.281500 ms (FindLiveObjects: 1.094400 ms CreateObjectMapping: 0.372100 ms MarkObjects: 24.878800 ms  DeleteObjects: 1.934000 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:DOTSType/UnityEngine.EventSystems.EventSystem: 2c81b6c3f3277fcd2c81b6c3f3277fcd -> 
@@ -180,10 +264,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.UIElements.StyleSheets.StyleSheetImporterEditor: 192320d95e4bf2a1192320d95e4bf2a1 -> 
   custom:DOTSType/UnityEngine.AudioLowPassFilter: ae33cb3d05c9f256ae33cb3d05c9f256 -> 
   custom:DOTSType/UnityEditor.ShaderIncludeImporter: 8fbdb40f5e3dee688fbdb40f5e3dee68 -> 
-  custom:DOTSType/CharacterSaveComponent: cece7ea5193c0477cece7ea5193c0477 -> 
   custom:DOTSType/ScoreComponent: 1ed056d1b244017f1ed056d1b244017f -> 
-  custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
+  custom:DOTSType/CharacterSaveComponent: cece7ea5193c0477cece7ea5193c0477 -> 
   custom:DOTSType/UnityEditor.ShaderGraph.Drawing.SearchWindowProvider: f8a30861d99321b8f8a30861d99321b8 -> 
+  custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
+  custom:DOTSType/Ludiq.PeekCore.DictionaryAsset: bbb8ed5efb46ae5fbbb8ed5efb46ae5f -> 
   custom:DOTSType/UnityEditor.Graphs.Graph: d35cefdd879c306cd35cefdd879c306c -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleTexture2D: c79a4bc917b39d2fc79a4bc917b39d2f -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+TierSettingsEditor: 082365929185a090082365929185a090 -> 
@@ -241,11 +326,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.TrailRendererInspector: 6cd62f30bf2de8f96cd62f30bf2de8f9 -> 
   custom:DOTSType/UnityEditor.Experimental.GraphView.SearchWindow: c580fedf644085d8c580fedf644085d8 -> 
   custom:DOTSType/UnityEditor.UIElements.UIElementsEditorWindowCreator: b5614dee3a2adbefb5614dee3a2adbef -> 
-  custom:DOTSType/UnityEditor.Timeline.Signals.SignalAssetInspector+DoCreateSignalAsset: 0a9bedbbb37049f00a9bedbbb37049f0 -> 
+  custom:DOTSType/UnityEditor.ProBuilder.PolyShapeEditor: 4eb37c855190510c4eb37c855190510c -> 
   custom:DOTSType/Cinemachine.Editor.WaveformWindow: 541d687ec4e059b6541d687ec4e059b6 -> 
   custom:DOTSType/UnityEditor.UI.CanvasScalerEditor: e177cbf177bdcf76e177cbf177bdcf76 -> 
+  custom:DOTSType/UnityEditor.Timeline.Signals.SignalAssetInspector+DoCreateSignalAsset: 0a9bedbbb37049f00a9bedbbb37049f0 -> 
   custom:DOTSType/UnityEditor.Search.SearchDatabaseImporter: c57af5b2996b8da0c57af5b2996b8da0 -> 
-  custom:DOTSType/UnityEditor.ProBuilder.PolyShapeEditor: 4eb37c855190510c4eb37c855190510c -> 
   custom:DOTSType/UnityEditor.ProjectWindowCallback.DoCreateAssetWithContent: ea4d0d87b78d806dea4d0d87b78d806d -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerButtonEditor: 0e6df5bccc894efd0e6df5bccc894efd -> 
   custom:DOTSType/UnityEditor.BumpMapSettingsFixingWindow: 407671aa04b06a4f407671aa04b06a4f -> 
@@ -265,10 +350,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.VisualScripting.UnityOnScrollbarValueChangedMessageListener: c6ff510c6ecf3abac6ff510c6ecf3aba -> 
   custom:DOTSType/TMPro.Examples.ShaderPropAnimator: d22fce56f0618ad2d22fce56f0618ad2 -> 
   custom:DOTSType/WinnerMenuGroup: 0e3afcbecacd61280e3afcbecacd6128 -> 
-  custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_SHC: fa1ce72689f0f9d8fa1ce72689f0f9d8 -> 
-  custom:DOTSType/Cinemachine.CinemachineComposer: d0e9776eed776050d0e9776eed776050 -> 
-  custom:DOTSType/UnityEditor.ReferencesArtifactGenerator: b91bb528774f4811b91bb528774f4811 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManager: d1fbdcf53927c34fd1fbdcf53927c34f -> 
+  custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_SHC: fa1ce72689f0f9d8fa1ce72689f0f9d8 -> 
+  custom:DOTSType/UnityEditor.ReferencesArtifactGenerator: b91bb528774f4811b91bb528774f4811 -> 
+  custom:DOTSType/Cinemachine.CinemachineComposer: d0e9776eed776050d0e9776eed776050 -> 
   custom:DOTSType/EnemyRatingsScriptableObject: bd07009ff578c608bd07009ff578c608 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRenderPipelineGlobalSettings: 1b242fc9343d16091b242fc9343d1609 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI0B: 319fe68823c7ad8c319fe68823c7ad8c -> 
@@ -382,6 +467,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.LightProbeGroupInspector: 20d8caecfea817ce20d8caecfea817ce -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotVector: 4761d648571abaf94761d648571abaf9 -> 
   custom:DOTSType/UnityEditor.CapsuleColliderEditor: 26ad230c710a8cf126ad230c710a8cf1 -> 
+  custom:DOTSType/Ludiq.Peek.InconsistentComponentsTool+WarningWindow: 9fb766cedf6545f09fb766cedf6545f0 -> 
+  custom:DOTSType/Ludiq.Peek.HierarchyPopup: 5f769efbcb1ee5a85f769efbcb1ee5a8 -> 
   custom:DOTSType/Unity.Entities.EntityManager+IsolateCopiedEntities: 703c8c39c22b63af703c8c39c22b63af -> 
   custom:DOTSType/RootMotion.Demos.AimBoxing: b843b724a4c5f0a9b843b724a4c5f0a9 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Rotate3D: 6a42e9bc4fe3a5a06a42e9bc4fe3a5a0 -> 
@@ -449,7 +536,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.GUIViewDebuggerWindow: bb370bb17b7fefc4bb370bb17b7fefc4 -> 
   custom:DOTSType/UnityEditor.Graphs.AnimationStateMachine.ExitNodeInspector: e2e791b05f6b365fe2e791b05f6b365f -> 
   custom:DOTSType/Unity.VisualScripting.EditorPreferencesProvider: 2436a3322e37752e2436a3322e37752e -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Remap: ab3d535502561c84ab3d535502561c84 -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchControllerEditor: 467602ec36ba8e0e467602ec36ba8e0e -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStayMessageListener: 3a7d0c33b940aae03a7d0c33b940aae0 -> 
@@ -518,6 +604,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.AssetSaveDialog: dd6ed99bcecd7ddedd6ed99bcecd7dde -> 
   custom:DOTSType/UnityEngine.Rendering.VolumeProfile: 3afdd595d4ce81323afdd595d4ce8132 -> 
   custom:DOTSType/UnityEditor.Timeline.TimelineWindowTimeControl: ca9546c9bc47321aca9546c9bc47321a -> 
+  custom:DOTSType/Ludiq.PeekCore.FuzzyWindow: 095450acd129b8c4095450acd129b8c4 -> 
   custom:DOTSType/UnityEditor.LightAnchorEditor: 7a5ee351ed55c4697a5ee351ed55c469 -> 
   custom:DOTSType/UnityEditor.ProBuilder.MaterialEditor: 0440269e58091fc70440269e58091fc7 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.LaunchURL: 743f8e68681917b3743f8e68681917b3 -> 
@@ -566,6 +653,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Cloth: f92295351c63b8b2f92295351c63b8b2 -> 
   custom:DOTSType/SdfBakerSettingsEditor: f92a6bb09e97fc91f92a6bb09e97fc91 -> 
   custom:DOTSType/UnityEngine.VFX.Utility.VFXVelocityBinder: a044f5dcb66b7690a044f5dcb66b7690 -> 
+  custom:DOTSType/Ludiq.Peek.GroupNamePrompt: 7adec529ac125d917adec529ac125d91 -> 
   custom:DOTSType/UnityEditor.VFX.VFXDataParticle: a28ba2b3a7e1c2c5a28ba2b3a7e1c2c5 -> 
   custom:DOTSType/TMPro.EditorUtilities.TMP_SubMeshUI_Editor: 0acac6a80f13b09a0acac6a80f13b09a -> 
   custom:DOTSType/UnityEditor.ShaderGraph.ShaderSubGraphMetadata: 75325223e74460b375325223e74460b3 -> 
@@ -594,8 +682,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.VisualScripting.GlobalMessageListenerEditor: 2b60b6ffd7ba7fc32b60b6ffd7ba7fc3 -> 
   custom:DOTSType/Polybrush.z_AdditionalVertexStreams: 0989f2ad69d4ad3c0989f2ad69d4ad3c -> 
   custom:DOTSType/UnityEngine.UI.PositionAsUV1: a6ee513f794769bba6ee513f794769bb -> 
-  custom:DOTSType/UnityEditor.Rendering.Universal.Path2D.ScriptablePath: 2ade06cac4c38dfa2ade06cac4c38dfa -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.UniversalRendererDataEditor: 90058b0ff0eccacb90058b0ff0eccacb -> 
+  custom:DOTSType/UnityEditor.Rendering.Universal.Path2D.ScriptablePath: 2ade06cac4c38dfa2ade06cac4c38dfa -> 
   custom:DOTSType/TMPro.Examples.Benchmark01: 1701a9bb322b8de01701a9bb322b8de0 -> 
   custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_LODFade: 593fcfdda11e6fde593fcfdda11e6fde -> 
   custom:DOTSType/UnityEditor.IMGUI.Controls.AdvancedDropdownWindow: 6c6b743f1066ad1e6c6b743f1066ad1e -> 
@@ -713,15 +801,15 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.ProBuilder.AssetIdRemapUtility.AssetIdRemapEditor: 8c59319253690bfd8c59319253690bfd -> 
   custom:DOTSType/Unity.UI.Builder.BuilderStyleSheetsWindow: 967e36a7e921cee7967e36a7e921cee7 -> 
   custom:DOTSType/UnityEditor.VFX.VFXContext: 91398f55c9ef7a3b91398f55c9ef7a3b -> 
-  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyThicknessRemapAuthoring: 9de20a123ad2d8049de20a123ad2d804 -> 
+  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyBaseColorAuthoring: c4d25efefbd4ad86c4d25efefbd4ad86 -> 
   custom:DOTSType/UnityEditor.VFX.Block.CollisionSDF: 40aa07e1443ac5f440aa07e1443ac5f4 -> 
   custom:DOTSType/Unity.Transforms.NonUniformScale: ae37020024db8640ae37020024db8640 -> 
   custom:DOTSType/RootMotion.GenericBaker: 7ce148d5408cc6837ce148d5408cc683 -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotFloat3: d10e06f85d6d6836d10e06f85d6d6836 -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineExternalCameraEditor: 06cbc333ac22e22706cbc333ac22e227 -> 
-  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyBaseColorAuthoring: c4d25efefbd4ad86c4d25efefbd4ad86 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleBuffer: d24bba0b45294b7fd24bba0b45294b7f -> 
   custom:DOTSType/Rewired.Editor.GlobalOptionsWindow: c671465456ff1addc671465456ff1add -> 
+  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyThicknessRemapAuthoring: 9de20a123ad2d8049de20a123ad2d804 -> 
   custom:DOTSType/UnityEngine.EventSystems.BaseInput: e235f5db1cebef17e235f5db1cebef17 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.LoadTexture2D: 4fc095a0daf157374fc095a0daf15737 -> 
   custom:DOTSType/UnityEditor.ShaderGraph.ShaderGraphProjectSettings: 80b437e8cf8f5a8c80b437e8cf8f5a8c -> 
@@ -775,6 +863,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Cinemachine.Editor.CinemachineConfinerEditor: ce62fb46924415e4ce62fb46924415e4 -> 
   custom:DOTSType/TMPro.EditorUtilities.TMP_FontAssetEditor: 1d231b0019a0cd831d231b0019a0cd83 -> 
   custom:DOTSType/HealthBar: d6bb52a3b7bf21ddd6bb52a3b7bf21dd -> 
+  custom:DOTSType/Ludiq.PeekCore.LudiqAssetEditor: 3fc88efa8dca0ded3fc88efa8dca0ded -> 
   custom:DOTSType/UnityEngine.RuntimeAnimatorController: 7eab6748309ba9677eab6748309ba967 -> 
   custom:DOTSType/UnityEditor.ProBuilder.TextureScaleTool: 6537c30b0f0447ef6537c30b0f0447ef -> 
   custom:DOTSType/UnityEditor.SkinnedMeshRendererEditor: 5788cdd9e005404a5788cdd9e005404a -> 
@@ -793,8 +882,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.VFX.Utility.VFXPlaneBinder: 4dea5cb52d01499e4dea5cb52d01499e -> 
   custom:DOTSType/Cinemachine.CinemachineHardLookAt: 1790423be5742c2f1790423be5742c2f -> 
   custom:DOTSType/ShaderComponentAuthoring: dcfdcac36b57d6cbdcfdcac36b57d6cb -> 
-  custom:DOTSType/UnityEditor.Rendering.Universal.Renderer2DMenus+Create2DRendererDataAsset: 4d15c4df17f0ce734d15c4df17f0ce73 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.CinemachineUniversalPixelPerfectEditor: 2e08f9cc6603be7e2e08f9cc6603be7e -> 
+  custom:DOTSType/UnityEditor.Rendering.Universal.Renderer2DMenus+Create2DRendererDataAsset: 4d15c4df17f0ce734d15c4df17f0ce73 -> 
   custom:DOTSType/UnityEngine.OcclusionArea: d387a438eb765076d387a438eb765076 -> 
   custom:DOTSType/Unity.Rendering.Authoring.MaterialColor: 6ccfc2f6998ecc1e6ccfc2f6998ecc1e -> 
   custom:DOTSType/UnityEditor.VFX.Block.KillAABox: 30c7360cc49fe6bc30c7360cc49fe6bc -> 
@@ -865,6 +954,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.ProBuilder.TextureToolContext: 6ad1426cd59509f76ad1426cd59509f7 -> 
   custom:DOTSType/Rewired.Data.Mapping.HardwareJoystickTemplateMap: 986fad6fd443f20b986fad6fd443f20b -> 
   custom:DOTSType/UnityEditor.VFX.VisualEffectSubgraphOperator: a56a37b54f351ba5a56a37b54f351ba5 -> 
+  custom:DOTSType/Ludiq.PeekCore.WebWindow: 77abf5b847dd99e777abf5b847dd99e7 -> 
   custom:DOTSType/Rewired.Integration.UnityUI.RewiredEventSystem: ec779b60873caed2ec779b60873caed2 -> 
   custom:DOTSType/Rewired.Data.Mapping.CustomCalculation_FirstNonZero: 7ec4d13188f8a9cd7ec4d13188f8a9cd -> 
   custom:DOTSType/RootMotion.FinalIK.LimbIK: ae57fa3dab02d39aae57fa3dab02d39a -> 
@@ -955,10 +1045,12 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/CrosshairComponentAuthoring: 556af6fbdcca763c556af6fbdcca763c -> 
   custom:DOTSType/Unity.Entities.EditorCompanionHideFlagsSet: 64e46366d5a957c364e46366d5a957c3 -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineMixingCameraEditor: b347a5e07fc4e75db347a5e07fc4e75d -> 
+  custom:DOTSType/Ludiq.PeekCore.CoroutineRunner: d57c1beee6c66f08d57c1beee6c66f08 -> 
   custom:DOTSType/UnityEditor.VFX.VFXQuadStripOutput: 80bd522ee6f883a180bd522ee6f883a1 -> 
   custom:DOTSType/UnityEditor.Rendering.PostProcessing.PostProcessVolumeEditor: d9dd6ffb8fc8ed63d9dd6ffb8fc8ed63 -> 
   custom:DOTSType/VFXParameterEditor: b7c17366582caae6b7c17366582caae6 -> 
   custom:DOTSType/UnityEditor.VFX.Block.GPUEventAlways: 7087474a2fe604357087474a2fe60435 -> 
+  custom:DOTSType/Ludiq.PeekCore.SetupWizard: af5e00cb62424093af5e00cb62424093 -> 
   custom:DOTSType/Rewired.Demos.ControlRemappingDemo1: 50f126dce32442ca50f126dce32442ca -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRenderPipelineEditorResources: 51c679601edcf76c51c679601edcf76c -> 
   custom:DOTSType/UnityEngine.StreamingController: 5debd64051929f235debd64051929f23 -> 
@@ -1200,6 +1292,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.AudioImporter: 6c2a9251b66252e46c2a9251b66252e4 -> 
   custom:DOTSType/UnityEditor.Timeline.EditorClip: fcef9f157b9f02f3fcef9f157b9f02f3 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ScreenSpaceAmbientOcclusionEditor: a12db2cab5649845a12db2cab5649845 -> 
+  custom:DOTSType/Ludiq.PeekCore.AboutWindow: 463fce5efbcb342f463fce5efbcb342f -> 
   custom:DOTSType/UnityEditor.HostView: 01e5ea1d4d01ca0a01e5ea1d4d01ca0a -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertyBumpScaleAuthoring: afd886c9c6e2f12aafd886c9c6e2f12a -> 
   custom:DOTSType/RootMotion.FinalIK.BipedIK: 4e6bbc7fe399cb464e6bbc7fe399cb46 -> 
@@ -1351,8 +1444,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.ReferencedUnityObjects: b8073d4731436522b8073d4731436522 -> 
   custom:DOTSType/RewindComponent: 0f75ab33127417480f75ab3312741748 -> 
   custom:DOTSType/Unity.Rendering.BlendShapeTag: b76df7e273aca6a0b76df7e273aca6a0 -> 
-  custom:DOTSType/Cinemachine.CinemachineImpulseListener: 770c331c9aaa3258770c331c9aaa3258 -> 
   custom:DOTSType/Unity.Rendering.PerInstanceCullingTag: 45a7b9030cde606d45a7b9030cde606d -> 
+  custom:DOTSType/Cinemachine.CinemachineImpulseListener: 770c331c9aaa3258770c331c9aaa3258 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Sequential3D: ba74442dfdbc253dba74442dfdbc253d -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.DecalRendererFeature: c27cdbc625104ddac27cdbc625104dda -> 
   custom:DOTSType/UnityEngine.RenderSettings: 12e22dc69a3db32012e22dc69a3db320 -> 
@@ -1373,12 +1466,14 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Entities.Editor.GameObjectEntityEditor: 9ee355755efdb1e49ee355755efdb1e4 -> 
   custom:DOTSType/UnityEngine.VFX.Utility.VFXLightBinder: 0dd01791cbc365bf0dd01791cbc365bf -> 
   custom:DOTSType/VFXBlockEditor: 7f0d317c0198e5d17f0d317c0198e5d1 -> 
+  custom:DOTSType/Ludiq.PeekCore.LudiqComponentEditor: 5833b06aefd5b2ae5833b06aefd5b2ae -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerDropdown: 4a1b60ca9a6abe0e4a1b60ca9a6abe0e -> 
   custom:DOTSType/Unity.Build.Editor.BuildConfigurationScriptedImporterEditor: 5502b3ccf5e913715502b3ccf5e91371 -> 
   custom:DOTSType/UnityEditor.Graphs.AnimationBlendTree.Graph: e2db7f1f2eda2c6ce2db7f1f2eda2c6c -> 
   custom:DOTSType/UnityEngine.UI.Button: a1388f0596fcaff6a1388f0596fcaff6 -> 
   custom:DOTSType/Lighting: 45bdcd95361d5cbb45bdcd95361d5cbb -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleSDF: e775e7101a85780fe775e7101a85780f -> 
+  custom:DOTSType/Ludiq.PeekCore.TaskWindow: be1ab3690b12dca1be1ab3690b12dca1 -> 
   custom:DOTSType/UnityEngine.ProBuilder.Shapes.ProBuilderShape: 264151fc160c68c4264151fc160c68c4 -> 
   custom:DOTSType/UnityEngine.EventSystems.StandaloneInputModule: ec9de3a45a8b8c04ec9de3a45a8b8c04 -> 
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerToggle: 80cd0a9969445b8780cd0a9969445b87 -> 
@@ -1634,6 +1729,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.Demos.UserControlInteractions: 9fc664a3401c820b9fc664a3401c820b -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
   custom:DOTSType/UnityEditor.VisualEffectAssetEditorUtility+DoCreateNewSubgraphBlock: b239d285cd1d5547b239d285cd1d5547 -> 
+  custom:DOTSType/Ludiq.PeekCore.UpdateWizard: 45d136d954a6c38845d136d954a6c388 -> 
   custom:DOTSType/UnityEditor.AnimationModeDriver: 732d6a6cec3817f5732d6a6cec3817f5 -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+ShaderPreloadEditor: 4f0d4249ee548b3a4f0d4249ee548b3a -> 
   custom:DOTSType/RootMotion.Comments: c64d23a851fdf87fc64d23a851fdf87f -> 
@@ -1700,6 +1796,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.View: 696331f888aa91ec696331f888aa91ec -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.AssetVersion: cbbf064c4bde6a1fcbbf064c4bde6a1f -> 
   custom:DOTSType/UnityEditor.VFX.Block.AttributeMassFromVolume: 2d412324a88610762d412324a8861076 -> 
+  custom:DOTSType/Ludiq.PeekCore.EditorIconViewer: 63ae9d3fa581b31b63ae9d3fa581b31b -> 
   custom:DOTSType/MaterialOverrideAsset: 30e094f2f72d42c230e094f2f72d42c2 -> 
   custom:DOTSType/TMPro.TextMeshPro: 61e10d215eb1b79961e10d215eb1b799 -> 
   custom:DOTSType/Unity.Transforms.CopyInitialTransformFromGameObject: 2e04dba9bc7f665b2e04dba9bc7f665b -> 
@@ -1901,6 +1998,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.CanvasEditor: 65e2743002a8243665e2743002a82436 -> 
   custom:DOTSType/UnityEditor.VideoPlayerEditor: 9b060caa314d8ac29b060caa314d8ac2 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Path2D.ScriptablePathInspector: d98e52b509039f73d98e52b509039f73 -> 
+  custom:DOTSType/Ludiq.PeekCore.GeneratePropertyProvidersWindow: a510e4a6bb754459a510e4a6bb754459 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteOutlineModel: 4d5e4b31149f49a14d5e4b31149f49a1 -> 
   custom:DOTSType/UnityEditor.VFX.Block.PositionSphere: 7f6600b2765dcb967f6600b2765dcb96 -> 
   custom:DOTSType/UnityEditor.DeviceSimulation.DeviceInfoAsset: d11de534da114722d11de534da114722 -> 
@@ -1969,6 +2067,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Transforms.CompositeScale: 078db9cc48876ebd078db9cc48876ebd -> 
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerPanel: 4ca2f5d3d855e3784ca2f5d3d855e378 -> 
   custom:DOTSType/UnityEngine.TestRunner.Utils.TestRunCallbackListener: be8e9fd807bd1303be8e9fd807bd1303 -> 
+  custom:DOTSType/Ludiq.Peek.EditorPopup: 4d2437ec2ddc9be04d2437ec2ddc9be0 -> 
   custom:DOTSType/UnityEditor.UIElements.Debugger.UIElementsDebugger: 30bc2363ab7249f930bc2363ab7249f9 -> 
   custom:DOTSType/UnityEditor.TreeViewExamples.TreeViewTestWindow: 7b444b9c14b8baa07b444b9c14b8baa0 -> 
   custom:DOTSType/BossWeaponComponent: 9500c3f6f29e2ad19500c3f6f29e2ad1 -> 
@@ -1977,6 +2076,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Cinemachine.CinemachineConfiner2D: 705838d1ade4940b705838d1ade4940b -> 
   custom:DOTSType/UnityEditor.ShaderGraph.CreateShaderSubGraph: c87171a94b9fd6ebc87171a94b9fd6eb -> 
   custom:DOTSType/Unity.Scenes.ExternalEntityRefInfo: 43244452628bb63543244452628bb635 -> 
+  custom:DOTSType/Ludiq.Peek.ReparentingPrompt: 7178af188443b0c07178af188443b0c0 -> 
   custom:DOTSType/UnityEngine.Effector2D: 5923a4e47043fd275923a4e47043fd27 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Converters.ColorGradingConverter: 6b9c8c279da41bf56b9c8c279da41bf5 -> 
   custom:DOTSType/RootMotion.FinalIK.LookAtController: 84a784b4cf368b6684a784b4cf368b66 -> 
@@ -2222,9 +2322,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.AvatarMuscleEditor: b5e77a9157962476b5e77a9157962476 -> 
   custom:DOTSType/UnityEditor.UI.ImageEditor: 302d3b79d24ff57c302d3b79d24ff57c -> 
   custom:DOTSType/UnityEditor.TextCore.Text.TextCoreContextMenuItems: 959f3a760e8d6b4d959f3a760e8d6b4d -> 
-  custom:DOTSType/Rewired.ComponentControls.TouchButton: ccabd477396d3597ccabd477396d3597 -> 
-  custom:DOTSType/ParticleSystemComponent: 89495ffa09edd36689495ffa09edd366 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Converters.MotionBlurConverter: 6d6566bed2414e706d6566bed2414e70 -> 
+  custom:DOTSType/ParticleSystemComponent: 89495ffa09edd36689495ffa09edd366 -> 
+  custom:DOTSType/Rewired.ComponentControls.TouchButton: ccabd477396d3597ccabd477396d3597 -> 
   custom:DOTSType/UnityEditor.VFX.Block.PositionTorusDeprecated: 88d82dcd529cf9b988d82dcd529cf9b9 -> 
   custom:DOTSType/UnityEngine.MeshFilter: fe0ec73c5a110db3fe0ec73c5a110db3 -> 
   custom:DOTSType/Rewired.InputManager: e50509acff3480a7e50509acff3480a7 -> 
@@ -2316,10 +2416,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.VFX.Operator.ColorLuma: d0046b3c1334f52dd0046b3c1334f52d -> 
   custom:DOTSType/Unity.Entities.BlobAssetOwner: c83c63163f833390c83c63163f833390 -> 
   custom:DOTSType/UnityEditor.ParticleSystemWindow: a1f750099aeb42ada1f750099aeb42ad -> 
-  custom:DOTSType/UnityEditor.ProBuilder.SmoothGroupEditor: fe4b016565c76c60fe4b016565c76c60 -> 
   custom:DOTSType/RootMotion.FinalIK.RotationLimitSplineInspector: f9ef96d33c449fc5f9ef96d33c449fc5 -> 
-  custom:DOTSType/UnityEditor.Polybrush.SplatWeightEditor: 2168531faad602f62168531faad602f6 -> 
+  custom:DOTSType/UnityEditor.ProBuilder.SmoothGroupEditor: fe4b016565c76c60fe4b016565c76c60 -> 
   custom:DOTSType/UnityEngine.PointEffector2D: 4ddf4aac8be40c794ddf4aac8be40c79 -> 
+  custom:DOTSType/UnityEditor.Polybrush.SplatWeightEditor: 2168531faad602f62168531faad602f6 -> 
   custom:DOTSType/Unity.VisualScripting.ScriptGraphAsset: 0f6ef4bef87b41d10f6ef4bef87b41d1 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleMesh: f9e39abae3659ba3f9e39abae3659ba3 -> 
   custom:DOTSType/Rewired.Editor.ControllerDataFilesInspector: 67798152980caecc67798152980caecc -> 
@@ -2757,8 +2857,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/SkinTest: 4af0f321d54bc37b4af0f321d54bc37b -> 
   custom:DOTSType/UnityEditor.VFX.Operator.AgeOverLifetime: 2adacfcde5f50e242adacfcde5f50e24 -> 
   custom:DOTSType/Rewired.Dev.Tools.DebugInformation: e909c52a3584a689e909c52a3584a689 -> 
-  custom:DOTSType/Cinemachine.CinemachinePipeline: 28f2d57305b1849028f2d57305b18490 -> 
   custom:DOTSType/UnityEditor.TextCore.Text.SpriteAssetImporter: ba1633b9e7866cf9ba1633b9e7866cf9 -> 
+  custom:DOTSType/Cinemachine.CinemachinePipeline: 28f2d57305b1849028f2d57305b18490 -> 
   custom:DOTSType/RootMotion.FinalIK.ArmIK: d202b0227328cd50d202b0227328cd50 -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnTransformChildrenChangedMessageListener: f6152979bcb9b3daf6152979bcb9b3da -> 
   custom:DOTSType/RootMotion.FinalIK.ArmIKInspector: f1cc25920e8fee35f1cc25920e8fee35 -> 
@@ -2874,22 +2974,34 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.AudioReverbZone: a9cb03f27a6045faa9cb03f27a6045fa -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Saturate: dd936e298685d8fddd936e298685d8fd -> 
   custom:DOTSType/WeaponItemComponent: 41168f32d2406fd841168f32d2406fd8 -> 
-  custom:DOTSType/UnityEditor.Timeline.TimelineWindow+DoCreateTimeline: 6cf6528c648b52856cf6528c648b5285 -> 
   custom:DOTSType/UnityEditor.AudioImporterInspector: 4f6b63b8ce601ea64f6b63b8ce601ea6 -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotFloat4: ae86f2dc282788e1ae86f2dc282788e1 -> 
   custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_LightmapST: 4d9240626ada950c4d9240626ada950c -> 
-  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyEmissiveColor: 9a5f8f808acf48e39a5f8f808acf48e3 -> 
+  custom:DOTSType/UnityEditor.Timeline.TimelineWindow+DoCreateTimeline: 6cf6528c648b52856cf6528c648b5285 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI05: 1e4f3c5bdbaffd761e4f3c5bdbaffd76 -> 
   custom:DOTSType/RootMotion.FinalIK.AimPoserInspector: 67b0dfc4b83546c967b0dfc4b83546c9 -> 
+  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyEmissiveColor: 9a5f8f808acf48e39a5f8f808acf48e3 -> 
   custom:DOTSType/Unity.Scenes.DisableLiveLink: acfec9bf12a4cae8acfec9bf12a4cae8 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteUtilityWindow: 766fc4f2b14d7b62766fc4f2b14d7b62 -> 
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 106773.837562 seconds.
-  path: Assets/Characters/Prefabs/PLAYER_1.prefab
-  artifactKey: Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Prefabs/PLAYER_1.prefab using Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Attempting to get Camera relative temporary RenderTexture (width || height <= 0) via a CommandBuffer  in a Sriptable Render Pipeline.
+  Time since last request: 17234.186680 seconds.
+  path: Assets/PolygonSamurai
+  artifactKey: Guid(03fba2ce0dd30a948bfef347f7ff1d02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai using Guid(03fba2ce0dd30a948bfef347f7ff1d02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40ecce7849f9dcab2d02167dfe085748') in 0.323097 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.627986 seconds.
+  path: Assets/PolygonSamurai/Materials
+  artifactKey: Guid(c6ded36a6b3ea844bba3f56eb3ea3e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials using Guid(c6ded36a6b3ea844bba3f56eb3ea3e8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c52a938d8470ba97db81a2132f60213') in 0.006651 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.101416 seconds.
+  path: Assets/PolygonSamurai/Materials/Layout_BaseMesh_Gen_Grey.mat
+  artifactKey: Guid(189f7e75960e51e4c80462cfef0332db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/Layout_BaseMesh_Gen_Grey.mat using Guid(189f7e75960e51e4c80462cfef0332db) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Attempting to get Camera relative temporary RenderTexture (width || height <= 0) via a CommandBuffer  in a Sriptable Render Pipeline.
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.Rendering.ScriptableRenderContext:ExecuteCommandBuffer_Internal (UnityEngine.Rendering.CommandBuffer)
 UnityEngine.Rendering.ScriptableRenderContext:ExecuteCommandBuffer (UnityEngine.Rendering.CommandBuffer)
@@ -2903,8 +3015,8 @@ UnityEngine.Rendering.Universal.UniversalRenderPipeline:Render (UnityEngine.Rend
 UnityEngine.Rendering.RenderPipeline:InternalRender (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>)
 UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,System.Collections.Generic.List`1<UnityEngine.Camera/RenderRequest>,Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle)
 UnityEditor.PreviewRenderUtility:Render (bool,bool)
-UnityEditor.GameObjectInspector:DoRenderPreview ()
-UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.MaterialEditor:DoRenderPreview (UnityEditor.PreviewRenderUtility,bool)
+UnityEditor.MaterialEditor:RenderStaticPreview (string,UnityEngine.Object[],int,int)
 UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
 UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
 
@@ -2920,8 +3032,8 @@ UnityEngine.Rendering.Universal.UniversalRenderPipeline:Render (UnityEngine.Rend
 UnityEngine.Rendering.RenderPipeline:InternalRender (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>)
 UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,System.Collections.Generic.List`1<UnityEngine.Camera/RenderRequest>,Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle)
 UnityEditor.PreviewRenderUtility:Render (bool,bool)
-UnityEditor.GameObjectInspector:DoRenderPreview ()
-UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.MaterialEditor:DoRenderPreview (UnityEditor.PreviewRenderUtility,bool)
+UnityEditor.MaterialEditor:RenderStaticPreview (string,UnityEngine.Object[],int,int)
 UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
 UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
 
@@ -2937,489 +3049,57 @@ UnityEngine.Rendering.Universal.UniversalRenderPipeline:Render (UnityEngine.Rend
 UnityEngine.Rendering.RenderPipeline:InternalRender (UnityEngine.Rendering.ScriptableRenderContext,System.Collections.Generic.List`1<UnityEngine.Camera>)
 UnityEngine.Rendering.RenderPipelineManager:DoRenderLoop_Internal (UnityEngine.Rendering.RenderPipelineAsset,intptr,System.Collections.Generic.List`1<UnityEngine.Camera/RenderRequest>,Unity.Collections.LowLevel.Unsafe.AtomicSafetyHandle)
 UnityEditor.PreviewRenderUtility:Render (bool,bool)
-UnityEditor.GameObjectInspector:DoRenderPreview ()
-UnityEditor.GameObjectInspector:RenderStaticPreview (string,UnityEngine.Object[],int,int)
+UnityEditor.MaterialEditor:DoRenderPreview (UnityEditor.PreviewRenderUtility,bool)
+UnityEditor.MaterialEditor:RenderStaticPreview (string,UnityEngine.Object[],int,int)
 UnityEditor.AssetPreviewUpdater:CreatePreview (UnityEngine.Object,UnityEngine.Object[],string,int,int)
 UnityEditor.AssetPreviewUpdater:CreatePreviewForAsset (UnityEngine.Object,UnityEngine.Object[],string)
 
 [C:\buildslave\unity\build\Runtime\Graphics\RenderBufferManager.cpp line 180]
 
-Tried select unknown importer for id '-2' '00000000000000000000000000000000'
- -> (artifact id: 'c5d4399eaa47f5b5f476cbee09c979ac') in 0.940484 seconds 
+ -> (artifact id: '2cdced7008519ba763b7d00b32f0d673') in 0.851190 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.244317 seconds.
-  path: Assets/Characters/Prefabs/PLAYER_1.prefab
-  artifactKey: Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Prefabs/PLAYER_1.prefab using Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Tried select unknown importer for id '-2' '00000000000000000000000000000000'
- -> (artifact id: '8abbf2f63ec7d303f537a4af84bbc397') in 0.328227 seconds 
+  Time since last request: 0.000299 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Character_Mat_Brown.mat
+  artifactKey: Guid(1d42c932d2f4ce4459fefc6cd4c5aa15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Character_Mat_Brown.mat using Guid(1d42c932d2f4ce4459fefc6cd4c5aa15) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64886f7b1c67bd90aa5c5e29bf205a04') in 0.026356 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 2.098460 seconds.
-  path: Assets/Characters/Prefabs/PLAYER_1.prefab
-  artifactKey: Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Prefabs/PLAYER_1.prefab using Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Tried select unknown importer for id '-2' '00000000000000000000000000000000'
- -> (artifact id: 'f733c574463157f2b2ca710fd3e94660') in 0.330768 seconds 
+  Time since last request: 0.000174 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Clouds_Mat.mat
+  artifactKey: Guid(2b4db85464d9b394c9dc14cc2fba12ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Clouds_Mat.mat using Guid(2b4db85464d9b394c9dc14cc2fba12ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0942a0e06dfbc0d4c3db3fa13cbfeef9') in 0.022560 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.510456 seconds.
-  path: Assets/Characters/Prefabs/PLAYER_1.prefab
-  artifactKey: Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Characters/Prefabs/PLAYER_1.prefab using Guid(de4d2ad47e9e2a04e8e48eba1b59245f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) Tried select unknown importer for id '-2' '00000000000000000000000000000000'
- -> (artifact id: '35e0709dc1d6d3594c64998ade573895') in 0.351459 seconds 
+  Time since last request: 0.000281 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Mat_04.mat
+  artifactKey: Guid(812c74b7f623a484c94aab57ba457ede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Mat_04.mat using Guid(812c74b7f623a484c94aab57ba457ede) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2c3e56912063032c1921416818b062b') in 0.035556 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 223.020850 seconds.
-  path: Assets/Data/Enemy Data GENERIC.asset
-  artifactKey: Guid(873d43a127a8968449600bd7999b6e41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Enemy Data GENERIC.asset using Guid(873d43a127a8968449600bd7999b6e41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b794e1e8c00634986d36a88bf37ca2e') in 0.015872 seconds 
+  Time since last request: 0.000228 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Mat_03.mat
+  artifactKey: Guid(f58eb4014cacded4d89c32b81aa213c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Mat_03.mat using Guid(f58eb4014cacded4d89c32b81aa213c1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '70e4b81df7668b96fd7e7e5f20fa562b') in 0.028827 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.035551 seconds.
-  path: Assets/Data/Enemy Data WIP.asset
-  artifactKey: Guid(bdb7d0ace26465944b745f62e39b642b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Enemy Data WIP.asset using Guid(bdb7d0ace26465944b745f62e39b642b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b75cfef3b983b1d63e78b096bb7dc9fb') in 0.004767 seconds 
+  Time since last request: 0.000142 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Water_Mat.mat
+  artifactKey: Guid(670efced5793a754f8ef786c262b4727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Water_Mat.mat using Guid(670efced5793a754f8ef786c262b4727) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1a46b575645ff64e4f693cfedb44a63') in 0.081009 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.453224 seconds.
-  path: Assets/Data/Enemy Data BASIC 1.asset
-  artifactKey: Guid(2f9815b47363f9d4cad59198dd7aaf64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Enemy Data BASIC 1.asset using Guid(2f9815b47363f9d4cad59198dd7aaf64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9db14c5472cb960216c1e8d6dd1e31e') in 0.004920 seconds 
+  Time since last request: 0.000210 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Fire_FX.mat
+  artifactKey: Guid(e8bc6160ccf0e9b4e950bcb511403374) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Fire_FX.mat using Guid(e8bc6160ccf0e9b4e950bcb511403374) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62e61ac00d35b9183dcd3154133c2862') in 0.076152 seconds 
 ========================================================================
 Received Import Request.
-  Time since last request: 3.814775 seconds.
-  path: Assets/Data/Enemy Data BASIC 2.asset
-  artifactKey: Guid(06dac6654c0457648b3f99ad61e5944f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Enemy Data BASIC 2.asset using Guid(06dac6654c0457648b3f99ad61e5944f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '98bb0f0020f2ee5e5a737759c6b94a79') in 0.005028 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.424033 seconds.
-  path: Assets/Data/Enemy Data BASIC.asset
-  artifactKey: Guid(4b147d42db405bc46b759777c45c8346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Enemy Data BASIC.asset using Guid(4b147d42db405bc46b759777c45c8346) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88644d0e298ef995f0a742e5cbb73bb2') in 0.005099 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.510993 seconds.
-  path: Assets/Data/Enemy Data FRANKIE BOSS.asset
-  artifactKey: Guid(2ad8dad2678a78a4a8883692bf4a11e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Enemy Data FRANKIE BOSS.asset using Guid(2ad8dad2678a78a4a8883692bf4a11e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e1a3d93e8657d7b176b028a5391c92b1') in 0.006192 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 8.126817 seconds.
-  path: Assets/Data/InputControls.inputactions
-  artifactKey: Guid(216207ae924c39842b5b2ad515311cfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/InputControls.inputactions using Guid(216207ae924c39842b5b2ad515311cfa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8abf8ba45bb7e02087fabd9cfdac3daa') in 0.006570 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 6.116717 seconds.
-  path: Assets/Data/P1 Data.asset
-  artifactKey: Guid(05e2cc1877834be46824213df40c5d90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/P1 Data.asset using Guid(05e2cc1877834be46824213df40c5d90) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65cc8e3f30ddbbf5667579c16fb1135d') in 0.005516 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.278131 seconds.
-  path: Assets/Data/Player0 Data LD.asset
-  artifactKey: Guid(0447d634fb4125e4eb35d98c780e912d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Player0 Data LD.asset using Guid(0447d634fb4125e4eb35d98c780e912d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '955aec35958a9e4703259c7f218d4eae') in 0.004120 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.214313 seconds.
-  path: Assets/Data/Player0 Data.asset
-  artifactKey: Guid(e31e3bccb1a91d048ad67f0cb99813f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/Player0 Data.asset using Guid(e31e3bccb1a91d048ad67f0cb99813f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4bb67be667bc4085a3593cb21e1c7145') in 0.004756 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.932056 seconds.
-  path: Assets/Data/P2 Data.asset
-  artifactKey: Guid(26688f10575fbea409a72cccfed564f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Data/P2 Data.asset using Guid(26688f10575fbea409a72cccfed564f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '190306fd9ef0c407985530c1999d53e6') in 0.004791 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 138.659855 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/boy-sport.prefab
-  artifactKey: Guid(6515975e1087a43a49a85f8ace7230ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/boy-sport.prefab using Guid(6515975e1087a43a49a85f8ace7230ab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '642e596d01a1a439ea456b7a22ba5254') in 0.024656 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.578523 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/boy-shirt.prefab
-  artifactKey: Guid(0d46f7bdd93ffc44787bcdf35b4741bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/boy-shirt.prefab using Guid(0d46f7bdd93ffc44787bcdf35b4741bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f916f89c16c666fbd18b53290fb762a6') in 0.025542 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.407845 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/alien-ufo.prefab
-  artifactKey: Guid(2e3b491ac8499904fb847540fea6dd05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/alien-ufo.prefab using Guid(2e3b491ac8499904fb847540fea6dd05) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '140e5f3073261455ec1c9492c1166ea4') in 0.032042 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.015996 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-astronaut.prefab
-  artifactKey: Guid(ec7512bc8a5df45bf8e33c8f41fc209f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-astronaut.prefab using Guid(ec7512bc8a5df45bf8e33c8f41fc209f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8d638763c753c6ac36a72ee638f71a1') in 0.026940 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.201981 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-casteway.prefab
-  artifactKey: Guid(11313da44ee7f0b43b0010e4587786d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-casteway.prefab using Guid(11313da44ee7f0b43b0010e4587786d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b15a796a5e204ec7907f9a94d0b58da') in 0.034547 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.940726 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-casual.prefab
-  artifactKey: Guid(d7a23874c72e5a34f95e076f8cdcf09c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-casual.prefab using Guid(d7a23874c72e5a34f95e076f8cdcf09c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aac0d7ebe29c092827ec870801aa753a') in 0.022427 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.607709 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-coat.prefab
-  artifactKey: Guid(e708a70f6d572904b94faa721c4ea96d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-coat.prefab using Guid(e708a70f6d572904b94faa721c4ea96d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c65bad98d03184d60da78b5e05ba6e2') in 0.022595 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.225452 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-construction-worker.prefab
-  artifactKey: Guid(7dec47860c1724a8fb3661000800979c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-construction-worker.prefab using Guid(7dec47860c1724a8fb3661000800979c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93d54e243c1b52710f761e66b29e8e02') in 0.023097 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.675798 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-cowboy.prefab
-  artifactKey: Guid(527a049fc0f3549e9979a8c8d8b0e4ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-cowboy.prefab using Guid(527a049fc0f3549e9979a8c8d8b0e4ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb76a50a2a58bf6e0c423572024f18dd') in 0.023471 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.062078 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-doctor.prefab
-  artifactKey: Guid(34f9383b1a1e78f4fa35769f1cefb7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-doctor.prefab using Guid(34f9383b1a1e78f4fa35769f1cefb7a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a29a663db51aa4f6144fe171afdfbe0') in 0.023268 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.806414 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-egypt-soldier.prefab
-  artifactKey: Guid(420ceb26225f0f449970d1c4cccbc835) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-egypt-soldier.prefab using Guid(420ceb26225f0f449970d1c4cccbc835) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da021a34d5dad941a18e224c432c76a8') in 0.022924 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 3.224206 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-EOD.prefab
-  artifactKey: Guid(b20697d7d45372048b1585bbc717759d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-EOD.prefab using Guid(b20697d7d45372048b1585bbc717759d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd2845fc574ea51501bed6e1afdf8ad51') in 0.024836 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 7.951297 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-eskimo.prefab
-  artifactKey: Guid(d2f15352ee63a4d6ba868801459d29d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-eskimo.prefab using Guid(d2f15352ee63a4d6ba868801459d29d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad1f9f853c839e03014f03d0f743cefb') in 0.024161 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.865995 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-explorer.prefab
-  artifactKey: Guid(0549ae0ec4fc51546941075204bd346c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-explorer.prefab using Guid(0549ae0ec4fc51546941075204bd346c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28ffd66d2a45a888387a0202c712e7cc') in 0.021661 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.455535 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-farm.prefab
-  artifactKey: Guid(e619736e4c44c402ca76ed0015fbbac6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-farm.prefab using Guid(e619736e4c44c402ca76ed0015fbbac6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '351a1d206b16eeb4d03668eee83f4581') in 0.023380 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.942266 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-fire.prefab
-  artifactKey: Guid(78801ed235633144283e4c6f50e471bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-fire.prefab using Guid(78801ed235633144283e4c6f50e471bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e65b5ce2e0dc61a815116a4e1d2ed442') in 0.023841 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.291446 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-football.prefab
-  artifactKey: Guid(f3cd3628ab6d85a4e8de408649be6dcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-football.prefab using Guid(f3cd3628ab6d85a4e8de408649be6dcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cddd0f514c53cbdcbb00f7df722e8075') in 0.035234 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.513840 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-golf.prefab
-  artifactKey: Guid(2724929ad3ebe4d4fbd6c08179d71673) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-golf.prefab using Guid(2724929ad3ebe4d4fbd6c08179d71673) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c22678007d24929137be7cb4504373d3') in 0.022246 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.808920 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-guy.prefab
-  artifactKey: Guid(39603e0a98f234548b8569ee9ba3baf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-guy.prefab using Guid(39603e0a98f234548b8569ee9ba3baf6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9fe9c5cce4b2aaab8edf2136a474310') in 0.023862 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.823678 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-hazard.prefab
-  artifactKey: Guid(f07a8228aac2146b09e03f7e11296d2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-hazard.prefab using Guid(f07a8228aac2146b09e03f7e11296d2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87ffd70f5459f366d0cec3c58890eb7e') in 0.026285 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.759562 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-jamaica.prefab
-  artifactKey: Guid(f8b24ceccd29d004e8d49dff44168b11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-jamaica.prefab using Guid(f8b24ceccd29d004e8d49dff44168b11) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1aefc7bbc8066595b48cb95a50597cef') in 0.021893 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.224329 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-king.prefab
-  artifactKey: Guid(36a63ada484f62145b3e3b027820767d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-king.prefab using Guid(36a63ada484f62145b3e3b027820767d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce46eaa7afaa79c5cf976bf7b688da5b') in 0.025511 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.668469 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-knight-soldier.prefab
-  artifactKey: Guid(921366adf77874e08945d80a291e1d93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-knight-soldier.prefab using Guid(921366adf77874e08945d80a291e1d93) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '680d8142b5f6ddd8682505edd1b11344') in 0.022101 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.509496 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-knight.prefab
-  artifactKey: Guid(6c28541918628fc4c88a01e39dccad9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-knight.prefab using Guid(6c28541918628fc4c88a01e39dccad9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a73f44d16ac6bb712c3b48455f69a7a') in 0.030676 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.688702 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lad-rival.prefab
-  artifactKey: Guid(18eac914fa8d7de4583f593af6de95f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lad-rival.prefab using Guid(18eac914fa8d7de4583f593af6de95f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '534dd89e62bd3f648be4cc864c187c0e') in 0.021582 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.985073 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lad.prefab
-  artifactKey: Guid(71b07a42af3aa2e44ad755b9b30b42e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lad.prefab using Guid(71b07a42af3aa2e44ad755b9b30b42e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b42b1f83591dd5e6760fc0426046f97') in 0.025015 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.004996 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lord-rival.prefab
-  artifactKey: Guid(4c30c626cdb1f3043b6e872743f76308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lord-rival.prefab using Guid(4c30c626cdb1f3043b6e872743f76308) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a79c55be528bc7570eb606fbee6de84') in 0.021325 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.806814 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lord.prefab
-  artifactKey: Guid(561922006565b1a47a0b93dbc5f07a77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-lord.prefab using Guid(561922006565b1a47a0b93dbc5f07a77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77d22c634c59762859e1c26ee6e46ada') in 0.021863 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.113777 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-mafia.prefab
-  artifactKey: Guid(1bba2e1f905c51a40954a4e433ab84a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-mafia.prefab using Guid(1bba2e1f905c51a40954a4e433ab84a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10444ce63723e8b913fb5063143f99db') in 0.022565 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.754984 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-metalhead.prefab
-  artifactKey: Guid(7967393b9805e4b45b23147a3c3c8c54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-metalhead.prefab using Guid(7967393b9805e4b45b23147a3c3c8c54) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b8cb12aa5a1b634f3245d47f312f5c0') in 0.023535 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.121522 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-monk-old.prefab
-  artifactKey: Guid(80bce65ac1818004391c35b26ddfcfcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-monk-old.prefab using Guid(80bce65ac1818004391c35b26ddfcfcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '15685abb0aafa4ac30dc5517215a77c7') in 0.024663 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.831038 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-monk.prefab
-  artifactKey: Guid(1bc3d2c93c1db6b479a63355138ca3b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-monk.prefab using Guid(1bc3d2c93c1db6b479a63355138ca3b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb669b209a2fbf1c839a4cc66c99ddb4') in 0.022828 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.623880 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-native-warrior.prefab
-  artifactKey: Guid(d7a6c8eebbf9b489382054b73e8a5997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-native-warrior.prefab using Guid(d7a6c8eebbf9b489382054b73e8a5997) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd05e0d2c60d8becb62e4f2dd3824558c') in 0.022500 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.720525 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-native.prefab
-  artifactKey: Guid(919f7ad4123d348dcbc323bd466dcfba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-native.prefab using Guid(919f7ad4123d348dcbc323bd466dcfba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '280bdd2a001364fb57effb0185b2466a') in 0.023525 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.020163 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pablo.prefab
-  artifactKey: Guid(121c877f48f0c694ebda2e692daf2060) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pablo.prefab using Guid(121c877f48f0c694ebda2e692daf2060) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc3af8845dc97b064585253fbf430290') in 0.023867 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.353651 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pedestrian-rival-young.prefab
-  artifactKey: Guid(5d7d5f36defa2a84c91a3a81b774b803) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pedestrian-rival-young.prefab using Guid(5d7d5f36defa2a84c91a3a81b774b803) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e811e6d5823e408d9715d3c0b3f4a0f') in 0.024269 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.699689 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pedestrian-rival.prefab
-  artifactKey: Guid(4e99b4de558ad384b959292196dee36c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pedestrian-rival.prefab using Guid(4e99b4de558ad384b959292196dee36c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0d3310c187a2e81b1b51de61777b28c') in 0.022703 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.777456 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pedestrian.prefab
-  artifactKey: Guid(88b2d04b132e747428c381a7b1551d0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-pedestrian.prefab using Guid(88b2d04b132e747428c381a7b1551d0f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a17b4bdf4e777b2017f017cf8e269ea2') in 0.025200 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.039153 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-police.prefab
-  artifactKey: Guid(de4aa54474b32844d91241f85f6074c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-police.prefab using Guid(de4aa54474b32844d91241f85f6074c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89e3f516c63106e32ec55d33303d3375') in 0.024095 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.676466 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-rival.prefab
-  artifactKey: Guid(7e0ed5a49fd9d1b41b7a3a8191fc91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-rival.prefab using Guid(7e0ed5a49fd9d1b41b7a3a8191fc91f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9860dfd8e8ed6ae8867b551d4693e9aa') in 0.023546 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.462032 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-samurai-black.prefab
-  artifactKey: Guid(0ea6646d88b7d444cba79cc0e7e1aab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-samurai-black.prefab using Guid(0ea6646d88b7d444cba79cc0e7e1aab4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28162d053e7871bdcb275ed472530dce') in 0.022819 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.239244 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-samurai.prefab
-  artifactKey: Guid(965581fc6b11f4be187ca8c6cdf42d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-samurai.prefab using Guid(965581fc6b11f4be187ca8c6cdf42d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55178677f845e4ae580904db89ee0eb1') in 0.026130 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.038250 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-servant.prefab
-  artifactKey: Guid(fcc87a5a6ad324f409a31db78909289f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-servant.prefab using Guid(fcc87a5a6ad324f409a31db78909289f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e61029b051fb1734cfbd6ea25288ef5a') in 0.023706 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.067049 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-shirt.prefab
-  artifactKey: Guid(117d681b39c6d432eb8ada77965ceac7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-shirt.prefab using Guid(117d681b39c6d432eb8ada77965ceac7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '59246d7a2a22a40e715856d1635a0102') in 0.026430 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.709803 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-sir.prefab
-  artifactKey: Guid(3ca733b57b3437142908586d3bb57528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-sir.prefab using Guid(3ca733b57b3437142908586d3bb57528) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c337c4c246a567af15de10732495dc1a') in 0.021586 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.567218 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-ski.prefab
-  artifactKey: Guid(ad2c1657ce10f8944b77ffb61db8ff38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-ski.prefab using Guid(ad2c1657ce10f8944b77ffb61db8ff38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f95d7c868a4e5d4097093dfd90373292') in 0.023046 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.672075 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier-ge.prefab
-  artifactKey: Guid(8356db07291bf4a89870d37ac7b649b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier-ge.prefab using Guid(8356db07291bf4a89870d37ac7b649b7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e910fda7281d6d5f60bf0be4409f094') in 0.024302 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.927053 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier-special-ge.prefab
-  artifactKey: Guid(2bc870d4420e24b75adb136706b76d9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier-special-ge.prefab using Guid(2bc870d4420e24b75adb136706b76d9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fee826a19fdcbc412b0bd67f7e9a01c7') in 0.022369 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.454034 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier-us.prefab
-  artifactKey: Guid(b199a1dfc3f5646a394c2c7667b99447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier-us.prefab using Guid(b199a1dfc3f5646a394c2c7667b99447) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc4790e301d716060248761fe4fb930c') in 0.021204 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.713201 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier.prefab
-  artifactKey: Guid(35fcd8be745a34a519565e282b51285b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-soldier.prefab using Guid(35fcd8be745a34a519565e282b51285b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '62962ca1ae9c7efb76bb69f496c6d655') in 0.025366 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.019361 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-swat.prefab
-  artifactKey: Guid(0ddd8a1384f68c647919a23fe168efbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-swat.prefab using Guid(0ddd8a1384f68c647919a23fe168efbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c984b113dfa94615bdc29adbc9ea8891') in 0.023283 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.178735 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-suit.prefab
-  artifactKey: Guid(d978503b9d933374cbecd960c4838beb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-suit.prefab using Guid(d978503b9d933374cbecd960c4838beb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95601b3c5086dc2726d8df58bcd40518') in 0.023742 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.310716 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-sweater.prefab
-  artifactKey: Guid(cb5e0b81c3530ce4c84b90bc25e434be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-sweater.prefab using Guid(cb5e0b81c3530ce4c84b90bc25e434be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd1d011e2dbde646f88e8c1d1ec7b848a') in 0.024962 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.916721 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-swimming.prefab
-  artifactKey: Guid(568d72353db93f84fbbefc43193a0bbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-swimming.prefab using Guid(568d72353db93f84fbbefc43193a0bbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '484646ce981ffaeaca8e40617fec74fd') in 0.033181 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.311539 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-tie-bold.prefab
-  artifactKey: Guid(28ecf0197c2e7844ba996d7a65133f4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-tie-bold.prefab using Guid(28ecf0197c2e7844ba996d7a65133f4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '023b4b839ae9ad3d725b1bedcf318c8d') in 0.023637 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.605370 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-tie.prefab
-  artifactKey: Guid(868d5d71ccf7f64479135f6c2355fa66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-tie.prefab using Guid(868d5d71ccf7f64479135f6c2355fa66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '193b19038e0167d2993faf6498f5e143') in 0.021224 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.970448 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-viking.prefab
-  artifactKey: Guid(1533dd24ecda7024e946c94a632abb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-viking.prefab using Guid(1533dd24ecda7024e946c94a632abb50) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a4c3a9c8c1314bdfb6e86d66a504eb97') in 0.021930 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.095705 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-winter.prefab
-  artifactKey: Guid(badbe8c1f2bec594aa1bb06c04a0ddc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-winter.prefab using Guid(badbe8c1f2bec594aa1bb06c04a0ddc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3164fb7fc488c6d69f33a19be0fe2f4f') in 0.022406 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.214738 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-worker.prefab
-  artifactKey: Guid(461478c486547af4db63a5f80cd812d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-worker.prefab using Guid(461478c486547af4db63a5f80cd812d6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f500b0700e25f4da8bfb2d9220c9f16b') in 0.022132 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.814758 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zombie-half.prefab
-  artifactKey: Guid(968c25d8e8b734bb6bcfc8c70c7175fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zombie-half.prefab using Guid(968c25d8e8b734bb6bcfc8c70c7175fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3b919b6b59814ff421c1b6bb8afbcc1a') in 0.021179 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.335923 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zombie.prefab
-  artifactKey: Guid(1455b90169c7c4d3e85e8be74aca904b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zombie.prefab using Guid(1455b90169c7c4d3e85e8be74aca904b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '64a51fb057e6ca01287a4d8cf86391e1') in 0.021153 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 0.954433 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zulu-scottish.prefab
-  artifactKey: Guid(d7a40429e6303f644ac5c735b813a9a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zulu-scottish.prefab using Guid(d7a40429e6303f644ac5c735b813a9a0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2116265313bf4e9cb7f830f20a836bb4') in 0.022428 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.265003 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zulu-uk.prefab
-  artifactKey: Guid(63d65f3a1f99c7b41902dd922759c2af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zulu-uk.prefab using Guid(63d65f3a1f99c7b41902dd922759c2af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06d7046df0d70cc7e83883e70ce8ebdc') in 0.024884 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 2.306390 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zulu.prefab
-  artifactKey: Guid(7f0316afc606e244ebb56e2a0d3ad9d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/man-zulu.prefab using Guid(7f0316afc606e244ebb56e2a0d3ad9d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '52a97418818ce17b82a207e97dd4e396') in 0.020452 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 1.427205 seconds.
-  path: Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/skeleton-soldier.prefab
-  artifactKey: Guid(99abc6cd49e6f4e6188f0e8532cbfe58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/polyperfect/Low Poly Ultimate Pack/M/- Prefabs_M/People_M/skeleton-soldier.prefab using Guid(99abc6cd49e6f4e6188f0e8532cbfe58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8849373050693997a22481b38e27843') in 0.022295 seconds 
+  Time since last request: 0.000223 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Mat_02.mat
+  artifactKey: Guid(9bc501b055c1fa247ba4c5d1f89d1579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Mat_02.mat using Guid(9bc501b055c1fa247ba4c5d1f89d1579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e4d5a5c8862de771771e41ea66845fb') in 0.027670 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
