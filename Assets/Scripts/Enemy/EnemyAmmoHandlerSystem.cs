@@ -97,8 +97,9 @@ public class EnemyAmmoHandlerSystem : SystemBase
                     {
                         direction = math.normalize(ammoStartXZ - bossXZ);
                     }
-                    quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
+                    //quaternion targetRotation = quaternion.LookRotationSafe(direction, math.up());//always face player
                     forward = direction;
+                    
                     //}
 
                     velocity.Linear = math.normalize(forward) * strength;

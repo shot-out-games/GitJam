@@ -95,6 +95,7 @@ public class PlayerWeaponAmmoHandlerSystem : SystemBase
                     var velocity = new PhysicsVelocity();
 
                     float3 forward = actorWeaponAimComponent.aimDirection;
+                    //forward.y = 0;
 
                     if (actorWeaponAimComponent.weaponCamera == CameraTypes.TopDown)
                     {
