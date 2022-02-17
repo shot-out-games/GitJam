@@ -54,6 +54,7 @@ public class CrosshairRaycastSystem : SystemBase
         float fov = GetComponent<CameraControlsComponent>(cameraEntityList[0]).fov + 0;
         Translation camTranslation = GetComponent<Translation>(cameraEntityList[0]);
         Translation playerTranslation = GetComponent<Translation>(actorWeaponAimEntityList[0]);
+        Rotation playerRotation = GetComponent<Rotation>(actorWeaponAimEntityList[0]);
         //Debug.Log("cam trans " + camTranslation.Value);
         NativeList<Unity.Physics.RaycastHit> allHits = new NativeList<Unity.Physics.RaycastHit>(Allocator.Temp);
 
@@ -72,8 +73,8 @@ public class CrosshairRaycastSystem : SystemBase
             Translation translation = GetComponent<Translation>(entity);
 
             actorWeaponAim.closetEnemyWeaponTargetPosition = new float3(0, 0, distance);
-            float3 xHairPosition = new float3(translation.Value.x, translation.Value.y + 0f, actorWeaponAim.crosshairRaycastTarget.z);
-            float3 start = new float3(translation.Value.x, translation.Value.y + 0f, playerTranslation.Value.z - distance/2);
+            float3 xHairPosition = new float3(translation.Value.x, translation.Value.y, actorWeaponAim.crosshairRaycastTarget.z);
+            float3 start = new float3(translation.Value.x, translation.Value.y, playerTranslation.Value.z - distance/2);
 
             if (actorWeaponAim.weaponCamera == CameraTypes.TopDown)
             {
@@ -83,6 +84,7 @@ public class CrosshairRaycastSystem : SystemBase
             float3 direction = math.normalize(xHairPosition - start);
             float3 end = start + direction * distance;
             //Debug.Log("st " + start + "en " + end);
+            //float3 playerForward = playerTranslation.Value + math.forward(playerRotation.Value) * 40;
 
 
             start = actorWeaponAim.rayCastStart;
@@ -157,7 +159,11 @@ public class CrosshairRaycastSystem : SystemBase
                 crosshair.targetDelayCounter += 1;
                 if(crosshair.targetDelayCounter > crosshair.targetDelayFrames)
                 {
-                    actorWeaponAim.crosshairRaycastTarget.z = playerTranslation.Value.z + 100;
+                    float3 playerForward = playerTranslation.Value + math.forward(playerRotation.Value) * 40;
+                    float3 mouse = actorWeaponAim.mouseCrosshairWorldPosition;
+                    //mouse.z = playerForward.z;
+                    //actorWeaponAim.crosshairRaycastTarget.x = mouse.x;
+                    //actorWeaponAim.crosshairRaycastTarget.y = playerTranslation.Value.y;
                     crosshair.targetDelayCounter = 0;
                 }
             }
