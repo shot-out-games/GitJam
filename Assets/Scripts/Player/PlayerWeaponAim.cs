@@ -354,7 +354,13 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
 
 
         float3 start = cam.ScreenToWorldPoint(new float3(mousePosition.x, mousePosition.y, 0));
+        //float3 fwd = cam.transform.InverseTransformDirection(Vector3.forward);
+        //start = cam.transform.TransformPoint(Vector3.forward);
         float3 end = cam.ScreenToWorldPoint(new float3(mousePosition.x, mousePosition.y, targetRange));
+        //float3 end = cam.transform.position;
+        //end.z = cam.transform.position.z + targetRange;
+        //float3 end = start + fwd * targetRange;
+        //var ray = cam.ScreenPointToRay(mousePosition);
 
 
 
