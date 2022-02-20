@@ -133,7 +133,7 @@ public class GameInterfaceSystem : SystemBase
 
                     selectPressed = ReInput.players.GetPlayer(0).GetButtonDown("Select");
 
-                    Debug.Log("select " + selectPressed);
+                    //Debug.Log("select " + selectPressed);
                     if (selectPressed && deadMenuDisplayed == false && winnerMenuDisplayed == false)
                     {
                         gameInterface.SelectClicked();

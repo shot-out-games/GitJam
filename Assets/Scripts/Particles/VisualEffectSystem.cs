@@ -98,7 +98,7 @@ public class VisualEffectSystem : SystemBase
             }
             else if (visualEffectComponent.destroy && visualEffectComponent.destroyCountdown <= 0)
             {
-                Debug.Log("destroy");
+                //Debug.Log("destroy");
                 ecb.DestroyEntity(e);
             }
 

@@ -133,7 +133,7 @@ public class WeaponManager : MonoBehaviour, IConvertGameObjectToEntity
                 weaponsAvailableCount = weaponsList.Count,
                 isPrimaryAttached = primaryAttached,
                 isSecondaryAttached = secondaryAttached,
-                attachWeaponEntity = conversionSystem.GetPrimaryEntity(primaryWeapon.weaponGameObject)//not used (declared)
+                //attachWeaponEntity = conversionSystem.GetPrimaryEntity(primaryWeapon.weaponGameObject)//not used (declared)
 
 
 

@@ -369,7 +369,7 @@ public class EnemyMove : MonoBehaviour, IConvertGameObjectToEntity
         {
 
             jumpLanded = true;
-            Debug.Log("jump landed " + true);
+            //Debug.Log("jump landed " + true);
 
             //anim.SetInteger("JumpState", 0);
 
