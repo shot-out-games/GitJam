@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
   m_Name: Vignette
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   color:
     m_OverrideState: 0
     m_Value: {r: 1, g: 0.9254902, b: 0.8392157, a: 1}
@@ -61,10 +61,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.282
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.435
   rounded:
     m_OverrideState: 1
     m_Value: 1
@@ -148,11 +148,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   threshold:
-    m_OverrideState: 1
-    m_Value: 1
+    m_OverrideState: 0
+    m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 0.5
   scatter:
     m_OverrideState: 1
     m_Value: 0.064
@@ -161,7 +161,7 @@ MonoBehaviour:
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.31728375, g: 0.36575022, b: 0.4339623, a: 1}
+    m_Value: {r: 0.9056604, g: 0.86235684, b: 0.8236383, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
@@ -465,13 +465,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   type:
     m_OverrideState: 1
     m_Value: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.394
   response:
     m_OverrideState: 0
     m_Value: 0.8
@@ -493,19 +493,19 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.82
   contrast:
     m_OverrideState: 1
-    m_Value: 4.4
+    m_Value: 50.5
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0.9254902, b: 0.8392157, a: 1}
+    m_Value: {r: 1, g: 0.6666667, b: 0.36862746, a: 1}
   hueShift:
     m_OverrideState: 1
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 6.8
+    m_Value: -22
 --- !u!114 &3586867134057911281
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -564,13 +564,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221518ef91623a7438a71fef23660601, type: 3}
   m_Name: WhiteBalance
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   temperature:
     m_OverrideState: 1
-    m_Value: -7.3
+    m_Value: -1
   tint:
     m_OverrideState: 1
-    m_Value: 12.6
+    m_Value: 16
 --- !u!114 &5897855389240211955
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {x: 1, y: 0.98951185, z: 0.9742754, w: 0.18239276}

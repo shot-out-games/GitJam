@@ -349,8 +349,8 @@ public class PlayerWeaponAim : MonoBehaviour, IConvertGameObjectToEntity
         if (mousePosition.x > xMax) mousePosition.x = xMax;
         if (mousePosition.y < yMin) mousePosition.y = yMin;
         if (mousePosition.y > yMax) mousePosition.y = yMax;
-        crossHair.transform.position =
-            new float3(targetPosition.x, targetPosition.y, transform.position.z - 80);
+       // crossHair.transform.position =
+        //    new float3(targetPosition.x, targetPosition.y, transform.position.z - 80);
         crosshairImage.transform.position = mousePosition;
         actorWeaponAimComponent.mousePosition = mousePosition;
         actorWeaponAimComponent.weaponCamera = weaponCamera;
