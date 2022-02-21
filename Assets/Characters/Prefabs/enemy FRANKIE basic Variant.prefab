@@ -22,10 +22,85 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4745773968399777095, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: Moves.Array.data[0].moveParticleSystem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968399777095, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: Moves.Array.data[1].moveParticleSystem
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015459, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_SphereRadius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Height
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Cylinder.Height
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Cylinder.Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Material.m_Friction.m_Value.Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015461, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Material.m_Restitution.m_Value.Value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015462, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_MotionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4745773968531015471, guid: 7d21bb97cde722646b1105dfea6dc800,
         type: 3}
       propertyPath: m_Name
       value: enemy FRANKIE basic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745773968531015471, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4745773968531015484, guid: 7d21bb97cde722646b1105dfea6dc800,
         type: 3}
@@ -97,5 +172,150 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8196643910218595142, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: primaryWeapon.weaponGameObject
+      value: 
+      objectReference: {fileID: 1718878676831355146, guid: 1d0acc83966c9114ebe900b6bdd0aa1a,
+        type: 3}
+    - target: {fileID: 8196643910420979026, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: switchUp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196643910420979026, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: breakRoute
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8196643910420979026, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: navigationStates
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Axis
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_SphereRadius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Height
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Radius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Cylinder.Height
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Cylinder.Radius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754063217886, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Axis
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_SphereRadius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Height
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Capsule.Radius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Cylinder.Height
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Cylinder.Radius
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857810, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_PrimitiveSize.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857812, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_Smoothing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749253754911857812, guid: 7d21bb97cde722646b1105dfea6dc800,
+        type: 3}
+      propertyPath: m_MotionType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d21bb97cde722646b1105dfea6dc800, type: 3}
+--- !u!1 &5553307092238943869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4745773968531015471, guid: 7d21bb97cde722646b1105dfea6dc800,
+    type: 3}
+  m_PrefabInstance: {fileID: 922445343417237842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1234720239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5553307092238943869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485780a61c7bf3d4d9b6c9df8cb95f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impulseSourceHitReceived: {fileID: 0}
+  impulseSourceHitLanded: {fileID: 0}
+  maxTime: 1
+  animSpeedRatio: 0.5
+  maxTimeOnReceived: 1
+  animSpeedRatioOnReceived: 0.5
