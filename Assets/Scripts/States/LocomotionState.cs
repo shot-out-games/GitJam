@@ -43,16 +43,17 @@ public class LocomotionState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (animationType == AnimationType.Lowering)
+        switch (animationType)
         {
-            animator.SetInteger("WeaponRaised", (int)WeaponMotion.None);
-            //Debug.Log("event lowered ");
-        }
-        if (animationType == AnimationType.JumpStart)
-        {
-            animator.SetInteger("JumpState", 0);
-            //animator.SetInteger("Dash", 0);
-            //Debug.Log("event lowered ");
+            case AnimationType.Lowering:
+                animator.SetInteger("WeaponRaised", (int)WeaponMotion.None);
+                break;
+            case AnimationType.JumpStart:
+                animator.SetInteger("JumpState", 0);
+                break;
+            case AnimationType.DashRoll:
+                animator.SetInteger("Dash", 0);
+                break;
         }
 
 

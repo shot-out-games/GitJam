@@ -1599,7 +1599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2abc079f5cfbf34429f7a2630831a0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationType: 0
+  animationType: 9
 --- !u!114 &375944746979529725
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1705,7 +1705,7 @@ AnimatorStateMachine:
     m_Position: {x: -130, y: -120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9213298717427046044}
-    m_Position: {x: -560, y: 120, z: 0}
+    m_Position: {x: -950, y: -90, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4990295672561556258}
     m_Position: {x: 310, y: -110, z: 0}
@@ -1717,7 +1717,7 @@ AnimatorStateMachine:
     m_Position: {x: -690, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2624026932153399081}
-    m_Position: {x: -1070, y: 570, z: 0}
+    m_Position: {x: -640, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3324407137949759143}
     m_Position: {x: 50, y: 270, z: 0}
@@ -1735,7 +1735,7 @@ AnimatorStateMachine:
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: -100, y: -230, z: 0}
-  m_EntryPosition: {x: -760, y: 120, z: 0}
+  m_EntryPosition: {x: -950, y: 50, z: 0}
   m_ExitPosition: {x: 240, y: 90, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 6346650777246011837}

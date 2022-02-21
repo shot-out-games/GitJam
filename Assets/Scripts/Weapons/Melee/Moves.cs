@@ -11,7 +11,8 @@ public enum AnimationType
     Locomotion,
     Lowering,
     BossStrike,
-    JumpStart
+    JumpStart,
+    DashRoll
 }
 
 [System.Serializable]
