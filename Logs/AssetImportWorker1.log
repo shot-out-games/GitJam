@@ -25454,3 +25454,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.DisableLiveLink: acfec9bf12a4cae8acfec9bf12a4cae8 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteUtilityWindow: 766fc4f2b14d7b62766fc4f2b14d7b62 -> 
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
+========================================================================
+Received Import Request.
+  Time since last request: 12925.657790 seconds.
+  path: Assets/Materials/Substance/Bolted Panel/Bolted Panel_Metallic.png
+  artifactKey: Guid(bcf9ce81403d19148b2c8d0f5142aeab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Materials/Substance/Bolted Panel/Bolted Panel_Metallic.png using Guid(bcf9ce81403d19148b2c8d0f5142aeab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd33f7d1d358cd9db28fd7a37002a6c70') in 0.457225 seconds 
