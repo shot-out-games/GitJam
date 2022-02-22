@@ -18,6 +18,7 @@ public enum AnimationType
 [System.Serializable]
 public class Moves
 {
+    public bool active = true;
     [Header("IK")]
     public bool usingFbb = true;
     public bool usingAim = true;

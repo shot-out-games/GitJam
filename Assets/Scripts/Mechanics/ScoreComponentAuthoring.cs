@@ -84,6 +84,11 @@ public class ScoreComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     }
 
 
+    void Update()
+    {
+
+    }    
+
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         dstManager.AddComponentData(entity, new ScoreComponent()

@@ -101,7 +101,10 @@ namespace SandBox.Player
         }
 
 
+        void Update()
+        {
 
+        }
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {

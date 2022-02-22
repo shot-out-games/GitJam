@@ -31,6 +31,10 @@ public class SlashComponentAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public AudioSource audioSource;
     public AudioClip audioClip;
 
+    void Update()
+    {
+
+    }
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {

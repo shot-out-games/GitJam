@@ -92,22 +92,29 @@ public class FreezeSystem : SystemBase
         {
             //if (pause.value == 1) return;
             //Debug.Log("stun");
-            float leftBumperValue = inputController.leftBumperValue;//freeze
+            bool leftBumperPressed = inputController.leftBumperPressed;//freeze
+            if (leftBumperPressed)
+            {
+                freezeComponent.isFrozen = !freezeComponent.isFrozen;
+            }
+
+
             //bool button_b_released = inputController.buttonB_Released;
 
 
             float currentSpeed = ratingsComponent.speed;
+            ratingsComponent.gameSpeed = freezeComponent.isFrozen ? 0 : currentSpeed;
 
-            if (leftBumperValue > .19)
-            {
-                //playerMoveComponent.currentSpeed = ratingsComponent.speed * 0;//not required or just turbo
-                ratingsComponent.gameSpeed = 0;
-            }
-            else
-            {
-                //playerMoveComponent.currentSpeed = currentSpeed;
-                ratingsComponent.gameSpeed = currentSpeed;
-            }
+            //if (freezeComponent.isFrozen)
+            //{
+            //    //playerMoveComponent.currentSpeed = ratingsComponent.speed * 0;//not required or just turbo
+            //    ratingsComponent.gameSpeed = 0;
+            //}
+            //else
+            //{
+            //    //playerMoveComponent.currentSpeed = currentSpeed;
+            //    ratingsComponent.gameSpeed = currentSpeed;
+            //}
 
 
 

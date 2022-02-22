@@ -67,6 +67,7 @@ public class PlayerCombat : MonoBehaviour, IConvertGameObjectToEntity, ICombat
 
         int animationIndex = -1;
 
+
         for (int i = 0; i < moveList.Count; i++)
         {
             if ((int)moveList[i].animationType == combatAction)
@@ -76,8 +77,8 @@ public class PlayerCombat : MonoBehaviour, IConvertGameObjectToEntity, ICombat
             }
         }
 
-        if (animationIndex <= 0) return;//0 is none on enum
-
+        if (animationIndex <= 0 || moveUsing.active == false) return;//0 is none on enum
+        
 
         aim = moveUsing.aimIk;
         AimTransform = moveUsing.aimTransform;
