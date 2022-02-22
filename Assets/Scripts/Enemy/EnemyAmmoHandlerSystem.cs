@@ -29,9 +29,9 @@ public class EnemyAmmoHandlerSystem : SystemBase
 
         if (LevelManager.instance.endGame == true) return;
 
-        EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
-        NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
-        int players = playerEntities.Length;
+        //EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
+       // NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
+        //int players = playerEntities.Length;
 
         float dt = Time.DeltaTime;
 
@@ -42,19 +42,20 @@ public class EnemyAmmoHandlerSystem : SystemBase
         Entities.WithNone<Pause>().WithAll<EnemyComponent>().ForEach(
             (
                  Entity entity,
-                 ref BulletManagerComponent bulletManagerComponent
+                 ref BulletManagerComponent bulletManagerComponent,
+                 in DefensiveStrategyComponent defensiveStrategyComponent
                 
                  ) =>
             {
 
 
 
-                Entity playerE = Entity.Null;
+                Entity playerE = defensiveStrategyComponent.closestPlayerEntity;
                 //change to closest
-                for (int i = 0; i < players; i++)
-                {
-                    playerE = playerEntities[i];
-                }
+                //for (int i = 0; i < players; i++)
+               // {
+                //    playerE = playerEntities[i];
+                //}
 
                 if (!HasComponent<WeaponComponent>(entity)) return;
                 var bossWeapon = GetComponent<WeaponComponent>(entity);
@@ -138,7 +139,7 @@ public class EnemyAmmoHandlerSystem : SystemBase
 
         commandBuffer.Playback(EntityManager);
         commandBuffer.Dispose();
-        playerEntities.Dispose();
+        //playerEntities.Dispose();
 
 
     }

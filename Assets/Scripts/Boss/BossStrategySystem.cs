@@ -23,13 +23,14 @@ public class BossStrategySystem : SystemBase
     {
 
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
-        EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
-        NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
-        int players = playerEntities.Length;
+        //EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
+        //NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
+        //int players = playerEntities.Length;
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
         var playerRotationGroup = GetComponentDataFromEntity<Rotation>(true);
 
-        Entities.WithoutBurst().WithAll<EnemyComponent>().WithNone<Pause>().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent) =>
+        Entities.WithoutBurst().WithAll<EnemyComponent>().WithNone<Pause>().ForEach((Entity enemyE, Animator animator, ref BossMovementComponent bossMovementComponent, ref Rotation rotation, in BossStrategyComponent bossStrategyComponent, 
+            in DefensiveStrategyComponent defensiveStrategyComponent) =>
         {
 
             if(HasComponent<EvadeComponent>(enemyE))
@@ -41,13 +42,10 @@ public class BossStrategySystem : SystemBase
             }
 
             DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
-            //int animation = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAnimation;
+
             int action = targetPointBuffer[bossMovementComponent.CurrentIndex].wayPointAction;//for show weapon only - the anim is what  triggers whatever ammo may be used
             var animType = 0;
-            //if (strike == 2)//later set to different numbers for different strikes - 2 is Fireball and the anim event sets .firing weapon to 1
-            //{
-            //  animType = 2;//starts firing
-            //}//animation will be set by Boss Strike System
+           
 
             if (action == (int)WayPointAction.Move)
             {
@@ -61,17 +59,7 @@ public class BossStrategySystem : SystemBase
             {
                 animType = 2;
             }
-            //if (strike == 1)//later set to different numbers for different strikes - 1 is hammer tail
-            //{
-            //  animType = 1;
-            //animator.SetInteger("Animation Type", 1);
-            //ssWeaponComponent.IsFiring = 1;
-            //bossWeaponComponent.Duration = 0;
-            //}//animation will be set by Boss Strike System
-            //if (strike == 0)
-            //{
-            //  animType = 0;
-            //}
+         
             animator.SetInteger("Strike", animType);
 
 
@@ -80,22 +68,13 @@ public class BossStrategySystem : SystemBase
             if (targetPointBuffer.Length <= 0)
                 return;
 
-            //if (HasComponent<EffectsComponent>(playerE))
-            //{
-            //    var effect = GetComponent<EffectsComponent>(playerE);
-            //    effect.playEffectType = EffectType.TwoClose;
-            //    effect.playEffectAllowed = true;
-            //    SetComponent<EffectsComponent>(playerE, effect);
-            //}
+        
 
 
-            Entity playerE = Entity.Null;
-            //change to closest
-            for (int i = 0; i < players; i++)
-            {
-                playerE = playerEntities[i];
-            }
+            Entity playerE = defensiveStrategyComponent.closestPlayerEntity;
 
+
+            if (playerE == Entity.Null) return;
 
 
             var playerMove = GetComponent<Translation>(playerE);
@@ -172,7 +151,7 @@ public class BossStrategySystem : SystemBase
 
         ecb.Playback(EntityManager);
         ecb.Dispose();
-        playerEntities.Dispose();
+        //playerEntities.Dispose();
     }
 
 

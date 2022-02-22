@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebd2bcd9bdf68c418ead3acd44fb233, type: 3}
+  m_Name: New Dungeon
+  m_EditorClassIdentifier: 
+  <maxDungeonSegments>k__BackingField: 32
+  <maxSegmentRooms>k__BackingField: 64
+  walkableLayer: 0
+  applyMeshToWalls: 0
+  wallsLayer: 0
+  hidePredecesors: 1
+  useProceduralAsigment: 1
+  useArtificialAsigment: 0
+  showGlobalSettings: 1
+  hasDecoration: 0
+  useGlobalDecoration: 0
+  useGlobalBrush: 0
+  useGlobalStructuresSpecifications: 0
+  segments:
+  - artificialDisplacement: {x: 0, y: 0, z: 0}
+    useLoader: 0
+    loaderAngle: 0
+    deltaLoaderPos: {x: 0, y: 0, z: 0}
+    useExtra: 0
+    extra: {fileID: 0}
+    extraPos: {x: 0, y: 0, z: 0}
+    floors: 1
+    shape: {fileID: 11400000, guid: d7bc57c9add9b7944bca101769ce2056, type: 2}
+    useMargin: 0
+    margin: 0
+    walls: {fileID: 11400000, guid: 52917078ccd4c8f4bad23f0f64acb4ca, type: 2}
+    structures: {fileID: 0}
+    wallDeco: {fileID: 0}
+    cornerDeco: {fileID: 0}
+    floorDeco: {fileID: 0}
+    structuresHeight: 0
+    useGroundInStructures: 0
+    structuresGroundHeight: 0
+    applyMeshToStructures: 0
+    structuresLayer: 0
+    applyMeshToStructuresGround: 0
+    structuresGroundLayer: 0
+  - artificialDisplacement: {x: 0, y: 0, z: 0}
+    useLoader: 1
+    loaderAngle: 0
+    deltaLoaderPos: {x: 0, y: 0, z: 0}
+    useExtra: 0
+    extra: {fileID: 0}
+    extraPos: {x: 0, y: 0, z: 0}
+    floors: 1
+    shape: {fileID: 0}
+    useMargin: 0
+    margin: 0
+    walls: {fileID: 0}
+    structures: {fileID: 0}
+    wallDeco: {fileID: 0}
+    cornerDeco: {fileID: 0}
+    floorDeco: {fileID: 0}
+    structuresHeight: 0
+    useGroundInStructures: 0
+    structuresGroundHeight: 0
+    applyMeshToStructures: 0
+    structuresLayer: 0
+    applyMeshToStructuresGround: 0
+    structuresGroundLayer: 0

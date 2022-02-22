@@ -34,18 +34,18 @@ public class EvadeSystem : SystemBase
 
 
 
-        EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
-        NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
-        int players = playerEntities.Length;
+        //EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
+        //NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.Persistent);
+        //int players = playerEntities.Length;
 
         Entities.WithoutBurst().WithAny<EnemyComponent>().ForEach((Entity e, ref EvadeComponent evade,
                 ref Translation enemyTranslation, ref DefensiveStrategyComponent defensiveStrategy) =>
         {
 
-            for (int i = 0; i < players; i++)
-            {
-                var playerE = playerEntities[i];
-            }
+           // for (int i = 0; i < players; i++)
+           // {
+           //     var playerE = playerEntities[i];
+            //}
 
             var attacker = defensiveStrategy.closeBulletEntity;
             bool dodge = defensiveStrategy.currentRole == DefensiveRoles.Evade;
@@ -99,7 +99,7 @@ public class EvadeSystem : SystemBase
 
         ecb.Playback(EntityManager);
         ecb.Dispose();
-        playerEntities.Dispose();
+       // playerEntities.Dispose();
     }
 
 

@@ -59,10 +59,7 @@ public class MatchupSystem : SystemBase
                     {
 
                         float distance = math.distance(playerTranslation.Value, closePlayerPosition);
-                        //Debug.Log("pos " + distance);
-                        //gun.ChangeAmmoStats = 0;
-                        //ratingsComponent.gameSpeed = ratingsComponent.speed;
-                        //skip if speed power up enabled
+                        
                         if (HasComponent<Speed>(playerE))
                         {
                             if (GetComponent<Speed>(playerE).enabled) return;
@@ -111,6 +108,7 @@ public class MatchupSystem : SystemBase
                 GameObject enemy = enemyTransform.gameObject;
                 GameObject player = null;
                 GameObject closestPlayer = null;
+                Entity closestPlayerEntity = Entity.Null;
                 bool enemyDead = GetComponent<DeadComponent>(enemyEntity).isDead;
 
 
@@ -180,6 +178,11 @@ public class MatchupSystem : SystemBase
 
                 if (closestPlayer != null)
                 {
+                    //if(HasComponent<DefensiveStrategyComponent>(enemyEntity))
+                    //{
+                    //    var defense = GetComponent<DefensiveStrategyComponent>(enemyEntity);
+                    //    defense.closestPlayerEntity = closestPlayerEntity;
+                    //}
 
                     if (enemy.GetComponent<EnemyWeaponAim>())
                     {

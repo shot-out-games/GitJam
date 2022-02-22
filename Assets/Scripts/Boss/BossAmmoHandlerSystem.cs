@@ -29,9 +29,9 @@ public class BossAmmoHandlerSystem : SystemBase
 
         if (LevelManager.instance.endGame == true) return;
 
-        EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
-        NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
-        int players = playerEntities.Length;
+        //EntityQuery playerQuery = GetEntityQuery(ComponentType.ReadOnly<PlayerComponent>());
+        //NativeArray<Entity> playerEntities = playerQuery.ToEntityArray(Allocator.TempJob);
+        //int players = playerEntities.Length;
 
         float dt = Time.DeltaTime;//gun duration
         BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
@@ -46,7 +46,8 @@ public class BossAmmoHandlerSystem : SystemBase
                  ref BossAmmoManagerComponent bulletManagerComponent,
                // in AttachWeaponComponent attachWeapon,
                 in BossMovementComponent bossMovementComponent,
-                in BossStrategyComponent bossStrategyComponent
+                in BossStrategyComponent bossStrategyComponent,
+                in DefensiveStrategyComponent defensiveStrategyComponent
                  ) =>
             {
 
@@ -55,12 +56,12 @@ public class BossAmmoHandlerSystem : SystemBase
                     return;
 
 
-                Entity playerE = Entity.Null;
+                Entity playerE = defensiveStrategyComponent.closestPlayerEntity;
                 //change to closest
-                for (int i = 0; i < players; i++)
-                {
-                    playerE = playerEntities[i];
-                }
+                //for (int i = 0; i < players; i++)
+               // {
+               //     playerE = playerEntities[i];
+               // }
 
                 if (!HasComponent<BossWeaponComponent>(entity)) return;
                 var bossWeapon = GetComponent<BossWeaponComponent>(entity);
@@ -128,7 +129,7 @@ public class BossAmmoHandlerSystem : SystemBase
 
         commandBuffer.Playback(EntityManager);
         commandBuffer.Dispose();
-        playerEntities.Dispose();
+        //playerEntities.Dispose();
 
 
     }

@@ -80,6 +80,7 @@ namespace SandBox.Player
                     stickInput.Normalize();
 
                     stickSpeed = stickInput.sqrMagnitude;
+                    if (currentSpeed == 0) stickSpeed = 0;
                     //animator.SetFloat("Vertical", stickSpeed);
                     animator.SetFloat("Vertical", stickSpeed, playerMoveComponent.dampTime, Time.DeltaTime);
                     float3 fwd = cam.transform.forward;
