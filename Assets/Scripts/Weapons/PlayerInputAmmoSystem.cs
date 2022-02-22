@@ -43,7 +43,7 @@ public class PlayerInputAmmoSystem : SystemBase
                 float dpadY = inputController.dpadY;
                 WeaponMotion currentWeaponMotion = (WeaponMotion)animator.GetInteger("WeaponRaised");
                 playerWeaponAimComponent.weaponRaised = currentWeaponMotion;
-                bool ltPressed = inputController.leftTriggerDown || inputController.leftTriggerPressed;
+                bool ltPressed = inputController.rightTriggerDown || inputController.rightTriggerPressed;
 
                 if (
                     //gunComponent.Duration > 0 &&

@@ -48,7 +48,7 @@ namespace SandBox.Player
 
                     if (playerDash.DashTimeTicker == 0 && playerDash.DelayTimeTicker <= 0)
                     {
-                        bool rtPressed = inputController.rightTriggerPressed;
+                        bool rtPressed = inputController.leftTriggerPressed;
                         if (rtPressed)
                         {
                             //t.Value += ltw.Forward * dt * playerDash.power;

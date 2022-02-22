@@ -6542,6 +6542,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7979999945525737303, guid: 52fa632f1d0e3724a84b243a985aedcc,
+        type: 3}
+      propertyPath: _userData.mouseMaps.Array.data[0].actionElementMaps.Array.data[3]._actionId
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8008966110829763303, guid: 52fa632f1d0e3724a84b243a985aedcc,
         type: 3}
       propertyPath: m_RootOrder

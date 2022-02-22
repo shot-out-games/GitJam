@@ -136,7 +136,7 @@ namespace SandBox.Player
                         //pv.Linear = forward * flingMechanic.force;
                         flingMechanic.inFlingTime = flingMechanic.inFlingTime + Time.DeltaTime;
                     }
-                    else if (inputController.leftTriggerPressed == true && flingMechanic.vulnerable == false)
+                    else if (inputController.rightTriggerPressed == true && flingMechanic.vulnerable == false)
                     {
                         flingMechanic.shotLanded = false;
 
