@@ -49,6 +49,7 @@ public class CrosshairRaycastSystem : SystemBase
 
         EntityQuery actorWeaponAimQuery = GetEntityQuery(ComponentType.ReadOnly<ActorWeaponAimComponent>(), ComponentType.ReadOnly<PlayerComponent>());//player 0
         NativeArray<Entity> actorWeaponAimEntityList = actorWeaponAimQuery.ToEntityArray(Allocator.Temp);
+        if (actorWeaponAimEntityList.Length == 0) return;
 
 
         float fov = GetComponent<CameraControlsComponent>(cameraEntityList[0]).fov + 0;

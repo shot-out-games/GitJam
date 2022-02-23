@@ -61,9 +61,9 @@ public class RaycastSystem : SystemBase
             applyImpulse.BumpLeft = false;
             applyImpulse.BumpRight = false;
 
-            float3 start = translation.Value + new float3(0f, .4f, 0);
+            float3 start = translation.Value + new float3(0f, .5f, 0);
             float3 direction = new float3(0, 0, 0);
-            float distance = .4f;
+            float distance = 1.0f;
             float3 end = start + direction * distance;
 
 
@@ -87,6 +87,7 @@ public class RaycastSystem : SystemBase
             if (hasPointHit && applyImpulse.InJump == false)
             {
                 Entity e = physicsWorldSystem.PhysicsWorld.Bodies[pointHit.RigidBodyIndex].Entity;
+               // Debug.Log("pv " + pv.Linear.x);
                 if (pv.Linear.x < 0)
                 {
                     applyImpulse.Grounded = false;

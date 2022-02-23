@@ -7,6 +7,9 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
+	"last_search.7F95D817" = "collider"
+	"OpenInspectorPreview.7F95D817" = "0"
+	"currentGroup.7F95D817" = "scene"
 }
 providers = {
 	expression = {
@@ -61,6 +64,7 @@ providers = {
 	}
 }
 recentSearches = [
+	"collide"
 ]
 searchItemFavorites = [
 ]
@@ -68,3 +72,7 @@ savedSearchesSortOrder = 0
 showSavedSearchPanel = false
 expandedQueries = [
 ]
+queryBuilder = false
+ignoredProperties = "id;name;classname;imagecontentshash"
+helperWidgetCurrentArea = "all"
+disabledIndexers = ""

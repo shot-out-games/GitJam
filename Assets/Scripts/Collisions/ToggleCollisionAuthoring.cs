@@ -26,7 +26,11 @@ public class ToggleCollisionAuthoring : MonoBehaviour, IConvertGameObjectToEntit
     public bool isPlayer = true;
     public GameObject _parent;
 
+    void Update()
+    {
 
+
+    }
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
         Entity parentEntity = conversionSystem.GetPrimaryEntity(_parent.transform.root.gameObject);

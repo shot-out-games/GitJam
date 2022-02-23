@@ -144,7 +144,8 @@ namespace SandBox.Player
 
                     }
 
-
+                    Debug.Log("bl " + applyImpulseComponent.BumpLeft);
+                    Debug.Log("br " + applyImpulseComponent.BumpRight);
                     if (!applyImpulseComponent.BumpLeft && !applyImpulseComponent.BumpRight)
                         pv.Linear.y += applyImpulseComponent.NegativeForce;
                     else
