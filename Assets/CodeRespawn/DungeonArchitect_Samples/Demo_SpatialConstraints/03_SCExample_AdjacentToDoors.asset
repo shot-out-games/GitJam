@@ -590,8 +590,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: -371.5
     y: -85
-    width: 352
-    height: 49
+    width: 346
+    height: 49.6
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -1202,8 +1202,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 48.333344
     y: 36.5
-    width: 319
-    height: 49
+    width: 318
+    height: 49.6
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
