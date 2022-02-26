@@ -13210,3 +13210,57 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DungeonArchitect.Navigation.DungeonNavAgent2D: f9c10d018df33527f9c10d018df33527 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteUtilityWindow: 766fc4f2b14d7b62766fc4f2b14d7b62 -> 
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
+========================================================================
+Received Import Request.
+  Time since last request: 838.301832 seconds.
+  path: Assets/PolygonSamurai/Materials/PolygonSamurai_Character_Matl_White.mat
+  artifactKey: Guid(6d0613f500c022f48ae1dde75d4fc3c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSamurai/Materials/PolygonSamurai_Character_Matl_White.mat using Guid(6d0613f500c022f48ae1dde75d4fc3c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb47448993c4bf221f80bb2557c7b456') in 0.323576 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 39.632564 seconds.
+  path: Assets/PolygonSciFiSpace/Materials/PolygonScifiSpace_Material_01_A.mat
+  artifactKey: Guid(4cee7a5983b187943adc589b9cb1f084) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/PolygonSciFiSpace/Materials/PolygonScifiSpace_Material_01_A.mat using Guid(4cee7a5983b187943adc589b9cb1f084) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '900c6b42e0ffc44a057f39710a367e79') in 0.097853 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 259.594121 seconds.
+  path: Assets/polyperfect/Low Poly Ultimate Pack/T/- Prefabs_T/Scifi_T/scifi-wall-windows-stripe.prefab
+  artifactKey: Guid(dbd04df8620333c4fbdd8a1ba76a4575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/polyperfect/Low Poly Ultimate Pack/T/- Prefabs_T/Scifi_T/scifi-wall-windows-stripe.prefab using Guid(dbd04df8620333c4fbdd8a1ba76a4575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '883a36057b9b8f16cf9c04a9a5bfa976') in 0.132345 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 11.152643 seconds.
+  path: Assets/polyperfect/Low Poly Ultimate Pack/T/- Prefabs_T/Scifi_T/scifi-wall-windows-stripe.prefab
+  artifactKey: Guid(dbd04df8620333c4fbdd8a1ba76a4575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/polyperfect/Low Poly Ultimate Pack/T/- Prefabs_T/Scifi_T/scifi-wall-windows-stripe.prefab using Guid(dbd04df8620333c4fbdd8a1ba76a4575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3de0a7f0bc125a9d792943cf6dfa891') in 0.021726 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6.686286 seconds.
+  path: Assets/polyperfect/Low Poly Ultimate Pack/T/- Prefabs_T/Scifi_T/scifi-wall-windows-stripe.prefab
+  artifactKey: Guid(dbd04df8620333c4fbdd8a1ba76a4575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/polyperfect/Low Poly Ultimate Pack/T/- Prefabs_T/Scifi_T/scifi-wall-windows-stripe.prefab using Guid(dbd04df8620333c4fbdd8a1ba76a4575) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b7f2701092abdb442bbafde9c844dda') in 0.021504 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 365.430187 seconds.
+  path: Assets/Data/P2 Data UPDATED.asset
+  artifactKey: Guid(7d8a75c5cbc71e64f8665957204ceaf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/P2 Data UPDATED.asset using Guid(7d8a75c5cbc71e64f8665957204ceaf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb26a092dc36b4a19738c45950ea2c86') in 0.020624 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.191603 seconds.
+  path: Assets/Data/P1 Data UPDATED.asset
+  artifactKey: Guid(747baeb42d97f6f478d9fb0e56123f63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/P1 Data UPDATED.asset using Guid(747baeb42d97f6f478d9fb0e56123f63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1bacee9ab81ad7ef724687790dee017f') in 0.007278 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 37.366346 seconds.
+  path: Assets/Data/P1 Data Level Builder.asset
+  artifactKey: Guid(dee810337d8a29c4192ac17763abb5b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/P1 Data Level Builder.asset using Guid(dee810337d8a29c4192ac17763abb5b5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f2231e900048594b2d545e50500348a') in 0.015287 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 156.931390 seconds.
+  path: Assets/Data/P2 Data UPDATED.asset
+  artifactKey: Guid(7d8a75c5cbc71e64f8665957204ceaf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Data/P2 Data UPDATED.asset using Guid(7d8a75c5cbc71e64f8665957204ceaf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29fad9751555d242ce9b7483dbe516c6') in 0.003618 seconds 
