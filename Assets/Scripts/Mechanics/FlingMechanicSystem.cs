@@ -68,7 +68,7 @@ namespace SandBox.Player
                     Entity e,
                     ref PhysicsVelocity pv,
                     ref FlingMechanicComponent flingMechanic,
-                    in InputController inputController,
+                    in InputControllerComponent inputController,
                     in PlayerMove playerMove,
                     in FlingMechanicComponentAuthoring flingMechanicComponentAuthoring
 
