@@ -45,11 +45,7 @@ namespace SandBox.Player
                 {
 
 
-                    if (HasComponent<PlayerJumpComponent>(e) == false)
-                    {
-                        //translation.Value.y = 0; //change for jump use
-                    }
-
+                    
 
                     bool hasFling = HasComponent<FlingMechanicComponent>(e);
                     if (hasFling)
@@ -75,6 +71,10 @@ namespace SandBox.Player
                     float leftStickY = inputController.leftStickY;
 
                     if (playerMoveComponent.move2d) leftStickY = 0;
+                    if(playerMoveComponent.inputDisabled)
+                    {
+                        leftStickX = 0; leftStickY = 0;
+                    }
 
                     stickInput = new Vector3(leftStickX, 0, leftStickY);//x is controlled by rotation
                     stickInput.Normalize();
@@ -197,6 +197,7 @@ namespace SandBox.Player
 
              ) =>
              {
+                 if (playerMoveComponent.inputDisabled) return;
                  float leftStickX = inputController.leftStickX;
                  float leftStickY = inputController.leftStickY;
 

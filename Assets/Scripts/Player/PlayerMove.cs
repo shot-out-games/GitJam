@@ -21,6 +21,7 @@ public struct PlayerMoveComponent : IComponentData
     public float dampTime;
     public bool move2d;
     public float3 startPosition;
+    public bool inputDisabled;
 
 }
 
@@ -70,7 +71,7 @@ namespace SandBox.Player
         //float negativeForce = -9.81f;
         private Animator animator;
         public int targetFrameRate = -1;
-
+        public bool inputDisabled;
         void Start()
         {
             if (targetFrameRate >= 10)
@@ -150,7 +151,8 @@ namespace SandBox.Player
                 snapRotation = snapRotation,
                 dampTime = dampTime,
                 move2d = move2d,
-                startPosition = transform.position
+                startPosition = transform.position,
+                inputDisabled = inputDisabled
 
 
             });

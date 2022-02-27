@@ -64,6 +64,7 @@ public struct InputControllerComponent : IComponentData
     public bool buttonSelect_Released;
 
     public double buttonTimePressed;
+ 
 
 
 }
@@ -145,7 +146,7 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
     public bool buttonSelect_Released;
 
     public double buttonTimePressed;
-
+    public bool disableInputController;
 
     void Start()
     {
@@ -154,10 +155,14 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
     }
 
+    public void DisableInputController(bool disable)
+    {
+        disableInputController = disable;
+    }
     public void UpdateSystem()
     {
 
-        if (!ReInput.isReady) return;
+        if (!ReInput.isReady || disableInputController == true) return;
 
         if (manager == default || playerEntity == Entity.Null) return;
 
