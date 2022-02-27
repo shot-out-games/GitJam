@@ -200,7 +200,7 @@ namespace SandBox.Player
 
                                 if (invincible == false)
                                 {
-                                    Debug.Log("negative");
+                                    //Debug.Log("negative");
                                     pv.Linear.y += applyImpulseComponent.NegativeForce;
                                 }
                             }

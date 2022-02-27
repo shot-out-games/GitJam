@@ -157,7 +157,21 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
     public void DisableInputController(bool disable)
     {
-        disableInputController = disable;
+        //disableInputController = disable;
+        player.controllers.maps.ClearMaps(ControllerType.Keyboard, true);
+        player.controllers.maps.ClearMaps(ControllerType.Joystick, true);
+        Debug.Log("disable " + disable);
+        if (disable)
+        {
+            player.controllers.maps.LoadMap(ControllerType.Keyboard, 0, "Menu", "Default", true);
+            player.controllers.maps.LoadMap(ControllerType.Joystick, 0, "Menu", "Default", true);
+        }
+        else
+        {
+            player.controllers.maps.LoadMap(ControllerType.Keyboard, 0, "Default", "Default", true);
+            player.controllers.maps.LoadMap(ControllerType.Joystick, 0, "Default", "Default", true);
+            //player.controllers.maps.LoadDefaultMaps(ControllerType.Keyboard);
+        }
     }
     public void UpdateSystem()
     {
