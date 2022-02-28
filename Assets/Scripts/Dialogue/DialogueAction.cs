@@ -34,6 +34,10 @@ namespace Assets.Scripts.Dialogue
             Debug.Log("usable end");
             animator.SetInteger("DialogState", 0);
         }
+
+      
+
+
         // Update is called once per frame
         void Update()
         {

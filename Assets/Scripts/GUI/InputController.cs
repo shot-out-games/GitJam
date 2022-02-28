@@ -64,7 +64,7 @@ public struct InputControllerComponent : IComponentData
     public bool buttonSelect_Released;
 
     public double buttonTimePressed;
- 
+
 
 
 }
@@ -154,12 +154,28 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         player = ReInput.players.GetPlayer(playerId);
 
     }
+    public void OnSelectedUsableStart()
+    {
+        Debug.Log("selected usable start");
+        //Debug.Log("selected usable end");
+        player.controllers.maps.ClearMaps(ControllerType.Joystick, true);
+        player.controllers.maps.LoadMap(ControllerType.Joystick, 0, "Default", "AlternateLayout", true);
 
+    }
+
+    public void OnSelectedUsableEnd()
+    {
+        Debug.Log("selected usable end");
+        player.controllers.maps.ClearMaps(ControllerType.Joystick, true);
+        player.controllers.maps.LoadMap(ControllerType.Joystick, 0, "Default", "Default", true);
+
+    }
     public void DisableInputController(bool disable)
     {
         //disableInputController = disable;
         player.controllers.maps.ClearMaps(ControllerType.Keyboard, true);
         player.controllers.maps.ClearMaps(ControllerType.Joystick, true);
+        player.controllers.maps.ClearMaps(ControllerType.Mouse, true);
         Debug.Log("disable " + disable);
         if (disable)
         {
@@ -168,9 +184,13 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         }
         else
         {
+            //player.controllers.maps.LoadMap(ControllerType.Keyboard, 0, "Menu", "Default", true);
             player.controllers.maps.LoadMap(ControllerType.Keyboard, 0, "Default", "Default", true);
             player.controllers.maps.LoadMap(ControllerType.Joystick, 0, "Default", "Default", true);
-            //player.controllers.maps.LoadDefaultMaps(ControllerType.Keyboard);
+            player.controllers.maps.LoadMap(ControllerType.Keyboard, 0, "Menu", "Default", true);
+            player.controllers.maps.LoadMap(ControllerType.Joystick, 0, "Menu", "Default", true);
+            player.controllers.maps.LoadMap(ControllerType.Mouse, 0, "Default", "Default", true);
+            //player.controllers.maps.LoadDefaultMaps(ControllerType.Keyboard, true);
         }
     }
     public void UpdateSystem()
@@ -252,7 +272,7 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
         leftTriggerPressed = player.GetButtonDown("LeftTrigger");
         rightTriggerPressed = player.GetButtonDown("RightTrigger");
-        
+
         leftTriggerLast = player.GetAxisPrev("LeftTrigger");
         rightTriggerLast = player.GetAxisPrev("RightTrigger");
 
@@ -276,7 +296,7 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
     }
 
-    
+
     void UpdateInputControllerComponent()
     {
         var inputControllerComponent =
