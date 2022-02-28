@@ -111,9 +111,6 @@ public class CollisionSystem : SystemBase
         {
             Entity a = ev.EntityA;
             Entity b = ev.EntityB;
-            //Entity a =   physicsWorld.Bodies[ev.BodyIndexA].Entity;
-            //Entity b = physicsWorld.Bodies[ev.BodyIndexB].Entity;
-            //Debug.Log("ena " + a + " enb " + b);
 
             if (triggerGroup.HasComponent(a) == false || triggerGroup.HasComponent(b) == false) return;
             var triggerComponent_a = triggerGroup[a];
@@ -124,18 +121,9 @@ public class CollisionSystem : SystemBase
             int type_a = triggerComponent_a.Type;
             int type_b = triggerComponent_b.Type;
 
-            //Debug.Log("tya " + type_a + " tyb  " + type_b);
-            //if (type_a == (int)TriggerType.Particle || type_b == (int)TriggerType.Particle)
-            //{
-                //Debug.Log("tya " + type_a + " tyb  " + type_b);
-                //Debug.Log("cha " + ch_a + " chb  " + ch_b);
-            //}
-
 
             if (ch_a == ch_b) return;////?????
 
-
-            //Debug.Log("collision detected");
 
 
 
@@ -159,10 +147,6 @@ public class CollisionSystem : SystemBase
             {
                 return;
             }
-
-            //Debug.Log("ta " + triggerComponent_a.Type);
-            //Debug.Log("tb " + triggerComponent_b.Type);
-            //Debug.Log("always a " + alwaysDamageA + " always b " + alwaysDamageB + " cha " + ch_a + " chb " + ch_b);
 
 
             bool punchingA = false;

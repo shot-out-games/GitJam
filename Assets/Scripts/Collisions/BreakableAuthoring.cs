@@ -42,6 +42,10 @@ public class BreakableAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public int effectIndex = 0;
     public Transform parent;
 
+    void Update()
+    {
+
+    }
 
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)

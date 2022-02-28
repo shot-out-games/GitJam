@@ -132,19 +132,19 @@ MonoBehaviour:
     - title: Name
       value: Dead Enemy
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: Pictures
       value: '[]'
       type: 3
-      typeString: 
+      typeString: CustomFieldType_Files
     - title: Description
       value: The evil emperor's guards. They have a note with the terminal password.
       type: 0
-      typeString: 
+      typeString: CustomFieldType_Text
     - title: IsPlayer
       value: False
       type: 2
-      typeString: 
+      typeString: CustomFieldType_Boolean
     portrait: {fileID: 2800000, guid: 3e54ad1935c5efc4db4454fafe3d8ae5, type: 3}
     spritePortrait: {fileID: 0}
     alternatePortraits: []
@@ -427,7 +427,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 468
+        x: 467
         y: 24
         width: 160
         height: 30
@@ -779,7 +779,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 720
-        y: 144
+        y: 145
         width: 160
         height: 30
     - id: 6
@@ -918,7 +918,7 @@ MonoBehaviour:
       canvasRect:
         serializedVersion: 2
         x: 252
-        y: 264
+        y: 263
         width: 160
         height: 30
     - id: 8
@@ -987,8 +987,8 @@ MonoBehaviour:
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 215, y: 0}
-    canvasZoom: 1
+    canvasScrollPosition: {x: 22.68042, y: 0}
+    canvasZoom: 0.97
   - id: 2
     fields:
     - title: Title
@@ -1157,7 +1157,7 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 120
+        x: 119
         y: 60
         width: 160
         height: 30
