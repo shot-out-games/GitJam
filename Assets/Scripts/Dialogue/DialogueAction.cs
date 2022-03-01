@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PixelCrushers.DialogueSystem;
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Dialogue
@@ -10,6 +11,7 @@ namespace Assets.Scripts.Dialogue
         void Start()
         {
             animator = GetComponent<Animator>();
+            //DialogueManager.ShowAlert("HEY YOU");
         }
 
         public void OnConversationStart(Transform actor)
