@@ -19,6 +19,12 @@ public struct InputControllerComponent : IComponentData
     public bool rotating;
     public bool mouse;
 
+    public bool dpadRight;
+    public bool dpadLeft;
+    public bool dpadUp;
+    public bool dpadDown;
+
+
     public float leftTriggerLast;
     public float rightTriggerLast;
     public bool leftTriggerPressed;
@@ -96,6 +102,10 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
     public bool dpadXreleased;
     public float dpadY = 0;
     public bool dpadYreleased;
+    public bool dpadRight;
+    public bool dpadLeft;
+    public bool dpadUp;
+    public bool dpadDown;
 
 
     [Header("Triggers")]
@@ -225,6 +235,12 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
 
 
+        dpadLeft = player.GetButtonDown("Dpad Left");
+        dpadRight = player.GetButtonDown("Dpad Right");
+        dpadUp = player.GetButtonDown("Dpad Up");
+        dpadDown = player.GetButtonDown("Dpad Down");
+        //bool dpadXButton = player.GetButtonDown("Dpad Horizontal");
+        Debug.Log("dpadRight " + dpadRight);
         dpadX = player.GetAxis("Dpad Horizontal");
         dpadY = player.GetAxis("Dpad Vertical");
 

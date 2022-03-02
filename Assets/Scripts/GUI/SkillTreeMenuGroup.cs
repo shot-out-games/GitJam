@@ -235,7 +235,8 @@ public class SkillTreeMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 }
 
 
-
+[UpdateInGroup(typeof(SimulationSystemGroup))]
+[UpdateAfter(typeof(InputControllerSystemUpdate))]
 
 public class SkillTreeSystem : SystemBase
 {
@@ -315,7 +316,8 @@ public class SkillTreeSystem : SystemBase
 
 
 
-        Entities.WithoutBurst().ForEach
+        //Entities.WithoutBurst().ForEach
+        JobHandle inputDeps3 = Entities.ForEach
         (
             (
                 ref SkillTreeMenuComponent skillTreeMenu,
@@ -323,20 +325,25 @@ public class SkillTreeSystem : SystemBase
             ) =>
             {
                 bool selectPressed = inputController.buttonSelect_Pressed;
+                //Debug.Log("tree " + inputController.dpadRight);
                 if (skillTreeMenu.exitClicked || selectPressed && skillTreeMenu.showMenu == true)
                 {
                     skillTreeMenu.menuStateChanged = true;
                     skillTreeMenu.exitClicked = false;
                     skillTreeMenu.showMenu = false;
                 }
-                else if (inputController.dpadX > .001 && inputController.dpadXreleased == true)
+                else if (inputController.dpadRight)
                 {
                     skillTreeMenu.menuStateChanged = true;
                     skillTreeMenu.showMenu = !skillTreeMenu.showMenu;
                 }
             }
 
-        ).Run();
+        ).Schedule(this.Dependency);
+
+        inputDeps3.Complete();
+
+
 
         ecb.Playback(EntityManager);
         ecb.Dispose();
