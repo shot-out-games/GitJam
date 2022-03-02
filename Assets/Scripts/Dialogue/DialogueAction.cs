@@ -37,6 +37,19 @@ namespace Assets.Scripts.Dialogue
             animator.SetInteger("DialogState", 0);
         }
 
+        public void QuestStateChange(string questName)
+        {
+           
+            bool success = QuestLog.IsQuestSuccessful(questName);
+            Debug.Log("success " + success);
+            if(success)
+            {
+                //DialogueManager.ShowAlert("BAD ASS");
+                DialogueManager.ShowAlert("BAD ASS");
+
+            }
+
+        }
       
 
 
