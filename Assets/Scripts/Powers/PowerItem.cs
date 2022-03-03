@@ -22,6 +22,15 @@ public struct PowerItemComponent : IComponentData
 
 
 
+public enum PowerType
+{
+    None = 0,
+    Speed = 1,
+    Health = 2,
+    Control = 3,
+}
+
+
 
 public class PowerItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
 {

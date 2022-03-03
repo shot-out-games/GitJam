@@ -96,7 +96,7 @@ public class DefensiveMatchupSystem : SystemBase
         //ecb.Playback(EntityManager);
         //ecb.Dispose();
 
-        //playerEntities.Dispose();
+        playerEntities.Dispose();
 
     }
 
