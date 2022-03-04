@@ -10,49 +10,66 @@ using Unity.Jobs;
 using Unity.Physics.Extensions;
 using UnityEngine.Jobs;
 
-[InternalBufferCapacity(32)]
+[InternalBufferCapacity(24)]
 public struct PickupListBuffer : IBufferElementData
 {
     public Entity e;
     public Entity _parent;
     public bool active;
-    public int weaponType;
     public bool pickedUp;
     public bool special;//for ld
     public bool reset;
     public bool playerPickupAllowed;
     public bool enemyPickupAllowed;
+    public int index;
+    public int statl;
+    public float3 position;
 }
 
 
 public struct PickupComponent : IComponentData
 {
-    public Entity PrimaryAmmo;
-    public Entity SecondaryAmmo;
-    public Entity Weapon;
-    //public float AmmoTime;
-    public float gameStrength;
-    public float gameDamage;
-    public float gameRate;
+    public Entity e;
+    public Entity _parent;
+    public bool active;
+    public bool pickedUp;
+    public bool special;//for ld
+    public bool reset;
+    public bool playerPickupAllowed;
+    public bool enemyPickupAllowed;
+    public int index;
+    public int statl;
 
-    public float Strength;
-    public float Damage;
-    public float Rate;
-    public float Duration;//rate counter for job
-    //public bool CanFire;
-    public int IsFiring;
-    public LocalToWorld AmmoStartLocalToWorld;
-    public Translation AmmoStartPosition;
-    public Rotation AmmoStartRotation;
-    public bool Disable;
-    public float ChangeAmmoStats;
-    //public Translation firingPosition;
 }
 
 public struct PickupManagerComponent : IComponentData //used for managed components - read and then call methods from MB
 {
     public bool playSound;
     public bool setAnimationLayer;
+}
+
+[System.Serializable]
+public class PickupClass
+{
+    public PickupType type;
+    public AudioClip audioClip;
+    public GameObject pickupPrefab;
+    public GameObject effectPrefab;
+    public Transform pickupTransform;
+    public int stat1;
+    public string description;
+    public int index;
+
+
+}
+
+
+public enum PickupType
+{
+    None = 0,
+    Speed = 1,
+    Health = 2,
+    Control = 3,
 }
 
 
@@ -62,27 +79,13 @@ public class PickupManager : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
     private EntityManager manager;
     private Entity entity;
     //[SerializeField]
-    public AudioSource weaponAudioSource;
+    public AudioSource pickupAudioSource;
     [HideInInspector]
-    public List<GameObject> AmmoInstances = new List<GameObject>();
-    public Transform AmmoStartLocation;
-    public GameObject PrimaryAmmoPrefab;
-    public GameObject SecondaryAmmoPrefab;
-    public List<GameObject> AmmoPrefabList = new List<GameObject>();
+    public List<GameObject> pickupInstances = new List<GameObject>();
+    public List<PickupClass> PickupPrefabList = new List<PickupClass>();
 
-    //public GameObject WeaponPrefab;
-    public AudioClip weaponAudioClip;
 
-    [Header("Ammo Ratings")]
-    [SerializeField]
-    //bool randomize;
-    float AmmoTime;
-    float Strength;
-    float Damage;
-    float Rate;
-
-    //[Header("Misc")]
-    //public bool Disable;
+    [Header("Misc")]
 
     public GameObject _parent;
 
@@ -90,31 +93,29 @@ public class PickupManager : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
     // Referenced prefabs have to be declared so that the conversion system knows about them ahead of time
     public void DeclareReferencedPrefabs(List<GameObject> gameObjects)
     {
-        gameObjects.Add(PrimaryAmmoPrefab);
-        gameObjects.Add(SecondaryAmmoPrefab);
-        //gameObjects.Add(WeaponPrefab);
+        for (int i = 0; i < PickupPrefabList.Count; i++)
+        {
+            PickupPrefabList[i].index = i;
+            gameObjects.Add(PickupPrefabList[i].pickupPrefab);
+        }
     }
 
-    void Generate(bool randomize)
+    void Start()
     {
-        if (randomize)
-        {
-            float multiplier = .7f;
-            Strength = UnityEngine.Random.Range(Strength * multiplier, Strength * (2 - multiplier));
-            Damage = UnityEngine.Random.Range(Damage * multiplier, Damage * (2 - multiplier));
-            Rate = UnityEngine.Random.Range(Rate * multiplier, Rate * (2 - multiplier));
-        }
-        else
-        {
-            Strength = PrimaryAmmoPrefab.GetComponent<AmmoData>().Strength;
-            Damage = PrimaryAmmoPrefab.GetComponent<AmmoData>().Damage;
-            Rate = PrimaryAmmoPrefab.GetComponent<AmmoData>().Rate;
-            //Debug.Log("dam " + Damage);
-        }
-
+        //Spawner();
 
     }
 
+    public void Spawner()
+    {
+        //Spawn instances based on PickupClass members and transform - nested under in scene pickup manager
+
+        for (int i = 0; i < PickupPrefabList.Count; i++)
+        {
+            var _transform = PickupPrefabList[i].pickupTransform;
+            Instantiate(PickupPrefabList[i].pickupPrefab, _transform);
+        }
+    }
 
 
     void Update()
@@ -133,37 +134,17 @@ public class PickupManager : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
-        Generate(false);
 
+        //dstManager.AddComponentData<PickupComponent>(
+        //    entity,
+        //    new PickupComponent()
+        //    {
 
-        var localToWorld = new LocalToWorld
-        {
-            Value = float4x4.TRS(AmmoStartLocation.position, AmmoStartLocation.rotation, Vector3.one)
-        };
-
-
-        dstManager.AddComponentData<PickupComponent>(
-            entity,
-            new PickupComponent()
-            {
-                AmmoStartLocalToWorld = localToWorld,
-                AmmoStartPosition = new Translation() { Value = AmmoStartLocation.position },//not used because cant track bone 
-                AmmoStartRotation = new Rotation() { Value = AmmoStartLocation.rotation },
-                PrimaryAmmo = conversionSystem.GetPrimaryEntity(PrimaryAmmoPrefab),
-                SecondaryAmmo = conversionSystem.GetPrimaryEntity(SecondaryAmmoPrefab),
-                //Weapon = conversionSystem.GetPrimaryEntity(WeaponPrefab),
-                Strength = Strength,
-                gameStrength = Strength,
-                Damage = Damage,
-                Rate = Rate,
-                gameDamage = Damage,
-                gameRate = Rate,
-                //CanFire = true,
-                IsFiring = 0
-
-            });
+        //    });
 
         dstManager.AddComponent(entity, typeof(PickupManagerComponent));
+
+        Spawner();
         manager = dstManager;
         this.entity = entity;
 
@@ -172,17 +153,24 @@ public class PickupManager : MonoBehaviour, IDeclareReferencedPrefabs, IConvertG
 
         //example but in this case added when item picked up to add to inventory
 
-       // for (int i = 0; i < AmmoPrefabList.Count; i++)
-       // {
-       //     dstManager.AddBuffer<PickupListBuffer>(parentEntity).Add
-       //(
-       //    new PickupListBuffer
-       //    {
-       //        _parent = parentEntity,
+        for (int i = 0; i < PickupPrefabList.Count; i++)
+        {
+                dstManager.AddBuffer<PickupListBuffer>(entity).Add
+                (
+                   new PickupListBuffer
+                   {
+                       _parent = parentEntity,
+                       index = PickupPrefabList[i].index,
+                       //so we can check class with audio clip and other non component parts in a MB type system
+                       //description = PickupPrefabList[i].description
+                       position = PickupPrefabList[i].pickupTransform.position
+                   }
+               );
+            var prefabEntity = conversionSystem.GetPrimaryEntity(PickupPrefabList[i].pickupPrefab);
 
-       //    }
-       //);
-       // }
+            //dstManager.AddComponentData(prefabEntity, new PickupComponent { _parent = parentEntity, index = i });
+
+        }
 
 
     }
