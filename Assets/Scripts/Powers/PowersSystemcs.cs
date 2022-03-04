@@ -172,7 +172,7 @@ public class PowersSystem : SystemBase
                 )
                 {
                     powerItemComponent.enabled = false;
-                    audioSource.PlayOneShot(powerItem.powerEnabledAudioClip);
+                    //audioSource.PlayOneShot(powerItem.powerEnabledAudioClip);
                 }
             }
         ).Run();

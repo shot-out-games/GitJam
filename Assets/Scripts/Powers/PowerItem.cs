@@ -20,6 +20,42 @@ public struct PowerItemComponent : IComponentData
 }
 
 
+[System.Serializable]
+public class PowerItemClass
+{
+    public PowerType powerType;
+
+    public bool alive = true;
+
+    [SerializeField]
+    public bool active = true;
+    //public Entity e;
+    EntityManager manager;
+
+    [Header("Speed")]
+    public float speedTimeOn = 3.0f;
+    public float speedMultiplier = 3.0f;
+
+    [Header("Health")]
+    public float healthMultiplier = .75f;
+
+    [Header("Shared")]
+    public GameObject powerPrefab;
+    public GameObject powerEnabledEffectPrefab;
+    public GameObject powerEnabledEffectInstance;
+
+    public AudioClip powerEnabledAudioClip;
+    public AudioClip powerTriggerAudioClip;
+    public AudioSource audioSource;
+
+    public Mesh mesh;
+    public Material material;
+    public MeshRenderer meshRenderer;
+
+
+
+}
+
 
 
 public enum PowerType
@@ -34,45 +70,26 @@ public enum PowerType
 
 public class PowerItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
 {
-    public PowerType powerType;
-
-    public bool alive = true;
-
-    [SerializeField]
-    bool active = true;
-    public Entity e;
-    EntityManager manager;
-
-    [Header("Speed")]
-    [SerializeField] private float speedTimeOn = 3.0f;
-    [SerializeField] private float speedMultiplier = 3.0f;
-
-    [Header("Health")]
-    [SerializeField] private float healthMultiplier = .75f;
-
-    public GameObject powerEnabledEffectPrefab;
-    public GameObject powerEnabledEffectInstance;
-
-    public AudioClip powerEnabledAudioClip;
-    public AudioClip powerTriggerAudioClip;
-    public AudioSource audioSource;
-
-    public Mesh mesh;
-    public Material material;
-    public MeshRenderer meshRenderer;
-
-
+    public List<PowerItemClass> powerItems;
+  
 
     void Start()
     {
-        if(audioSource) return;
-        audioSource = GetComponent<AudioSource>();
+        for (int i = 0; i < powerItems.Count; i++)
+        {
+
+            if (powerItems[i].audioSource) return;
+            powerItems[i].audioSource = GetComponent<AudioSource>();
+        }
 
     }
 
     public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
     {
-        referencedPrefabs.Add(powerEnabledEffectPrefab);
+        for (int i = 0; i < powerItems.Count; i++)
+        {
+            referencedPrefabs.Add(powerItems[i].powerPrefab);
+        }
     }
 
 
@@ -87,65 +104,70 @@ public class PowerItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclareRefe
         dstManager.AddComponent<AudioSourceComponent>(entity);
 
 
-        e = entity;
-        manager = dstManager;
+        //e = entity;
+        //manager = dstManager;
 
-        conversionSystem.AddHybridComponent(audioSource);
-        conversionSystem.AddHybridComponent(this);
-
-
-
-
-        manager.AddComponentData<PowerItemComponent>(entity, new PowerItemComponent
+        for (int i = 0; i < powerItems.Count; i++)
         {
-            particleSystemEntity = conversionSystem.GetPrimaryEntity(powerEnabledEffectPrefab),
-            active = active,
-            powerType = (int)powerType,
-            speedTimeOn = speedTimeOn,
-            speedTimeMultiplier = speedMultiplier,
-            healthMultiplier = healthMultiplier
-        });
 
 
-        if (powerType == PowerType.Speed)
-        {
-            dstManager.AddComponentData(entity, new Speed
+            conversionSystem.AddHybridComponent(powerItems[i].audioSource);
+            conversionSystem.AddHybridComponent(this);
+            entity = conversionSystem.GetPrimaryEntity(powerItems[i].powerPrefab);
+
+            Debug.Log("power up " + entity);
+
+            dstManager.AddComponentData<PowerItemComponent>(entity, new PowerItemComponent
             {
-                enabled = false,
-                timer = 0,
-                timeOn = 0,
-                startTimer = false,
-                originalSpeed = 0,
-                multiplier = 0,
-            }
-           );
+                particleSystemEntity = conversionSystem.GetPrimaryEntity(powerItems[i].powerEnabledEffectPrefab),
+                active = powerItems[i].active,
+                powerType = (int)powerItems[i].powerType,
+                speedTimeOn = powerItems[i].speedTimeOn,
+                speedTimeMultiplier = powerItems[i].speedMultiplier,
+                healthMultiplier = powerItems[i].healthMultiplier
+            });
 
-        }
 
-        if (powerType == PowerType.Health)
-        {
-            dstManager.AddComponentData(entity, new HealthPower
+            if (powerItems[i].powerType == PowerType.Speed)
             {
-                enabled = false,
-                healthMultiplier = 0
+                dstManager.AddComponentData(entity, new Speed
+                {
+                    enabled = false,
+                    timer = 0,
+                    timeOn = 0,
+                    startTimer = false,
+                    originalSpeed = 0,
+                    multiplier = 0,
+                }
+               );
+
             }
+
+            if (powerItems[i].powerType == PowerType.Health)
+            {
+                dstManager.AddComponentData(entity, new HealthPower
+                {
+                    enabled = false,
+                    healthMultiplier = 0
+                }
+                );
+            }
+
+
+            if (powerItems[i].powerType == PowerType.Control)
+            {
+
+                dstManager.AddComponentData(entity, new ControlPower
+                {
+                    enabled = false,
+                    controlMultiplier = 0
+                }
             );
-        }
 
-
-        if (powerType == PowerType.Control)
-        {
-
-            dstManager.AddComponentData(entity, new ControlPower
-            {
-                enabled = false,
-                controlMultiplier = 0
             }
-        );
 
+            dstManager.SetSharedComponentData(entity, new RenderMesh() { mesh = powerItems[i].mesh, material = powerItems[i].material });
         }
-
-        dstManager.SetSharedComponentData(entity, new RenderMesh() { mesh = mesh, material = material });
 
 
 
