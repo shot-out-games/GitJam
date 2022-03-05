@@ -14,12 +14,13 @@ public struct PowerItemComponent : IComponentData
     public bool active;
     public bool enabled;
     public Entity particleSystemEntity;
+    public Entity addPickupEntityToInventory;
 
 }
 
 
 
-public struct TestComponent : IComponentData
+public struct ImmediateUseComponent : IComponentData
 {
     public float value;
 }

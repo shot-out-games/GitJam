@@ -44,8 +44,6 @@ public class PickupWeaponRaycastSystem : SystemBase
 
 
 
-        //        Entities.WithoutBurst().WithStructuralChanges().ForEach((Entity entity, WeaponItem WeaponItem, ref WeaponItemComponent weaponItemComponent,
-        //         ref Translation translation, ref PhysicsCollider collider, ref Rotation rotation) =>
         Entities.WithoutBurst().WithStructuralChanges().ForEach((Entity entity, WeaponItem WeaponItem,
                 ref Translation translation, ref PhysicsCollider collider, ref Rotation rotation) =>
         {
@@ -81,11 +79,7 @@ public class PickupWeaponRaycastSystem : SystemBase
                     }
                 };
 
-                //Debug.DrawRay(start, Vector3.right, Color.green, distance * 10f);
-
-
-
-
+                
 
                 bool hasPointHit = collisionWorld.CalculateDistance(pointDistanceInput, out DistanceHit pointHit);
                 if (HasComponent<TriggerComponent>(pointHit.Entity))
@@ -102,8 +96,7 @@ public class PickupWeaponRaycastSystem : SystemBase
 
 
                     Entity e = physicsWorldSystem.PhysicsWorld.Bodies[pointHit.RigidBodyIndex].Entity;
-                    //Debug.Log("ve " + applyImpulse.Velocity.x);
-                    //Debug.Log("left / right");
+                 
                     if (WeaponItem.e == entity)
                     {
                         //weaponItemComponent.pickedUp = true;
@@ -205,7 +198,7 @@ public class PickupPowerUpRaycastSystem : SystemBase
             in Entity entity
         ) =>
         {
-
+            //NativeList<Entity> pickups = new NativeList<Entity>(32, Allocator.TempJob);
 
             var physicsWorldSystem = World.GetExistingSystem<BuildPhysicsWorld>();
             var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
@@ -248,28 +241,38 @@ public class PickupPowerUpRaycastSystem : SystemBase
                     if (HasComponent<HealthPower>(pickedUpActor) == false && HasComponent<DestroyComponent>(entity) == false
                     && HasComponent<HealthPower>(entity))
                     {
-                        powerItemComponent.enabled = true;
-                        Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
-                        var ps = new ParticleSystemComponent
+                        powerItemComponent.pickedUpActor = pickedUpActor;
+                        if (HasComponent<ImmediateUseComponent>(entity))
                         {
-                            followActor = true,
-                            pickedUpActor = pickedUpActor
-                        };
+                            powerItemComponent.enabled = true;
+                            Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
+                            var ps = new ParticleSystemComponent
+                            {
+                                followActor = true,
+                                pickedUpActor = pickedUpActor
+                            };
 
-                        ecb.AddComponent(instanceEntity, ps);
+                            ecb.AddComponent(instanceEntity, ps);
 
-                        Debug.Log(" health " + pickedUpActor);
-                        var healthPower = GetComponent<HealthPower>(entity);
+                            Debug.Log(" health " + pickedUpActor);
+                            var healthPower = GetComponent<HealthPower>(entity);
+                           
 
-                        HealthPower healthPowerPlayer = new HealthPower
+                            HealthPower healthPowerPlayer = new HealthPower
+                            {
+                                psAttached = instanceEntity,//attached to player picking up
+                                pickedUpActor = pickedUpActor,
+                                itemEntity = entity,
+                                enabled = true,
+                                healthMultiplier = healthPower.healthMultiplier
+                            };
+                            ecb.AddComponent(pickedUpActor, healthPowerPlayer);
+                        }
+                        else
                         {
-                            psAttached = instanceEntity,//attached to player picking up
-                            pickedUpActor = pickedUpActor,
-                            itemEntity = entity,
-                            enabled = true,
-                            healthMultiplier = healthPower.healthMultiplier
-                        };
-                        ecb.AddComponent(pickedUpActor, healthPowerPlayer);
+                            ecb.AddComponent(entity, new DestroyComponent());
+                            powerItemComponent.addPickupEntityToInventory = pickedUpActor;
+                        }
 
                     }
 
@@ -278,37 +281,49 @@ public class PickupPowerUpRaycastSystem : SystemBase
                     if (HasComponent<Speed>(pickedUpActor) == false && HasComponent<DestroyComponent>(entity) == false
                     && HasComponent<Speed>(entity))
                     {
-                        var speedPower = GetComponent<Speed>(entity);
-                        //HERE
-
-                        powerItemComponent.enabled = true;
-                        Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
-
-                        var ps = new ParticleSystemComponent
+                        powerItemComponent.pickedUpActor = pickedUpActor;
+                        if (HasComponent<ImmediateUseComponent>(entity))
                         {
-                            followActor = true,
-                            pickedUpActor = pickedUpActor
-                        };
+                            var speedPower = GetComponent<Speed>(entity);
+                            //HERE
 
-                        ecb.AddComponent(instanceEntity, ps);
+                            powerItemComponent.enabled = true;
+                            Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
 
-                        Debug.Log(" speed " + pickedUpActor);
+                            var ps = new ParticleSystemComponent
+                            {
+                                followActor = true,
+                                pickedUpActor = pickedUpActor
+                            };
 
-                        
+                            ecb.AddComponent(instanceEntity, ps);
 
-                        Speed speedPowerPlayer = new Speed
+                            Debug.Log(" speed " + pickedUpActor);
+
+
+
+                            Speed speedPowerPlayer = new Speed
+                            {
+                                psAttached = instanceEntity,//attached to player on  speed pick up
+                                pickedUpActor = pickedUpActor,
+                                itemEntity = entity,
+                                enabled = true,
+                                timeOn = speedPower.timeOn,
+                                multiplier = speedPower.multiplier
+                            };
+
+
+
+                            ecb.AddComponent(pickedUpActor, speedPowerPlayer);
+                        }
+                        else
                         {
-                            psAttached = instanceEntity,//attached to player on  speed pick up
-                            pickedUpActor = pickedUpActor,
-                            itemEntity = entity,
-                            enabled = true,
-                            timeOn = speedPower.timeOn,
-                            multiplier = speedPower.multiplier
-                        };
+                            //pickups.Add(entity);
+                            //Debug.Log("pickups " + pickups[0].Index);
+                            ecb.AddComponent(entity, new DestroyComponent());
+                            powerItemComponent.addPickupEntityToInventory = pickedUpActor;
 
-
-
-                        ecb.AddComponent(pickedUpActor, speedPowerPlayer);
+                        }
 
                     }
                     // }

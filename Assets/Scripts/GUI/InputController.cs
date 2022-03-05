@@ -175,7 +175,7 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
     public void OnSelectedUsableEnd()
     {
-        Debug.Log("selected usable end");
+        //Debug.Log("selected usable end");
         player.controllers.maps.ClearMaps(ControllerType.Joystick, true);
         player.controllers.maps.LoadMap(ControllerType.Joystick, 0, "Default", "Default", true);
 
@@ -240,7 +240,7 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         dpadUp = player.GetButtonDown("Dpad Up");
         dpadDown = player.GetButtonDown("Dpad Down");
         //bool dpadXButton = player.GetButtonDown("Dpad Horizontal");
-        Debug.Log("dpadRight " + dpadRight);
+        //Debug.Log("dpadRight " + dpadRight);
         dpadX = player.GetAxis("Dpad Horizontal");
         dpadY = player.GetAxis("Dpad Vertical");
 

@@ -7,34 +7,7 @@ using Unity.Rendering;
 
 [System.Serializable]
 
-//[System.Serializable]
-//public class PowerHealthItemClass
-//{
-//    public PowerType powerType;
 
-//    public bool alive = true;
-//    [SerializeField]
-
-
-//    [Header("Health")]
-//    public float healthMultiplier = .75f;
-
-//    [Header("Shared")]
-//    public GameObject powerPrefab;
-//    public GameObject powerEnabledEffectPrefab;
-//    public GameObject powerEnabledEffectInstance;
-
-//    public AudioClip powerEnabledAudioClip;
-//    public AudioClip powerTriggerAudioClip;
-//    public AudioSource audioSource;
-
-//    public Mesh mesh;
-//    public Material material;
-//    public MeshRenderer meshRenderer;
-
-
-
-//}
 
 public struct HealthPower : IComponentData
 {
@@ -52,6 +25,7 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
 
     [Header("Health")]
     public bool active = true;
+    public bool immediateUse;
     public float healthMultiplier = .75f;
     //public GameObject powerPrefab;
     public GameObject powerEnabledEffectPrefab;
@@ -118,7 +92,10 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
             healthMultiplier = 0
         });
 
-
+        if(immediateUse)
+        {
+            dstManager.AddComponent<ImmediateUseComponent>(entity);
+        }
         
         //dstManager.SetSharedComponentData(entity, new RenderMesh() { mesh = mesh, material = material });
 

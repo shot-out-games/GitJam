@@ -7,51 +7,12 @@ using UnityEngine;
 
 
 
-
-//[System.Serializable]
-//public struct PowerHealthItemComponent : IComponentData
-//{
-//    public float healthMultiplier;
-
-//}
-
-
-//[System.Serializable]
-//public class PowerHealthItemClass
-//{
-//    public PowerType powerType;
-
-//    public bool alive = true;
-//    [SerializeField]
-
-
-//    [Header("Health")]
-//    public float healthMultiplier = .75f;
-
-//    [Header("Shared")]
-//    public GameObject powerPrefab;
-//    public GameObject powerEnabledEffectPrefab;
-//    public GameObject powerEnabledEffectInstance;
-
-//    public AudioClip powerEnabledAudioClip;
-//    public AudioClip powerTriggerAudioClip;
-//    public AudioSource audioSource;
-
-//    public Mesh mesh;
-//    public Material material;
-//    public MeshRenderer meshRenderer;
-
-
-
-//}
-
-
-
 public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
 {
-    //public List<PowerItemClass> powerItems;
+   
 
     public bool active = true;
+    public bool immediateUse;
 
     public float speedTimeOn;
     public float speedTimeMultiplier;
@@ -63,10 +24,6 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
     public AudioClip powerTriggerAudioClip;
     public AudioSource audioSource;
 
-
-    //public Mesh mesh;
-    //public Material material;
-    //public MeshRenderer meshRenderer;
 
 
     void Start()
@@ -93,14 +50,10 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
         dstManager.AddComponent<AudioSourceComponent>(entity);
 
 
-        //e = entity;
-        //manager = dstManager;
-
-
 
         conversionSystem.AddHybridComponent(audioSource);
         conversionSystem.AddHybridComponent(this);
-        //entity = conversionSystem.GetPrimaryEntity(powerPrefab);
+      
 
         Debug.Log("power up " + entity);
 
@@ -108,10 +61,7 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
         {
             particleSystemEntity = conversionSystem.GetPrimaryEntity(powerEnabledEffectPrefab),
             active = active,
-            //powerType = (int)powerItems[i].powerType,
-            //speedTimeOn = powerItems[i].speedTimeOn,
-            //speedTimeMultiplier = powerItems[i].speedMultiplier,
-            //healthMultiplier = powerItems[i].healthMultiplier
+           
         });
 
 
@@ -123,9 +73,12 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
             multiplier = speedTimeMultiplier
         });
 
+        if (immediateUse)
+        {
+            dstManager.AddComponent<ImmediateUseComponent>(entity);
+        }
 
 
-        //dstManager.SetSharedComponentData(entity, new RenderMesh() { mesh = mesh, material = material });
 
     }
 

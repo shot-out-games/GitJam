@@ -141,25 +141,25 @@ public class PowersSystem : SystemBase
 
 
 
-        Entities.WithoutBurst().ForEach(
-            (
-                ref ControlPower healthPower, ref ControlBarComponent healthComponent
+        //Entities.WithoutBurst().ForEach(
+        //    (
+        //        ref ControlPower healthPower, ref ControlBarComponent healthComponent
 
-            ) =>
-            {
-                if (healthPower.enabled == true)
-                {
-                    healthPower.enabled = false;
-                    healthComponent.value = healthComponent.value * healthPower.controlMultiplier;
-                    //Rare used if multiplier is > 1 meaning health damage increased
-                    if (healthComponent.value > healthComponent.maxHealth)
-                    {
-                        healthComponent.value = healthComponent.maxHealth;
-                    }
-                }
+        //    ) =>
+        //    {
+        //        if (healthPower.enabled == true)
+        //        {
+        //            healthPower.enabled = false;
+        //            healthComponent.value = healthComponent.value * healthPower.controlMultiplier;
+        //            //Rare used if multiplier is > 1 meaning health damage increased
+        //            if (healthComponent.value > healthComponent.maxHealth)
+        //            {
+        //                healthComponent.value = healthComponent.maxHealth;
+        //            }
+        //        }
 
-            }
-        ).Run();
+        //    }
+        //).Run();
 
 
 
