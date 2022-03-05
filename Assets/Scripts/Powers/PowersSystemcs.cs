@@ -165,7 +165,7 @@ public class PowersSystem : SystemBase
 
         Entities.WithoutBurst().WithAll<AudioSourceComponent>().ForEach(
             (
-                AudioSource audioSource, PowerItem powerItem, ref PowerItemComponent powerItemComponent, in Entity e) =>
+                AudioSource audioSource, PowerSpeedItem powerItem, ref PowerItemComponent powerItemComponent, in Entity e) =>
             {
                 if (audioSource.isPlaying == false
                     && powerItemComponent.enabled == true
