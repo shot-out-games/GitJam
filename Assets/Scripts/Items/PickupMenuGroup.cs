@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rewired;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -17,6 +18,10 @@ public struct PickupMenuComponent : IComponentData
     public bool menuStateChanged;
 }
 
+public class PowerItemClass
+{
+    public Entity pickedUpActor;
+}
 
 
 public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
@@ -26,8 +31,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     private EntityManager manager;
     public Entity entity;
-    public List<SkillTreeComponent> playerSkillSets = new List<SkillTreeComponent>();
-    public SkillTreeComponent player0_skillSet;
+    public List<PowerItemComponent> powerItemComponents = new List<PowerItemComponent>();
+    //public SkillTreeComponent player0_skillSet;
 
     AudioSource audioSource;
     private List<Button> buttons;
@@ -39,16 +44,18 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     [SerializeField]
     private TextMeshProUGUI label0;
 
-    public int speedPts;
-    public int powerPts;
-    public int chinPts;
-    public int availablePoints;
+    //public int speedPts;
+    //public int powerPts;
+    //public int chinPts;
+    //public int availablePoints;
 
     private int buttonClickedIndex;
-
+    //Player player;
 
     void Start()
     {
+        if (!ReInput.isReady) return;
+        //player = ReInput.players.GetPlayer(0);
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         AddMenuButtonHandlers();
@@ -59,109 +66,117 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     void Update()
     {
 
-        //if (entity == Entity.Null || manager == default) return;
-        //bool hasComponent = manager.HasComponent(entity, typeof(SkillTreeMenuComponent));
-        //if (hasComponent == false) return;
+        if (entity == Entity.Null || manager == default) return;
+        bool hasComponent = manager.HasComponent(entity, typeof(PickupMenuComponent));
+        if (hasComponent == false) return;
 
-        ////move to system update below
-        //bool stateChange = manager.GetComponentData<SkillTreeMenuComponent>(entity).menuStateChanged;
+        //move to system update below
+        //bool stateChange = manager.GetComponentData<PickupMenuComponent>(entity).menuStateChanged;
+        //
+        //  if (stateChange == true)
+        //  {
+        var puMenu = manager.GetComponentData<PickupMenuComponent>(entity);
+        //skillTreeMenu.menuStateChanged = false;
+        manager.SetComponentData(entity, puMenu);
 
-        //if (stateChange == true)
-        //{
-        //    var skillTreeMenu = manager.GetComponentData<SkillTreeMenuComponent>(entity);
-        //    skillTreeMenu.menuStateChanged = false;
-        //    manager.SetComponentData(entity, skillTreeMenu);
-
-        //    if (manager.GetComponentData<SkillTreeMenuComponent>(entity).showMenu)
-        //    {
-        //        ShowMenu();
-        //    }
-        //    else
-        //    {
-        //        HideMenu();
-        //    }
-        //    EnableButtons();
-        //}
-        //ShowLabel0();
+        if (manager.GetComponentData<PickupMenuComponent>(entity).showMenu)
+        {
+            ShowMenu();
+        }
+        else
+        {
+            HideMenu();
+        }
+        EnableButtons();
+        //   }
+        ShowLabel0();
     }
 
     void EnableButtons()
     {
         exitButton.Select();
 
-        buttons[1].interactable = false;
-        buttons[2].interactable = false;
-        buttons[3].interactable = false;
-        if (availablePoints >= 1 && speedPts == 0)
-        {
-            buttons[1].interactable = true;
-            buttons[1].Select();
-        }
-        else if (availablePoints >= 2 && speedPts == 1)
-        {
-            buttons[2].interactable = true;
-            buttons[2].Select();
-        }
-        else if (availablePoints >= 3 && speedPts == 2)
-        {
-            buttons[3].interactable = true;
-            buttons[3].Select();
-        }
+        //buttons[1].interactable = false;
+        //buttons[2].interactable = false;
+        //buttons[3].interactable = false;
+        //if (availablePoints >= 1 && speedPts == 0)
+        //{
+        //    buttons[1].interactable = true;
+        //    buttons[1].Select();
+        //}
+        //else if (availablePoints >= 2 && speedPts == 1)
+        //{
+        //    buttons[2].interactable = true;
+        //    buttons[2].Select();
+        //}
+        //else if (availablePoints >= 3 && speedPts == 2)
+        //{
+        //    buttons[3].interactable = true;
+        //    buttons[3].Select();
+        //}
 
 
     }
 
     void ShowLabel0()
     {
-        label0.text = "Points : " + availablePoints;
+        //label0.text = "Points : " + availablePoints;
     }
 
     void ButtonClickedIndex(int index)
     {
         buttonClickedIndex = index;
         Debug.Log("btn idx " + buttonClickedIndex);
-        if (index >= 1 && index <= 3)
-        {
-            if (manager.HasComponent<SkillTreeComponent>(entity) == false) return;
-            availablePoints = availablePoints - index;
-            speedPts = index;
-            player0_skillSet.availablePoints = availablePoints;
-            player0_skillSet.SpeedPts = speedPts;
-            EnableButtons();
+        //if (index >= 1 && index <= 3)
+        //{
+        //    if (manager.HasComponent<SkillTreeComponent>(entity) == false) return;
+        //    availablePoints = availablePoints - index;
+        //    speedPts = index;
+        //    player0_skillSet.availablePoints = availablePoints;
+        //    player0_skillSet.SpeedPts = speedPts;
+        //    EnableButtons();
 
-        }
+        //}
     }
 
 
 
-    public void InitCurrentPlayerSkillSet()
+    public void InitCurrentPowerItems()
     {
-        if (manager.HasComponent<SkillTreeComponent>(entity) == false) return;
-        player0_skillSet = manager.GetComponentData<SkillTreeComponent>(entity);
-
-        speedPts = manager.GetComponentData<SkillTreeComponent>(entity).SpeedPts;
-        powerPts = manager.GetComponentData<SkillTreeComponent>(entity).PowerPts;
-        chinPts = manager.GetComponentData<SkillTreeComponent>(entity).ChinPts;
-        availablePoints = manager.GetComponentData<SkillTreeComponent>(entity).availablePoints;
-        Entity e = manager.GetComponentData<SkillTreeComponent>(entity).e;
-
-        if (playerSkillSets.Count < 1) //1 for now
-        {
-            playerSkillSets.Add(player0_skillSet);
-        }
-
-    }
 
 
 
-    public void WriteCurrentPlayerSkillSet()
-    {
-        if (manager.HasComponent<SkillTreeComponent>(entity) == false) return;
-        SkillTreeComponent skillTree = player0_skillSet;
-        Entity playerE = skillTree.e;
-        manager.SetComponentData<SkillTreeComponent>(playerE, player0_skillSet);
+
+        //if (manager.HasComponent<PowerItemComponent>(entity) == false) return;
+
+
+
+
+        //player0_skillSet = manager.GetComponentData<SkillTreeComponent>(entity);
+
+        //speedPts = manager.GetComponentData<SkillTreeComponent>(entity).SpeedPts;
+        //powerPts = manager.GetComponentData<SkillTreeComponent>(entity).PowerPts;
+        //chinPts = manager.GetComponentData<SkillTreeComponent>(entity).ChinPts;
+        //availablePoints = manager.GetComponentData<SkillTreeComponent>(entity).availablePoints;
+        //Entity e = manager.GetComponentData<SkillTreeComponent>(entity).e;
+
+        //if (playerSkillSets.Count < 1) //1 for now
+        //{
+        //    playerSkillSets.Add(player0_skillSet);
+        //}
 
     }
+
+
+
+    //public void WriteCurrentPlayerSkillSet()
+    //{
+    //    if (manager.HasComponent<SkillTreeComponent>(entity) == false) return;
+    //    SkillTreeComponent skillTree = player0_skillSet;
+    //    Entity playerE = skillTree.e;
+    //    manager.SetComponentData<SkillTreeComponent>(playerE, player0_skillSet);
+
+    //}
 
 
     private void AddMenuButtonHandlers()
@@ -240,114 +255,144 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
 public class PickupSystem : SystemBase
 {
+    //Player player;
+
+    protected override void OnCreate()
+    {
+
+
+
+    }
     protected override void OnUpdate()
     {
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
-        var skillTreeGroup = GetComponentDataFromEntity<SkillTreeComponent>(true);
-        var playerSkillSets = new NativeArray<SkillTreeComponent>(1, Allocator.TempJob);
+        //EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
+        //var skillTreeGroup = GetComponentDataFromEntity<SkillTreeComponent>(true);
+        //var playerSkillSets = new NativeArray<SkillTreeComponent>(1, Allocator.TempJob);
 
-        JobHandle inputDeps0 = Entities.WithReadOnly(skillTreeGroup).ForEach
-        (
-            (
-                in SkillTreeComponent skillTree,
-                in RatingsComponent ratingsComponent,
-                in PlayerComponent playerComponent,
-                in Entity e
+        //var itemGroup = GetComponentDataFromEntity<PowerItemComponent>(false);
+        var itemQuery = GetEntityQuery(ComponentType.ReadOnly<PowerItemComponent>());
+        var itemList = itemQuery.ToEntityArray(Allocator.Persistent);
+        //NativeArray<TriggerComponent> triggerGroup = triggerQuery.ToComponentDataArray<TriggerComponent>(Allocator.Persistent);
+        var itemGroup = itemQuery.ToComponentDataArray<PowerItemComponent>(Allocator.Persistent);
+        
 
-            ) =>
-            {
-                if (playerComponent.index == 1)//p1
-                    playerSkillSets[0] = skillTreeGroup[e];
-            }
-        ).Schedule(this.Dependency);
-
-        inputDeps0.Complete();
-        var playerSkillSet0 = playerSkillSets[0];
-
-        JobHandle inputDeps1 = Entities.ForEach
-        (
-            (
-                in PickupMenuComponent skillTreeMenuComponent,
-                in Entity e
-
-            ) =>
-            {
-                ecb.AddComponent<SkillTreeComponent>(e, playerSkillSet0);
-            }
-
-        ).Schedule(this.Dependency);
-        inputDeps1.Complete();
+        for (int i = 0; i < itemList.Length; i++)
+        {
 
 
-        //JobHandle inputDeps2 = Entities.ForEach
+        }
+
+        //JobHandle inputDeps0 = Entities.WithReadOnly(skillTreeGroup).ForEach
         //(
         //    (
-        //        ref RatingsComponent ratingsComponent,
-        //        //ref Speed speedPower,
         //        in SkillTreeComponent skillTree,
+        //        in RatingsComponent ratingsComponent,
         //        in PlayerComponent playerComponent,
         //        in Entity e
 
         //    ) =>
         //    {
-        //        //figure out how to do just once so we can use original values
-        //        //ie  speedPower.timeOn = speedPower.timeOn * 2;
-
-        //        if (skillTree.SpeedPts == 1)
-        //        {
-        //            ratingsComponent.speed = 3.6f;
-        //        }
-        //        else if (skillTree.SpeedPts == 2)
-        //        {
-        //            ratingsComponent.speed = 4.5f;
-        //        }
-        //        else if (skillTree.SpeedPts == 3)
-        //        {
-        //            ratingsComponent.speed = 6f;
-        //            speedPower.timeOn = 12f;
-        //        }
-
+        //        if (playerComponent.index == 1)//p1
+        //            playerSkillSets[0] = skillTreeGroup[e];
         //    }
-
         //).Schedule(this.Dependency);
 
-        //inputDeps2.Complete();
+        //inputDeps0.Complete();
+        //var playerSkillSet0 = playerSkillSets[0];
 
-
-
-
-        ////Entities.WithoutBurst().ForEach
-        //JobHandle inputDeps3 = Entities.ForEach
+        //JobHandle inputDeps1 = Entities.ForEach
         //(
         //    (
-        //        ref SkillTreeMenuComponent skillTreeMenu,
-        //        in InputControllerComponent inputController
+        //        in PickupMenuComponent skillTreeMenuComponent,
+        //        in Entity e
+
         //    ) =>
         //    {
-        //        bool selectPressed = inputController.buttonSelect_Pressed;
-        //        //Debug.Log("tree " + inputController.dpadRight);
-        //        if (skillTreeMenu.exitClicked || selectPressed && skillTreeMenu.showMenu == true)
-        //        {
-        //            skillTreeMenu.menuStateChanged = true;
-        //            skillTreeMenu.exitClicked = false;
-        //            skillTreeMenu.showMenu = false;
-        //        }
-        //        else if (inputController.dpadRight)
-        //        {
-        //            skillTreeMenu.menuStateChanged = true;
-        //            skillTreeMenu.showMenu = !skillTreeMenu.showMenu;
-        //        }
+        //        ecb.AddComponent<SkillTreeComponent>(e, playerSkillSet0);
         //    }
 
         //).Schedule(this.Dependency);
+        //inputDeps1.Complete();
+
+
+        ////JobHandle inputDeps2 = Entities.ForEach
+        ////(
+        ////    (
+        ////        ref RatingsComponent ratingsComponent,
+        ////        //ref Speed speedPower,
+        ////        in SkillTreeComponent skillTree,
+        ////        in PlayerComponent playerComponent,
+        ////        in Entity e
+
+        ////    ) =>
+        ////    {
+        ////        //figure out how to do just once so we can use original values
+        ////        //ie  speedPower.timeOn = speedPower.timeOn * 2;
+
+        ////        if (skillTree.SpeedPts == 1)
+        ////        {
+        ////            ratingsComponent.speed = 3.6f;
+        ////        }
+        ////        else if (skillTree.SpeedPts == 2)
+        ////        {
+        ////            ratingsComponent.speed = 4.5f;
+        ////        }
+        ////        else if (skillTree.SpeedPts == 3)
+        ////        {
+        ////            ratingsComponent.speed = 6f;
+        ////            speedPower.timeOn = 12f;
+        ////        }
+
+        ////    }
+
+        ////).Schedule(this.Dependency);
+
+        ////inputDeps2.Complete();
+
+        //var inpu = GetComponentDataFromEntity<TriggerComponent>(false);
+        //  var inputQuery = GetEntityQuery(ComponentType.ReadOnly<InputControllerComponent>(), 
+        //       ComponentType.ReadOnly<PlayerComponent >());
+        //   var inputEntityList = inputQuery.ToEntityArray(Allocator.Persistent);
+
+
+        //Entities.WithoutBurst().ForEach
+        Entities.WithoutBurst().ForEach
+        (
+            (
+                ref PickupMenuComponent pickupMenu
+
+            ) =>
+            {
+                var dpadR = ReInput.players.GetPlayer(0).GetButtonDown("DpadR");
+                var select = ReInput.players.GetPlayer(0).GetButtonDown("Select");
+
+                // var inputController = GetComponent<InputControllerComponent>(inputEntityList[0]);
+
+
+                Debug.Log("pickup menu " + dpadR);
+                if (pickupMenu.exitClicked || select && pickupMenu.showMenu == true)
+                {
+                    pickupMenu.menuStateChanged = true;
+                    pickupMenu.exitClicked = false;
+                    pickupMenu.showMenu = false;
+                }
+                else if (dpadR)
+                {
+                    pickupMenu.menuStateChanged = true;
+                    pickupMenu.showMenu = !pickupMenu.showMenu;
+                }
+            }
+
+        ).Run();
 
         //inputDeps3.Complete();
 
 
 
-        ecb.Playback(EntityManager);
-        ecb.Dispose();
-        playerSkillSets.Dispose();
+        //ecb.Playback(EntityManager);
+        //ecb.Dispose();
+        //playerSkillSets.Dispose();
+        itemGroup.Dispose();
     }
 
 }

@@ -324,19 +324,19 @@ public class SkillTreeSystem : SystemBase
                 in InputControllerComponent inputController
             ) =>
             {
-                bool selectPressed = inputController.buttonSelect_Pressed;
-                //Debug.Log("tree " + inputController.dpadRight);
-                if (skillTreeMenu.exitClicked || selectPressed && skillTreeMenu.showMenu == true)
-                {
-                    skillTreeMenu.menuStateChanged = true;
-                    skillTreeMenu.exitClicked = false;
-                    skillTreeMenu.showMenu = false;
-                }
-                else if (inputController.dpadRight)
-                {
-                    skillTreeMenu.menuStateChanged = true;
-                    skillTreeMenu.showMenu = !skillTreeMenu.showMenu;
-                }
+                //bool selectPressed = inputController.buttonSelect_Pressed;
+                ////Debug.Log("tree " + inputController.dpadRight);
+                //if (skillTreeMenu.exitClicked || selectPressed && skillTreeMenu.showMenu == true)
+                //{
+                //    skillTreeMenu.menuStateChanged = true;
+                //    skillTreeMenu.exitClicked = false;
+                //    skillTreeMenu.showMenu = false;
+                //}
+                //else if (inputController.dpadRight)
+                //{
+                //    skillTreeMenu.menuStateChanged = true;
+                //    skillTreeMenu.showMenu = !skillTreeMenu.showMenu;
+                //}
             }
 
         ).Schedule(this.Dependency);

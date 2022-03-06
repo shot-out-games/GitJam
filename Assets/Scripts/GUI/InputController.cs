@@ -99,9 +99,9 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
     [Header("D-PAD")]
     public float dpadX = 0;
-    public bool dpadXreleased;
+    //public bool dpadXreleased;
     public float dpadY = 0;
-    public bool dpadYreleased;
+    //public bool dpadYreleased;
     public bool dpadRight;
     public bool dpadLeft;
     public bool dpadUp;
@@ -235,17 +235,17 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
 
 
-        dpadLeft = player.GetButtonDown("Dpad Left");
-        dpadRight = player.GetButtonDown("Dpad Right");
+        dpadLeft = player.GetButtonDown("DpadL");
+        dpadRight = player.GetButtonDown("DpadR");
         dpadUp = player.GetButtonDown("Dpad Up");
         dpadDown = player.GetButtonDown("Dpad Down");
         //bool dpadXButton = player.GetButtonDown("Dpad Horizontal");
-        //Debug.Log("dpadRight " + dpadRight);
+        Debug.Log("dpadRight " + dpadRight);
         dpadX = player.GetAxis("Dpad Horizontal");
         dpadY = player.GetAxis("Dpad Vertical");
 
-        dpadXreleased = player.GetAxisPrev("Dpad Horizontal") <= .000001f;
-        dpadYreleased = player.GetAxisPrev("Dpad Vertical") <= .000001f;
+        //dpadXreleased = player.GetAxisPrev("Dpad Horizontal") <= .000001f;
+        //dpadYreleased = player.GetAxisPrev("Dpad Vertical") <= .000001f;
 
 
         buttonA_Pressed = player.GetButtonDown("FireA");
@@ -333,8 +333,8 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
 
         inputControllerComponent.dpadX = dpadX;
         inputControllerComponent.dpadY = dpadY;
-        inputControllerComponent.dpadXreleased = dpadXreleased;
-        inputControllerComponent.dpadYreleased = dpadYreleased;
+        //inputControllerComponent.dpadXreleased = dpadXreleased;
+        //inputControllerComponent.dpadYreleased = dpadYreleased;
 
 
 
