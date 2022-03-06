@@ -31,7 +31,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     private EntityManager manager;
     public Entity entity;
-    public List<PowerItemComponent> powerItemComponents = new List<PowerItemComponent>();
+    public static List<PowerItemComponent> powerItemComponents = new List<PowerItemComponent>();
     //public SkillTreeComponent player0_skillSet;
 
     AudioSource audioSource;
@@ -120,7 +120,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     void ShowLabel0()
     {
-        //label0.text = "Points : " + availablePoints;
+        if (powerItemComponents.Count == 0) return;
+        label0.text = powerItemComponents[0].ToString(); ;
     }
 
     void ButtonClickedIndex(int index)
@@ -226,7 +227,18 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     }
 
 
+    public static void Fill(List<PowerItemComponent> itemList)
+    {
+        powerItemComponents = itemList;
+        for (int i = 0; i < itemList.Count; i++)
+        {
+            Debug.Log("fill " + powerItemComponents[i].pickedUpActor);
+            //bool isPlayer = manager.HasComponent<PlayerComponent>(itemList[i].pickedUpActor);
+        }
 
+        //if (manager.HasComponent<PowerItemComponent>(entity) == false) return;
+        //Debug.Log("fill " + item[0].pickedUpActor);
+    }
 
     void PlayMenuClickSound(AudioClip clip)
     {
@@ -274,13 +286,20 @@ public class PickupSystem : SystemBase
         var itemList = itemQuery.ToEntityArray(Allocator.Persistent);
         //NativeArray<TriggerComponent> triggerGroup = triggerQuery.ToComponentDataArray<TriggerComponent>(Allocator.Persistent);
         var itemGroup = itemQuery.ToComponentDataArray<PowerItemComponent>(Allocator.Persistent);
-        
 
-        for (int i = 0; i < itemList.Length; i++)
+        List<PowerItemComponent> powerItems = new List<PowerItemComponent>();
+        for (int i = 0; i < itemGroup.Length; i++)
         {
-
+            if (HasComponent<PlayerComponent>(itemGroup[i].pickedUpActor))
+            {
+                powerItems.Add(itemGroup[i]);
+             
+            }
 
         }
+
+        //PickupMenuGroup.Fill(powerItems);
+        PickupMenuGroup.powerItemComponents = powerItems;
 
         //JobHandle inputDeps0 = Entities.WithReadOnly(skillTreeGroup).ForEach
         //(
