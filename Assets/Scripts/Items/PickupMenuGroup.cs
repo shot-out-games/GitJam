@@ -31,7 +31,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     private EntityManager manager;
     public Entity entity;
-    public static List<PowerItemComponent> powerItemComponents = new List<PowerItemComponent>();
+    public List<PowerItemComponent> powerItemComponents = new List<PowerItemComponent>();
+    public PowerItemComponent[] useItemComponents = new PowerItemComponent[2];
+
     //public SkillTreeComponent player0_skillSet;
 
     AudioSource audioSource;
@@ -42,7 +44,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     private CanvasGroup canvasGroup;
 
     [SerializeField]
-    private TextMeshProUGUI label0;
+    private TextMeshProUGUI[] pickuplabel;
+    [SerializeField]
+    private TextMeshProUGUI[] uselabel;
 
     //public int speedPts;
     //public int powerPts;
@@ -50,6 +54,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     //public int availablePoints;
 
     private int buttonClickedIndex;
+    public static bool UpdateMenu = false;
+    //private bool[] inUsedItemList = new bool[30];
+
     //Player player;
 
     void Start()
@@ -59,11 +66,13 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         AddMenuButtonHandlers();
+        //useItemComponents.Add(new PowerItemComponent());
+        //useItemComponents.Add(new PowerItemComponent());
     }
 
 
 
-    void Update()
+    public void UpdateSystem()
     {
 
         if (entity == Entity.Null || manager == default) return;
@@ -89,9 +98,20 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         }
         EnableButtons();
         //   }
-        ShowLabel0();
+        ShowLabels();
+        //FillUseLabels();
     }
 
+    //  void FillUseLabels()
+    //  {
+    // for (int  i = 0;  i < useItemComponents.Count;  i++)
+    //  {
+
+    //  }
+
+
+
+    // }
     void EnableButtons()
     {
         exitButton.Select();
@@ -118,10 +138,79 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     }
 
-    void ShowLabel0()
+    public void ShowLabels()
     {
-        if (powerItemComponents.Count == 0) return;
-        label0.text = powerItemComponents[0].ToString(); ;
+        //if (UpdateMenu == false) return;
+        //UpdateMenu = false;
+
+        //if (PickupMenuGroup.useItemComponents[0].itemPickedUp == false)
+        //{
+        //    Debug.Log(" health  0");
+        //    Debug.Log(" health  1");
+        //    PickupMenuGroup.useItemComponents[0] = powerItemComponent;
+        //}
+        //else if (PickupMenuGroup.useItemComponents[1].itemPickedUp == false)
+        //{
+        //    PickupMenuGroup.useItemComponents[1] = powerItemComponent;
+        //}
+        //int count = 0;
+        //int max = useItemComponents.Length;
+
+        
+//        for (int i = 0; i < useItemComponents.Length; i++)
+//        {
+//            // Debug.Log("use " + uselabel.Length + " " + i);
+//            //if (uselabel.Length == 0) continue;
+
+
+////            if (useItemComponents[i].itemPickedUp == true) continue;
+//            for (int j = 0; j < powerItemComponents.Count; j++)
+//            {
+//                if (powerItemComponents[j].itemPickedUp == true && inUsedItemList[j] == false)
+//                {
+//                    useItemComponents[i] = powerItemComponents[j];
+//                    //inUsedItemList[j] = true;
+//                }
+
+//            }
+
+
+
+//            Debug.Log("use " + useItemComponents[i].description.ToString());
+
+
+//            //uselabel[i].text = useItemComponents[i].description.ToString();
+//            //uselabel[i].text = "test" + useItemComponents[i].itemPickedUp;
+
+//        }
+
+        for (int i = 0; i < pickuplabel.Length; i++)
+        {
+            if (i >= powerItemComponents.Count)
+            {
+                pickuplabel[i].text = "";//enable disable later
+            }
+            else
+            {
+                pickuplabel[i].text = powerItemComponents[i].description.ToString();
+            }
+        }
+
+        for (int i = 0; i < useItemComponents.Length; i++)
+        {
+            //Debug.Log("use " + uselabel.Length + " " + i);
+            //if (uselabel.Length == 0) continue;
+            if(useItemComponents[i].buttonAssigned == false && i < powerItemComponents.Count)
+            {
+                useItemComponents[i].buttonAssigned = true;
+                useItemComponents[i] = powerItemComponents[i];
+            }
+            uselabel[i].text = useItemComponents[i].description.ToString();
+            //uselabel[i].text = "test" + useItemComponents[i].itemPickedUp;
+
+        }
+
+
     }
 
     void ButtonClickedIndex(int index)
@@ -229,12 +318,13 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public static void Fill(List<PowerItemComponent> itemList)
     {
-        powerItemComponents = itemList;
-        for (int i = 0; i < itemList.Count; i++)
-        {
-            Debug.Log("fill " + powerItemComponents[i].pickedUpActor);
-            //bool isPlayer = manager.HasComponent<PlayerComponent>(itemList[i].pickedUpActor);
-        }
+        //powerItemComponents.Clear();
+        //powerItemComponents = itemList;
+        //for (int i = 0; i < itemList.Count; i++)
+        //{
+        //    Debug.Log("fill " + powerItemComponents[i].pickedUpActor);
+        //    //bool isPlayer = manager.HasComponent<PlayerComponent>(itemList[i].pickedUpActor);
+        //}
 
         //if (manager.HasComponent<PowerItemComponent>(entity) == false) return;
         //Debug.Log("fill " + item[0].pickedUpActor);
@@ -292,14 +382,35 @@ public class PickupSystem : SystemBase
         {
             if (HasComponent<PlayerComponent>(itemGroup[i].pickedUpActor))
             {
-                powerItems.Add(itemGroup[i]);
-             
+                if (itemGroup[i].itemPickedUp)
+                {
+                    powerItems.Add(itemGroup[i]);
+                }
+
             }
 
         }
 
+
+        Entities.WithoutBurst().ForEach
+       (
+           (
+               PickupMenuComponent pickupMenu,
+               PickupMenuGroup pickupMenuGroup
+
+           ) =>
+           {
+               pickupMenuGroup.powerItemComponents = powerItems;
+               pickupMenuGroup.UpdateSystem();
+
+                Debug.Log("pickup group ");
+               
+           }
+
+       ).Run();
+
         //PickupMenuGroup.Fill(powerItems);
-        PickupMenuGroup.powerItemComponents = powerItems;
+        //PickupMenuGroup.powerItemComponents = powerItems;
 
         //JobHandle inputDeps0 = Entities.WithReadOnly(skillTreeGroup).ForEach
         //(

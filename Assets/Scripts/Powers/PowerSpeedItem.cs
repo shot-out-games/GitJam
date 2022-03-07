@@ -23,7 +23,7 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
     public AudioClip powerEnabledAudioClip;
     public AudioClip powerTriggerAudioClip;
     public AudioSource audioSource;
-
+    public string powerItemDescription;
 
 
     void Start()
@@ -61,6 +61,7 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
         {
             particleSystemEntity = conversionSystem.GetPrimaryEntity(powerEnabledEffectPrefab),
             active = active,
+            description = powerItemDescription
            
         });
 

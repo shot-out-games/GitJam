@@ -25,14 +25,17 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
 
     [Header("Health")]
     public bool active = true;
-    public bool immediateUse;
     public float healthMultiplier = .75f;
-    //public GameObject powerPrefab;
+
+    //public ItemClass PowerItem;
+
+    public bool immediateUse;
     public GameObject powerEnabledEffectPrefab;
     public GameObject powerEnabledEffectInstance;
     public AudioClip powerEnabledAudioClip;
     public AudioClip powerTriggerAudioClip;
     public AudioSource audioSource;
+    public string powerItemDescription;
 
 
 
@@ -76,6 +79,7 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
         {
             particleSystemEntity = conversionSystem.GetPrimaryEntity(powerEnabledEffectPrefab),
             active = active,
+            description = powerItemDescription
             //powerType = (int)powerItems[i].powerType,
             //speedTimeOn = powerItems[i].speedTimeOn,
             //speedTimeMultiplier = powerItems[i].speedMultiplier,

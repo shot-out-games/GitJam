@@ -1,12 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using SandBox.Player;
+﻿
 using Unity.Entities;
-using Unity.Jobs;
-using Unity.Mathematics;
-using Unity.Transforms;
-using UnityEngine;
+using Unity.Collections;
 
+public class ItemClass
+{
+
+}
 
 public struct PowerItemComponent : IComponentData
 {
@@ -15,6 +14,11 @@ public struct PowerItemComponent : IComponentData
     public bool enabled;
     public Entity particleSystemEntity;
     public Entity addPickupEntityToInventory;
+    public bool itemPickedUp;
+    public FixedString64 description;
+    public bool buttonAssigned;
+    //public bool inUsedItemList;
+ 
 
 }
 
