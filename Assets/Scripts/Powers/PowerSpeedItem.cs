@@ -61,8 +61,10 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
         {
             particleSystemEntity = conversionSystem.GetPrimaryEntity(powerEnabledEffectPrefab),
             active = active,
-            description = powerItemDescription
-           
+            description = powerItemDescription,
+            pickupEntity = entity
+
+
         });
 
 

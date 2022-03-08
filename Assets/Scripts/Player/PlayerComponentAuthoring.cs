@@ -33,6 +33,8 @@ public struct SkillTreeComponent : IComponentData
 
 }
 
+
+
 [System.Serializable]
 public struct PlayerComponent : IComponentData
 {

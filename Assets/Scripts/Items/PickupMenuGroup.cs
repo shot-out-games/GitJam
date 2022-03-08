@@ -70,7 +70,25 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         //useItemComponents.Add(new PowerItemComponent());
     }
 
+    public void UpdateUseEntities()
+    {
 
+        if (entity == Entity.Null || manager == default) return;
+        Entity pickupEntity1 = useItemComponents[0].pickupEntity;
+        bool pickedUp1 = useItemComponents[0].itemPickedUp;
+        if (pickupEntity1 != Entity.Null && pickedUp1 == true)
+        {
+            manager.AddComponent<UseItem1>(pickupEntity1);
+        }
+        Entity pickupEntity2 = useItemComponents[1].pickupEntity;
+        bool pickedUp2 = useItemComponents[1].itemPickedUp;
+        if (pickupEntity2 != Entity.Null && pickedUp2 == true)
+        {
+            manager.AddComponent<UseItem1>(pickupEntity2);
+        }
+
+
+    }
 
     public void UpdateSystem()
     {
@@ -140,8 +158,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void ShowLabels()
     {
-        //if (UpdateMenu == false) return;
-        //UpdateMenu = false;
+        if (UpdateMenu == false) return;
+        UpdateMenu = false;
 
         //if (PickupMenuGroup.useItemComponents[0].itemPickedUp == false)
         //{
@@ -403,7 +421,7 @@ public class PickupSystem : SystemBase
                pickupMenuGroup.powerItemComponents = powerItems;
                pickupMenuGroup.UpdateSystem();
 
-                Debug.Log("pickup group ");
+                //Debug.Log("pickup group ");
                
            }
 
@@ -499,7 +517,7 @@ public class PickupSystem : SystemBase
                 // var inputController = GetComponent<InputControllerComponent>(inputEntityList[0]);
 
 
-                Debug.Log("pickup menu " + dpadR);
+                //Debug.Log("pickup menu " + dpadR);
                 if (pickupMenu.exitClicked || select && pickupMenu.showMenu == true)
                 {
                     pickupMenu.menuStateChanged = true;
@@ -523,6 +541,44 @@ public class PickupSystem : SystemBase
         //ecb.Dispose();
         //playerSkillSets.Dispose();
         itemGroup.Dispose();
+    }
+
+}
+
+
+
+
+public class InputUseItemSystem : SystemBase
+{
+    //Player player;
+
+    protected override void OnCreate()
+    {
+
+
+        Debug.Log("use1 ");
+
+    }
+    protected override void OnUpdate()
+    {
+      
+        var use1_entity = GetSingletonEntity<UseItem1>();
+        var use2_entity = GetSingletonEntity<UseItem2>();
+        bool use1_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use1");
+        bool use2_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use2");
+
+        Debug.Log("use1 " + use1_pressed);
+        Debug.Log("use2 " + use2_pressed);
+        if (use1_pressed && HasComponent<PowerItemComponent>(use1_entity))
+        {
+            EntityManager.AddComponent<ImmediateUseComponent>(use1_entity);
+        }
+        else if (use2_pressed && HasComponent<PowerItemComponent>(use2_entity))
+        {
+            EntityManager.AddComponent<ImmediateUseComponent>(use2_entity);
+        }
+
+
     }
 
 }

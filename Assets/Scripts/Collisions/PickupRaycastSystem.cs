@@ -236,7 +236,7 @@ public class PickupPowerUpRaycastSystem : SystemBase
                     pickedUpActor = parent;
                     powerItemComponent.pickedUpActor = pickedUpActor;
 
-                    Debug.Log(" health " + pickedUpActor);
+                    Debug.Log(" pickup " + pickedUpActor);
 
                     powerItemComponent.addPickupEntityToInventory = pickedUpActor;
                     powerItemComponent.itemPickedUp = true;

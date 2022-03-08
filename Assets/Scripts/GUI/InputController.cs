@@ -240,7 +240,7 @@ public class InputController : MonoBehaviour, IConvertGameObjectToEntity
         dpadUp = player.GetButtonDown("Dpad Up");
         dpadDown = player.GetButtonDown("Dpad Down");
         //bool dpadXButton = player.GetButtonDown("Dpad Horizontal");
-        Debug.Log("dpadRight " + dpadRight);
+        //Debug.Log("dpadRight " + dpadRight);
         dpadX = player.GetAxis("Dpad Horizontal");
         dpadY = player.GetAxis("Dpad Vertical");
 
