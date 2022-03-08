@@ -54,7 +54,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     //public int availablePoints;
 
     private int buttonClickedIndex;
-    public static bool UpdateMenu = false;
+    public static bool UpdateMenu = true;
     //private bool[] inUsedItemList = new bool[30];
 
     //Player player;
@@ -84,7 +84,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         bool pickedUp2 = useItemComponents[1].itemPickedUp;
         if (pickupEntity2 != Entity.Null && pickedUp2 == true)
         {
-            manager.AddComponent<UseItem1>(pickupEntity2);
+            manager.AddComponent<UseItem2>(pickupEntity2);
         }
 
 
@@ -158,8 +158,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void ShowLabels()
     {
-        if (UpdateMenu == false) return;
-        UpdateMenu = false;
+        //if (UpdateMenu == false) return;
+        //UpdateMenu = false;
 
         //if (PickupMenuGroup.useItemComponents[0].itemPickedUp == false)
         //{
@@ -373,6 +373,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 [UpdateInGroup(typeof(SimulationSystemGroup))]
 [UpdateAfter(typeof(InputControllerSystemUpdate))]
 
+
 public class PickupSystem : SystemBase
 {
     //Player player;
@@ -410,7 +411,7 @@ public class PickupSystem : SystemBase
         }
 
 
-        Entities.WithoutBurst().ForEach
+        Entities.WithoutBurst().WithStructuralChanges().ForEach
        (
            (
                PickupMenuComponent pickupMenu,
@@ -420,6 +421,7 @@ public class PickupSystem : SystemBase
            {
                pickupMenuGroup.powerItemComponents = powerItems;
                pickupMenuGroup.UpdateSystem();
+               pickupMenuGroup.UpdateUseEntities();
 
                 //Debug.Log("pickup group ");
                
@@ -547,7 +549,7 @@ public class PickupSystem : SystemBase
 
 
 
-
+//[AlwaysUpdateSystem]
 public class InputUseItemSystem : SystemBase
 {
     //Player player;
@@ -561,23 +563,35 @@ public class InputUseItemSystem : SystemBase
     }
     protected override void OnUpdate()
     {
-      
-        var use1_entity = GetSingletonEntity<UseItem1>();
-        var use2_entity = GetSingletonEntity<UseItem2>();
-        bool use1_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use1");
-        bool use2_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use2");
-
-        Debug.Log("use1 " + use1_pressed);
-        Debug.Log("use2 " + use2_pressed);
-        if (use1_pressed && HasComponent<PowerItemComponent>(use1_entity))
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
+        bool hasUse1 = HasSingleton<UseItem1>();
+        bool hasUse2 = HasSingleton<UseItem2>();
+        if (hasUse1)
         {
-            EntityManager.AddComponent<ImmediateUseComponent>(use1_entity);
+            var use1_entity = GetSingletonEntity<UseItem1>();
+            bool use1_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use1");
+            Debug.Log("use1 " + use1_pressed);
+            if (use1_pressed && HasComponent<PowerItemComponent>(use1_entity))
+            {
+                ecb.AddComponent<ImmediateUseComponent>(use1_entity);
+            }
+
         }
-        else if (use2_pressed && HasComponent<PowerItemComponent>(use2_entity))
+        if (hasUse2)
         {
-            EntityManager.AddComponent<ImmediateUseComponent>(use2_entity);
+            var use2_entity = GetSingletonEntity<UseItem2>();
+            bool use2_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use2");
+            Debug.Log("use2 " + use2_pressed);
+            if (use2_pressed && HasComponent<PowerItemComponent>(use2_entity))
+            {
+                ecb.AddComponent<ImmediateUseComponent>(use2_entity);
+            }
+
         }
 
+
+        ecb.Playback(EntityManager);
+        ecb.Dispose();
 
     }
 
