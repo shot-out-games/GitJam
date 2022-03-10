@@ -376,14 +376,12 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
 public class PickupSystem : SystemBase
 {
-    //Player player;
 
     protected override void OnCreate()
     {
-
-
-
     }
+
+
     protected override void OnUpdate()
     {
         //EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
@@ -410,24 +408,50 @@ public class PickupSystem : SystemBase
 
         }
 
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
-        Entities.WithoutBurst().WithStructuralChanges().ForEach
+        Entities.WithoutBurst().ForEach
        (
            (
-               PickupMenuComponent pickupMenu,
-               PickupMenuGroup pickupMenuGroup
+               PickupMenuGroup pickupMenuGroup,
+               in PickupMenuComponent pickupMenu
 
            ) =>
            {
+
                pickupMenuGroup.powerItemComponents = powerItems;
                pickupMenuGroup.UpdateSystem();
-               pickupMenuGroup.UpdateUseEntities();
+               //pickupMenuGroup.UpdateUseEntities();
 
-                //Debug.Log("pickup group ");
-               
+               Entity pickupEntity1 = pickupMenuGroup.useItemComponents[0].pickupEntity;
+               bool pickedUp1 = pickupMenuGroup.useItemComponents[0].itemPickedUp;
+               if (pickupEntity1 != Entity.Null && pickedUp1 == true && HasComponent<UseItem1>(pickupEntity1) == false && HasComponent<UseItem2>(pickupEntity1))
+               {
+                   ecb.AddComponent<UseItem1>(pickupEntity1);
+               }
+               Entity pickupEntity2 = pickupMenuGroup.useItemComponents[1].pickupEntity;
+               bool pickedUp2 = pickupMenuGroup.useItemComponents[1].itemPickedUp;
+               if (pickupEntity2 != Entity.Null && pickedUp2 == true && HasComponent<UseItem1>(pickupEntity2) == false && HasComponent<UseItem2>(pickupEntity2))
+               {
+                   ecb.AddComponent<UseItem2>(pickupEntity2);
+               }
+               //Entity pickupEntity2 = useItemComponents[1].pickupEntity;
+               //bool pickedUp2 = useItemComponents[1].itemPickedUp;
+               //if (pickupEntity2 != Entity.Null && pickedUp2 == true)
+               //{
+               //  manager.AddComponent<UseItem2>(pickupEntity2);
+               //}
+
+
+               //Debug.Log("pickup group ");
+
            }
 
        ).Run();
+
+        ecb.Playback(EntityManager);
+        ecb.Dispose();
+
 
         //PickupMenuGroup.Fill(powerItems);
         //PickupMenuGroup.powerItemComponents = powerItems;
@@ -574,6 +598,7 @@ public class InputUseItemSystem : SystemBase
             if (use1_pressed && HasComponent<PowerItemComponent>(use1_entity))
             {
                 ecb.AddComponent<ImmediateUseComponent>(use1_entity);
+                //ecb.RemoveComponent<UseItem1>(use1_entity);
             }
 
         }
@@ -585,6 +610,7 @@ public class InputUseItemSystem : SystemBase
             if (use2_pressed && HasComponent<PowerItemComponent>(use2_entity))
             {
                 ecb.AddComponent<ImmediateUseComponent>(use2_entity);
+                //ecb.RemoveComponent<UseItem2>(use2_entity);
             }
 
         }

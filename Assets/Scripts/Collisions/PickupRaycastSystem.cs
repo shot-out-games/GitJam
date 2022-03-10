@@ -478,6 +478,8 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                     enabled = true,
                     healthMultiplier = healthPower.healthMultiplier
                 };
+
+                ecb.RemoveComponent<UseItem1>(entity);
                 ecb.AddComponent(pickedUpActor, healthPowerPlayer);
 
 
@@ -487,6 +489,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
             if (HasComponent<Speed>(entity))
             {
+
 
                 var speedPower = GetComponent<Speed>(entity);
 
@@ -516,6 +519,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                     multiplier = speedPower.multiplier
                 };
 
+                ecb.RemoveComponent<UseItem1>(entity);
                 ecb.RemoveComponent<ImmediateUseComponent>(entity);
                 ecb.AddComponent(entity, new DestroyComponent());
                 ecb.AddComponent(pickedUpActor, speedPowerPlayer);
