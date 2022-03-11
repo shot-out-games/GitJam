@@ -94,7 +94,7 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
         dstManager.AddComponentData(entity, new HealthPower
         {
             enabled = false,
-            healthMultiplier = 0
+            healthMultiplier = healthMultiplier
         });
 
         if(immediateUse)

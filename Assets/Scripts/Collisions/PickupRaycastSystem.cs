@@ -453,7 +453,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
             pickedUpActor = powerItemComponent.pickedUpActor;
             if (pickedUpActor == Entity.Null) return;
 
-            if (HasComponent<HealthPower>(entity))
+            if (HasComponent<HealthPower>(entity) && powerItemComponent.enabled == false)
             {
 
                 powerItemComponent.enabled = true;
@@ -479,7 +479,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                     healthMultiplier = healthPower.healthMultiplier
                 };
 
-                ecb.RemoveComponent<UseItem1>(entity);
+                //ecb.RemoveComponent<UseItem1>(entity);
                 ecb.AddComponent(pickedUpActor, healthPowerPlayer);
 
 
@@ -487,7 +487,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
 
 
-            if (HasComponent<Speed>(entity))
+            if (HasComponent<Speed>(entity) && powerItemComponent.enabled == false)
             {
 
 
@@ -519,7 +519,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                     multiplier = speedPower.multiplier
                 };
 
-                ecb.RemoveComponent<UseItem1>(entity);
+                //ecb.RemoveComponent<UseItem1>(entity);
                 ecb.RemoveComponent<ImmediateUseComponent>(entity);
                 ecb.AddComponent(entity, new DestroyComponent());
                 ecb.AddComponent(pickedUpActor, speedPowerPlayer);

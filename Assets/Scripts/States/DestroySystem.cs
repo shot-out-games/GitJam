@@ -15,7 +15,9 @@ public struct DestroyComponent : IComponentData
 
 
 
-[UpdateInGroup((typeof(PresentationSystemGroup)))]
+//[UpdateInGroup((typeof(PresentationSystemGroup)))]
+[UpdateInGroup(typeof(SimulationSystemGroup))]
+
 public class DestroySystem : SystemBase
 {
 
@@ -33,25 +35,34 @@ public class DestroySystem : SystemBase
 
     protected override void OnUpdate()
     {
-        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
 
 
-        Entities.ForEach((Entity e, ref DestroyComponent destroyComponent, ref Translation translation) =>
+
+        Entities.WithoutBurst().ForEach((ref DestroyComponent destroyComponent, ref Translation translation, in Entity e) =>
         {
             translation.Value = new float3(0, -50, 0);
             ecb.AddComponent(e, new DisableRendering());//not needed because it doesn't turn off child particle system render
+            //if(HasComponent<UseItem1>(e))
+            //{
+              //  ecb.RemoveComponent<UseItem1>(e);
+            //}
+
             destroyComponent.frames++;
             if (destroyComponent.frames > 600)
             {
+                //ecb.RemoveComponent<C>(e);
                 ecb.DestroyEntity(e);
             }
 
-        }).Schedule();
+        }).Run();
 
-       
 
+        ecb.Playback(EntityManager);
+        ecb.Dispose();
         // Make sure that the ECB system knows about our job
-        m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
+        //m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
 
     }
 }
