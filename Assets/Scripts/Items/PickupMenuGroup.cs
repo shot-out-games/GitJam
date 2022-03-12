@@ -158,7 +158,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void ShowLabels()
     {
-        
+
 
         for (int i = 0; i < pickuplabel.Length; i++)
         {
@@ -174,15 +174,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
         for (int i = 0; i < useItemComponents.Length; i++)
         {
-            //Debug.Log("use " + uselabel.Length + " " + i);
-            //if (uselabel.Length == 0) continue;
-            if (useItemComponents[i].buttonAssigned == false && i < powerItemComponents.Count)
-            {
-                useItemComponents[i].buttonAssigned = true;
-                useItemComponents[i] = powerItemComponents[i];
-            }
             uselabel[i].text = useItemComponents[i].description.ToString();
-            //uselabel[i].text = "test" + useItemComponents[i].itemPickedUp;
 
         }
 
@@ -316,24 +308,27 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
 
 [UpdateInGroup(typeof(SimulationSystemGroup))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 [UpdateAfter(typeof(InputControllerSystemUpdate))]
+//[UpdateAfter(typeof(PickupPowerUpRaycastSystem))]
 
 
 public class PickupSystem : SystemBase
 {
 
-    protected override void OnCreate()
-    {
-    }
 
 
     protected override void OnUpdate()
     {
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
+
         var itemQuery = GetEntityQuery(ComponentType.ReadOnly<PowerItemComponent>());
         var itemList = itemQuery.ToEntityArray(Allocator.Persistent);
         var itemGroup = itemQuery.ToComponentDataArray<PowerItemComponent>(Allocator.Persistent);
 
         List<PowerItemComponent> powerItems = new List<PowerItemComponent>();
+        PowerItemComponent[] useItems = new PowerItemComponent[2];
+
         for (int i = 0; i < itemGroup.Length; i++)
         {
             if (HasComponent<PlayerComponent>(itemGroup[i].pickedUpActor))
@@ -347,88 +342,100 @@ public class PickupSystem : SystemBase
 
         }
 
-        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
 
-        Entities.WithoutBurst().ForEach
-       (
-           (
-               PickupMenuGroup pickupMenuGroup,
-               in Entity e,
-               in PickupMenuComponent pickupMenu
-
-           ) =>
-           {
-
-               pickupMenuGroup.powerItemComponents = powerItems;
-
-             
-               if (pickupMenu.showMenu)
-               {
-                   pickupMenuGroup.ShowMenu();
-               }
-               else
-               {
-                   pickupMenuGroup.HideMenu();
-               }
-
-               Entity pickupEntity1 = pickupMenuGroup.useItemComponents[0].pickupEntity;
-               bool pickedUp1 = pickupMenuGroup.useItemComponents[0].itemPickedUp;
-               if (pickupEntity1 != Entity.Null && pickedUp1 == true && HasComponent<UseItem1>(pickupEntity1) == false)
-               {
-                   ecb.AddComponent<UseItem1>(pickupEntity1);
-               }
-               Entity pickupEntity2 = pickupMenuGroup.useItemComponents[1].pickupEntity;
-               bool pickedUp2 = pickupMenuGroup.useItemComponents[1].itemPickedUp;
-               if (pickupEntity2 != Entity.Null && pickedUp2 == true && HasComponent<UseItem2>(pickupEntity2) == false)
-               {
-                   ecb.AddComponent<UseItem2>(pickupEntity2);
-               }
-
-               pickupMenuGroup.EnableButtons();
-               pickupMenuGroup.ShowLabels();
-           }
-
-       ).Run();
-
-
-
-        Entities.WithoutBurst().ForEach
-        (
-            (
-                ref PickupMenuComponent pickupMenu
-
-            ) =>
+        for (int i = 0; i < useItems.Length; i++)
+        {
+            if (i < powerItems.Count)
+            //if (useItems[i].buttonAssigned == false && i < powerItems.Count)
             {
-                var dpadR = ReInput.players.GetPlayer(0).GetButtonDown("DpadR");
-                var select = ReInput.players.GetPlayer(0).GetButtonDown("Select");
-
-                // var inputController = GetComponent<InputControllerComponent>(inputEntityList[0]);
-
-
-                //Debug.Log("pickup menu " + dpadR);
-                if (pickupMenu.exitClicked || select && pickupMenu.showMenu == true)
-                {
-                    pickupMenu.menuStateChanged = true;
-                    pickupMenu.exitClicked = false;
-                    pickupMenu.showMenu = false;
-                }
-                else if (dpadR)
-                {
-                    pickupMenu.menuStateChanged = true;
-                    pickupMenu.showMenu = !pickupMenu.showMenu;
-                }
+                //useItems[i].buttonAssigned = true;
+                useItems[i] = powerItems[i];
             }
+
+        }
+
+
+        var pickupMenu = GetSingleton<PickupMenuComponent>();
+
+        var dpadR = ReInput.players.GetPlayer(0).GetButtonDown("DpadR");
+        var select = ReInput.players.GetPlayer(0).GetButtonDown("Select");
+        if (pickupMenu.exitClicked || select && pickupMenu.showMenu == true)
+        {
+            pickupMenu.menuStateChanged = true;
+            pickupMenu.exitClicked = false;
+            pickupMenu.showMenu = false;
+        }
+        else if (dpadR)
+        {
+            pickupMenu.menuStateChanged = true;
+            pickupMenu.showMenu = !pickupMenu.showMenu;
+        }
+        SetSingleton(pickupMenu);
+
+
+        Entities.WithoutBurst().ForEach((PickupMenuGroup pickupMenuGroup) =>
+        {
+
+            pickupMenuGroup.powerItemComponents = powerItems;
+            pickupMenuGroup.useItemComponents = useItems;
+            pickupMenuGroup.EnableButtons();
+            pickupMenuGroup.ShowLabels();
+            if (pickupMenu.showMenu)
+            {
+                pickupMenuGroup.ShowMenu();
+            }
+            else
+            {
+                pickupMenuGroup.HideMenu();
+            }
+        }
 
         ).Run();
 
-        //inputDeps3.Complete();
+
+
+
+
+
+
+
+
+
+
+        Entity pickupEntity1 = useItems[0].pickupEntity;
+        bool pickedUp1 = useItems[0].itemPickedUp;
+
+        Entity pickupEntity2 = useItems[1].pickupEntity;
+        bool pickedUp2 = useItems[1].itemPickedUp;
+
+
+        bool HasUse1 = HasComponent<UseItem1>(pickupEntity1);
+        bool HasUse2 = HasComponent<UseItem2>(pickupEntity2);
+
+        Debug.Log("pu e1 " + pickupEntity1);
+        Debug.Log("pu e2 " + pickupEntity2);
+
+        if (pickupEntity1 != Entity.Null && pickedUp1 == true && HasUse1 == false)
+        {
+            ecb.AddComponent<UseItem1>(pickupEntity1);
+            Debug.Log("add use1 " + pickupEntity1);
+        }
+        else if (pickupEntity2 != Entity.Null && pickedUp2 == true && HasUse2 == false)
+        {
+            ecb.AddComponent<UseItem2>(pickupEntity2);
+            Debug.Log("add use2 " + pickupEntity2);
+        }
+
+
+
+
 
 
 
         ecb.Playback(EntityManager);
         ecb.Dispose();
-        //playerSkillSets.Dispose();
         itemGroup.Dispose();
+        itemList.Dispose();
     }
 
 }

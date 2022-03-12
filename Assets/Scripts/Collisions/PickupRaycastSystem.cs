@@ -171,26 +171,31 @@ public class PickupWeaponRaycastSystem : SystemBase
 
 }
 
+[UpdateAfter(typeof(Unity.Physics.Systems.EndFramePhysicsSystem))]
+[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
+
 
 public class PickupPowerUpRaycastSystem : SystemBase
 {
 
-    EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
+    //EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
 
 
     protected override void OnCreate()
     {
         base.OnCreate();
         // Find the ECB system once and store it for later usage
-        m_EndSimulationEcbSystem = World
-            .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        //m_EndSimulationEcbSystem = World
+          //  .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
     protected override void OnUpdate()
     {
         //bool pickedUp = false;
         Entity pickedUpActor = Entity.Null;
-        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        var ecb = new EntityCommandBuffer(Allocator.Persistent);
+
 
         Entities.WithoutBurst().WithNone<DestroyComponent>().ForEach((
             ref PowerItemComponent powerItemComponent,
@@ -251,8 +256,10 @@ public class PickupPowerUpRaycastSystem : SystemBase
 
         }).Run();
 
+        ecb.Playback(EntityManager);
+        ecb.Dispose();
         // Make sure that the ECB system knows about our job
-        m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
+        //m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
 
 
     }
@@ -424,24 +431,25 @@ public class PickupPowerUpRaycastSystem : SystemBase
 public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file later 
 {
 
-    EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
+    //EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
 
 
     protected override void OnCreate()
     {
         base.OnCreate();
         // Find the ECB system once and store it for later usage
-        m_EndSimulationEcbSystem = World
-            .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+       // m_EndSimulationEcbSystem = World
+         //   .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
     protected override void OnUpdate()
     {
         //bool pickedUp = false;
         Entity pickedUpActor = Entity.Null;
-        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
 
-        Entities.WithoutBurst().WithAny<UseItem1, UseItem2>().ForEach((
+        Entities.WithAny<UseItem1, UseItem2>().ForEach((
             ref PowerItemComponent powerItemComponent,
             in ImmediateUseComponent immediateUseComponent,
             in Translation translation,
@@ -466,7 +474,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
                 ecb.AddComponent(instanceEntity, ps);
 
-                Debug.Log(" health " + pickedUpActor);
+                //Debug.Log(" health " + pickedUpActor);
                 var healthPower = GetComponent<HealthPower>(entity);
 
 
@@ -505,7 +513,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
                 ecb.AddComponent(instanceEntity, ps);
 
-                Debug.Log(" speed " + pickedUpActor);
+               // Debug.Log(" speed " + pickedUpActor);
 
 
 
@@ -535,7 +543,9 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
         }).Run();
 
         // Make sure that the ECB system knows about our job
-        m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
+        //m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
+        ecb.Playback(EntityManager);
+        ecb.Dispose();
 
 
     }
