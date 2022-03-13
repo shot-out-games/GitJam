@@ -2,6 +2,7 @@
 using Unity.Entities;
 using Unity.Collections;
 using Unity.Mathematics;
+using System;
 
 public class ItemClass
 {
@@ -19,7 +20,7 @@ public struct UseItem2 : IComponentData
 }
 
 
-public struct PowerItemComponent : IComponentData
+public struct PowerItemComponent : IComponentData, IComparable
 {
     public Entity pickedUpActor;
     public Entity pickupEntity;
@@ -30,8 +31,18 @@ public struct PowerItemComponent : IComponentData
     public bool itemPickedUp;
     public FixedString64 description;
     public bool buttonAssigned;
+    public bool useSlot1;
+    public bool useSlot2;
+    public int index;
+
+   
+
+    public int CompareTo(object obj)
+    {
+        return index.CompareTo(obj);
+    }
     //public bool inUsedItemList;
- 
+
 
 }
 
