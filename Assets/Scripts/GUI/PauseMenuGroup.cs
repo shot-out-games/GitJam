@@ -86,7 +86,8 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
         defaultButton.Select();
         resumeButton.onClick.AddListener(OnResumeClickedEvent);
-        optionsButton.onClick.AddListener(() => ShowMenu(false));
+        //optionsButton.onClick.AddListener(() => ShowMenu(false));
+        optionsButton.onClick.AddListener(ShowMenu);
         optionsButton.onClick.AddListener(OnOptionsClickedEvent);
         saveExitButton.onClick.AddListener(OnSaveExitClickedEvent);
         scoresButton.onClick.AddListener(OnScoresClickedEvent);
@@ -106,7 +107,7 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
         //defaultButton.Select();//not working
-        //Debug.Log("Select");
+        Debug.Log("Select " + defaultButton.gameObject);
     }
 
     private void SkillTreeMenuPanel(bool paused)
@@ -139,21 +140,24 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     }
 
 
-    public void ShowMenu(bool show)//should have separated from HideMenu
+    public void ShowMenu()//should have separated from HideMenu
     {
         //menuCanvas.GetComponent<Canvas>().gameObject.SetActive(show);
         Canvas.ForceUpdateCanvases();
-        if (show == false)
-        {
-            ResumeClickedEvent?.Invoke();
-        }
+        bool show = GameInterface.Paused;
+        //if (show == false)
+        //{
+        //  ResumeClickedEvent?.Invoke();
+        //}
         canvasGroup = GetComponent<CanvasGroup>();
         canvasGroup.alpha = show ? 1 : 0;
         canvasGroup.interactable = show;
         canvasGroup.blocksRaycasts = show;
         if (defaultButton && show == true)
         {
-            defaultButton.Select();
+            Debug.Log("show " + show);
+            //defaultButton.Select();
+            ResetSelectedButton();
         }
 
 

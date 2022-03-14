@@ -31,7 +31,7 @@ namespace SandBox.Player
 
 
 
-            Entities.WithoutBurst().WithNone<Pause>().ForEach(
+            Entities.WithoutBurst().ForEach(
                 (
                     Entity e,
                     PlayerMove playerMove,
@@ -80,6 +80,9 @@ namespace SandBox.Player
                     stickInput.Normalize();
 
                     stickSpeed = stickInput.sqrMagnitude;
+                    if (HasComponent<Pause>(e)) currentSpeed = 0;
+
+
                     if (currentSpeed == 0) stickSpeed = 0;
                     //animator.SetFloat("Vertical", stickSpeed);
                     animator.SetFloat("Vertical", stickSpeed, playerMoveComponent.dampTime, Time.DeltaTime);
