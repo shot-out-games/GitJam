@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclareReferencedPrefabs
 {
-   
+
 
     public bool active = true;
     public bool immediateUse;
@@ -53,7 +53,7 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
 
         conversionSystem.AddHybridComponent(audioSource);
         conversionSystem.AddHybridComponent(this);
-      
+
 
         Debug.Log("power up " + entity);
 
@@ -62,7 +62,8 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
             particleSystemEntity = conversionSystem.GetPrimaryEntity(powerEnabledEffectPrefab),
             active = active,
             description = powerItemDescription,
-            pickupEntity = entity
+            pickupEntity = entity,
+            index = entity.Index
 
 
         });

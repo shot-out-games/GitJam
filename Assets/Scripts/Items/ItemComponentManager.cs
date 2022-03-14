@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.Collections;
 using Unity.Mathematics;
 using System;
+using System.Collections.Generic;
 
 public class ItemClass
 {
@@ -20,7 +21,7 @@ public struct UseItem2 : IComponentData
 }
 
 
-public struct PowerItemComponent : IComponentData, IComparable
+public struct PowerItemComponent : IComponentData
 {
     public Entity pickedUpActor;
     public Entity pickupEntity;
@@ -35,17 +36,27 @@ public struct PowerItemComponent : IComponentData, IComparable
     public bool useSlot2;
     public int index;
 
-   
-
-    public int CompareTo(object obj)
-    {
-        return index.CompareTo(obj);
-    }
-    //public bool inUsedItemList;
-
-
 }
 
+
+public struct PowerItemIndexComparer : IComparer<PowerItemComponent> 
+{
+    
+
+    public int Compare(PowerItemComponent a, PowerItemComponent b)
+    {
+      
+        int a_index = a.index;
+        int b_index = b.index;
+        if (a_index > b_index)
+            return 1;
+        else if (a_index < b_index)
+            return -1;
+        else
+            return 0;
+
+    }
+}
 
 
 public struct ImmediateUseComponent : IComponentData

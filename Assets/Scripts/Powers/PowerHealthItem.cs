@@ -80,7 +80,8 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
             particleSystemEntity = conversionSystem.GetPrimaryEntity(powerEnabledEffectPrefab),
             active = active,
             description = powerItemDescription,
-            pickupEntity = entity
+            pickupEntity = entity,
+            index = entity.Index
             //powerType = (int)powerItems[i].powerType,
             //speedTimeOn = powerItems[i].speedTimeOn,
             //speedTimeMultiplier = powerItems[i].speedMultiplier,

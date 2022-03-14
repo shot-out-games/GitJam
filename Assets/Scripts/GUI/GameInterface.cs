@@ -40,9 +40,11 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
     private void OnDisable()
     {
         PauseMenuGroup.ResumeClickedEvent -= ResumeClicked;
-        SkillTreeMenuGroup.PauseGame -= OtherMenu;
         PauseMenuGroup.OptionsClickedEvent -= OptionsClicked;
+        OptionsMenuGroup.OptionsExitBackClickedEvent -= OptionsExitClicked;
+        SkillTreeMenuGroup.PauseGame -= OtherMenu;
         PickupMenuGroup.PauseGame -= OtherMenu;
+        
     }
 
     void Start()
