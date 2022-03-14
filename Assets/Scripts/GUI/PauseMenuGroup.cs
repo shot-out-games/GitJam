@@ -85,6 +85,7 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         canvasGroup = GetComponent<CanvasGroup>();
 
         defaultButton.Select();
+        EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
         resumeButton.onClick.AddListener(OnResumeClickedEvent);
         //optionsButton.onClick.AddListener(() => ShowMenu(false));
         optionsButton.onClick.AddListener(ShowMenu);
@@ -156,8 +157,8 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         if (defaultButton && show == true)
         {
             Debug.Log("show " + show);
-            //defaultButton.Select();
-            ResetSelectedButton();
+            defaultButton.Select();
+            //ResetSelectedButton();
         }
 
 

@@ -103,17 +103,17 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     public void EnableButtons()
     {
         buttons[0].Select();
-        useButtons[0].interactable = true;
-        useButtons[1].interactable = true;
-        if (powerItemComponents.Count == 1)
-        {
-            useButtons[1].interactable = false;
-        }
-        if (powerItemComponents.Count == 0)
-        {
-            useButtons[0].interactable = false;
-            useButtons[1].interactable = false;
-        }
+        //useButtons[0].interactable = true;
+        //useButtons[1].interactable = true;
+        //if (powerItemComponents.Count == 1)
+        //{
+        //    useButtons[1].interactable = false;
+        //}
+        //if (powerItemComponents.Count == 0)
+        //{
+        //    useButtons[0].interactable = false;
+        //    useButtons[1].interactable = false;
+        //}
 
         //buttons[1].interactable = false;
         //buttons[2].interactable = false;
@@ -369,9 +369,11 @@ public class PickupSystem : SystemBase
 
 
         var pickupMenu = GetSingleton<PickupMenuComponent>();
+        pickupMenu.menuStateChanged = false;
 
         var dpadR = ReInput.players.GetPlayer(0).GetButtonDown("DpadR");
         var select = ReInput.players.GetPlayer(0).GetButtonDown("Select");
+        
         if (pickupMenu.exitClicked || select && pickupMenu.showMenu == true)
         {
             pickupMenu.menuStateChanged = true;
@@ -389,13 +391,14 @@ public class PickupSystem : SystemBase
         Entities.WithoutBurst().ForEach((PickupMenuGroup pickupMenuGroup) =>
         {
 
-            //pickupMenuGroup.powerItemComponents = powerItems;
-            //pickupMenuGroup.useItemComponents = useItems;
-            pickupMenuGroup.EnableButtons();
-            pickupMenuGroup.ShowLabels();
+            Debug.Log("pu sho " + pickupMenu.showMenu);
+           
+           // pickupMenuGroup.EnableButtons();
+            //pickupMenuGroup.ShowLabels();
             if (pickupMenu.showMenu)
             {
                 pickupMenuGroup.ShowMenu();
+                pickupMenuGroup.ShowLabels();
             }
             else
             {
