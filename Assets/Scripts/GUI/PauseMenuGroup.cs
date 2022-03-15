@@ -16,7 +16,7 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     public delegate void ActionResume();
     public static event ActionResume ResumeClickedEvent;//gameinterface subscribes to this
 
-    public static event Action OptionsClickedEvent;//this is same as two lines above - action keyword shorthand
+    //public static event Action OptionsClickedEvent;//this is same as two lines above - action keyword shorthand
     public static event Action SaveExitClickedEvent;
     public static event Action ExitClickedEvent;
     public static event Action ScoresClickedEvent;
@@ -40,6 +40,8 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     private EntityManager manager;
     private Entity e;
 
+    //public static bool Paused;
+
     private void OnResumeClickedEvent()
     {
         //subscriber game interface
@@ -52,7 +54,7 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         //subscriber options menu group -> showmenu 
         //subscriber pause menu group -> showmenu(false)
-        OptionsClickedEvent?.Invoke();
+        //OptionsClickedEvent?.Invoke();
     }
 
     private void OnSaveExitClickedEvent()
@@ -88,7 +90,8 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         EventSystem.current.SetSelectedGameObject(defaultButton.gameObject);
         resumeButton.onClick.AddListener(OnResumeClickedEvent);
         //optionsButton.onClick.AddListener(() => ShowMenu(false));
-        optionsButton.onClick.AddListener(ShowMenu);
+        //optionsButton.onClick.AddListener(ShowMenu);
+        //optionsButton.onClick.AddListener(ShowMenu);
         optionsButton.onClick.AddListener(OnOptionsClickedEvent);
         saveExitButton.onClick.AddListener(OnSaveExitClickedEvent);
         scoresButton.onClick.AddListener(OnScoresClickedEvent);
@@ -100,8 +103,15 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         GameInterface.SelectClickedEvent += ShowMenu;
         SkillTreeMenuGroup.PauseGame += SkillTreeMenuPanel;
-        PickupMenuGroup.PauseGame += PauseMenuPanel;
+        //PickupMenuGroup.PauseGame += PauseMenuPanel;
         ScoreMenuGroup.ScoreMenuExitBackClickedEvent += ResetSelectedButton;
+
+        PickupMenuGroup.HideSubscriberMenu += HideMenu;
+    }
+
+    private void PickupMenuGroup_HideSubscriberMenu()
+    {
+        throw new NotImplementedException();
     }
 
     private void ResetSelectedButton()
@@ -115,18 +125,24 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         //paused true when skilltree panel visible
         //Debug.Log("stmp " + paused);
-        if (paused) HideMenu();
+        //if (paused) HideMenu();
     }
 
     private void PauseMenuPanel(bool paused)
     {
         //paused true when skilltree panel visible
         //Debug.Log("stmp " + paused);
-        if (paused) HideMenu();
+        //if (paused) HideMenu();
     }
 
-    public void HideMenu()
+    public void HideMenu(bool resume)
     {
+        //GameInterface.SelectPressed = true;
+        if (resume)
+        {
+            GameInterface.Paused = false;
+            GameInterface.StateChange = true;
+        }
         canvasGroup.interactable = false;
         canvasGroup.alpha = 0.0f;
         canvasGroup.blocksRaycasts = false;
@@ -137,7 +153,7 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         GameInterface.SelectClickedEvent -= ShowMenu;
         SkillTreeMenuGroup.PauseGame -= SkillTreeMenuPanel;
         ScoreMenuGroup.ScoreMenuExitBackClickedEvent -= ResetSelectedButton;
-        PickupMenuGroup.PauseGame -= PauseMenuPanel;
+        //PickupMenuGroup.PauseGame -= PauseMenuPanel;
     }
 
 

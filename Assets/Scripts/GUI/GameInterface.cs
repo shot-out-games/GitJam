@@ -33,6 +33,7 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
 
     public static bool Paused = false;
     public static bool SelectPressed = false;
+    public static bool StateChange = false;
 
     public Player player;
     public int playerId = 0; // The Rewired player id of this character
@@ -40,19 +41,19 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
     private void OnEnable()
     {
         PauseMenuGroup.ResumeClickedEvent += ResumeClicked;
-        PauseMenuGroup.OptionsClickedEvent += OptionsClicked;
+        //PauseMenuGroup.OptionsClickedEvent += OptionsClicked;
         OptionsMenuGroup.OptionsExitBackClickedEvent += OptionsExitClicked;
         SkillTreeMenuGroup.PauseGame += OtherMenu;
-        PickupMenuGroup.PauseGame += OtherMenu;
+        //PickupMenuGroup.PauseGame += OtherMenu;
     }
 
     private void OnDisable()
     {
         PauseMenuGroup.ResumeClickedEvent -= ResumeClicked;
-        PauseMenuGroup.OptionsClickedEvent -= OptionsClicked;
+        //PauseMenuGroup.OptionsClickedEvent -= OptionsClicked;
         OptionsMenuGroup.OptionsExitBackClickedEvent -= OptionsExitClicked;
         SkillTreeMenuGroup.PauseGame -= OtherMenu;
-        PickupMenuGroup.PauseGame -= OtherMenu;
+        //PickupMenuGroup.PauseGame -= OtherMenu;
 
     }
 
@@ -87,6 +88,7 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
         SelectPressed = false;
         if (player.GetButtonDown("select"))
         {
+            StateChange = true;
             Paused = !Paused;
             SelectPressed = true;
             SelectClicked();
@@ -147,7 +149,8 @@ public class GameInterfaceSystem : SystemBase
     {
 
         bool paused = GameInterface.Paused;
-        bool selectPressed = GameInterface.SelectPressed;
+        //bool selectPressed = GameInterface.SelectPressed;
+        bool stateChange = GameInterface.StateChange;
 
         //if(EntityManager.HasComponent<DeadMenuComponent>())
 
@@ -161,9 +164,9 @@ public class GameInterfaceSystem : SystemBase
         stepPhysicsWorld.Enabled = !paused;
 
 
-        if (selectPressed)
+        if (stateChange)
         {
-
+            GameInterface.StateChange = false;
             Entities.WithoutBurst().WithAll<RatingsComponent>().WithStructuralChanges().ForEach((Entity entity) =>
             {
 

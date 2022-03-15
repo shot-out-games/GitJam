@@ -27,14 +27,14 @@ public class MenuBarGroup : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseMenuGroup.OptionsClickedEvent += ShowMenu;
+        //PauseMenuGroup.OptionsClickedEvent += ShowMenu;
         GameInterface.HideMenuEvent += HideMenu;
 
     }
 
     private void OnDisable()
     {
-        PauseMenuGroup.OptionsClickedEvent -= ShowMenu;
+        //PauseMenuGroup.OptionsClickedEvent -= ShowMenu;
         GameInterface.HideMenuEvent -= HideMenu;
 
 

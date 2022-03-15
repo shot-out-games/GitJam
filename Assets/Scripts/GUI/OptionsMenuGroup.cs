@@ -44,13 +44,20 @@ public class OptionsMenuGroup : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseMenuGroup.OptionsClickedEvent += ShowMenu;
+        //PauseMenuGroup.OptionsClickedEvent += ShowMenu;
+        PickupMenuGroup.HideSubscriberMenu += HideSubscriberMenu;
     }
-
     private void OnDisable()
     {
-        PauseMenuGroup.OptionsClickedEvent -= ShowMenu;
+        //PauseMenuGroup.OptionsClickedEvent -= ShowMenu;
+        PickupMenuGroup.HideSubscriberMenu += HideSubscriberMenu;
     }
+
+    private void HideSubscriberMenu(bool resume)
+    {
+        HideMenu();//event has parameter but this has HideMenu method with no parameter so just call from here
+    }
+
 
     void Start()
     {

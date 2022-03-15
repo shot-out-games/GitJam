@@ -27,7 +27,8 @@ public class PowerItemClass
 public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 {
 
-    public static event Action<bool> PauseGame;
+    //public static event Action<bool> PauseGame;
+    public static event Action<bool> HideSubscriberMenu;
 
     private EntityManager manager;
     public Entity entity;
@@ -103,17 +104,17 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     public void EnableButtons()
     {
         buttons[0].Select();
-        //useButtons[0].interactable = true;
-        //useButtons[1].interactable = true;
-        //if (powerItemComponents.Count == 1)
-        //{
-        //    useButtons[1].interactable = false;
-        //}
-        //if (powerItemComponents.Count == 0)
-        //{
-        //    useButtons[0].interactable = false;
-        //    useButtons[1].interactable = false;
-        //}
+        useButtons[0].interactable = true;
+        useButtons[1].interactable = true;
+        if (powerItemComponents.Count == 1)
+        {
+            useButtons[1].interactable = false;
+        }
+        if (powerItemComponents.Count == 0)
+        {
+            useButtons[0].interactable = false;
+            useButtons[1].interactable = false;
+        }
 
         //buttons[1].interactable = false;
         //buttons[2].interactable = false;
@@ -263,7 +264,10 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     public void ShowMenu()
     {
         //InitCurrentPlayerSkillSet();
-        PauseGame?.Invoke(true);
+        //PauseGame?.Invoke(true);
+        HideSubscriberMenu?.Invoke(false);
+        GameInterface.Paused = true;
+        GameInterface.StateChange = true;
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
@@ -271,7 +275,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void HideMenu()
     {
-        PauseGame?.Invoke(false);
+        //PauseGame?.Invoke(false);
+        GameInterface.Paused = false;
+        GameInterface.StateChange = true;
         canvasGroup.interactable = false;
         canvasGroup.alpha = 0.0f;
         canvasGroup.blocksRaycasts = false;
@@ -392,12 +398,12 @@ public class PickupSystem : SystemBase
         {
 
             Debug.Log("pu sho " + pickupMenu.showMenu);
-           
-           // pickupMenuGroup.EnableButtons();
+            if (pickupMenu.menuStateChanged == false) return;
             //pickupMenuGroup.ShowLabels();
             if (pickupMenu.showMenu)
             {
                 pickupMenuGroup.ShowMenu();
+                pickupMenuGroup.EnableButtons();
                 pickupMenuGroup.ShowLabels();
             }
             else
