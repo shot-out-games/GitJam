@@ -103,10 +103,17 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         GameInterface.SelectClickedEvent += ShowMenu;
         SkillTreeMenuGroup.PauseGame += SkillTreeMenuPanel;
-        //PickupMenuGroup.PauseGame += PauseMenuPanel;
         ScoreMenuGroup.ScoreMenuExitBackClickedEvent += ResetSelectedButton;
-
         PickupMenuGroup.HideSubscriberMenu += HideMenu;
+    }
+
+
+    private void OnDisable()
+    {
+        GameInterface.SelectClickedEvent -= ShowMenu;
+        SkillTreeMenuGroup.PauseGame -= SkillTreeMenuPanel;
+        ScoreMenuGroup.ScoreMenuExitBackClickedEvent -= ResetSelectedButton;
+        PickupMenuGroup.HideSubscriberMenu -= HideMenu;
     }
 
     private void PickupMenuGroup_HideSubscriberMenu()
@@ -148,13 +155,6 @@ public class PauseMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         canvasGroup.blocksRaycasts = false;
     }
 
-    private void OnDisable()
-    {
-        GameInterface.SelectClickedEvent -= ShowMenu;
-        SkillTreeMenuGroup.PauseGame -= SkillTreeMenuPanel;
-        ScoreMenuGroup.ScoreMenuExitBackClickedEvent -= ResetSelectedButton;
-        //PickupMenuGroup.PauseGame -= PauseMenuPanel;
-    }
 
 
     public void ShowMenu()//should have separated from HideMenu

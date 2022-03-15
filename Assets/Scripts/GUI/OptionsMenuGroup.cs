@@ -98,7 +98,7 @@ public class OptionsMenuGroup : MonoBehaviour
         {
             OnExitButtonClicked();
             HideMenu();
-            OptionsExitBackClickedEvent?.Invoke();
+            //OptionsExitBackClickedEvent?.Invoke();
         }
 
         audioMixer.SetFloat("musicVolume", musicSlider.value * .8f - 80);//0 to 100 slider -80 to 0 db
@@ -110,6 +110,7 @@ public class OptionsMenuGroup : MonoBehaviour
 
     public void ShowMenu()
     {
+        if (optionsCanvasGroup == null) return;//gets destroyed sometimes ???
         optionsCanvasGroup.interactable = true;
         optionsCanvasGroup.alpha = 1;
         optionsCanvasGroup.blocksRaycasts = true;
@@ -122,9 +123,9 @@ public class OptionsMenuGroup : MonoBehaviour
 
     public void HideMenu()
     {
-        if (GetComponent<CanvasGroup>() == null || optionsCanvasGroup == null) return;//gets destroyed sometimes ???
+        if (optionsCanvasGroup == null) return;//gets destroyed sometimes ???
         eventSystem.sendNavigationEvents = true;
-        optionsCanvasGroup = GetComponent<CanvasGroup>();
+        //optionsCanvasGroup = GetComponent<CanvasGroup>();
         optionsCanvasGroup.interactable = false;
         optionsCanvasGroup.alpha = 0.0f;
         optionsCanvasGroup.blocksRaycasts = false;
@@ -134,6 +135,7 @@ public class OptionsMenuGroup : MonoBehaviour
 
     public void OnExitButtonClicked()//saved in memory
     {
+        if (optionsCanvasGroup == null) return;//gets destroyed sometimes ???
 
         OptionsExitBackClickedEvent?.Invoke();
 

@@ -42,7 +42,7 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
     {
         PauseMenuGroup.ResumeClickedEvent += ResumeClicked;
         //PauseMenuGroup.OptionsClickedEvent += OptionsClicked;
-        OptionsMenuGroup.OptionsExitBackClickedEvent += OptionsExitClicked;
+        //OptionsMenuGroup.OptionsExitBackClickedEvent += OptionsExitClicked;
         SkillTreeMenuGroup.PauseGame += OtherMenu;
         //PickupMenuGroup.PauseGame += OtherMenu;
     }
@@ -51,7 +51,7 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
     {
         PauseMenuGroup.ResumeClickedEvent -= ResumeClicked;
         //PauseMenuGroup.OptionsClickedEvent -= OptionsClicked;
-        OptionsMenuGroup.OptionsExitBackClickedEvent -= OptionsExitClicked;
+        //OptionsMenuGroup.OptionsExitBackClickedEvent -= OptionsExitClicked;
         SkillTreeMenuGroup.PauseGame -= OtherMenu;
         //PickupMenuGroup.PauseGame -= OtherMenu;
 

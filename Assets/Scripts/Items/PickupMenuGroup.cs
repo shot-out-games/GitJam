@@ -103,37 +103,19 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     // }
     public void EnableButtons()
     {
-        buttons[0].Select();
         useButtons[0].interactable = true;
         useButtons[1].interactable = true;
-        if (powerItemComponents.Count == 1)
-        {
-            useButtons[1].interactable = false;
-        }
-        if (powerItemComponents.Count == 0)
-        {
-            useButtons[0].interactable = false;
-            useButtons[1].interactable = false;
-        }
+        //if (powerItemComponents.Count == 1)
+        //{
+        //    useButtons[1].interactable = false;
+        //}
+        //if (powerItemComponents.Count == 0)
+        //{
+        //    useButtons[0].interactable = false;
+        //    useButtons[1].interactable = false;
+        //}
 
-        //buttons[1].interactable = false;
-        //buttons[2].interactable = false;
-        //buttons[3].interactable = false;
-        //if (availablePoints >= 1 && speedPts == 0)
-        //{
-        //    buttons[1].interactable = true;
-        //    buttons[1].Select();
-        //}
-        //else if (availablePoints >= 2 && speedPts == 1)
-        //{
-        //    buttons[2].interactable = true;
-        //    buttons[2].Select();
-        //}
-        //else if (availablePoints >= 3 && speedPts == 2)
-        //{
-        //    buttons[3].interactable = true;
-        //    buttons[3].Select();
-        //}
+      
 
 
     }
@@ -167,6 +149,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             }
         }
 
+        buttons[0].Select();
 
 
 
