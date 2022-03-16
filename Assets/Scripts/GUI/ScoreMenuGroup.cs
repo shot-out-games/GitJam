@@ -80,15 +80,18 @@ public class ScoreMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         ShowScore4();
         ShowScore5();
 
-        if (player.GetButtonDown("select") && canvasGroup.interactable)
+
+
+
+    }
+
+    void Back()
+    {
+        if (canvasGroup.interactable)
         {
             OnExitButtonClicked();
             HideMenu();
-            //ScoreMenuExitBackClickedEvent?.Invoke();
         }
-
-
-
     }
 
     public void OnExitButtonClicked()//saved in memory
@@ -102,22 +105,22 @@ public class ScoreMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     private void OnEnable()
     {
         PauseMenuGroup.ScoresClickedEvent += UpdateScoreShowMenu;
+        GameInterface.SelectClickedEvent += Back;
         //GameInterface.HideMenuEvent += HideMenu;
 
     }
 
+
+    private void OnDisable()
+    {
+        PauseMenuGroup.ScoresClickedEvent -= UpdateScoreShowMenu;
+        GameInterface.SelectClickedEvent -= Back;
+    }
     private void UpdateScoreShowMenu()
     {
         SaveManager.instance.updateScore = true;
         //Debug.Log("update score");
         ShowMenu();
-    }
-
-    private void OnDisable()
-    {
-        PauseMenuGroup.ScoresClickedEvent -= UpdateScoreShowMenu;
-
-        //GameInterface.HideMenuEvent -= HideMenu;
     }
 
 

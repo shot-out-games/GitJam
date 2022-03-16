@@ -502,7 +502,7 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 0
     - _id: 41
-      _name: Dpad Left
+      _name: DpadL
       _type: 1
       _descriptiveName: Dpad Left
       _positiveDescriptiveName: 
@@ -511,7 +511,7 @@ MonoBehaviour:
       _userAssignable: 1
       _categoryId: 0
     - _id: 44
-      _name: Dpad Right
+      _name: DpadR
       _type: 1
       _descriptiveName: Dpad Right
       _positiveDescriptiveName: 
@@ -537,6 +537,24 @@ MonoBehaviour:
       _behaviorId: 0
       _userAssignable: 1
       _categoryId: 0
+    - _id: 45
+      _name: Use1
+      _type: 1
+      _descriptiveName: Use1
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
+    - _id: 46
+      _name: Use2
+      _type: 1
+      _descriptiveName: Use2
+      _positiveDescriptiveName: 
+      _negativeDescriptiveName: 
+      _behaviorId: 0
+      _userAssignable: 1
+      _categoryId: 0
     actionCategories:
     - _name: Default
       _descriptiveName: Default
@@ -551,7 +569,7 @@ MonoBehaviour:
     actionCategoryMap:
       list:
       - categoryId: 0
-        actionIds: 00000000020000000700000008000000160000000f00000003000000150000001400000009000000040000000e000000050000000a000000060000001b0000002000000021000000290000002c0000002b0000002a000000
+        actionIds: 00000000020000000700000008000000160000000f00000003000000150000001400000009000000040000000e000000050000000a000000060000001b0000002000000021000000290000002c0000002b0000002a0000002d0000002e000000
       - categoryId: 2
         actionIds: 1c0000001d0000001e0000001f000000
     inputBehaviors:
@@ -1489,6 +1507,28 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 45
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 49
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 46
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 50
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     - id: 5
       categoryId: 2
       layoutId: 0
@@ -2179,7 +2219,7 @@ MonoBehaviour:
     controllerMapLayoutManagerRuleSets: []
     controllerMapEnablerRuleSets: []
     playerIdCounter: 6
-    actionIdCounter: 45
+    actionIdCounter: 47
     actionCategoryIdCounter: 3
     inputBehaviorIdCounter: 3
     mapCategoryIdCounter: 3

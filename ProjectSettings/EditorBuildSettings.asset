@@ -17,12 +17,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/two_close.unity
     guid: d1c0caeb16c43f840a8fc14b9d76dd44
-  - enabled: 1
+  - enabled: 0
     path: Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Scenes/DemoScene1.unity
     guid: 955abf6400389cf4f8e68ac194db83e0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Plugins/Pixel Crushers/Dialogue System/Demo/Scenes/DemoScene2.unity
     guid: d94b3c97c9dfe0d4e8ff547bb0406174
+  - enabled: 1
+    path: Assets/Scenes/dungeon builder.unity
+    guid: c2c173d739986304db067af4292b8bbe
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2eaeeae88c2ae4642aec6c12e9c41ed3,
       type: 2}

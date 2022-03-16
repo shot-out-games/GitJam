@@ -16,19 +16,15 @@ public struct GameInterfaceComponent : IComponentData
 
 public struct Pause : IComponentData
 {
-    //public int value;
+    
 }
 
 public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
 {
 
-    //public delegate void ActionSelect(bool paused);
-    //public static event ActionSelect SelectClickedEvent;
-
+    
     public static event Action HideMenuEvent;
     public static event Action SelectClickedEvent;
-
-    //public static event Action SelectClickedEvent(bool paused);
 
 
     public static bool Paused = false;
@@ -40,20 +36,12 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
 
     private void OnEnable()
     {
-        PauseMenuGroup.ResumeClickedEvent += ResumeClicked;
-        //PauseMenuGroup.OptionsClickedEvent += OptionsClicked;
-        //OptionsMenuGroup.OptionsExitBackClickedEvent += OptionsExitClicked;
-        SkillTreeMenuGroup.PauseGame += OtherMenu;
-        //PickupMenuGroup.PauseGame += OtherMenu;
+        
     }
 
     private void OnDisable()
     {
-        PauseMenuGroup.ResumeClickedEvent -= ResumeClicked;
-        //PauseMenuGroup.OptionsClickedEvent -= OptionsClicked;
-        //OptionsMenuGroup.OptionsExitBackClickedEvent -= OptionsExitClicked;
-        SkillTreeMenuGroup.PauseGame -= OtherMenu;
-        //PickupMenuGroup.PauseGame -= OtherMenu;
+       
 
     }
 
@@ -61,30 +49,11 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
     {
         if (!ReInput.isReady) return;
         player = ReInput.players.GetPlayer(playerId);
-        //optionsCanvasGroup = GetComponent<CanvasGroup>();
-    }
-
-    private void OptionsExitClicked()
-    {
-        //paused = false;
-    }
-
-    private void OtherMenu(bool pause)
-    {
-        //paused = pause;
-    }
-
-    public void SetPauseMember(bool pause)
-    {
-        //paused = pause;
     }
 
     private void Update()
     {
 
-
-        //if (optionsCanvasGroup == null || GetComponent<CanvasGroup>() == null || eventSystem == null) return;
-        //if (eventSystem.currentSelectedGameObject == null) return;
         SelectPressed = false;
         if (player.GetButtonDown("select"))
         {
@@ -92,9 +61,7 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
             Paused = !Paused;
             SelectPressed = true;
             SelectClicked();
-            //OnExitButtonClicked();
-            //HideMenu();
-            //OptionsExitBackClickedEvent?.Invoke();
+         
         }
 
 
@@ -105,21 +72,12 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
 
     public void SelectClicked()//only called with button from system no menu item currently
     {
-        //paused = !paused;
-        //SelectClickedEvent?.Invoke(paused);//pause menu subscribes to this event to show pause menu
-        //HideMenuEvent?.Invoke();
+     
         SelectClickedEvent?.Invoke();//pause menu subscribes to this event to show pause menu
     }
 
-    public void ResumeClicked()
-    {
-        //paused = false;
-    }
-
-    public void OptionsClicked()
-    {
-        //paused = true;//force pause when pause menu options clicked
-    }
+  
+  
 
     public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
     {
@@ -128,7 +86,6 @@ public class GameInterface : MonoBehaviour, IConvertGameObjectToEntity
 }
 
 
-//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup))]
 
 [UpdateInGroup(typeof(SimulationSystemGroup))]
 [UpdateAfter(typeof(InputControllerSystemUpdate))]
@@ -149,10 +106,9 @@ public class GameInterfaceSystem : SystemBase
     {
 
         bool paused = GameInterface.Paused;
-        //bool selectPressed = GameInterface.SelectPressed;
         bool stateChange = GameInterface.StateChange;
 
-        //if(EntityManager.HasComponent<DeadMenuComponent>())
+        
 
         bool required = HasSingleton<DeadMenuComponent>() && HasSingleton<WinnerMenuComponent>();
         if (required == false) return;
@@ -172,12 +128,10 @@ public class GameInterfaceSystem : SystemBase
 
                 if (paused)
                 {
-                    //Debug.Log("add");
                     EntityManager.AddComponent<Pause>(entity);
                 }
                 else
                 {
-                    //Debug.Log("remove");
                     EntityManager.RemoveComponent<Pause>(entity);
                 }
             }

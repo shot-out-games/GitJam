@@ -2,14 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 
@@ -44,13 +39,13 @@ public class OptionsMenuGroup : MonoBehaviour
 
     private void OnEnable()
     {
-        //PauseMenuGroup.OptionsClickedEvent += ShowMenu;
+        GameInterface.SelectClickedEvent += Back;
         PickupMenuGroup.HideSubscriberMenu += HideSubscriberMenu;
     }
     private void OnDisable()
     {
-        //PauseMenuGroup.OptionsClickedEvent -= ShowMenu;
-        PickupMenuGroup.HideSubscriberMenu += HideSubscriberMenu;
+        GameInterface.SelectClickedEvent -= Back;
+        PickupMenuGroup.HideSubscriberMenu -= HideSubscriberMenu;
     }
 
     private void HideSubscriberMenu(bool resume)
@@ -86,20 +81,19 @@ public class OptionsMenuGroup : MonoBehaviour
         audioSource.Play();
     }
 
+    private void Back()
+    {
+        if (optionsCanvasGroup == null || eventSystem == null) return;
+        if (eventSystem.currentSelectedGameObject == null) return;
+        OnExitButtonClicked();
+        HideMenu();
+
+    }
 
     private void Update()
     {
 
 
-        if (optionsCanvasGroup == null || GetComponent<CanvasGroup>() == null || eventSystem == null) return;
-        if (eventSystem.currentSelectedGameObject == null) return;
-
-        if (player.GetButtonDown("select") && optionsCanvasGroup.interactable)
-        {
-            OnExitButtonClicked();
-            HideMenu();
-            //OptionsExitBackClickedEvent?.Invoke();
-        }
 
         audioMixer.SetFloat("musicVolume", musicSlider.value * .8f - 80);//0 to 100 slider -80 to 0 db
         audioMixer.SetFloat("soundVolume", soundSlider.value * .8f - 80);//0 to 100 slider -80 to 0 db

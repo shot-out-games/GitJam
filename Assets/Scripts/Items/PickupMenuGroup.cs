@@ -105,17 +105,17 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         useButtons[0].interactable = true;
         useButtons[1].interactable = true;
-        //if (powerItemComponents.Count == 1)
-        //{
-        //    useButtons[1].interactable = false;
-        //}
-        //if (powerItemComponents.Count == 0)
-        //{
-        //    useButtons[0].interactable = false;
-        //    useButtons[1].interactable = false;
-        //}
+        if (powerItemComponents.Count == 1)
+        {
+            useButtons[1].interactable = false;
+        }
+        if (powerItemComponents.Count == 0)
+        {
+            useButtons[0].interactable = false;
+            useButtons[1].interactable = false;
+        }
 
-      
+
 
 
     }
