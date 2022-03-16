@@ -35,6 +35,7 @@ public struct PowerItemComponent : IComponentData
     public bool useSlot1;
     public bool useSlot2;
     public int index;
+    //public int count;
 
 }
 
@@ -90,6 +91,7 @@ public struct Speed : IComponentData
     public float timeOn;
     public float originalSpeed;
     public float multiplier;
+    public int count;
 }
 
 

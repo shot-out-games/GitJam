@@ -16,6 +16,7 @@ public struct HealthPower : IComponentData
     public Entity itemEntity;
     public bool enabled;
     public float healthMultiplier;
+    public int count;
 }
 
 

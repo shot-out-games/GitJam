@@ -213,6 +213,8 @@ public class PickupPowerUpRaycastSystem : SystemBase
             float distance = 2f;
             float3 end = start + direction * distance;
 
+            
+            
 
             PointDistanceInput pointDistanceInput = new PointDistanceInput
             {
@@ -246,8 +248,22 @@ public class PickupPowerUpRaycastSystem : SystemBase
                     powerItemComponent.addPickupEntityToInventory = pickedUpActor;
                     powerItemComponent.itemPickedUp = true;
                     ecb.AddComponent(entity, powerItemComponent);
-                    PickupMenuGroup.UpdateMenu = true;
 
+                    if(HasComponent<HealthComponent>(entity))
+                    {
+                        var item = GetComponent<HealthComponent>(entity);
+                        item.count += 1;
+                        ecb.AddComponent(entity, item);
+
+                    }
+                    else if (HasComponent<Speed>(entity))
+                    {
+                        var item = GetComponent<Speed>(entity);
+                        item.count += 1;
+                        ecb.AddComponent(entity, item);
+                    }
+
+                    PickupMenuGroup.UpdateMenu = true;
 
                 }
             }
@@ -271,159 +287,6 @@ public class PickupPowerUpRaycastSystem : SystemBase
 }
 
 
-//public class PickupRaycastPowerUpUseImmediateSystem : SystemBase//move to new file later 
-//{
-
-//    EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
-
-
-//    protected override void OnCreate()
-//    {
-//        base.OnCreate();
-//        // Find the ECB system once and store it for later usage
-//        m_EndSimulationEcbSystem = World
-//            .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
-//    }
-
-//    protected override void OnUpdate()
-//    {
-//        //bool pickedUp = false;
-//        Entity pickedUpActor = Entity.Null;
-//        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
-
-//        Entities.WithoutBurst().ForEach((
-//            ref PowerItemComponent powerItemComponent,
-//            in ImmediateUseComponent immediateUseComponent,
-//            in Translation translation,
-//            in Entity entity
-//        ) =>
-//        {
-//            //NativeList<Entity> pickups = new NativeList<Entity>(32, Allocator.TempJob);
-
-//            var physicsWorldSystem = World.GetExistingSystem<BuildPhysicsWorld>();
-//            var collisionWorld = physicsWorldSystem.PhysicsWorld.CollisionWorld;
-
-//            float3 start = translation.Value + new float3(0f, .38f, 0);
-//            float3 direction = new float3(0, 0, 0);
-//            float distance = 2f;
-//            float3 end = start + direction * distance;
-
-
-//            PointDistanceInput pointDistanceInput = new PointDistanceInput
-//            {
-//                Position = start,
-//                MaxDistance = distance,
-//                //Filter = CollisionFilter.Default
-//                Filter = new CollisionFilter()
-//                {
-//                    BelongsTo = 7u,
-//                    CollidesWith = 1u,
-//                    GroupIndex = 0
-//                }
-//            };
-
-
-
-//            bool hasPointHit = collisionWorld.CalculateDistance(pointDistanceInput, out DistanceHit pointHit);
-
-
-//            if (hasPointHit && HasComponent<DestroyComponent>(entity) == false)
-//            {
-//                if (HasComponent<TriggerComponent>(pointHit.Entity))
-//                {
-//                    var parent = GetComponent<TriggerComponent>(pointHit.Entity).ParentEntity;
-//                    Entity e = physicsWorldSystem.PhysicsWorld.Bodies[pointHit.RigidBodyIndex].Entity;
-//                    pickedUpActor = parent;
-//                    Debug.Log(" pt e " + pickedUpActor);
-
-//                    if (HasComponent<HealthPower>(entity))
-//                    {
-
-//                        powerItemComponent.enabled = true;
-//                        Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
-//                        var ps = new ParticleSystemComponent
-//                        {
-//                            followActor = true,
-//                            pickedUpActor = pickedUpActor
-//                        };
-
-//                        ecb.AddComponent(instanceEntity, ps);
-
-//                        Debug.Log(" health " + pickedUpActor);
-//                        var healthPower = GetComponent<HealthPower>(entity);
-
-
-//                        HealthPower healthPowerPlayer = new HealthPower
-//                        {
-//                            psAttached = instanceEntity,//attached to player picking up
-//                            pickedUpActor = pickedUpActor,
-//                            itemEntity = entity,
-//                            enabled = true,
-//                            healthMultiplier = healthPower.healthMultiplier
-//                        };
-//                        ecb.AddComponent(pickedUpActor, healthPowerPlayer);
-
-
-//                    }
-
-
-
-//                    if (HasComponent<Speed>(entity))
-//                    {
-
-//                        var speedPower = GetComponent<Speed>(entity);
-
-
-//                        powerItemComponent.enabled = true;
-//                        Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
-
-//                        var ps = new ParticleSystemComponent
-//                        {
-//                            followActor = true,
-//                            pickedUpActor = pickedUpActor
-//                        };
-
-//                        ecb.AddComponent(instanceEntity, ps);
-
-//                        Debug.Log(" speed " + pickedUpActor);
-
-
-
-//                        Speed speedPowerPlayer = new Speed
-//                        {
-//                            psAttached = instanceEntity,//attached to player on  speed pick up
-//                            pickedUpActor = pickedUpActor,
-//                            itemEntity = entity,
-//                            enabled = true,
-//                            timeOn = speedPower.timeOn,
-//                            multiplier = speedPower.multiplier
-//                        };
-
-
-//                        ecb.AddComponent(entity, new DestroyComponent());
-//                        ecb.AddComponent(pickedUpActor, speedPowerPlayer);
-
-
-//                    }
-
-//                }
-//            }
-
-
-
-//        }).Run();
-
-//        // Make sure that the ECB system knows about our job
-//        m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
-
-
-//    }
-
-
-
-
-
-//}
 
 
 

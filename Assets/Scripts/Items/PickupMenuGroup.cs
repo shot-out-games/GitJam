@@ -468,7 +468,7 @@ public class InputUseItemSystem : SystemBase
         {
             var use1_entity = GetSingletonEntity<UseItem1>();
             bool use1_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use1");
-            Debug.Log("use1 " + use1_pressed);
+            //Debug.Log("use1 " + use1_pressed);
             if (use1_pressed && HasComponent<PowerItemComponent>(use1_entity))
             {
                 ecb.AddComponent<ImmediateUseComponent>(use1_entity);
@@ -480,7 +480,7 @@ public class InputUseItemSystem : SystemBase
         {
             var use2_entity = GetSingletonEntity<UseItem2>();
             bool use2_pressed = ReInput.players.GetPlayer(0).GetButtonDown("Use2");
-            Debug.Log("use2 " + use2_pressed);
+            //Debug.Log("use2 " + use2_pressed);
             if (use2_pressed && HasComponent<PowerItemComponent>(use2_entity))
             {
                 ecb.AddComponent<ImmediateUseComponent>(use2_entity);

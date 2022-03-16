@@ -22,6 +22,7 @@ public struct HealthComponent : IComponentData
     public float ShowDamageMin;
     public bool ShowDamage;
     public ShowText3D ShowText3D;
+    public int count;
     //Entity Entity;
 }
 
