@@ -197,6 +197,7 @@ namespace SandBox.Player
                             {
                                 var playerDash = GetComponent<PlayerDashComponent>(e);
                                 invincible = playerDash.Invincible;
+                                //invincible = HasComponent<Invincible>(e);
 
                                 if (invincible == false)
                                 {

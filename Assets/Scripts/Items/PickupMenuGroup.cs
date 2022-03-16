@@ -380,7 +380,7 @@ public class PickupSystem : SystemBase
         Entities.WithoutBurst().ForEach((PickupMenuGroup pickupMenuGroup) =>
         {
 
-            Debug.Log("pu sho " + pickupMenu.showMenu);
+            //Debug.Log("pu sho " + pickupMenu.showMenu);
             if (pickupMenu.menuStateChanged == false) return;
             //pickupMenuGroup.ShowLabels();
             if (pickupMenu.showMenu)

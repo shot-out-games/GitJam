@@ -11,6 +11,9 @@ public struct ToggleCollisionComponent : IComponentData
 
 
 }
+
+[InternalBufferCapacity(8)]
+
 public struct ActorCollisionBufferElement : IBufferElementData
 {
 

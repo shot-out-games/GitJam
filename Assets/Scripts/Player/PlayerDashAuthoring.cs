@@ -24,6 +24,11 @@ public struct PlayerDashComponent : IComponentData
 
 }
 
+public struct Invincible : IComponentData
+{
+    public int Value;
+}
+
 
 public class PlayerDashAuthoring : MonoBehaviour, IConvertGameObjectToEntity
 

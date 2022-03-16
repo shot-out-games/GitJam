@@ -4,8 +4,8 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-[InternalBufferCapacity(8)]
 
+[InternalBufferCapacity(8)]
 public struct BossAmmoListBuffer : IBufferElementData
 {
     public Entity e;
