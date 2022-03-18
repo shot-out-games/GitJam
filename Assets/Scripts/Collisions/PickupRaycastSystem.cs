@@ -249,19 +249,19 @@ public class PickupPowerUpRaycastSystem : SystemBase
                     powerItemComponent.itemPickedUp = true;
                     ecb.AddComponent(entity, powerItemComponent);
 
-                    if(HasComponent<HealthComponent>(entity))
-                    {
-                        var item = GetComponent<HealthComponent>(entity);
-                        item.count += 1;
-                        ecb.AddComponent(entity, item);
+                    //if(HasComponent<HealthPower>(entity))
+                    //{
+                    //    var item = GetComponent<HealthPower>(entity);
+                    //    item.count += 1;
+                    //    ecb.AddComponent(entity, item);
 
-                    }
-                    else if (HasComponent<Speed>(entity))
-                    {
-                        var item = GetComponent<Speed>(entity);
-                        item.count += 1;
-                        ecb.AddComponent(entity, item);
-                    }
+                    //}
+                    //else if (HasComponent<Speed>(entity))
+                    //{
+                    //    var item = GetComponent<Speed>(entity);
+                    //    item.count += 1;
+                    //    ecb.AddComponent(entity, item);
+                    //}
 
                     PickupMenuGroup.UpdateMenu = true;
 
@@ -305,12 +305,25 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
          //   .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
+
+    //BufferFromEntity<BossWaypointBufferElement> positionBuffer = GetBufferFromEntity<BossWaypointBufferElement>(true);
+    //BufferFromEntity<BossAmmoListBuffer> ammoList = GetBufferFromEntity<BossAmmoListBuffer>(true);
+
+
+    //Entities.WithoutBurst().ForEach((Entity enemyE,
+    //    WeaponManager weaponManager, ref BossWeaponComponent bossWeaponComponent, in BossMovementComponent bossMovementComponent) =>
+    //    {
+    //        DynamicBuffer<BossWaypointBufferElement> targetPointBuffer = positionBuffer[enemyE];
+    //DynamicBuffer<BossAmmoListBuffer> ammoListBuffer = ammoList[enemyE];
+    //        if (targetPointBuffer.Length <= 0 || bossMovementComponent.WayPointReached == false)
+    //            return;
     protected override void OnUpdate()
     {
         //bool pickedUp = false;
         Entity pickedUpActor = Entity.Null;
         //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
+        var healthPowerList = GetBufferFromEntity<HealthPower>(false);
 
         Entities.WithAny<UseItem1, UseItem2>().ForEach((
             ref PowerItemComponent powerItemComponent,
@@ -319,42 +332,48 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
             in Entity entity
         ) =>
         {
+         
             //NativeList<Entity> pickups = new NativeList<Entity>(32, Allocator.TempJob);
             //if (HasComponent<UseItem1>(entity) == false && HasComponent<UseItem2>(entity) == false) return;
             pickedUpActor = powerItemComponent.pickedUpActor;
             if (pickedUpActor == Entity.Null) return;
 
-            if (HasComponent<HealthPower>(entity) && powerItemComponent.enabled == false)
+            var healthPower = healthPowerList[entity];
+            if(healthPower.Length > 0)
             {
-
-                powerItemComponent.enabled = true;
-                Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
-                var ps = new ParticleSystemComponent
+                if (powerItemComponent.enabled == false)
                 {
-                    followActor = true,
-                    pickedUpActor = pickedUpActor
-                };
 
-                ecb.AddComponent(instanceEntity, ps);
+                    powerItemComponent.enabled = true;
+                    Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
+                    var ps = new ParticleSystemComponent
+                    {
+                        followActor = true,
+                        pickedUpActor = pickedUpActor
+                    };
 
-                //Debug.Log(" health " + pickedUpActor);
-                var healthPower = GetComponent<HealthPower>(entity);
+                    ecb.AddComponent(instanceEntity, ps);
+
+                   
+
+                    HealthPower healthPowerPlayer = new HealthPower
+                    {
+                        psAttached = instanceEntity,//attached to player picking up
+                        pickedUpActor = pickedUpActor,
+                        itemEntity = entity,
+                        enabled = true,
+                        healthMultiplier = healthPower[0].healthMultiplier
+                    };
+                    Debug.Log("health pu");
+                    //ecb.RemoveComponent<UseItem1>(entity);
+                    ecb.AddBuffer<HealthPower>(pickedUpActor).Add(healthPowerPlayer);
 
 
-                HealthPower healthPowerPlayer = new HealthPower
-                {
-                    psAttached = instanceEntity,//attached to player picking up
-                    pickedUpActor = pickedUpActor,
-                    itemEntity = entity,
-                    enabled = true,
-                    healthMultiplier = healthPower.healthMultiplier
-                };
-
-                //ecb.RemoveComponent<UseItem1>(entity);
-                ecb.AddComponent(pickedUpActor, healthPowerPlayer);
-
+                }
 
             }
+
+          
 
 
 

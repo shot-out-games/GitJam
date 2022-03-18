@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Unity.Rendering;
-
+using Unity.Transforms;
+using Unity.Mathematics;
 
 [System.Serializable]
 
 
 
-public struct HealthPower : IComponentData
+public struct HealthPower : IBufferElementData
 {
+    public Translation translation;
     public Entity psAttached;
     public Entity pickedUpActor;
     public Entity itemEntity;
@@ -33,11 +35,16 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
     public bool immediateUse;
     public GameObject powerEnabledEffectPrefab;
     public GameObject powerEnabledEffectInstance;
+
+    public GameObject powerEnabledPrefab;
+    public GameObject powerEnabledInstance;
+
     public AudioClip powerEnabledAudioClip;
     public AudioClip powerTriggerAudioClip;
     public AudioSource audioSource;
     public string powerItemDescription;
 
+    public List<ItemClass> items = new List<ItemClass>();
 
 
 
@@ -51,6 +58,12 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
     public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
     {
         referencedPrefabs.Add(powerEnabledEffectPrefab);
+        for (int i = 0; i < items.Count; i++)
+        {
+            referencedPrefabs.Add(items[i].ItemPrefab);
+
+        }
+        
     }
 
 
@@ -89,28 +102,53 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
             //healthMultiplier = powerItems[i].healthMultiplier
         });
 
-
-
-
-
-        dstManager.AddComponentData(entity, new HealthPower
+        for (int i = 0; i < items.Count; i++)
         {
-            enabled = false,
-            healthMultiplier = healthMultiplier
-        });
+           
 
-        if(immediateUse)
+
+            dstManager.AddBuffer<HealthPower>(entity).Add
+                (
+                    new HealthPower
+                    {
+                       
+                        enabled = false,
+                        healthMultiplier = healthMultiplier,
+                        translation = new Translation { Value = items[i].location.position} 
+   
+                    }
+                );
+
+        }
+        
+
+        if (immediateUse)
         {
             dstManager.AddComponent<ImmediateUseComponent>(entity);
         }
-        
-        //dstManager.SetSharedComponentData(entity, new RenderMesh() { mesh = mesh, material = material });
-
     }
-
-
-
-
-
-
 }
+        
+
+
+    //    dstManager.AddComponentData(entity, new HealthPower
+    //    {
+    //        enabled = false,
+    //        healthMultiplier = healthMultiplier
+    //    });
+
+    //    if(immediateUse)
+    //    {
+    //        dstManager.AddComponent<ImmediateUseComponent>(entity);
+    //    }
+        
+    //    //dstManager.SetSharedComponentData(entity, new RenderMesh() { mesh = mesh, material = material });
+
+    //}
+
+
+
+
+
+
+

@@ -4,11 +4,8 @@ using Unity.Collections;
 using Unity.Mathematics;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-public class ItemClass
-{
-
-}
 
 
 public struct UseItem1 : IComponentData
@@ -151,6 +148,13 @@ public enum PickupType
     Speed = 1,
     Health = 2,
     Control = 3,
+}
+
+[System.Serializable]
+public class ItemClass
+{
+    public Transform location;
+    public GameObject ItemPrefab;
 }
 
 

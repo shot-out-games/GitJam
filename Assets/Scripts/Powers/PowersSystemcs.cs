@@ -100,43 +100,43 @@ public class PowersSystem : SystemBase
 
 
 
-        Entities.ForEach(
-            (
-                ref HealthPower healthPower, ref HealthComponent healthComponent, in RatingsComponent ratings, in Entity e
+        //Entities.ForEach(
+        //    (
+        //        ref HealthPower healthPower, ref HealthComponent healthComponent, in RatingsComponent ratings, in Entity e
 
-            ) =>
-            {
-                if (healthPower.enabled == true)
-                {
-                    //healthPower.enabled = false;
-                    healthComponent.TotalDamageReceived = healthComponent.TotalDamageReceived * healthPower.healthMultiplier;
-                    //Rare used if multiplier is > 1 meaning health damage increased
-                    if (healthComponent.TotalDamageReceived > ratings.maxHealth)
-                    {
-                        healthComponent.TotalDamageReceived = ratings.maxHealth;
-                    }
-                    ecb.RemoveComponent<HealthPower>(e);
-                    ecb.AddComponent(healthPower.itemEntity, new DestroyComponent());
-                    ecb.DestroyEntity(healthPower.psAttached);
+        //    ) =>
+        //    {
+        //        if (healthPower.enabled == true)
+        //        {
+        //            //healthPower.enabled = false;
+        //            healthComponent.TotalDamageReceived = healthComponent.TotalDamageReceived * healthPower.healthMultiplier;
+        //            //Rare used if multiplier is > 1 meaning health damage increased
+        //            if (healthComponent.TotalDamageReceived > ratings.maxHealth)
+        //            {
+        //                healthComponent.TotalDamageReceived = ratings.maxHealth;
+        //            }
+        //            ecb.RemoveComponent<HealthPower>(e);
+        //            ecb.AddComponent(healthPower.itemEntity, new DestroyComponent());
+        //            ecb.DestroyEntity(healthPower.psAttached);
 
-                }
+        //        }
 
-            }
-        ).Schedule();
+        //    }
+        //).Schedule();
 
 
-        Entities.WithoutBurst().ForEach(
-            (
-                HealthBar healthBar, ref HealthPower healthPower) =>
-            {
-                if (healthPower.enabled == true)
-                {
-                    healthPower.enabled = false;
-                    healthBar.HealthChange();
-                    Debug.Log("Health Changed");
-                }
-            }
-        ).Run();
+        //Entities.WithoutBurst().ForEach(
+        //    (
+        //        HealthBar healthBar, ref HealthPower healthPower) =>
+        //    {
+        //        if (healthPower.enabled == true)
+        //        {
+        //            healthPower.enabled = false;
+        //            healthBar.HealthChange();
+        //            Debug.Log("Health Changed");
+        //        }
+        //    }
+        //).Run();
 
 
 
