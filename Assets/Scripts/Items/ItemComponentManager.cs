@@ -33,7 +33,7 @@ public struct PowerItemComponent : IComponentData
     public bool useSlot2;
     public int index;
     public PickupType pickupType;
-    //public int count;
+    public int count;
 
 }
 

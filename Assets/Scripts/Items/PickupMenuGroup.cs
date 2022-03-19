@@ -33,6 +33,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     private EntityManager manager;
     public Entity entity;
     public static List<PowerItemComponent> powerItemComponents = new List<PowerItemComponent>();
+    //public static List<PowerItemComponent> tempItems = new List<PowerItemComponent>();
     //public PowerItemComponent[] useItemComponents = new PowerItemComponent[2];
 
     //public SkillTreeComponent player0_skillSet;
@@ -255,17 +256,37 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
         Count();
-        
+
     }
 
-    public void Count()
+    public  void Count()
     {
 
         //powerItemComponents.Select(x => x.pickupType).Distinct();
 
 
-
+        var tempItems = powerItemComponents;
         
+        int powerUps = 2;
+        for (int j = 0; j < powerUps; j++)
+        {
+            for (int i = 0; i < powerItemComponents.Count; i++)
+            {
+                if((int) tempItems[i].pickupType == j+1)
+                {
+                    var item = tempItems[j];
+                    item.count += 1;
+                    tempItems[j] = item;
+                    Debug.Log("count " + item.count);
+                }
+
+            }
+
+        }
+
+
+
+
     }
 
     public void HideMenu()
@@ -374,7 +395,7 @@ public class PickupSystem : SystemBase
 
         var dpadR = ReInput.players.GetPlayer(0).GetButtonDown("DpadR");
         var select = ReInput.players.GetPlayer(0).GetButtonDown("Select");
-        
+
         if (pickupMenu.exitClicked || select && pickupMenu.showMenu == true)
         {
             pickupMenu.menuStateChanged = true;

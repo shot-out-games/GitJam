@@ -1,23 +1,23 @@
 Using pre-set license
-Built from '2021.2/staging' branch; Version is '2021.2.16f1 (559fc0ec6670) revision 5611456'; Using compiler version '192829333'; Build Type 'Release'
-OS: 'Windows 10  (10.0.19043) 64bit Core' Language: 'en' Physical Memory: 16297 MB
-BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+Built from '2021.2/staging' branch; Version is '2021.2.10f1 (ee872746220e) revision 15632167'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19042) 64bit Professional' Language: 'en' Physical Memory: 7939 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
-C:\Program Files\Unity\Hub\Editor\2021.2.16f1\Editor\Unity.exe
+C:\Program Files\Unity\Hub\Editor\2021.2.10f1\Editor\Unity.exe
 -adb2
 -batchMode
 -noUpm
 -name
 AssetImportWorker0
 -projectPath
-H:/UNITY/PROJECTS 2020/GitJam
+C:/Projects/GitJam
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-63412
-Successfully changed project path to: H:/UNITY/PROJECTS 2020/GitJam
-H:/UNITY/PROJECTS 2020/GitJam
+54921
+Successfully changed project path to: C:/Projects/GitJam
+C:/Projects/GitJam
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -47,190 +47,106 @@ H:/UNITY/PROJECTS 2020/GitJam
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Refreshing native plugins compatible for Editor in 472.41 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 395.43 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Initialize engine version: 2021.2.16f1 (559fc0ec6670)
-[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.16f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path H:/UNITY/PROJECTS 2020/GitJam/Assets
+Initialize engine version: 2021.2.10f1 (ee872746220e)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Projects/GitJam/Assets
 GfxDevice: creating device client; threaded=0; jobified=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Radeon RX 590 Series (ID=0x67df)
-    Vendor:   ATI
-    VRAM:     8171 MB
-    Driver:   30.0.13023.4001
+    Renderer: Intel(R) UHD Graphics 630 (ID=0x9bc8)
+    Vendor:   Intel
+    VRAM:     3969 MB
+    Driver:   27.20.100.9664
 Initialize mono
-Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.16f1/Editor/Data/Managed'
-Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
-Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.16f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56968
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56520
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
-Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.013004 seconds.
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.2.10f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.009413 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 461.30 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 401.36 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.188 seconds
+- Completed reload, in  1.060 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1189ms)
-		BeginReloadAssembly (104ms)
+	ReloadAssembly (1061ms)
+		BeginReloadAssembly (117ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (932ms)
-			LoadAssemblies (99ms)
+		EndReloadAssembly (852ms)
+			LoadAssemblies (113ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (122ms)
+			SetupTypeCache (115ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (31ms)
-			SetupLoadedEditorAssemblies (705ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (618ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (11ms)
+				InitializePlatformSupportModulesInManaged (23ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (461ms)
-				BeforeProcessingInitializeOnLoad (2ms)
-				ProcessInitializeOnLoadAttributes (175ms)
-				ProcessInitializeOnLoadMethodAttributes (56ms)
+				RefreshPlugins (401ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (147ms)
+				ProcessInitializeOnLoadMethodAttributes (45ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.013616 seconds.
+Registered in 0.037112 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 485.96 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 460.41 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Loader/Loader.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.PeekCore.LudiqCoreResources:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugin/LudiqCoreResources.cs:21)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:233)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Logos/LogoFramework.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.PeekCore.LudiqProduct:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Product/LudiqProduct.cs:30)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.PeekCore\Editor/Resources\Logos/LogoLudiq.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.PeekCore.LudiqProduct:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Product/LudiqProduct.cs:31)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.Peek\Editor/Resources\Logos/LogoPeek.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.Peek.PeekProduct:Initialize () (at Assets/Ludiq/Ludiq.Peek/Editor/Plugin/PeekProduct.cs:45)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-Missing editor texture: 
-Editor Asset Resource Provider: H:\UNITY\PROJECTS 2020\GitJam\Assets\Ludiq\Ludiq.Peek\Editor/Resources\Logos/LogoLudiq.png
-UnityEngine.StackTraceUtility:ExtractStackTrace ()
-UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
-UnityEngine.Logger:Log (UnityEngine.LogType,object)
-UnityEngine.Debug:LogWarning (object)
-Ludiq.PeekCore.EditorTexture:Load (System.Collections.Generic.IEnumerable`1<Ludiq.PeekCore.IResourceProvider>,string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs:185)
-Ludiq.PeekCore.PluginResources:LoadTexture (string,Ludiq.PeekCore.CreateTextureOptions,bool) (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginResources.cs:157)
-Ludiq.Peek.PeekProduct:Initialize () (at Assets/Ludiq/Ludiq.Peek/Editor/Plugin/PeekProduct.cs:46)
-Ludiq.PeekCore.ProductContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Products/ProductContainer.cs:70)
-Ludiq.PeekCore.PluginContainer:Initialize () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:254)
-Ludiq.PeekCore.PluginContainer:.cctor () (at Assets/Ludiq/Ludiq.PeekCore/Editor/Plugins/PluginContainer.cs:21)
-System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
-UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
-
-(Filename: Assets/Ludiq/Ludiq.PeekCore/Editor/Interface/Textures/EditorTexture.cs Line: 185)
-
-TypeManager.Initialize took: 347ms
+TypeManager.Initialize took: 379ms
 Mono: successfully reloaded assembly
-- Completed reload, in  5.943 seconds
+- Completed reload, in  6.182 seconds
 Domain Reload Profiling:
-	ReloadAssembly (5944ms)
-		BeginReloadAssembly (154ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (7ms)
+	ReloadAssembly (6185ms)
+		BeginReloadAssembly (279ms)
+			ExecutionOrderSort (1ms)
+			DisableScriptedObjects (11ms)
 			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (25ms)
-		EndReloadAssembly (5649ms)
-			LoadAssemblies (152ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (577ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (202ms)
-			SetupLoadedEditorAssemblies (4659ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (47ms)
+		EndReloadAssembly (5764ms)
+			LoadAssemblies (340ms)
+			RebuildTransferFunctionScriptingTraits (1ms)
+			SetupTypeCache (540ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (229ms)
+			SetupLoadedEditorAssemblies (4664ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (16ms)
+				InitializePlatformSupportModulesInManaged (12ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (486ms)
-				BeforeProcessingInitializeOnLoad (248ms)
-				ProcessInitializeOnLoadAttributes (3783ms)
-				ProcessInitializeOnLoadMethodAttributes (109ms)
-				AfterProcessingInitializeOnLoad (16ms)
+				RefreshPlugins (460ms)
+				BeforeProcessingInitializeOnLoad (284ms)
+				ProcessInitializeOnLoadAttributes (3784ms)
+				ProcessInitializeOnLoadMethodAttributes (113ms)
+				AfterProcessingInitializeOnLoad (11ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (9ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.09 seconds
-Refreshing native plugins compatible for Editor in 4.58 ms, found 5 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.12 seconds
+Refreshing native plugins compatible for Editor in 4.81 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 11275 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 462 unused Assets / (3.9 MB). Loaded Objects now: 11706.
-Memory consumption went from 448.5 MB to 444.6 MB.
-Total: 26.471000 ms (FindLiveObjects: 1.267100 ms CreateObjectMapping: 0.413200 ms MarkObjects: 23.229500 ms  DeleteObjects: 1.559500 ms)
+Unloading 10304 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 461 unused Assets / (3.3 MB). Loaded Objects now: 10722.
+Memory consumption went from 420.2 MB to 416.9 MB.
+Total: 17.034200 ms (FindLiveObjects: 3.875600 ms CreateObjectMapping: 1.584700 ms MarkObjects: 8.969900 ms  DeleteObjects: 2.601900 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:DOTSType/DungeonArchitect.Editors.DungeonPaintModeGridEditor: 03d3ba51a30c07b503d3ba51a30c07b5 -> 
@@ -279,13 +195,12 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.UIElements.StyleSheets.StyleSheetImporterEditor: 192320d95e4bf2a1192320d95e4bf2a1 -> 
   custom:DOTSType/UnityEngine.AudioLowPassFilter: ae33cb3d05c9f256ae33cb3d05c9f256 -> 
   custom:DOTSType/UnityEditor.ShaderIncludeImporter: 8fbdb40f5e3dee688fbdb40f5e3dee68 -> 
-  custom:DOTSType/CharacterSaveComponent: cece7ea5193c0477cece7ea5193c0477 -> 
-  custom:DOTSType/DungeonArchitect.Builders.SimpleCity.StrongholdWallEmitter: f278c6a46c5ba788f278c6a46c5ba788 -> 
   custom:DOTSType/ScoreComponent: 1ed056d1b244017f1ed056d1b244017f -> 
-  custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
+  custom:DOTSType/CharacterSaveComponent: cece7ea5193c0477cece7ea5193c0477 -> 
   custom:DOTSType/UnityEditor.ShaderGraph.Drawing.SearchWindowProvider: f8a30861d99321b8f8a30861d99321b8 -> 
+  custom:DOTSType/DungeonArchitect.Builders.SimpleCity.StrongholdWallEmitter: f278c6a46c5ba788f278c6a46c5ba788 -> 
+  custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.CommonLibraryLua: fe091d9a0e7e24c3fe091d9a0e7e24c3 -> 
-  custom:DOTSType/Ludiq.PeekCore.DictionaryAsset: bbb8ed5efb46ae5fbbb8ed5efb46ae5f -> 
   custom:DOTSType/UnityEditor.Graphs.Graph: d35cefdd879c306cd35cefdd879c306c -> 
   custom:DOTSType/PixelCrushers.Wrappers.InputDeviceMethods: d7d3bb903de9962fd7d3bb903de9962f -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tasks.LayoutBaseFlowTaskCreatePath: 850fa42cfecd85b4850fa42cfecd85b4 -> 
@@ -304,6 +219,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DamageComponent: 7da332f926ac735d7da332f926ac735d -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineTrackedDollyEditor: d69864214b60047ed69864214b60047e -> 
   custom:DOTSType/UnityEngine.Rigidbody: 90d4f52b90e97d3190d4f52b90e97d31 -> 
+  custom:DOTSType/UnityEditor.VFX.Operator.ConeVolumeDeprecated: 6a23927edee4e0f46a23927edee4e0f4 -> 
   custom:DOTSType/UnityEditor.VFX.Block.VectorFieldForce: 8514a48234bee2e58514a48234bee2e5 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.StandardBarkUI: df803d9542d456b0df803d9542d456b0 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.NotificationManager: b40d1bc4a92b7076b40d1bc4a92b7076 -> 
@@ -322,7 +238,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.CameraControllerInspector: 6c60480414babcd26c60480414babcd2 -> 
   custom:DOTSType/UnityEngine.Texture2DArray: cd6862968a4f6dc4cd6862968a4f6dc4 -> 
   custom:DOTSType/Unity.Rendering.MeshLODGroupComponent: 24b14d087fc76ffb24b14d087fc76ffb -> 
-  custom:DOTSType/UnityEditor.VFX.Operator.ConeVolumeDeprecated: 6a23927edee4e0f46a23927edee4e0f4 -> 
   custom:DOTSType/UnityEditor.UIElements.SerializableJsonDictionary: 2803d6eff23ae10f2803d6eff23ae10f -> 
   custom:DOTSType/EpicToonFX.ETFXRotation: 702f959cd2ead13e702f959cd2ead13e -> 
   custom:DOTSType/UnityEditor.AssemblyDefinitionImporterInspector+AssemblyDefinitionState: d8a0262c734e3188d8a0262c734e3188 -> 
@@ -367,8 +282,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerButtonEditor: 0e6df5bccc894efd0e6df5bccc894efd -> 
   custom:DOTSType/UnityEditor.BumpMapSettingsFixingWindow: 407671aa04b06a4f407671aa04b06a4f -> 
   custom:DOTSType/UnityEditor.VideoClipImporterInspector: 42b379e6941ac1ad42b379e6941ac1ad -> 
-  custom:DOTSType/PixelCrushers.Wrappers.InstantiatePrefabs: f2631142c30a68daf2631142c30a68da -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SelectorUseStandardUIElements: 628d28cbed2d26be628d28cbed2d26be -> 
+  custom:DOTSType/PixelCrushers.Wrappers.InstantiatePrefabs: f2631142c30a68daf2631142c30a68da -> 
   custom:DOTSType/DungeonArchitect.Splatmap.DungeonSplatmapVisualizer: dda6949dd9c35744dda6949dd9c35744 -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.Common.FlowPreviewTilemapGraphNodeInspector: b1627c2deb1f1209b1627c2deb1f1209 -> 
   custom:DOTSType/UnityEditor.VFX.VFXLineOutput: 3bec57389b1060393bec57389b106039 -> 
@@ -531,11 +446,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Light: 47f771faf20222f647f771faf20222f6 -> 
   custom:DOTSType/Rewired.Dev.Tools.RawInputJoystickElementIdentifier: 097a6a52316628d9097a6a52316628d9 -> 
   custom:DOTSType/UnityEditor.NoneTool: be089f23fb2c1579be089f23fb2c1579 -> 
-  custom:DOTSType/UnityEditor.EdgeCollider2DEditor: e6deaa2b08161fd5e6deaa2b08161fd5 -> 
-  custom:DOTSType/UnityEditor.Experimental.Rendering.ProbeVolumeEditor: c5792c6536b6bdaac5792c6536b6bdaa -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnSelectMessageListener: 8f45c4e0c3c337ba8f45c4e0c3c337ba -> 
+  custom:DOTSType/UnityEditor.Experimental.Rendering.ProbeVolumeEditor: c5792c6536b6bdaac5792c6536b6bdaa -> 
   custom:DOTSType/PixelCrushers.EnabledSaver: 811b00fe90b2a97e811b00fe90b2a97e -> 
   custom:DOTSType/Unity.PerformanceTesting.TestReportWindow: fbee5466c113dd05fbee5466c113dd05 -> 
+  custom:DOTSType/UnityEditor.EdgeCollider2DEditor: e6deaa2b08161fd5e6deaa2b08161fd5 -> 
   custom:DOTSType/UnityEditor.TerrainTools.PaintHeightTool: 3bd15084a07846ce3bd15084a07846ce -> 
   custom:DOTSType/UnityEditor.SceneHierarchySortingWindow: af48a4a01f89e7a4af48a4a01f89e7a4 -> 
   custom:DOTSType/UnityEditor.TestTools.TestRunner.Api.CallbacksHolder: 4d071da20270dff34d071da20270dff3 -> 
@@ -544,8 +459,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.LightProbeGroupInspector: 20d8caecfea817ce20d8caecfea817ce -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotVector: 4761d648571abaf94761d648571abaf9 -> 
   custom:DOTSType/UnityEditor.CapsuleColliderEditor: 26ad230c710a8cf126ad230c710a8cf1 -> 
-  custom:DOTSType/Ludiq.Peek.InconsistentComponentsTool+WarningWindow: 9fb766cedf6545f09fb766cedf6545f0 -> 
-  custom:DOTSType/Ludiq.Peek.HierarchyPopup: 5f769efbcb1ee5a85f769efbcb1ee5a8 -> 
   custom:DOTSType/DungeonArchitect.DungeonMarkerEmitter: e317409b947fd05de317409b947fd05d -> 
   custom:DOTSType/Unity.Entities.EntityManager+IsolateCopiedEntities: 703c8c39c22b63af703c8c39c22b63af -> 
   custom:DOTSType/DungeonArchitect.DebugText3D: 787ec34fdb37ccc8787ec34fdb37ccc8 -> 
@@ -638,6 +551,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.DialogueSystemEvents: 36625dc9deaff42736625dc9deaff427 -> 
   custom:DOTSType/Unity.VisualScripting.EditorPreferencesProvider: 2436a3322e37752e2436a3322e37752e -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.QuestLogWindowHotkey: bef7ce10b1057224bef7ce10b1057224 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Remap: ab3d535502561c84ab3d535502561c84 -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchControllerEditor: 467602ec36ba8e0e467602ec36ba8e0e -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStayMessageListener: 3a7d0c33b940aae03a7d0c33b940aae0 -> 
@@ -738,18 +652,17 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Rendering.VolumeProfile: 3afdd595d4ce81323afdd595d4ce8132 -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.ScoreManager: 6d54c6a9b80928da6d54c6a9b80928da -> 
   custom:DOTSType/UnityEditor.Timeline.TimelineWindowTimeControl: ca9546c9bc47321aca9546c9bc47321a -> 
-  custom:DOTSType/Ludiq.PeekCore.FuzzyWindow: 095450acd129b8c4095450acd129b8c4 -> 
   custom:DOTSType/UnityEditor.LightAnchorEditor: 7a5ee351ed55c4697a5ee351ed55c469 -> 
   custom:DOTSType/UnityEditor.ProBuilder.MaterialEditor: 0440269e58091fc70440269e58091fc7 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.LaunchURL: 743f8e68681917b3743f8e68681917b3 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.DecalProjector: 5711274f4650d4425711274f4650d442 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI04: e34de03f80694c09e34de03f80694c09 -> 
-  custom:DOTSType/UnityEditor.Rendering.DebugStateInt: 0d4fc6fe6eaac1420d4fc6fe6eaac142 -> 
+  custom:DOTSType/UnityEngine.AI.NavMeshAgent: 148baee70dfaa094148baee70dfaa094 -> 
   custom:DOTSType/RootMotion.FinalIK.RotationLimitHingeInspector: 7168555161f8bf117168555161f8bf11 -> 
+  custom:DOTSType/UnityEditor.Rendering.DebugStateInt: 0d4fc6fe6eaac1420d4fc6fe6eaac142 -> 
   custom:DOTSType/DungeonArchitect.RoomDesigner.DungeonRoomDesigner: 556c146a82869877556c146a82869877 -> 
   custom:DOTSType/Rewired.Dev.Tools.OSXJoystickElementIdentifier: ab834105ea86c68aab834105ea86c68a -> 
   custom:DOTSType/PixelCrushers.Wrappers.StringAsset: 409ee49ae9913854409ee49ae9913854 -> 
-  custom:DOTSType/UnityEngine.AI.NavMeshAgent: 148baee70dfaa094148baee70dfaa094 -> 
   custom:DOTSType/Unity.Entities.BurstCompatibleComponentData: 1d232e8370167ced1d232e8370167ced -> 
   custom:DOTSType/Unity.Entities.RetainBlobAssetPtr: f51a437fde39ac82f51a437fde39ac82 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerNotification: 284aa2289b7c2583284aa2289b7c2583 -> 
@@ -796,7 +709,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/SdfBakerSettingsEditor: f92a6bb09e97fc91f92a6bb09e97fc91 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandVoice: fbe60f88ded6fcd0fbe60f88ded6fcd0 -> 
   custom:DOTSType/UnityEngine.VFX.Utility.VFXVelocityBinder: a044f5dcb66b7690a044f5dcb66b7690 -> 
-  custom:DOTSType/Ludiq.Peek.GroupNamePrompt: 7adec529ac125d917adec529ac125d91 -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tooling.Graph3D.FlowLayoutNodeCamAligner: 10692bbcd7f2a14c10692bbcd7f2a14c -> 
   custom:DOTSType/UnityEditor.VFX.VFXDataParticle: a28ba2b3a7e1c2c5a28ba2b3a7e1c2c5 -> 
   custom:DOTSType/TMPro.EditorUtilities.TMP_SubMeshUI_Editor: 0acac6a80f13b09a0acac6a80f13b09a -> 
@@ -995,10 +907,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.VFX.VFXSlotFloat3: d10e06f85d6d6836d10e06f85d6d6836 -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineExternalCameraEditor: 06cbc333ac22e22706cbc333ac22e227 -> 
   custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyBaseColorAuthoring: c4d25efefbd4ad86c4d25efefbd4ad86 -> 
-  custom:DOTSType/UnityEditor.VFX.Block.CollisionSDF: 40aa07e1443ac5f440aa07e1443ac5f4 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleBuffer: d24bba0b45294b7fd24bba0b45294b7f -> 
-  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyThicknessRemapAuthoring: 9de20a123ad2d8049de20a123ad2d804 -> 
   custom:DOTSType/Rewired.Editor.GlobalOptionsWindow: c671465456ff1addc671465456ff1add -> 
+  custom:DOTSType/Unity.Rendering.HDRPMaterialPropertyThicknessRemapAuthoring: 9de20a123ad2d8049de20a123ad2d804 -> 
+  custom:DOTSType/UnityEditor.VFX.Block.CollisionSDF: 40aa07e1443ac5f440aa07e1443ac5f4 -> 
   custom:DOTSType/DungeonArchitect.Samples.SnapGridFlow.SGFHideOtherFloors: 1f6a6681b8018a911f6a6681b8018a91 -> 
   custom:DOTSType/UnityEngine.EventSystems.BaseInput: e235f5db1cebef17e235f5db1cebef17 -> 
   custom:DOTSType/PixelCrushers.Wrappers.CollisionEvent: 3727cbe20240eefa3727cbe20240eefa -> 
@@ -1073,7 +985,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Cinemachine.Editor.CinemachineHardLockToTargetEditor: 7032e2d61a82da097032e2d61a82da09 -> 
   custom:DOTSType/HealthBar: d6bb52a3b7bf21ddd6bb52a3b7bf21dd -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.PauseGameOnConversation: 2664e9e54e3acbb52664e9e54e3acbb5 -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqAssetEditor: 3fc88efa8dca0ded3fc88efa8dca0ded -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.Common.BaseFlowExecNodeHandler_CreateTilemapElevationsInspector: 268f45193217ef43268f45193217ef43 -> 
   custom:DOTSType/UnityEngine.RuntimeAnimatorController: 7eab6748309ba9677eab6748309ba967 -> 
   custom:DOTSType/UnityEditor.VFX.Block.PositionTorus: 8d926c57600cc0948d926c57600cc094 -> 
@@ -1188,6 +1099,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/HybridComponentAuthoring: e57d0874b115bcf4e57d0874b115bcf4 -> 
   custom:DOTSType/Unity.Entities.Editor.GUIStyleAsset: 577a23b80cda164a577a23b80cda164a -> 
   custom:DOTSType/UnityEditor.CharacterControllerEditor: 5c391c310580d6815c391c310580d681 -> 
+  custom:DOTSType/UnityEditor.PragmaFixingWindow: 9b790ae26df0d3fd9b790ae26df0d3fd -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SetEnabledOnDialogueEvent: c046d7d56de995e2c046d7d56de995e2 -> 
   custom:DOTSType/RootMotion.FinalIK.InteractionTarget: 653dc6d30b0f5aa3653dc6d30b0f5aa3 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.StandardUISelectorElements: 99d4d58ae5fdfdfe99d4d58ae5fdfdfe -> 
@@ -1196,7 +1108,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Rewired.Data.Mapping.HardwareJoystickTemplateMap: 986fad6fd443f20b986fad6fd443f20b -> 
   custom:DOTSType/UnityEditor.VFX.VisualEffectSubgraphOperator: a56a37b54f351ba5a56a37b54f351ba5 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.DialogueSystemAssetRenamerWindow: 0de9f23d6f8fe3810de9f23d6f8fe381 -> 
-  custom:DOTSType/Ludiq.PeekCore.WebWindow: 77abf5b847dd99e777abf5b847dd99e7 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.ReferenceDatabaseDialogueEventEditor: 15108fa3182f66ee15108fa3182f66ee -> 
   custom:DOTSType/Rewired.Integration.UnityUI.RewiredEventSystem: ec779b60873caed2ec779b60873caed2 -> 
   custom:DOTSType/Rewired.Data.Mapping.CustomCalculation_FirstNonZero: 7ec4d13188f8a9cd7ec4d13188f8a9cd -> 
@@ -1209,9 +1120,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Rewired.Editor.HardwareJoystickMapEditor: 3419980b9682cc763419980b9682cc76 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.BarkOnDialogueEvent: 0795e072d515419e0795e072d515419e -> 
   custom:DOTSType/UnityEditor.Animations.AnimatorDefaultTransition: 86ccfad64c7cca6086ccfad64c7cca60 -> 
+  custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRendererData: 08558fb1dd77dea008558fb1dd77dea0 -> 
   custom:DOTSType/UnityEditor.VFX.VFXUI: 4aed640452aa32e34aed640452aa32e3 -> 
   custom:DOTSType/DungeonArchitect.LevelStreaming.DungeonItemGroupInfo: 076995141ab3f181076995141ab3f181 -> 
-  custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRendererData: 08558fb1dd77dea008558fb1dd77dea0 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.ForwardRendererData: 2257845b39f25a2f2257845b39f25a2f -> 
   custom:DOTSType/RootMotion.Demos.MotionAbsorb: d5106c8740694d70d5106c8740694d70 -> 
   custom:DOTSType/PlayerRatingsScriptableObject: a03c88e120026196a03c88e120026196 -> 
@@ -1325,7 +1236,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Entities.EditorCompanionHideFlagsSet: 64e46366d5a957c364e46366d5a957c3 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.WelcomeWindow: dcc6f392870647dedcc6f392870647de -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineMixingCameraEditor: b347a5e07fc4e75db347a5e07fc4e75d -> 
-  custom:DOTSType/Ludiq.PeekCore.CoroutineRunner: d57c1beee6c66f08d57c1beee6c66f08 -> 
   custom:DOTSType/DungeonArchitect.Editors.MarkerEmitterNodeEditor: 1e6dca67481c84d11e6dca67481c84d1 -> 
   custom:DOTSType/DungeonArchitect.Graphs.GameObjectArrayNode: 02b8812e79d5be9502b8812e79d5be95 -> 
   custom:DOTSType/UnityEditor.VFX.VFXQuadStripOutput: 80bd522ee6f883a180bd522ee6f883a1 -> 
@@ -1333,7 +1243,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/VFXParameterEditor: b7c17366582caae6b7c17366582caae6 -> 
   custom:DOTSType/DungeonArchitect.Editors.FloorPlanCorridorToolEditor: e5042d460cd5aeede5042d460cd5aeed -> 
   custom:DOTSType/UnityEditor.VFX.Block.GPUEventAlways: 7087474a2fe604357087474a2fe60435 -> 
-  custom:DOTSType/Ludiq.PeekCore.SetupWizard: af5e00cb62424093af5e00cb62424093 -> 
   custom:DOTSType/DungeonArchitect.Graphs.SpatialConstraints.SCReferenceNode: 2dd667e97c893e282dd667e97c893e28 -> 
   custom:DOTSType/Rewired.Demos.ControlRemappingDemo1: 50f126dce32442ca50f126dce32442ca -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRenderPipelineEditorResources: 51c679601edcf76c51c679601edcf76c -> 
@@ -1343,10 +1252,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/HowMenuGroup: f3bab6287fb82202f3bab6287fb82202 -> 
   custom:DOTSType/UnityEditor.LightmapParameters: 38156e995fc797e238156e995fc797e2 -> 
   custom:DOTSType/UnityEditor.Profiling.ModuleEditor.ModuleEditorWindow: 5c00379505e47ecf5c00379505e47ecf -> 
-  custom:DOTSType/DungeonArchitect.Splatmap.DungeonSplatAsset: 9127afb604c12cb49127afb604c12cb4 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.ConversationTrigger: bf5115ea9fb1be52bf5115ea9fb1be52 -> 
-  custom:DOTSType/UnityEditor.SceneTemplate.SceneTemplateAsset: 52a5045e9a59533e52a5045e9a59533e -> 
   custom:DOTSType/Unity.VisualScripting.UnityMessageListener: 62b0dbd03b056ae062b0dbd03b056ae0 -> 
+  custom:DOTSType/UnityEditor.SceneTemplate.SceneTemplateAsset: 52a5045e9a59533e52a5045e9a59533e -> 
+  custom:DOTSType/DungeonArchitect.Splatmap.DungeonSplatAsset: 9127afb604c12cb49127afb604c12cb4 -> 
   custom:DOTSType/PixelCrushers.Wrappers.EnabledSaver: 2b2512e9fd194e5e2b2512e9fd194e5e -> 
   custom:DOTSType/UnityEditor.VFX.Operator.MatrixFromVector4: e8c7fdf7ca7065fce8c7fdf7ca7065fc -> 
   custom:DOTSType/Unity.UI.Builder.TwoPaneSplitViewTestWindow: 27790885fcff738927790885fcff7389 -> 
@@ -1480,8 +1389,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.FinalIK.FullBodyBipedIK: d568efdb90db11e1d568efdb90db11e1 -> 
   custom:DOTSType/UnityEngine.FixedJoint: ed9849b42dc16356ed9849b42dc16356 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.LocalizedTextTableEditor: 577dc212535f4004577dc212535f4004 -> 
-  custom:DOTSType/DungeonArchitect.Editors.DungeonThemeEditorWindow: 5f90a151f7065eea5f90a151f7065eea -> 
   custom:DOTSType/UnityEditor.Search.ASIEI07: 00494e8b7332c8fb00494e8b7332c8fb -> 
+  custom:DOTSType/DungeonArchitect.Editors.DungeonThemeEditorWindow: 5f90a151f7065eea5f90a151f7065eea -> 
   custom:DOTSType/Rewired.Integration.Cinemachine.Editor.RewiredCinemachineBridgeInspector: 5946ecbdfa5195025946ecbdfa519502 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.ScreenSpaceAmbientOcclusion: d941df2e67f9c07fd941df2e67f9c07f -> 
   custom:DOTSType/UnityEditor.UIAutomation.TestEditorWindow: 1889dda7134e379f1889dda7134e379f -> 
@@ -1588,8 +1497,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/FlingMechanicComponent: f45565e814ffac04f45565e814ffac04 -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertySmoothnessAuthoring: 14016d72fffeefa914016d72fffeefa9 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.BarkOnIdle: f7adabf395ffe93ef7adabf395ffe93e -> 
-  custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SMSDialogueUI: 9da0032f941d51769da0032f941d5176 -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.GridFlow.GridFlowExecNodeHandler_MirrorGraphInspector: bfa2720e8e701cd0bfa2720e8e701cd0 -> 
+  custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SMSDialogueUI: 9da0032f941d51769da0032f941d5176 -> 
   custom:DOTSType/UnityEditor.UI.HorizontalOrVerticalLayoutGroupEditor: 63f9eca2ea7d35de63f9eca2ea7d35de -> 
   custom:DOTSType/UnityEngine.Rendering.PostProcessing.DepthOfField: 143e3578d8a1aa44143e3578d8a1aa44 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.StandardUIButtonTemplate: 739df2f0776a6975739df2f0776a6975 -> 
@@ -1633,7 +1542,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DungeonArchitect.Editors.MeshNodeEditor: 59d6165005f132b259d6165005f132b2 -> 
   custom:DOTSType/DungeonArchitect.Grammar.GrammarExecNodeBase: 193f1b434fe37f8d193f1b434fe37f8d -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ScreenSpaceAmbientOcclusionEditor: a12db2cab5649845a12db2cab5649845 -> 
-  custom:DOTSType/Ludiq.PeekCore.AboutWindow: 463fce5efbcb342f463fce5efbcb342f -> 
   custom:DOTSType/UnityEditor.HostView: 01e5ea1d4d01ca0a01e5ea1d4d01ca0a -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertyBumpScaleAuthoring: afd886c9c6e2f12aafd886c9c6e2f12a -> 
   custom:DOTSType/RootMotion.FinalIK.BipedIK: 4e6bbc7fe399cb464e6bbc7fe399cb46 -> 
@@ -1750,9 +1658,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditorInternal.StateMachine: 1b352bd63be88bde1b352bd63be88bde -> 
   custom:DOTSType/PixelCrushers.MessageEvents: e7f8ea784f087a84e7f8ea784f087a84 -> 
   custom:DOTSType/Unity.Physics.Editor.PhysicsStepAuthoringEditor: b0470546a7982481b0470546a7982481 -> 
+  custom:DOTSType/UnityEditor.VFX.VFXGraph: dabb6ad23389e677dabb6ad23389e677 -> 
   custom:DOTSType/DungeonArchitect.PooledDungeonSceneProvider: 718666a133b85d98718666a133b85d98 -> 
   custom:DOTSType/UnityEditor.Polybrush.PreferenceDictionary: 0190e8b90340b6040190e8b90340b604 -> 
-  custom:DOTSType/UnityEditor.VFX.VFXGraph: dabb6ad23389e677dabb6ad23389e677 -> 
   custom:DOTSType/Unity.Entities.GameObjectConversionUtility+DeclaredReferenceObjectsTag: 9297c5717cd023cb9297c5717cd023cb -> 
   custom:DOTSType/DungeonArchitect.Builders.SimpleCity.SimpleCityDungeonConfig: 69ac58a9ca0a468a69ac58a9ca0a468a -> 
   custom:DOTSType/UnityEditor.VFX.Operator.ValueNoise: b11938a966537273b11938a966537273 -> 
@@ -1867,7 +1775,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.VFX.Utility.VFXLightBinder: 0dd01791cbc365bf0dd01791cbc365bf -> 
   custom:DOTSType/VFXBlockEditor: 7f0d317c0198e5d17f0d317c0198e5d1 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ShaderGraph.UniversalMetadata: 1c30665553aa7f2c1c30665553aa7f2c -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqComponentEditor: 5833b06aefd5b2ae5833b06aefd5b2ae -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerDropdown: 4a1b60ca9a6abe0e4a1b60ca9a6abe0e -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.PlayerHealth: 89e8d400355637b189e8d400355637b1 -> 
   custom:DOTSType/Unity.Build.Editor.BuildConfigurationScriptedImporterEditor: 5502b3ccf5e913715502b3ccf5e91371 -> 
@@ -1880,7 +1787,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.UnityGUI.UnityDialogueUI: cf37b791dda8459ccf37b791dda8459c -> 
   custom:DOTSType/Lighting: 45bdcd95361d5cbb45bdcd95361d5cbb -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleSDF: e775e7101a85780fe775e7101a85780f -> 
-  custom:DOTSType/Ludiq.PeekCore.TaskWindow: be1ab3690b12dca1be1ab3690b12dca1 -> 
   custom:DOTSType/UnityEngine.ProBuilder.Shapes.ProBuilderShape: 264151fc160c68c4264151fc160c68c4 -> 
   custom:DOTSType/UnityEngine.EventSystems.StandaloneInputModule: ec9de3a45a8b8c04ec9de3a45a8b8c04 -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.Impl.GridFlowEditorConfig: b430e41a41017b47b430e41a41017b47 -> 
@@ -1997,10 +1903,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerContainer: 51d6bfc320b223f351d6bfc320b223f3 -> 
   custom:DOTSType/UnityEngine.EventSystems.TouchInputModule: d49babf32202904cd49babf32202904c -> 
   custom:DOTSType/UnityEngine.HingeJoint: ae7f02a2d1bb7e0fae7f02a2d1bb7e0f -> 
-  custom:DOTSType/DungeonArchitect.Editors.Flow.GridFlow.GridFlowExecNodeHandler_SpawnItemsInspector: 7f59ef9cc9f838fb7f59ef9cc9f838fb -> 
   custom:DOTSType/UnityEditor.DiagnosticSwitchesConsoleMessage: ef298b1108045c7bef298b1108045c7b -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.QuestStateDispatcher: 3cb77964ff0164f93cb77964ff0164f9 -> 
+  custom:DOTSType/DungeonArchitect.Editors.Flow.GridFlow.GridFlowExecNodeHandler_SpawnItemsInspector: 7f59ef9cc9f838fb7f59ef9cc9f838fb -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
   custom:DOTSType/UnityEditor.BoxPrimitiveColliderTool: 46c46783aede4bf746c46783aede4bf7 -> 
   custom:DOTSType/UnityEngine.AI.NavMeshObstacle: d4524c4aca5462e5d4524c4aca5462e5 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.UnityUIQuestTrackTemplate: a03f176936489fe0a03f176936489fe0 -> 
@@ -2121,14 +2027,14 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.Sprites.PackerWindow: baf22c6112bc75e3baf22c6112bc75e3 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.BitwiseLeftShift: dcea96be07159e55dcea96be07159e55 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.UnityUIQuestTracker: d7d0485c2088e04ad7d0485c2088e04a -> 
+  custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerTooltip: 10ed8995fc6501d010ed8995fc6501d0 -> 
   custom:DOTSType/RootMotion.Demos.SimpleAimingSystem: ea8bfbe73cc5f96eea8bfbe73cc5f96e -> 
   custom:DOTSType/Unity.Rendering.SharedMeshData: ede46dc18707c31bede46dc18707c31b -> 
-  custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerTooltip: 10ed8995fc6501d010ed8995fc6501d0 -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.MiniMapEnemyDots: 0b491d278df0798a0b491d278df0798a -> 
   custom:DOTSType/GunScript: 946db9e75a0cc0dc946db9e75a0cc0dc -> 
+  custom:DOTSType/SaveComponent: 03898becfbd4c05203898becfbd4c052 -> 
   custom:DOTSType/DungeonArchitect.Editors.MeshArrayNodeEditor: fce0d6530c461abbfce0d6530c461abb -> 
   custom:DOTSType/PauseMenuGroup: 65883d810a9e478f65883d810a9e478f -> 
-  custom:DOTSType/SaveComponent: 03898becfbd4c05203898becfbd4c052 -> 
   custom:DOTSType/UnityEditor.PropertyEditor: e2ca155ffd317c8de2ca155ffd317c8d -> 
   custom:DOTSType/AdjacentCorridorTracker: 6585f2b0624619976585f2b062461997 -> 
   custom:DOTSType/Unity.Physics.Authoring.PhysicsDebugDisplayData: 798da0a7bb306526798da0a7bb306526 -> 
@@ -2143,12 +2049,12 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.AssetObjectManifest: 84d682f40d46c88184d682f40d46c881 -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStay2DMessageListener: 783ffa85ed02bee3783ffa85ed02bee3 -> 
   custom:DOTSType/DungeonArchitect.Navigation.NavigationTriangleProvider: 06c794ce48f1001b06c794ce48f1001b -> 
-  custom:DOTSType/UnityEditor.SceneManagement.StageNavigationManager: 489bfde048e16dd1489bfde048e16dd1 -> 
+  custom:DOTSType/DungeonArchitect.Builders.SnapGridFlow.SnapGridFlowConfig: 8baf4a5060c7499d8baf4a5060c7499d -> 
   custom:DOTSType/Unity.Entities.PostLoadCommandBuffer: 41c768f6a33d195b41c768f6a33d195b -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnTransformParentChangedMessageListener: 498b53e9507bafb5498b53e9507bafb5 -> 
-  custom:DOTSType/UnityEditor.DirectorEditor: 0dd0b4393c66df480dd0b4393c66df48 -> 
+  custom:DOTSType/UnityEditor.SceneManagement.StageNavigationManager: 489bfde048e16dd1489bfde048e16dd1 -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tooling.Graph2D.FlowLayoutToolGraph2D: fc91d809852d4b1ffc91d809852d4b1f -> 
-  custom:DOTSType/DungeonArchitect.Builders.SnapGridFlow.SnapGridFlowConfig: 8baf4a5060c7499d8baf4a5060c7499d -> 
+  custom:DOTSType/UnityEditor.DirectorEditor: 0dd0b4393c66df480dd0b4393c66df48 -> 
   custom:DOTSType/UnityEngine.U2D.SpriteShapeRenderer: c9fe580071495138c9fe580071495138 -> 
   custom:DOTSType/UnityEditorInternal.AnimationWindowSelectionItem: fab9a646cde907f4fab9a646cde907f4 -> 
   custom:DOTSType/UnityEngine.UIElements.PanelRaycaster: 5a24194a559897275a24194a55989727 -> 
@@ -2178,10 +2084,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.Demos.HitReactionTrigger: 64c48e6e041f366c64c48e6e041f366c -> 
   custom:DOTSType/MatchupComponent: 8a7a1bbed17f688b8a7a1bbed17f688b -> 
   custom:DOTSType/UnityEditor.UI.DropdownEditor: c442e9f29f6c6fe9c442e9f29f6c6fe9 -> 
-  custom:DOTSType/CinemachineCameraOffset: 4f3e8508299ed11a4f3e8508299ed11a -> 
   custom:DOTSType/DungeonArchitect.Flow.Exec.FlowExecTaskResult: 65d0bff9801f73de65d0bff9801f73de -> 
-  custom:DOTSType/Cinemachine.CinemachineInputProvider: 41c7f5c904a0165641c7f5c904a01656 -> 
+  custom:DOTSType/CinemachineCameraOffset: 4f3e8508299ed11a4f3e8508299ed11a -> 
   custom:DOTSType/Rewired.Editor.PlayerControllerInspector: 7523e290544047887523e29054404788 -> 
+  custom:DOTSType/Cinemachine.CinemachineInputProvider: 41c7f5c904a0165641c7f5c904a01656 -> 
   custom:DOTSType/UnityEditor.TextCore.Text.TextSettingsEditor: acea92ec14339555acea92ec14339555 -> 
   custom:DOTSType/UnityEngine.PhysicsMaterial2D: 97bd1008eeb781d197bd1008eeb781d1 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.ChangeSpace: 9e535ba29d07d0bb9e535ba29d07d0bb -> 
@@ -2218,11 +2124,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.GameObject: aef60e3f2ae5ad9aaef60e3f2ae5ad9a -> 
   custom:DOTSType/RootMotion.Demos.UserControlInteractions: 9fc664a3401c820b9fc664a3401c820b -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.OverrideActorName: 4e1ae1a9b6a812ce4e1ae1a9b6a812ce -> 
-  custom:DOTSType/UnityEditor.VisualEffectAssetEditorUtility+DoCreateNewSubgraphBlock: b239d285cd1d5547b239d285cd1d5547 -> 
-  custom:DOTSType/Ludiq.PeekCore.UpdateWizard: 45d136d954a6c38845d136d954a6c388 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandQTE: 99d4cee992c07da299d4cee992c07da2 -> 
-  custom:DOTSType/UnityEditor.AnimationModeDriver: 732d6a6cec3817f5732d6a6cec3817f5 -> 
+  custom:DOTSType/UnityEditor.VisualEffectAssetEditorUtility+DoCreateNewSubgraphBlock: b239d285cd1d5547b239d285cd1d5547 -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
+  custom:DOTSType/UnityEditor.AnimationModeDriver: 732d6a6cec3817f5732d6a6cec3817f5 -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+ShaderPreloadEditor: 4f0d4249ee548b3a4f0d4249ee548b3a -> 
   custom:DOTSType/RootMotion.Comments: c64d23a851fdf87fc64d23a851fdf87f -> 
   custom:DOTSType/UnityEditor.Rendering.LensFlareEditorUtils+LensFlareDataSRPCreator: 0def46bcaa50ed6d0def46bcaa50ed6d -> 
@@ -2285,7 +2190,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Michsky.UI.ModernUIPack.ButtonManagerBasicEditor: bc608e7d2d370847bc608e7d2d370847 -> 
   custom:DOTSType/UnityEditor.HingeJoint2DEditor: 6c66ecd98d3897716c66ecd98d389771 -> 
   custom:DOTSType/TMPro.TMP_Dropdown+DropdownItem: a124c6825d9f16cda124c6825d9f16cd -> 
-  custom:DOTSType/UnityEditor.Rendering.DebugStateEnum: 85e3a1eadca5e88885e3a1eadca5e888 -> 
   custom:DOTSType/EnemyAttackComponent: 097ff9f285b22da1097ff9f285b22da1 -> 
   custom:DOTSType/DungeonArchitect.Builders.Grid.LandscapeTransformerGrid: b543cc3f2249ffb5b543cc3f2249ffb5 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI01: f29c3b5f8afe6ebbf29c3b5f8afe6ebb -> 
@@ -2303,7 +2207,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.DialogueActor: 0538c7e6911c09da0538c7e6911c09da -> 
   custom:DOTSType/UnityEditor.VFX.Block.AttributeMassFromVolume: 2d412324a88610762d412324a8861076 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.AssetVersion: cbbf064c4bde6a1fcbbf064c4bde6a1f -> 
-  custom:DOTSType/Ludiq.PeekCore.EditorIconViewer: 63ae9d3fa581b31b63ae9d3fa581b31b -> 
   custom:DOTSType/MaterialOverrideAsset: 30e094f2f72d42c230e094f2f72d42c2 -> 
   custom:DOTSType/TMPro.TextMeshPro: 61e10d215eb1b79961e10d215eb1b799 -> 
   custom:DOTSType/Unity.Transforms.CopyInitialTransformFromGameObject: 2e04dba9bc7f665b2e04dba9bc7f665b -> 
@@ -2582,7 +2485,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.VFX.Block.PositionSphere: 7f6600b2765dcb967f6600b2765dcb96 -> 
   custom:DOTSType/JackRabbit.GameControllerJackRabbit: 36a4f73968e6184736a4f73968e61847 -> 
   custom:DOTSType/UnityEditor.DeviceSimulation.DeviceInfoAsset: d11de534da114722d11de534da114722 -> 
-  custom:DOTSType/Ludiq.PeekCore.GeneratePropertyProvidersWindow: a510e4a6bb754459a510e4a6bb754459 -> 
   custom:DOTSType/DungeonArchitect.Builders.Grid.SpatialConstraints.SpatialConstraintProcessorGridFlow2D: 820d357b5f7dbb8d820d357b5f7dbb8d -> 
   custom:DOTSType/Packages.Rider.Editor.UnitTesting.CallbackData: b59e305e614ec365b59e305e614ec365 -> 
   custom:DOTSType/EnemyWeaponMovementComponent: 43e0c680156800a043e0c680156800a0 -> 
@@ -2671,7 +2573,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerPanel: 4ca2f5d3d855e3784ca2f5d3d855e378 -> 
   custom:DOTSType/UnityEngine.TestRunner.Utils.TestRunCallbackListener: be8e9fd807bd1303be8e9fd807bd1303 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandCamera: 0c48109ba2b849980c48109ba2b84998 -> 
-  custom:DOTSType/Ludiq.Peek.EditorPopup: 4d2437ec2ddc9be04d2437ec2ddc9be0 -> 
   custom:DOTSType/UnityEditor.UIElements.Debugger.UIElementsDebugger: 30bc2363ab7249f930bc2363ab7249f9 -> 
   custom:DOTSType/UnityEditor.TreeViewExamples.TreeViewTestWindow: 7b444b9c14b8baa07b444b9c14b8baa0 -> 
   custom:DOTSType/BossWeaponComponent: 9500c3f6f29e2ad19500c3f6f29e2ad1 -> 
@@ -2684,7 +2585,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.ProximitySelector: eee8b1111314e05beee8b1111314e05b -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.DialogueDatabase: 311cf8976d3946b6311cf8976d3946b6 -> 
   custom:DOTSType/DungeonArchitect.Themeing.DungeonMarkerVisualizerComponent: bf47be3d1ca3cd9dbf47be3d1ca3cd9d -> 
-  custom:DOTSType/Ludiq.Peek.ReparentingPrompt: 7178af188443b0c07178af188443b0c0 -> 
   custom:DOTSType/UnityEngine.Effector2D: 5923a4e47043fd275923a4e47043fd27 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Converters.ColorGradingConverter: 6b9c8c279da41bf56b9c8c279da41bf5 -> 
   custom:DOTSType/RootMotion.FinalIK.LookAtController: 84a784b4cf368b6684a784b4cf368b66 -> 
@@ -2692,7 +2592,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.VisualScripting.UnityOnScrollMessageListener: 064c4bc4e4db64a7064c4bc4e4db64a7 -> 
   custom:DOTSType/UnityEditor.ScriptReloadProperties: 3feae7b52eb44b493feae7b52eb44b49 -> 
   custom:DOTSType/UnityEditor.VFX.VFXOutputEvent: 05f40b8caf34482305f40b8caf344823 -> 
-  custom:DOTSType/PowerItemComponent: cdf49d0a9b8f6a59cdf49d0a9b8f6a59 -> 
+  custom:DOTSType/PowerItemComponent: 2d9b8df4a4d7198b2d9b8df4a4d7198b -> 
   custom:DOTSType/UnityEditor.UI.TextEditor: 5eda947aa1b364635eda947aa1b36463 -> 
   custom:DOTSType/UnityEditor.LookAtConstraintEditor: b2c669ce84ceb72cb2c669ce84ceb72c -> 
   custom:DOTSType/PixelCrushers.Wrappers.SaveSystem: 155f9cc00db4267f155f9cc00db4267f -> 
@@ -2920,19 +2820,19 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.FailedToLoadScriptObject: 39a2a1e4ae40c69139a2a1e4ae40c691 -> 
   custom:DOTSType/UnityEditor.AudioReverbFilterEditor: b3f29485865eb643b3f29485865eb643 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SendMessageOnDialogueEvent: 26a718f2041e974126a718f2041e9741 -> 
-  custom:DOTSType/TMPro.Examples.SimpleScript: 48c3ba447e74614548c3ba447e746145 -> 
+  custom:DOTSType/UnityEditor.VFX.URP.VFXURPLitQuadStripOutput: e91d385f76bfca81e91d385f76bfca81 -> 
   custom:DOTSType/UnityEditor.Presets.PresetSelector: 80cae4221594363380cae42215943633 -> 
   custom:DOTSType/VFXContextEditor: b551f45aa85f98dbb551f45aa85f98db -> 
   custom:DOTSType/RootMotion.FinalIK.AimIKJ: bfa14e578d347427bfa14e578d347427 -> 
   custom:DOTSType/UnityEngine.Timeline.SignalAsset: 40a0d26b5718303e40a0d26b5718303e -> 
   custom:DOTSType/UnityEditor.SavedSearchFilters: c875ec487eb82b33c875ec487eb82b33 -> 
   custom:DOTSType/RootMotion.FinalIK.EditorIKPose: 48b3a2a05d9444e148b3a2a05d9444e1 -> 
+  custom:DOTSType/TMPro.Examples.SimpleScript: 48c3ba447e74614548c3ba447e746145 -> 
   custom:DOTSType/UnityEditor.UI.ContentSizeFitterEditor: 7b574be00a84b3d37b574be00a84b3d3 -> 
   custom:DOTSType/RootMotion.Demos.FBIKBoxing: c3cc1fd29261b93ac3cc1fd29261b93a -> 
   custom:DOTSType/UnityEngine.SpriteMask: 8c8555da233824978c8555da23382497 -> 
   custom:DOTSType/UnityEditor.TestTools.TestRunner.CommandLineTest.ExitCallbacks: 5cdc6cdeddd7fee35cdc6cdeddd7fee3 -> 
   custom:DOTSType/UnityEngine.CanvasRenderer: 2c4d642f145776f52c4d642f145776f5 -> 
-  custom:DOTSType/UnityEditor.VFX.URP.VFXURPLitQuadStripOutput: e91d385f76bfca81e91d385f76bfca81 -> 
   custom:DOTSType/SaveLevelManager: fb1a95a66472112efb1a95a66472112e -> 
   custom:DOTSType/UnityEditor.VFX.Block.CollisionSphere: 485ef68c4b9196e7485ef68c4b9196e7 -> 
   custom:DOTSType/RoomMidEmitter: 027d535634194b3b027d535634194b3b -> 
@@ -3286,13 +3186,13 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.WindowFocusState: afc02077a0c9f31dafc02077a0c9f31d -> 
   custom:DOTSType/DungeonArchitect.Flow.Impl.GridFlow.Tasks.GridFlowLayoutTaskCreateKeyLock: a04f284cc8c680e2a04f284cc8c680e2 -> 
   custom:DOTSType/UnityEngine.AudioHighPassFilter: 50def1341511b24b50def1341511b24b -> 
-  custom:DOTSType/UnityEditor.TextureInspector: 5cc1300853537fca5cc1300853537fca -> 
   custom:DOTSType/UnityEditor.AnimationWindowEvent: 2a7e844c8e2f58ce2a7e844c8e2f58ce -> 
-  custom:DOTSType/UnityEditor.Audio.AudioMixerSnapshotController: 690844117723ac0c690844117723ac0c -> 
+  custom:DOTSType/UnityEditor.TextureInspector: 5cc1300853537fca5cc1300853537fca -> 
   custom:DOTSType/UnityEditor.SphereColliderEditor: aaa5afdd62c82d13aaa5afdd62c82d13 -> 
+  custom:DOTSType/UnityEditor.Audio.AudioMixerSnapshotController: 690844117723ac0c690844117723ac0c -> 
+  custom:DOTSType/RootMotion.Demos.MechSpiderParticles: 3923e94058cf36583923e94058cf3658 -> 
   custom:DOTSType/ParticleEffectsLibrary: 4890c6ae58333fa64890c6ae58333fa6 -> 
   custom:DOTSType/UnityEngine.CanvasGroup: da0cac3229587319da0cac3229587319 -> 
-  custom:DOTSType/RootMotion.Demos.MechSpiderParticles: 3923e94058cf36583923e94058cf3658 -> 
   custom:DOTSType/LoadDeleteMenuGroup: cc37e1bdfa7463a6cc37e1bdfa7463a6 -> 
   custom:DOTSType/UnityEngine.Rendering.PostProcessing.PostProcessProfile: ee9fea920f762eadee9fea920f762ead -> 
   custom:DOTSType/UnityEditor.Rendering.DebugStateBool: ac68ba4843e2737aac68ba4843e2737a -> 
@@ -3361,11 +3261,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.AssemblyDefinitionReferenceImporterInspector: bda50e2f787cb05bbda50e2f787cb05b -> 
   custom:DOTSType/ParentComponent: 13921ab6ef3b0e0713921ab6ef3b0e07 -> 
   custom:DOTSType/UnityEditor.WindInspector: 17e94b22c00dc9b117e94b22c00dc9b1 -> 
-  custom:DOTSType/WeaponManager: c22177ebd7a9318bc22177ebd7a9318b -> 
+  custom:DOTSType/SaveManager: 096dac6192b743da096dac6192b743da -> 
   custom:DOTSType/InputController: 7199e8a1ac6bf70f7199e8a1ac6bf70f -> 
   custom:DOTSType/RootMotion.FinalIK.GrounderQuadruped: 87e2f433732e811787e2f433732e8117 -> 
+  custom:DOTSType/WeaponManager: c22177ebd7a9318bc22177ebd7a9318b -> 
   custom:DOTSType/EpicToonFX.ETFXMouseOrbit: df6d03043940afa8df6d03043940afa8 -> 
-  custom:DOTSType/SaveManager: 096dac6192b743da096dac6192b743da -> 
   custom:DOTSType/UnityEditor.VFX.VFXSubgraphBlock: 63a5153d16931b8563a5153d16931b85 -> 
   custom:DOTSType/LocomotionState: 9db77801faf3779c9db77801faf3779c -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Absolute: 6f68795ef6a96b4a6f68795ef6a96b4a -> 
@@ -3496,8 +3396,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PlayAndDestroyEffectComponent: 38c3dfb08926c14d38c3dfb08926c14d -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.SnapGridFlow.SnapGridFlowExecNodeHandler_SpawnItemsInspector: 572e678c72a8d5dc572e678c72a8d5dc -> 
   custom:DOTSType/UnityEditor.CameraEditor: 584e4ee1d931f0f7584e4ee1d931f0f7 -> 
-  custom:DOTSType/UnityEditor.ProBuilder.TooltipEditor: 8eeafb34c94419c38eeafb34c94419c3 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.CellularNoise: 26cb35f45b5e3cf226cb35f45b5e3cf2 -> 
+  custom:DOTSType/UnityEditor.ProBuilder.TooltipEditor: 8eeafb34c94419c38eeafb34c94419c3 -> 
+  custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_SHCAuthoring: 4b89a97fcfee63dd4b89a97fcfee63dd -> 
   custom:DOTSType/UnityEditor.DeviceSimulation.DeviceInfoImporter: 37ce1d5d5dba345a37ce1d5d5dba345a -> 
   custom:DOTSType/DungeonArchitect.Builders.Grid.GridDungeonToolData: 29b7ac80a109f78f29b7ac80a109f78f -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SelectorFollowTarget: b1a703322712994eb1a703322712994e -> 
@@ -3506,7 +3407,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.UsableUnityUI: 3142c492603facec3142c492603facec -> 
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerIntField: ab091d33bef1acd6ab091d33bef1acd6 -> 
   custom:DOTSType/DungeonArchitect.Graphs.MarkerEmitterNode: 60adbdb89a39cc6a60adbdb89a39cc6a -> 
-  custom:DOTSType/Unity.Rendering.BuiltinMaterialPropertyUnity_SHCAuthoring: 4b89a97fcfee63dd4b89a97fcfee63dd -> 
   custom:DOTSType/Unity.Transforms.CompositeRotation: 8bc995b005ebe4c38bc995b005ebe4c3 -> 
   custom:DOTSType/Unity.Transforms.RotationEulerXYZ: a73971462e1d0029a73971462e1d0029 -> 
   custom:DOTSType/TMPro.TMP_InputField: 5ca8f1e409ae9e075ca8f1e409ae9e07 -> 
@@ -3913,33 +3813,21 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 363830.572116 seconds.
-  path: Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat
-  artifactKey: Guid(31321ba15b8f8eb4c954353edc038b1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Packages/com.unity.render-pipelines.universal/Runtime/Materials/Lit.mat using Guid(31321ba15b8f8eb4c954353edc038b1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a9be8848b3c698d632c0dc8db8db3af2') in 0.387869 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 703.975562 seconds.
-  path: Assets/Materials/Substance/Bolted Panel/New Material 1.mat
-  artifactKey: Guid(ef78620fc6695a148aadd35c1e5b0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Substance/Bolted Panel/New Material 1.mat using Guid(ef78620fc6695a148aadd35c1e5b0970) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72e9b3a15365d44eb3019f802c2a6ee2') in 0.263601 seconds 
-========================================================================
-Received Import Request.
-  Time since last request: 5.203679 seconds.
-  path: Assets/Materials/Substance/Bolted Panel/New Material.mat
-  artifactKey: Guid(dc2a6e911d6e9ba40afe4dedf16e9066) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Substance/Bolted Panel/New Material.mat using Guid(dc2a6e911d6e9ba40afe4dedf16e9066) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f706496b3f1c2af964ecc3412caf18e1') in 0.026120 seconds 
+  Time since last request: 264568.660643 seconds.
+  path: Assets/Prefabs/Powers/EnergyBall_FBX.prefab
+  artifactKey: Guid(573727be42ac1274db3f2a4b175927e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/Powers/EnergyBall_FBX.prefab using Guid(573727be42ac1274db3f2a4b175927e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2f6ad2b784e9860afbadca831d54b8ff') in 0.742300 seconds 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014590 seconds.
+Registered in 0.037159 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 4.74 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 10.27 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-TypeManager.Initialize took: 360ms
+TypeManager.Initialize took: 473ms
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
@@ -3950,40 +3838,40 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 [Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
 
 Mono: successfully reloaded assembly
-- Completed reload, in  4.419 seconds
+- Completed reload, in  5.167 seconds
 Domain Reload Profiling:
-	ReloadAssembly (4420ms)
-		BeginReloadAssembly (559ms)
+	ReloadAssembly (5172ms)
+		BeginReloadAssembly (1319ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (36ms)
+			DisableScriptedObjects (207ms)
 			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (241ms)
-		EndReloadAssembly (3703ms)
-			LoadAssemblies (163ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (656ms)
-			ReleaseScriptCaches (7ms)
-			RebuildScriptCaches (129ms)
-			SetupLoadedEditorAssemblies (2155ms)
+			ReleaseScriptingObjects (3ms)
+			CreateAndSetChildDomain (471ms)
+		EndReloadAssembly (3648ms)
+			LoadAssemblies (490ms)
+			RebuildTransferFunctionScriptingTraits (3ms)
+			SetupTypeCache (899ms)
+			ReleaseScriptCaches (60ms)
+			RebuildScriptCaches (112ms)
+			SetupLoadedEditorAssemblies (1962ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (15ms)
+				InitializePlatformSupportModulesInManaged (18ms)
 				SetLoadedEditorAssemblies (1ms)
-				RefreshPlugins (5ms)
-				BeforeProcessingInitializeOnLoad (174ms)
-				ProcessInitializeOnLoadAttributes (1854ms)
-				ProcessInitializeOnLoadMethodAttributes (90ms)
-				AfterProcessingInitializeOnLoad (16ms)
+				RefreshPlugins (10ms)
+				BeforeProcessingInitializeOnLoad (281ms)
+				ProcessInitializeOnLoadAttributes (1529ms)
+				ProcessInitializeOnLoadMethodAttributes (113ms)
+				AfterProcessingInitializeOnLoad (9ms)
 				EditorAssembliesLoaded (1ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (45ms)
+			AwakeInstancesAfterBackupRestoration (36ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 11.96 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 7.16 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 10967 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 70 unused Assets / (3.0 MB). Loaded Objects now: 11817.
-Memory consumption went from 444.3 MB to 441.3 MB.
-Total: 33.686100 ms (FindLiveObjects: 1.393100 ms CreateObjectMapping: 0.535000 ms MarkObjects: 29.902900 ms  DeleteObjects: 1.852400 ms)
+Unloading 9997 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 75 unused Assets / (2.6 MB). Loaded Objects now: 10812.
+Memory consumption went from 416.8 MB to 414.2 MB.
+Total: 13.512800 ms (FindLiveObjects: 1.560000 ms CreateObjectMapping: 0.904900 ms MarkObjects: 10.173400 ms  DeleteObjects: 0.873500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:DOTSType/DungeonArchitect.Editors.DungeonPaintModeGridEditor: 03d3ba51a30c07b503d3ba51a30c07b5 -> 
@@ -4038,7 +3926,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DungeonArchitect.Builders.SimpleCity.StrongholdWallEmitter: f278c6a46c5ba788f278c6a46c5ba788 -> 
   custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.CommonLibraryLua: fe091d9a0e7e24c3fe091d9a0e7e24c3 -> 
-  custom:DOTSType/Ludiq.PeekCore.DictionaryAsset: bbb8ed5efb46ae5fbbb8ed5efb46ae5f -> 
   custom:DOTSType/UnityEditor.Graphs.Graph: d35cefdd879c306cd35cefdd879c306c -> 
   custom:DOTSType/PixelCrushers.Wrappers.InputDeviceMethods: d7d3bb903de9962fd7d3bb903de9962f -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tasks.LayoutBaseFlowTaskCreatePath: 850fa42cfecd85b4850fa42cfecd85b4 -> 
@@ -4284,11 +4171,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Light: 47f771faf20222f647f771faf20222f6 -> 
   custom:DOTSType/Rewired.Dev.Tools.RawInputJoystickElementIdentifier: 097a6a52316628d9097a6a52316628d9 -> 
   custom:DOTSType/UnityEditor.NoneTool: be089f23fb2c1579be089f23fb2c1579 -> 
-  custom:DOTSType/UnityEditor.EdgeCollider2DEditor: e6deaa2b08161fd5e6deaa2b08161fd5 -> 
-  custom:DOTSType/UnityEditor.Experimental.Rendering.ProbeVolumeEditor: c5792c6536b6bdaac5792c6536b6bdaa -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnSelectMessageListener: 8f45c4e0c3c337ba8f45c4e0c3c337ba -> 
+  custom:DOTSType/UnityEditor.Experimental.Rendering.ProbeVolumeEditor: c5792c6536b6bdaac5792c6536b6bdaa -> 
   custom:DOTSType/PixelCrushers.EnabledSaver: 811b00fe90b2a97e811b00fe90b2a97e -> 
   custom:DOTSType/Unity.PerformanceTesting.TestReportWindow: fbee5466c113dd05fbee5466c113dd05 -> 
+  custom:DOTSType/UnityEditor.EdgeCollider2DEditor: e6deaa2b08161fd5e6deaa2b08161fd5 -> 
   custom:DOTSType/UnityEditor.TerrainTools.PaintHeightTool: 3bd15084a07846ce3bd15084a07846ce -> 
   custom:DOTSType/UnityEditor.SceneHierarchySortingWindow: af48a4a01f89e7a4af48a4a01f89e7a4 -> 
   custom:DOTSType/UnityEditor.TestTools.TestRunner.Api.CallbacksHolder: 4d071da20270dff34d071da20270dff3 -> 
@@ -4297,8 +4184,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.LightProbeGroupInspector: 20d8caecfea817ce20d8caecfea817ce -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotVector: 4761d648571abaf94761d648571abaf9 -> 
   custom:DOTSType/UnityEditor.CapsuleColliderEditor: 26ad230c710a8cf126ad230c710a8cf1 -> 
-  custom:DOTSType/Ludiq.Peek.InconsistentComponentsTool+WarningWindow: 9fb766cedf6545f09fb766cedf6545f0 -> 
-  custom:DOTSType/Ludiq.Peek.HierarchyPopup: 5f769efbcb1ee5a85f769efbcb1ee5a8 -> 
   custom:DOTSType/DungeonArchitect.DungeonMarkerEmitter: e317409b947fd05de317409b947fd05d -> 
   custom:DOTSType/Unity.Entities.EntityManager+IsolateCopiedEntities: 703c8c39c22b63af703c8c39c22b63af -> 
   custom:DOTSType/DungeonArchitect.DebugText3D: 787ec34fdb37ccc8787ec34fdb37ccc8 -> 
@@ -4391,6 +4276,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.DialogueSystemEvents: 36625dc9deaff42736625dc9deaff427 -> 
   custom:DOTSType/Unity.VisualScripting.EditorPreferencesProvider: 2436a3322e37752e2436a3322e37752e -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.QuestLogWindowHotkey: bef7ce10b1057224bef7ce10b1057224 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Remap: ab3d535502561c84ab3d535502561c84 -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchControllerEditor: 467602ec36ba8e0e467602ec36ba8e0e -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStayMessageListener: 3a7d0c33b940aae03a7d0c33b940aae0 -> 
@@ -4491,7 +4377,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Rendering.VolumeProfile: 3afdd595d4ce81323afdd595d4ce8132 -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.ScoreManager: 6d54c6a9b80928da6d54c6a9b80928da -> 
   custom:DOTSType/UnityEditor.Timeline.TimelineWindowTimeControl: ca9546c9bc47321aca9546c9bc47321a -> 
-  custom:DOTSType/Ludiq.PeekCore.FuzzyWindow: 095450acd129b8c4095450acd129b8c4 -> 
   custom:DOTSType/UnityEditor.LightAnchorEditor: 7a5ee351ed55c4697a5ee351ed55c469 -> 
   custom:DOTSType/UnityEditor.ProBuilder.MaterialEditor: 0440269e58091fc70440269e58091fc7 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.LaunchURL: 743f8e68681917b3743f8e68681917b3 -> 
@@ -4549,7 +4434,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/SdfBakerSettingsEditor: f92a6bb09e97fc91f92a6bb09e97fc91 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandVoice: fbe60f88ded6fcd0fbe60f88ded6fcd0 -> 
   custom:DOTSType/UnityEngine.VFX.Utility.VFXVelocityBinder: a044f5dcb66b7690a044f5dcb66b7690 -> 
-  custom:DOTSType/Ludiq.Peek.GroupNamePrompt: 7adec529ac125d917adec529ac125d91 -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tooling.Graph3D.FlowLayoutNodeCamAligner: 10692bbcd7f2a14c10692bbcd7f2a14c -> 
   custom:DOTSType/UnityEditor.VFX.VFXDataParticle: a28ba2b3a7e1c2c5a28ba2b3a7e1c2c5 -> 
   custom:DOTSType/TMPro.EditorUtilities.TMP_SubMeshUI_Editor: 0acac6a80f13b09a0acac6a80f13b09a -> 
@@ -4826,7 +4710,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Cinemachine.Editor.CinemachineHardLockToTargetEditor: 7032e2d61a82da097032e2d61a82da09 -> 
   custom:DOTSType/HealthBar: d6bb52a3b7bf21ddd6bb52a3b7bf21dd -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.PauseGameOnConversation: 2664e9e54e3acbb52664e9e54e3acbb5 -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqAssetEditor: 3fc88efa8dca0ded3fc88efa8dca0ded -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.Common.BaseFlowExecNodeHandler_CreateTilemapElevationsInspector: 268f45193217ef43268f45193217ef43 -> 
   custom:DOTSType/UnityEngine.RuntimeAnimatorController: 7eab6748309ba9677eab6748309ba967 -> 
   custom:DOTSType/UnityEditor.VFX.Block.PositionTorus: 8d926c57600cc0948d926c57600cc094 -> 
@@ -4941,6 +4824,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/HybridComponentAuthoring: e57d0874b115bcf4e57d0874b115bcf4 -> 
   custom:DOTSType/Unity.Entities.Editor.GUIStyleAsset: 577a23b80cda164a577a23b80cda164a -> 
   custom:DOTSType/UnityEditor.CharacterControllerEditor: 5c391c310580d6815c391c310580d681 -> 
+  custom:DOTSType/UnityEditor.PragmaFixingWindow: 9b790ae26df0d3fd9b790ae26df0d3fd -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SetEnabledOnDialogueEvent: c046d7d56de995e2c046d7d56de995e2 -> 
   custom:DOTSType/RootMotion.FinalIK.InteractionTarget: 653dc6d30b0f5aa3653dc6d30b0f5aa3 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.StandardUISelectorElements: 99d4d58ae5fdfdfe99d4d58ae5fdfdfe -> 
@@ -4949,7 +4833,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Rewired.Data.Mapping.HardwareJoystickTemplateMap: 986fad6fd443f20b986fad6fd443f20b -> 
   custom:DOTSType/UnityEditor.VFX.VisualEffectSubgraphOperator: a56a37b54f351ba5a56a37b54f351ba5 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.DialogueSystemAssetRenamerWindow: 0de9f23d6f8fe3810de9f23d6f8fe381 -> 
-  custom:DOTSType/Ludiq.PeekCore.WebWindow: 77abf5b847dd99e777abf5b847dd99e7 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.ReferenceDatabaseDialogueEventEditor: 15108fa3182f66ee15108fa3182f66ee -> 
   custom:DOTSType/Rewired.Integration.UnityUI.RewiredEventSystem: ec779b60873caed2ec779b60873caed2 -> 
   custom:DOTSType/Rewired.Data.Mapping.CustomCalculation_FirstNonZero: 7ec4d13188f8a9cd7ec4d13188f8a9cd -> 
@@ -5078,7 +4961,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Entities.EditorCompanionHideFlagsSet: 64e46366d5a957c364e46366d5a957c3 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.WelcomeWindow: dcc6f392870647dedcc6f392870647de -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineMixingCameraEditor: b347a5e07fc4e75db347a5e07fc4e75d -> 
-  custom:DOTSType/Ludiq.PeekCore.CoroutineRunner: d57c1beee6c66f08d57c1beee6c66f08 -> 
   custom:DOTSType/DungeonArchitect.Editors.MarkerEmitterNodeEditor: 1e6dca67481c84d11e6dca67481c84d1 -> 
   custom:DOTSType/DungeonArchitect.Graphs.GameObjectArrayNode: 02b8812e79d5be9502b8812e79d5be95 -> 
   custom:DOTSType/UnityEditor.VFX.VFXQuadStripOutput: 80bd522ee6f883a180bd522ee6f883a1 -> 
@@ -5086,7 +4968,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/VFXParameterEditor: b7c17366582caae6b7c17366582caae6 -> 
   custom:DOTSType/DungeonArchitect.Editors.FloorPlanCorridorToolEditor: e5042d460cd5aeede5042d460cd5aeed -> 
   custom:DOTSType/UnityEditor.VFX.Block.GPUEventAlways: 7087474a2fe604357087474a2fe60435 -> 
-  custom:DOTSType/Ludiq.PeekCore.SetupWizard: af5e00cb62424093af5e00cb62424093 -> 
   custom:DOTSType/DungeonArchitect.Graphs.SpatialConstraints.SCReferenceNode: 2dd667e97c893e282dd667e97c893e28 -> 
   custom:DOTSType/Rewired.Demos.ControlRemappingDemo1: 50f126dce32442ca50f126dce32442ca -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRenderPipelineEditorResources: 51c679601edcf76c51c679601edcf76c -> 
@@ -5096,10 +4977,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/HowMenuGroup: f3bab6287fb82202f3bab6287fb82202 -> 
   custom:DOTSType/UnityEditor.LightmapParameters: 38156e995fc797e238156e995fc797e2 -> 
   custom:DOTSType/UnityEditor.Profiling.ModuleEditor.ModuleEditorWindow: 5c00379505e47ecf5c00379505e47ecf -> 
-  custom:DOTSType/DungeonArchitect.Splatmap.DungeonSplatAsset: 9127afb604c12cb49127afb604c12cb4 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.ConversationTrigger: bf5115ea9fb1be52bf5115ea9fb1be52 -> 
-  custom:DOTSType/UnityEditor.SceneTemplate.SceneTemplateAsset: 52a5045e9a59533e52a5045e9a59533e -> 
   custom:DOTSType/Unity.VisualScripting.UnityMessageListener: 62b0dbd03b056ae062b0dbd03b056ae0 -> 
+  custom:DOTSType/UnityEditor.SceneTemplate.SceneTemplateAsset: 52a5045e9a59533e52a5045e9a59533e -> 
+  custom:DOTSType/DungeonArchitect.Splatmap.DungeonSplatAsset: 9127afb604c12cb49127afb604c12cb4 -> 
   custom:DOTSType/PixelCrushers.Wrappers.EnabledSaver: 2b2512e9fd194e5e2b2512e9fd194e5e -> 
   custom:DOTSType/UnityEditor.VFX.Operator.MatrixFromVector4: e8c7fdf7ca7065fce8c7fdf7ca7065fc -> 
   custom:DOTSType/Unity.UI.Builder.TwoPaneSplitViewTestWindow: 27790885fcff738927790885fcff7389 -> 
@@ -5233,8 +5114,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.FinalIK.FullBodyBipedIK: d568efdb90db11e1d568efdb90db11e1 -> 
   custom:DOTSType/UnityEngine.FixedJoint: ed9849b42dc16356ed9849b42dc16356 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.LocalizedTextTableEditor: 577dc212535f4004577dc212535f4004 -> 
-  custom:DOTSType/DungeonArchitect.Editors.DungeonThemeEditorWindow: 5f90a151f7065eea5f90a151f7065eea -> 
   custom:DOTSType/UnityEditor.Search.ASIEI07: 00494e8b7332c8fb00494e8b7332c8fb -> 
+  custom:DOTSType/DungeonArchitect.Editors.DungeonThemeEditorWindow: 5f90a151f7065eea5f90a151f7065eea -> 
   custom:DOTSType/Rewired.Integration.Cinemachine.Editor.RewiredCinemachineBridgeInspector: 5946ecbdfa5195025946ecbdfa519502 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.ScreenSpaceAmbientOcclusion: d941df2e67f9c07fd941df2e67f9c07f -> 
   custom:DOTSType/UnityEditor.UIAutomation.TestEditorWindow: 1889dda7134e379f1889dda7134e379f -> 
@@ -5341,8 +5222,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/FlingMechanicComponent: f45565e814ffac04f45565e814ffac04 -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertySmoothnessAuthoring: 14016d72fffeefa914016d72fffeefa9 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.BarkOnIdle: f7adabf395ffe93ef7adabf395ffe93e -> 
-  custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SMSDialogueUI: 9da0032f941d51769da0032f941d5176 -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.GridFlow.GridFlowExecNodeHandler_MirrorGraphInspector: bfa2720e8e701cd0bfa2720e8e701cd0 -> 
+  custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SMSDialogueUI: 9da0032f941d51769da0032f941d5176 -> 
   custom:DOTSType/UnityEditor.UI.HorizontalOrVerticalLayoutGroupEditor: 63f9eca2ea7d35de63f9eca2ea7d35de -> 
   custom:DOTSType/UnityEngine.Rendering.PostProcessing.DepthOfField: 143e3578d8a1aa44143e3578d8a1aa44 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.StandardUIButtonTemplate: 739df2f0776a6975739df2f0776a6975 -> 
@@ -5386,7 +5267,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DungeonArchitect.Editors.MeshNodeEditor: 59d6165005f132b259d6165005f132b2 -> 
   custom:DOTSType/DungeonArchitect.Grammar.GrammarExecNodeBase: 193f1b434fe37f8d193f1b434fe37f8d -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ScreenSpaceAmbientOcclusionEditor: a12db2cab5649845a12db2cab5649845 -> 
-  custom:DOTSType/Ludiq.PeekCore.AboutWindow: 463fce5efbcb342f463fce5efbcb342f -> 
   custom:DOTSType/UnityEditor.HostView: 01e5ea1d4d01ca0a01e5ea1d4d01ca0a -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertyBumpScaleAuthoring: afd886c9c6e2f12aafd886c9c6e2f12a -> 
   custom:DOTSType/RootMotion.FinalIK.BipedIK: 4e6bbc7fe399cb464e6bbc7fe399cb46 -> 
@@ -5620,7 +5500,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.VFX.Utility.VFXLightBinder: 0dd01791cbc365bf0dd01791cbc365bf -> 
   custom:DOTSType/VFXBlockEditor: 7f0d317c0198e5d17f0d317c0198e5d1 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ShaderGraph.UniversalMetadata: 1c30665553aa7f2c1c30665553aa7f2c -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqComponentEditor: 5833b06aefd5b2ae5833b06aefd5b2ae -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerDropdown: 4a1b60ca9a6abe0e4a1b60ca9a6abe0e -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.PlayerHealth: 89e8d400355637b189e8d400355637b1 -> 
   custom:DOTSType/Unity.Build.Editor.BuildConfigurationScriptedImporterEditor: 5502b3ccf5e913715502b3ccf5e91371 -> 
@@ -5633,7 +5512,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.UnityGUI.UnityDialogueUI: cf37b791dda8459ccf37b791dda8459c -> 
   custom:DOTSType/Lighting: 45bdcd95361d5cbb45bdcd95361d5cbb -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleSDF: e775e7101a85780fe775e7101a85780f -> 
-  custom:DOTSType/Ludiq.PeekCore.TaskWindow: be1ab3690b12dca1be1ab3690b12dca1 -> 
   custom:DOTSType/UnityEngine.ProBuilder.Shapes.ProBuilderShape: 264151fc160c68c4264151fc160c68c4 -> 
   custom:DOTSType/UnityEngine.EventSystems.StandaloneInputModule: ec9de3a45a8b8c04ec9de3a45a8b8c04 -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.Impl.GridFlowEditorConfig: b430e41a41017b47b430e41a41017b47 -> 
@@ -5896,12 +5774,12 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.AssetObjectManifest: 84d682f40d46c88184d682f40d46c881 -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStay2DMessageListener: 783ffa85ed02bee3783ffa85ed02bee3 -> 
   custom:DOTSType/DungeonArchitect.Navigation.NavigationTriangleProvider: 06c794ce48f1001b06c794ce48f1001b -> 
-  custom:DOTSType/UnityEditor.SceneManagement.StageNavigationManager: 489bfde048e16dd1489bfde048e16dd1 -> 
+  custom:DOTSType/DungeonArchitect.Builders.SnapGridFlow.SnapGridFlowConfig: 8baf4a5060c7499d8baf4a5060c7499d -> 
   custom:DOTSType/Unity.Entities.PostLoadCommandBuffer: 41c768f6a33d195b41c768f6a33d195b -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnTransformParentChangedMessageListener: 498b53e9507bafb5498b53e9507bafb5 -> 
-  custom:DOTSType/UnityEditor.DirectorEditor: 0dd0b4393c66df480dd0b4393c66df48 -> 
+  custom:DOTSType/UnityEditor.SceneManagement.StageNavigationManager: 489bfde048e16dd1489bfde048e16dd1 -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tooling.Graph2D.FlowLayoutToolGraph2D: fc91d809852d4b1ffc91d809852d4b1f -> 
-  custom:DOTSType/DungeonArchitect.Builders.SnapGridFlow.SnapGridFlowConfig: 8baf4a5060c7499d8baf4a5060c7499d -> 
+  custom:DOTSType/UnityEditor.DirectorEditor: 0dd0b4393c66df480dd0b4393c66df48 -> 
   custom:DOTSType/UnityEngine.U2D.SpriteShapeRenderer: c9fe580071495138c9fe580071495138 -> 
   custom:DOTSType/UnityEditorInternal.AnimationWindowSelectionItem: fab9a646cde907f4fab9a646cde907f4 -> 
   custom:DOTSType/UnityEngine.UIElements.PanelRaycaster: 5a24194a559897275a24194a55989727 -> 
@@ -5931,10 +5809,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.Demos.HitReactionTrigger: 64c48e6e041f366c64c48e6e041f366c -> 
   custom:DOTSType/MatchupComponent: 8a7a1bbed17f688b8a7a1bbed17f688b -> 
   custom:DOTSType/UnityEditor.UI.DropdownEditor: c442e9f29f6c6fe9c442e9f29f6c6fe9 -> 
-  custom:DOTSType/CinemachineCameraOffset: 4f3e8508299ed11a4f3e8508299ed11a -> 
   custom:DOTSType/DungeonArchitect.Flow.Exec.FlowExecTaskResult: 65d0bff9801f73de65d0bff9801f73de -> 
-  custom:DOTSType/Cinemachine.CinemachineInputProvider: 41c7f5c904a0165641c7f5c904a01656 -> 
+  custom:DOTSType/CinemachineCameraOffset: 4f3e8508299ed11a4f3e8508299ed11a -> 
   custom:DOTSType/Rewired.Editor.PlayerControllerInspector: 7523e290544047887523e29054404788 -> 
+  custom:DOTSType/Cinemachine.CinemachineInputProvider: 41c7f5c904a0165641c7f5c904a01656 -> 
   custom:DOTSType/UnityEditor.TextCore.Text.TextSettingsEditor: acea92ec14339555acea92ec14339555 -> 
   custom:DOTSType/UnityEngine.PhysicsMaterial2D: 97bd1008eeb781d197bd1008eeb781d1 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.ChangeSpace: 9e535ba29d07d0bb9e535ba29d07d0bb -> 
@@ -5973,10 +5851,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.OverrideActorName: 4e1ae1a9b6a812ce4e1ae1a9b6a812ce -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandQTE: 99d4cee992c07da299d4cee992c07da2 -> 
   custom:DOTSType/UnityEditor.VisualEffectAssetEditorUtility+DoCreateNewSubgraphBlock: b239d285cd1d5547b239d285cd1d5547 -> 
+  custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
   custom:DOTSType/UnityEditor.AnimationModeDriver: 732d6a6cec3817f5732d6a6cec3817f5 -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+ShaderPreloadEditor: 4f0d4249ee548b3a4f0d4249ee548b3a -> 
-  custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
-  custom:DOTSType/Ludiq.PeekCore.UpdateWizard: 45d136d954a6c38845d136d954a6c388 -> 
   custom:DOTSType/RootMotion.Comments: c64d23a851fdf87fc64d23a851fdf87f -> 
   custom:DOTSType/UnityEditor.Rendering.LensFlareEditorUtils+LensFlareDataSRPCreator: 0def46bcaa50ed6d0def46bcaa50ed6d -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.MiniMapGenerator: 522986f33672bdc3522986f33672bdc3 -> 
@@ -6038,7 +5915,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Michsky.UI.ModernUIPack.ButtonManagerBasicEditor: bc608e7d2d370847bc608e7d2d370847 -> 
   custom:DOTSType/UnityEditor.HingeJoint2DEditor: 6c66ecd98d3897716c66ecd98d389771 -> 
   custom:DOTSType/TMPro.TMP_Dropdown+DropdownItem: a124c6825d9f16cda124c6825d9f16cd -> 
-  custom:DOTSType/UnityEditor.Rendering.DebugStateEnum: 85e3a1eadca5e88885e3a1eadca5e888 -> 
   custom:DOTSType/EnemyAttackComponent: 097ff9f285b22da1097ff9f285b22da1 -> 
   custom:DOTSType/DungeonArchitect.Builders.Grid.LandscapeTransformerGrid: b543cc3f2249ffb5b543cc3f2249ffb5 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI01: f29c3b5f8afe6ebbf29c3b5f8afe6ebb -> 
@@ -6056,7 +5932,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.DialogueActor: 0538c7e6911c09da0538c7e6911c09da -> 
   custom:DOTSType/UnityEditor.VFX.Block.AttributeMassFromVolume: 2d412324a88610762d412324a8861076 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.AssetVersion: cbbf064c4bde6a1fcbbf064c4bde6a1f -> 
-  custom:DOTSType/Ludiq.PeekCore.EditorIconViewer: 63ae9d3fa581b31b63ae9d3fa581b31b -> 
   custom:DOTSType/MaterialOverrideAsset: 30e094f2f72d42c230e094f2f72d42c2 -> 
   custom:DOTSType/TMPro.TextMeshPro: 61e10d215eb1b79961e10d215eb1b799 -> 
   custom:DOTSType/Unity.Transforms.CopyInitialTransformFromGameObject: 2e04dba9bc7f665b2e04dba9bc7f665b -> 
@@ -6335,7 +6210,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.VFX.Block.PositionSphere: 7f6600b2765dcb967f6600b2765dcb96 -> 
   custom:DOTSType/JackRabbit.GameControllerJackRabbit: 36a4f73968e6184736a4f73968e61847 -> 
   custom:DOTSType/UnityEditor.DeviceSimulation.DeviceInfoAsset: d11de534da114722d11de534da114722 -> 
-  custom:DOTSType/Ludiq.PeekCore.GeneratePropertyProvidersWindow: a510e4a6bb754459a510e4a6bb754459 -> 
   custom:DOTSType/DungeonArchitect.Builders.Grid.SpatialConstraints.SpatialConstraintProcessorGridFlow2D: 820d357b5f7dbb8d820d357b5f7dbb8d -> 
   custom:DOTSType/Packages.Rider.Editor.UnitTesting.CallbackData: b59e305e614ec365b59e305e614ec365 -> 
   custom:DOTSType/EnemyWeaponMovementComponent: 43e0c680156800a043e0c680156800a0 -> 
@@ -6347,16 +6221,16 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.TimelineTrigger: 63e5c955d75fa6b263e5c955d75fa6b2 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.RectangularToPolar: 1d09a88f9175510d1d09a88f9175510d -> 
   custom:DOTSType/UnityEditor.MeshRendererEditor: ffddd086008fb36dffddd086008fb36d -> 
-  custom:DOTSType/Michsky.UI.ModernUIPack.SwitchManagerEditor: ee4ef263f8749a4eee4ef263f8749a4e -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandMoveTo: f7a2284a2836c2b1f7a2284a2836c2b1 -> 
-  custom:DOTSType/FixedListTests+ScriptableObjectFixedListFloat128: 7d0fb9f19652f3cd7d0fb9f19652f3cd -> 
   custom:DOTSType/DungeonArchitect.Editors.DungeonPropertyEditor: 512423f01573fb71512423f01573fb71 -> 
+  custom:DOTSType/Michsky.UI.ModernUIPack.SwitchManagerEditor: ee4ef263f8749a4eee4ef263f8749a4e -> 
   custom:DOTSType/PixelCrushers.SaveSystemMethods: 7b487375314f04247b487375314f0424 -> 
   custom:DOTSType/UnityEditor.Polybrush.BrushSettingsEditor: 6c62f11351dbb23e6c62f11351dbb23e -> 
   custom:DOTSType/Unity.Entities.BurstCompatibleSharedComponentData: 6239fcd2cd3b1c316239fcd2cd3b1c31 -> 
-  custom:DOTSType/MovesManager: a2cea90ef79902f2a2cea90ef79902f2 -> 
+  custom:DOTSType/FixedListTests+ScriptableObjectFixedListFloat128: 7d0fb9f19652f3cd7d0fb9f19652f3cd -> 
   custom:DOTSType/UnityEditor.ProjectWindowCallback.DoCreateScene: 63707b03c78968a763707b03c78968a7 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.StartSequenceOnDialogueEvent: be8dd63f92a7c9e7be8dd63f92a7c9e7 -> 
+  custom:DOTSType/MovesManager: a2cea90ef79902f2a2cea90ef79902f2 -> 
   custom:DOTSType/Unity.VisualScripting.StateMachine: f210dd7e94681b22f210dd7e94681b22 -> 
   custom:DOTSType/ControlPower: a3d8f1ef43359b5ea3d8f1ef43359b5e -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.BarkOnIdle: f11461246565304cf11461246565304c -> 
@@ -6424,7 +6298,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerPanel: 4ca2f5d3d855e3784ca2f5d3d855e378 -> 
   custom:DOTSType/UnityEngine.TestRunner.Utils.TestRunCallbackListener: be8e9fd807bd1303be8e9fd807bd1303 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandCamera: 0c48109ba2b849980c48109ba2b84998 -> 
-  custom:DOTSType/Ludiq.Peek.EditorPopup: 4d2437ec2ddc9be04d2437ec2ddc9be0 -> 
   custom:DOTSType/UnityEditor.UIElements.Debugger.UIElementsDebugger: 30bc2363ab7249f930bc2363ab7249f9 -> 
   custom:DOTSType/UnityEditor.TreeViewExamples.TreeViewTestWindow: 7b444b9c14b8baa07b444b9c14b8baa0 -> 
   custom:DOTSType/BossWeaponComponent: 9500c3f6f29e2ad19500c3f6f29e2ad1 -> 
@@ -6437,7 +6310,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.ProximitySelector: eee8b1111314e05beee8b1111314e05b -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.DialogueDatabase: 311cf8976d3946b6311cf8976d3946b6 -> 
   custom:DOTSType/DungeonArchitect.Themeing.DungeonMarkerVisualizerComponent: bf47be3d1ca3cd9dbf47be3d1ca3cd9d -> 
-  custom:DOTSType/Ludiq.Peek.ReparentingPrompt: 7178af188443b0c07178af188443b0c0 -> 
   custom:DOTSType/UnityEngine.Effector2D: 5923a4e47043fd275923a4e47043fd27 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Converters.ColorGradingConverter: 6b9c8c279da41bf56b9c8c279da41bf5 -> 
   custom:DOTSType/RootMotion.FinalIK.LookAtController: 84a784b4cf368b6684a784b4cf368b66 -> 
@@ -6445,7 +6317,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.VisualScripting.UnityOnScrollMessageListener: 064c4bc4e4db64a7064c4bc4e4db64a7 -> 
   custom:DOTSType/UnityEditor.ScriptReloadProperties: 3feae7b52eb44b493feae7b52eb44b49 -> 
   custom:DOTSType/UnityEditor.VFX.VFXOutputEvent: 05f40b8caf34482305f40b8caf344823 -> 
-  custom:DOTSType/PowerItemComponent: 893c29967a4b05de893c29967a4b05de -> 
+  custom:DOTSType/PowerItemComponent: 2d9b8df4a4d7198b2d9b8df4a4d7198b -> 
   custom:DOTSType/UnityEditor.UI.TextEditor: 5eda947aa1b364635eda947aa1b36463 -> 
   custom:DOTSType/UnityEditor.LookAtConstraintEditor: b2c669ce84ceb72cb2c669ce84ceb72c -> 
   custom:DOTSType/PixelCrushers.Wrappers.SaveSystem: 155f9cc00db4267f155f9cc00db4267f -> 
@@ -6673,19 +6545,19 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.FailedToLoadScriptObject: 39a2a1e4ae40c69139a2a1e4ae40c691 -> 
   custom:DOTSType/UnityEditor.AudioReverbFilterEditor: b3f29485865eb643b3f29485865eb643 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SendMessageOnDialogueEvent: 26a718f2041e974126a718f2041e9741 -> 
-  custom:DOTSType/TMPro.Examples.SimpleScript: 48c3ba447e74614548c3ba447e746145 -> 
+  custom:DOTSType/UnityEditor.VFX.URP.VFXURPLitQuadStripOutput: e91d385f76bfca81e91d385f76bfca81 -> 
   custom:DOTSType/UnityEditor.Presets.PresetSelector: 80cae4221594363380cae42215943633 -> 
   custom:DOTSType/VFXContextEditor: b551f45aa85f98dbb551f45aa85f98db -> 
   custom:DOTSType/RootMotion.FinalIK.AimIKJ: bfa14e578d347427bfa14e578d347427 -> 
   custom:DOTSType/UnityEngine.Timeline.SignalAsset: 40a0d26b5718303e40a0d26b5718303e -> 
   custom:DOTSType/UnityEditor.SavedSearchFilters: c875ec487eb82b33c875ec487eb82b33 -> 
   custom:DOTSType/RootMotion.FinalIK.EditorIKPose: 48b3a2a05d9444e148b3a2a05d9444e1 -> 
+  custom:DOTSType/TMPro.Examples.SimpleScript: 48c3ba447e74614548c3ba447e746145 -> 
   custom:DOTSType/UnityEditor.UI.ContentSizeFitterEditor: 7b574be00a84b3d37b574be00a84b3d3 -> 
   custom:DOTSType/RootMotion.Demos.FBIKBoxing: c3cc1fd29261b93ac3cc1fd29261b93a -> 
   custom:DOTSType/UnityEngine.SpriteMask: 8c8555da233824978c8555da23382497 -> 
   custom:DOTSType/UnityEditor.TestTools.TestRunner.CommandLineTest.ExitCallbacks: 5cdc6cdeddd7fee35cdc6cdeddd7fee3 -> 
   custom:DOTSType/UnityEngine.CanvasRenderer: 2c4d642f145776f52c4d642f145776f5 -> 
-  custom:DOTSType/UnityEditor.VFX.URP.VFXURPLitQuadStripOutput: e91d385f76bfca81e91d385f76bfca81 -> 
   custom:DOTSType/SaveLevelManager: fb1a95a66472112efb1a95a66472112e -> 
   custom:DOTSType/UnityEditor.VFX.Block.CollisionSphere: 485ef68c4b9196e7485ef68c4b9196e7 -> 
   custom:DOTSType/RoomMidEmitter: 027d535634194b3b027d535634194b3b -> 
@@ -7667,14 +7539,14 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.014188 seconds.
+Registered in 0.014642 seconds.
 Begin MonoManager ReloadAssembly
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
-Symbol file LoadedFromMemory doesn't match image H:\UNITY\PROJECTS 2020\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 4.40 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 6.52 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-TypeManager.Initialize took: 281ms
+TypeManager.Initialize took: 380ms
 Warning: Annotation not found!
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEditor.ProBuilder.EditorUtility:SetGizmoIconEnabled (System.Type,bool) (at Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs:575)
@@ -7685,40 +7557,40 @@ UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
 [Library/PackageCache/com.unity.probuilder@5.0.3/Editor/EditorCore/EditorUtility.cs line 575]
 
 Mono: successfully reloaded assembly
-- Completed reload, in  3.573 seconds
+- Completed reload, in  3.588 seconds
 Domain Reload Profiling:
-	ReloadAssembly (3574ms)
-		BeginReloadAssembly (276ms)
+	ReloadAssembly (3591ms)
+		BeginReloadAssembly (748ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (9ms)
+			DisableScriptedObjects (59ms)
 			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (95ms)
-		EndReloadAssembly (3162ms)
-			LoadAssemblies (147ms)
+			ReleaseScriptingObjects (1ms)
+			CreateAndSetChildDomain (372ms)
+		EndReloadAssembly (2698ms)
+			LoadAssemblies (302ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (551ms)
-			ReleaseScriptCaches (4ms)
-			RebuildScriptCaches (114ms)
-			SetupLoadedEditorAssemblies (1789ms)
+			SetupTypeCache (763ms)
+			ReleaseScriptCaches (9ms)
+			RebuildScriptCaches (122ms)
+			SetupLoadedEditorAssemblies (1425ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (14ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (5ms)
+				InitializePlatformSupportModulesInManaged (16ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (7ms)
 				BeforeProcessingInitializeOnLoad (167ms)
-				ProcessInitializeOnLoadAttributes (1491ms)
-				ProcessInitializeOnLoadMethodAttributes (95ms)
-				AfterProcessingInitializeOnLoad (16ms)
+				ProcessInitializeOnLoadAttributes (1112ms)
+				ProcessInitializeOnLoadMethodAttributes (113ms)
+				AfterProcessingInitializeOnLoad (9ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (37ms)
+			AwakeInstancesAfterBackupRestoration (33ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 8.68 ms, found 5 plugins.
+Refreshing native plugins compatible for Editor in 5.97 ms, found 5 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 10968 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 70 unused Assets / (2.9 MB). Loaded Objects now: 11834.
-Memory consumption went from 444.4 MB to 441.4 MB.
-Total: 25.993400 ms (FindLiveObjects: 1.038000 ms CreateObjectMapping: 0.406100 ms MarkObjects: 23.522000 ms  DeleteObjects: 1.025100 ms)
+Unloading 9985 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 75 unused Assets / (2.6 MB). Loaded Objects now: 10828.
+Memory consumption went from 416.0 MB to 413.4 MB.
+Total: 9.105500 ms (FindLiveObjects: 1.062100 ms CreateObjectMapping: 0.825900 ms MarkObjects: 6.621500 ms  DeleteObjects: 0.594600 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:DOTSType/DungeonArchitect.Editors.DungeonPaintModeGridEditor: 03d3ba51a30c07b503d3ba51a30c07b5 -> 
@@ -7773,7 +7645,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DungeonArchitect.Builders.SimpleCity.StrongholdWallEmitter: f278c6a46c5ba788f278c6a46c5ba788 -> 
   custom:DOTSType/Unity.Transforms.RotationEulerXZY: 5f874b9cdfe417615f874b9cdfe41761 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.CommonLibraryLua: fe091d9a0e7e24c3fe091d9a0e7e24c3 -> 
-  custom:DOTSType/Ludiq.PeekCore.DictionaryAsset: bbb8ed5efb46ae5fbbb8ed5efb46ae5f -> 
   custom:DOTSType/UnityEditor.Graphs.Graph: d35cefdd879c306cd35cefdd879c306c -> 
   custom:DOTSType/PixelCrushers.Wrappers.InputDeviceMethods: d7d3bb903de9962fd7d3bb903de9962f -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tasks.LayoutBaseFlowTaskCreatePath: 850fa42cfecd85b4850fa42cfecd85b4 -> 
@@ -8019,11 +7890,11 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Light: 47f771faf20222f647f771faf20222f6 -> 
   custom:DOTSType/Rewired.Dev.Tools.RawInputJoystickElementIdentifier: 097a6a52316628d9097a6a52316628d9 -> 
   custom:DOTSType/UnityEditor.NoneTool: be089f23fb2c1579be089f23fb2c1579 -> 
-  custom:DOTSType/UnityEditor.EdgeCollider2DEditor: e6deaa2b08161fd5e6deaa2b08161fd5 -> 
-  custom:DOTSType/UnityEditor.Experimental.Rendering.ProbeVolumeEditor: c5792c6536b6bdaac5792c6536b6bdaa -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnSelectMessageListener: 8f45c4e0c3c337ba8f45c4e0c3c337ba -> 
+  custom:DOTSType/UnityEditor.Experimental.Rendering.ProbeVolumeEditor: c5792c6536b6bdaac5792c6536b6bdaa -> 
   custom:DOTSType/PixelCrushers.EnabledSaver: 811b00fe90b2a97e811b00fe90b2a97e -> 
   custom:DOTSType/Unity.PerformanceTesting.TestReportWindow: fbee5466c113dd05fbee5466c113dd05 -> 
+  custom:DOTSType/UnityEditor.EdgeCollider2DEditor: e6deaa2b08161fd5e6deaa2b08161fd5 -> 
   custom:DOTSType/UnityEditor.TerrainTools.PaintHeightTool: 3bd15084a07846ce3bd15084a07846ce -> 
   custom:DOTSType/UnityEditor.SceneHierarchySortingWindow: af48a4a01f89e7a4af48a4a01f89e7a4 -> 
   custom:DOTSType/UnityEditor.TestTools.TestRunner.Api.CallbacksHolder: 4d071da20270dff34d071da20270dff3 -> 
@@ -8032,8 +7903,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.LightProbeGroupInspector: 20d8caecfea817ce20d8caecfea817ce -> 
   custom:DOTSType/UnityEditor.VFX.VFXSlotVector: 4761d648571abaf94761d648571abaf9 -> 
   custom:DOTSType/UnityEditor.CapsuleColliderEditor: 26ad230c710a8cf126ad230c710a8cf1 -> 
-  custom:DOTSType/Ludiq.Peek.InconsistentComponentsTool+WarningWindow: 9fb766cedf6545f09fb766cedf6545f0 -> 
-  custom:DOTSType/Ludiq.Peek.HierarchyPopup: 5f769efbcb1ee5a85f769efbcb1ee5a8 -> 
   custom:DOTSType/DungeonArchitect.DungeonMarkerEmitter: e317409b947fd05de317409b947fd05d -> 
   custom:DOTSType/Unity.Entities.EntityManager+IsolateCopiedEntities: 703c8c39c22b63af703c8c39c22b63af -> 
   custom:DOTSType/DungeonArchitect.DebugText3D: 787ec34fdb37ccc8787ec34fdb37ccc8 -> 
@@ -8126,6 +7995,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.DialogueSystemEvents: 36625dc9deaff42736625dc9deaff427 -> 
   custom:DOTSType/Unity.VisualScripting.EditorPreferencesProvider: 2436a3322e37752e2436a3322e37752e -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.QuestLogWindowHotkey: bef7ce10b1057224bef7ce10b1057224 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.Remap: ab3d535502561c84ab3d535502561c84 -> 
   custom:DOTSType/Rewired.Editor.ComponentControls.TouchControllerEditor: 467602ec36ba8e0e467602ec36ba8e0e -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStayMessageListener: 3a7d0c33b940aae03a7d0c33b940aae0 -> 
@@ -8226,7 +8096,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Rendering.VolumeProfile: 3afdd595d4ce81323afdd595d4ce8132 -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.ScoreManager: 6d54c6a9b80928da6d54c6a9b80928da -> 
   custom:DOTSType/UnityEditor.Timeline.TimelineWindowTimeControl: ca9546c9bc47321aca9546c9bc47321a -> 
-  custom:DOTSType/Ludiq.PeekCore.FuzzyWindow: 095450acd129b8c4095450acd129b8c4 -> 
   custom:DOTSType/UnityEditor.LightAnchorEditor: 7a5ee351ed55c4697a5ee351ed55c469 -> 
   custom:DOTSType/UnityEditor.ProBuilder.MaterialEditor: 0440269e58091fc70440269e58091fc7 -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.LaunchURL: 743f8e68681917b3743f8e68681917b3 -> 
@@ -8284,7 +8153,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/SdfBakerSettingsEditor: f92a6bb09e97fc91f92a6bb09e97fc91 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandVoice: fbe60f88ded6fcd0fbe60f88ded6fcd0 -> 
   custom:DOTSType/UnityEngine.VFX.Utility.VFXVelocityBinder: a044f5dcb66b7690a044f5dcb66b7690 -> 
-  custom:DOTSType/Ludiq.Peek.GroupNamePrompt: 7adec529ac125d917adec529ac125d91 -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tooling.Graph3D.FlowLayoutNodeCamAligner: 10692bbcd7f2a14c10692bbcd7f2a14c -> 
   custom:DOTSType/UnityEditor.VFX.VFXDataParticle: a28ba2b3a7e1c2c5a28ba2b3a7e1c2c5 -> 
   custom:DOTSType/TMPro.EditorUtilities.TMP_SubMeshUI_Editor: 0acac6a80f13b09a0acac6a80f13b09a -> 
@@ -8561,7 +8429,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Cinemachine.Editor.CinemachineHardLockToTargetEditor: 7032e2d61a82da097032e2d61a82da09 -> 
   custom:DOTSType/HealthBar: d6bb52a3b7bf21ddd6bb52a3b7bf21dd -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.PauseGameOnConversation: 2664e9e54e3acbb52664e9e54e3acbb5 -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqAssetEditor: 3fc88efa8dca0ded3fc88efa8dca0ded -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.Common.BaseFlowExecNodeHandler_CreateTilemapElevationsInspector: 268f45193217ef43268f45193217ef43 -> 
   custom:DOTSType/UnityEngine.RuntimeAnimatorController: 7eab6748309ba9677eab6748309ba967 -> 
   custom:DOTSType/UnityEditor.VFX.Block.PositionTorus: 8d926c57600cc0948d926c57600cc094 -> 
@@ -8676,6 +8543,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/HybridComponentAuthoring: e57d0874b115bcf4e57d0874b115bcf4 -> 
   custom:DOTSType/Unity.Entities.Editor.GUIStyleAsset: 577a23b80cda164a577a23b80cda164a -> 
   custom:DOTSType/UnityEditor.CharacterControllerEditor: 5c391c310580d6815c391c310580d681 -> 
+  custom:DOTSType/UnityEditor.PragmaFixingWindow: 9b790ae26df0d3fd9b790ae26df0d3fd -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SetEnabledOnDialogueEvent: c046d7d56de995e2c046d7d56de995e2 -> 
   custom:DOTSType/RootMotion.FinalIK.InteractionTarget: 653dc6d30b0f5aa3653dc6d30b0f5aa3 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.StandardUISelectorElements: 99d4d58ae5fdfdfe99d4d58ae5fdfdfe -> 
@@ -8684,7 +8552,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Rewired.Data.Mapping.HardwareJoystickTemplateMap: 986fad6fd443f20b986fad6fd443f20b -> 
   custom:DOTSType/UnityEditor.VFX.VisualEffectSubgraphOperator: a56a37b54f351ba5a56a37b54f351ba5 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.DialogueSystemAssetRenamerWindow: 0de9f23d6f8fe3810de9f23d6f8fe381 -> 
-  custom:DOTSType/Ludiq.PeekCore.WebWindow: 77abf5b847dd99e777abf5b847dd99e7 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.ReferenceDatabaseDialogueEventEditor: 15108fa3182f66ee15108fa3182f66ee -> 
   custom:DOTSType/Rewired.Integration.UnityUI.RewiredEventSystem: ec779b60873caed2ec779b60873caed2 -> 
   custom:DOTSType/Rewired.Data.Mapping.CustomCalculation_FirstNonZero: 7ec4d13188f8a9cd7ec4d13188f8a9cd -> 
@@ -8813,7 +8680,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Entities.EditorCompanionHideFlagsSet: 64e46366d5a957c364e46366d5a957c3 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.WelcomeWindow: dcc6f392870647dedcc6f392870647de -> 
   custom:DOTSType/Cinemachine.Editor.CinemachineMixingCameraEditor: b347a5e07fc4e75db347a5e07fc4e75d -> 
-  custom:DOTSType/Ludiq.PeekCore.CoroutineRunner: d57c1beee6c66f08d57c1beee6c66f08 -> 
   custom:DOTSType/DungeonArchitect.Editors.MarkerEmitterNodeEditor: 1e6dca67481c84d11e6dca67481c84d1 -> 
   custom:DOTSType/DungeonArchitect.Graphs.GameObjectArrayNode: 02b8812e79d5be9502b8812e79d5be95 -> 
   custom:DOTSType/UnityEditor.VFX.VFXQuadStripOutput: 80bd522ee6f883a180bd522ee6f883a1 -> 
@@ -8821,7 +8687,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/VFXParameterEditor: b7c17366582caae6b7c17366582caae6 -> 
   custom:DOTSType/DungeonArchitect.Editors.FloorPlanCorridorToolEditor: e5042d460cd5aeede5042d460cd5aeed -> 
   custom:DOTSType/UnityEditor.VFX.Block.GPUEventAlways: 7087474a2fe604357087474a2fe60435 -> 
-  custom:DOTSType/Ludiq.PeekCore.SetupWizard: af5e00cb62424093af5e00cb62424093 -> 
   custom:DOTSType/DungeonArchitect.Graphs.SpatialConstraints.SCReferenceNode: 2dd667e97c893e282dd667e97c893e28 -> 
   custom:DOTSType/Rewired.Demos.ControlRemappingDemo1: 50f126dce32442ca50f126dce32442ca -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.UniversalRenderPipelineEditorResources: 51c679601edcf76c51c679601edcf76c -> 
@@ -8831,10 +8696,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/HowMenuGroup: f3bab6287fb82202f3bab6287fb82202 -> 
   custom:DOTSType/UnityEditor.LightmapParameters: 38156e995fc797e238156e995fc797e2 -> 
   custom:DOTSType/UnityEditor.Profiling.ModuleEditor.ModuleEditorWindow: 5c00379505e47ecf5c00379505e47ecf -> 
-  custom:DOTSType/DungeonArchitect.Splatmap.DungeonSplatAsset: 9127afb604c12cb49127afb604c12cb4 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.ConversationTrigger: bf5115ea9fb1be52bf5115ea9fb1be52 -> 
-  custom:DOTSType/UnityEditor.SceneTemplate.SceneTemplateAsset: 52a5045e9a59533e52a5045e9a59533e -> 
   custom:DOTSType/Unity.VisualScripting.UnityMessageListener: 62b0dbd03b056ae062b0dbd03b056ae0 -> 
+  custom:DOTSType/UnityEditor.SceneTemplate.SceneTemplateAsset: 52a5045e9a59533e52a5045e9a59533e -> 
+  custom:DOTSType/DungeonArchitect.Splatmap.DungeonSplatAsset: 9127afb604c12cb49127afb604c12cb4 -> 
   custom:DOTSType/PixelCrushers.Wrappers.EnabledSaver: 2b2512e9fd194e5e2b2512e9fd194e5e -> 
   custom:DOTSType/UnityEditor.VFX.Operator.MatrixFromVector4: e8c7fdf7ca7065fce8c7fdf7ca7065fc -> 
   custom:DOTSType/Unity.UI.Builder.TwoPaneSplitViewTestWindow: 27790885fcff738927790885fcff7389 -> 
@@ -8968,8 +8833,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.FinalIK.FullBodyBipedIK: d568efdb90db11e1d568efdb90db11e1 -> 
   custom:DOTSType/UnityEngine.FixedJoint: ed9849b42dc16356ed9849b42dc16356 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.LocalizedTextTableEditor: 577dc212535f4004577dc212535f4004 -> 
-  custom:DOTSType/DungeonArchitect.Editors.DungeonThemeEditorWindow: 5f90a151f7065eea5f90a151f7065eea -> 
   custom:DOTSType/UnityEditor.Search.ASIEI07: 00494e8b7332c8fb00494e8b7332c8fb -> 
+  custom:DOTSType/DungeonArchitect.Editors.DungeonThemeEditorWindow: 5f90a151f7065eea5f90a151f7065eea -> 
   custom:DOTSType/Rewired.Integration.Cinemachine.Editor.RewiredCinemachineBridgeInspector: 5946ecbdfa5195025946ecbdfa519502 -> 
   custom:DOTSType/UnityEngine.Rendering.Universal.ScreenSpaceAmbientOcclusion: d941df2e67f9c07fd941df2e67f9c07f -> 
   custom:DOTSType/UnityEditor.UIAutomation.TestEditorWindow: 1889dda7134e379f1889dda7134e379f -> 
@@ -9076,8 +8941,8 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/FlingMechanicComponent: f45565e814ffac04f45565e814ffac04 -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertySmoothnessAuthoring: 14016d72fffeefa914016d72fffeefa9 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.BarkOnIdle: f7adabf395ffe93ef7adabf395ffe93e -> 
-  custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SMSDialogueUI: 9da0032f941d51769da0032f941d5176 -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.GridFlow.GridFlowExecNodeHandler_MirrorGraphInspector: bfa2720e8e701cd0bfa2720e8e701cd0 -> 
+  custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SMSDialogueUI: 9da0032f941d51769da0032f941d5176 -> 
   custom:DOTSType/UnityEditor.UI.HorizontalOrVerticalLayoutGroupEditor: 63f9eca2ea7d35de63f9eca2ea7d35de -> 
   custom:DOTSType/UnityEngine.Rendering.PostProcessing.DepthOfField: 143e3578d8a1aa44143e3578d8a1aa44 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.StandardUIButtonTemplate: 739df2f0776a6975739df2f0776a6975 -> 
@@ -9121,7 +8986,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DungeonArchitect.Editors.MeshNodeEditor: 59d6165005f132b259d6165005f132b2 -> 
   custom:DOTSType/DungeonArchitect.Grammar.GrammarExecNodeBase: 193f1b434fe37f8d193f1b434fe37f8d -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ScreenSpaceAmbientOcclusionEditor: a12db2cab5649845a12db2cab5649845 -> 
-  custom:DOTSType/Ludiq.PeekCore.AboutWindow: 463fce5efbcb342f463fce5efbcb342f -> 
   custom:DOTSType/UnityEditor.HostView: 01e5ea1d4d01ca0a01e5ea1d4d01ca0a -> 
   custom:DOTSType/Unity.Rendering.URPMaterialPropertyBumpScaleAuthoring: afd886c9c6e2f12aafd886c9c6e2f12a -> 
   custom:DOTSType/RootMotion.FinalIK.BipedIK: 4e6bbc7fe399cb464e6bbc7fe399cb46 -> 
@@ -9355,7 +9219,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.VFX.Utility.VFXLightBinder: 0dd01791cbc365bf0dd01791cbc365bf -> 
   custom:DOTSType/VFXBlockEditor: 7f0d317c0198e5d17f0d317c0198e5d1 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.ShaderGraph.UniversalMetadata: 1c30665553aa7f2c1c30665553aa7f2c -> 
-  custom:DOTSType/Ludiq.PeekCore.LudiqComponentEditor: 5833b06aefd5b2ae5833b06aefd5b2ae -> 
   custom:DOTSType/Michsky.UI.ModernUIPack.UIManagerDropdown: 4a1b60ca9a6abe0e4a1b60ca9a6abe0e -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.PlayerHealth: 89e8d400355637b189e8d400355637b1 -> 
   custom:DOTSType/Unity.Build.Editor.BuildConfigurationScriptedImporterEditor: 5502b3ccf5e913715502b3ccf5e91371 -> 
@@ -9368,7 +9231,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.UnityGUI.UnityDialogueUI: cf37b791dda8459ccf37b791dda8459c -> 
   custom:DOTSType/Lighting: 45bdcd95361d5cbb45bdcd95361d5cbb -> 
   custom:DOTSType/UnityEditor.VFX.Operator.SampleSDF: e775e7101a85780fe775e7101a85780f -> 
-  custom:DOTSType/Ludiq.PeekCore.TaskWindow: be1ab3690b12dca1be1ab3690b12dca1 -> 
   custom:DOTSType/UnityEngine.ProBuilder.Shapes.ProBuilderShape: 264151fc160c68c4264151fc160c68c4 -> 
   custom:DOTSType/UnityEngine.EventSystems.StandaloneInputModule: ec9de3a45a8b8c04ec9de3a45a8b8c04 -> 
   custom:DOTSType/DungeonArchitect.Editors.Flow.Impl.GridFlowEditorConfig: b430e41a41017b47b430e41a41017b47 -> 
@@ -9631,12 +9493,12 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.Scenes.AssetObjectManifest: 84d682f40d46c88184d682f40d46c881 -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnCollisionStay2DMessageListener: 783ffa85ed02bee3783ffa85ed02bee3 -> 
   custom:DOTSType/DungeonArchitect.Navigation.NavigationTriangleProvider: 06c794ce48f1001b06c794ce48f1001b -> 
-  custom:DOTSType/UnityEditor.SceneManagement.StageNavigationManager: 489bfde048e16dd1489bfde048e16dd1 -> 
+  custom:DOTSType/DungeonArchitect.Builders.SnapGridFlow.SnapGridFlowConfig: 8baf4a5060c7499d8baf4a5060c7499d -> 
   custom:DOTSType/Unity.Entities.PostLoadCommandBuffer: 41c768f6a33d195b41c768f6a33d195b -> 
   custom:DOTSType/Unity.VisualScripting.UnityOnTransformParentChangedMessageListener: 498b53e9507bafb5498b53e9507bafb5 -> 
-  custom:DOTSType/UnityEditor.DirectorEditor: 0dd0b4393c66df480dd0b4393c66df48 -> 
+  custom:DOTSType/UnityEditor.SceneManagement.StageNavigationManager: 489bfde048e16dd1489bfde048e16dd1 -> 
   custom:DOTSType/DungeonArchitect.Flow.Domains.Layout.Tooling.Graph2D.FlowLayoutToolGraph2D: fc91d809852d4b1ffc91d809852d4b1f -> 
-  custom:DOTSType/DungeonArchitect.Builders.SnapGridFlow.SnapGridFlowConfig: 8baf4a5060c7499d8baf4a5060c7499d -> 
+  custom:DOTSType/UnityEditor.DirectorEditor: 0dd0b4393c66df480dd0b4393c66df48 -> 
   custom:DOTSType/UnityEngine.U2D.SpriteShapeRenderer: c9fe580071495138c9fe580071495138 -> 
   custom:DOTSType/UnityEditorInternal.AnimationWindowSelectionItem: fab9a646cde907f4fab9a646cde907f4 -> 
   custom:DOTSType/UnityEngine.UIElements.PanelRaycaster: 5a24194a559897275a24194a55989727 -> 
@@ -9666,10 +9528,10 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/RootMotion.Demos.HitReactionTrigger: 64c48e6e041f366c64c48e6e041f366c -> 
   custom:DOTSType/MatchupComponent: 8a7a1bbed17f688b8a7a1bbed17f688b -> 
   custom:DOTSType/UnityEditor.UI.DropdownEditor: c442e9f29f6c6fe9c442e9f29f6c6fe9 -> 
-  custom:DOTSType/CinemachineCameraOffset: 4f3e8508299ed11a4f3e8508299ed11a -> 
   custom:DOTSType/DungeonArchitect.Flow.Exec.FlowExecTaskResult: 65d0bff9801f73de65d0bff9801f73de -> 
-  custom:DOTSType/Cinemachine.CinemachineInputProvider: 41c7f5c904a0165641c7f5c904a01656 -> 
+  custom:DOTSType/CinemachineCameraOffset: 4f3e8508299ed11a4f3e8508299ed11a -> 
   custom:DOTSType/Rewired.Editor.PlayerControllerInspector: 7523e290544047887523e29054404788 -> 
+  custom:DOTSType/Cinemachine.CinemachineInputProvider: 41c7f5c904a0165641c7f5c904a01656 -> 
   custom:DOTSType/UnityEditor.TextCore.Text.TextSettingsEditor: acea92ec14339555acea92ec14339555 -> 
   custom:DOTSType/UnityEngine.PhysicsMaterial2D: 97bd1008eeb781d197bd1008eeb781d1 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.ChangeSpace: 9e535ba29d07d0bb9e535ba29d07d0bb -> 
@@ -9708,10 +9570,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.OverrideActorName: 4e1ae1a9b6a812ce4e1ae1a9b6a812ce -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandQTE: 99d4cee992c07da299d4cee992c07da2 -> 
   custom:DOTSType/UnityEditor.VisualEffectAssetEditorUtility+DoCreateNewSubgraphBlock: b239d285cd1d5547b239d285cd1d5547 -> 
+  custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
   custom:DOTSType/UnityEditor.AnimationModeDriver: 732d6a6cec3817f5732d6a6cec3817f5 -> 
   custom:DOTSType/UnityEditor.GraphicsSettingsWindow+ShaderPreloadEditor: 4f0d4249ee548b3a4f0d4249ee548b3a -> 
-  custom:DOTSType/Rewired.Editor.ComponentControls.TouchInteractableEditor: d2849b459e3c2605d2849b459e3c2605 -> 
-  custom:DOTSType/Ludiq.PeekCore.UpdateWizard: 45d136d954a6c38845d136d954a6c388 -> 
   custom:DOTSType/RootMotion.Comments: c64d23a851fdf87fc64d23a851fdf87f -> 
   custom:DOTSType/UnityEditor.Rendering.LensFlareEditorUtils+LensFlareDataSRPCreator: 0def46bcaa50ed6d0def46bcaa50ed6d -> 
   custom:DOTSType/DungeonArchitect.Samples.ShooterGame.MiniMapGenerator: 522986f33672bdc3522986f33672bdc3 -> 
@@ -9773,7 +9634,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Michsky.UI.ModernUIPack.ButtonManagerBasicEditor: bc608e7d2d370847bc608e7d2d370847 -> 
   custom:DOTSType/UnityEditor.HingeJoint2DEditor: 6c66ecd98d3897716c66ecd98d389771 -> 
   custom:DOTSType/TMPro.TMP_Dropdown+DropdownItem: a124c6825d9f16cda124c6825d9f16cd -> 
-  custom:DOTSType/UnityEditor.Rendering.DebugStateEnum: 85e3a1eadca5e88885e3a1eadca5e888 -> 
   custom:DOTSType/EnemyAttackComponent: 097ff9f285b22da1097ff9f285b22da1 -> 
   custom:DOTSType/DungeonArchitect.Builders.Grid.LandscapeTransformerGrid: b543cc3f2249ffb5b543cc3f2249ffb5 -> 
   custom:DOTSType/UnityEditor.Search.ASIEI01: f29c3b5f8afe6ebbf29c3b5f8afe6ebb -> 
@@ -9791,7 +9651,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.DialogueActor: 0538c7e6911c09da0538c7e6911c09da -> 
   custom:DOTSType/UnityEditor.VFX.Block.AttributeMassFromVolume: 2d412324a88610762d412324a8861076 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.AssetVersion: cbbf064c4bde6a1fcbbf064c4bde6a1f -> 
-  custom:DOTSType/Ludiq.PeekCore.EditorIconViewer: 63ae9d3fa581b31b63ae9d3fa581b31b -> 
   custom:DOTSType/MaterialOverrideAsset: 30e094f2f72d42c230e094f2f72d42c2 -> 
   custom:DOTSType/TMPro.TextMeshPro: 61e10d215eb1b79961e10d215eb1b799 -> 
   custom:DOTSType/Unity.Transforms.CopyInitialTransformFromGameObject: 2e04dba9bc7f665b2e04dba9bc7f665b -> 
@@ -10070,7 +9929,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEditor.VFX.Block.PositionSphere: 7f6600b2765dcb967f6600b2765dcb96 -> 
   custom:DOTSType/JackRabbit.GameControllerJackRabbit: 36a4f73968e6184736a4f73968e61847 -> 
   custom:DOTSType/UnityEditor.DeviceSimulation.DeviceInfoAsset: d11de534da114722d11de534da114722 -> 
-  custom:DOTSType/Ludiq.PeekCore.GeneratePropertyProvidersWindow: a510e4a6bb754459a510e4a6bb754459 -> 
   custom:DOTSType/DungeonArchitect.Builders.Grid.SpatialConstraints.SpatialConstraintProcessorGridFlow2D: 820d357b5f7dbb8d820d357b5f7dbb8d -> 
   custom:DOTSType/Packages.Rider.Editor.UnitTesting.CallbackData: b59e305e614ec365b59e305e614ec365 -> 
   custom:DOTSType/EnemyWeaponMovementComponent: 43e0c680156800a043e0c680156800a0 -> 
@@ -10082,16 +9940,16 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.TimelineTrigger: 63e5c955d75fa6b263e5c955d75fa6b2 -> 
   custom:DOTSType/UnityEditor.VFX.Operator.RectangularToPolar: 1d09a88f9175510d1d09a88f9175510d -> 
   custom:DOTSType/UnityEditor.MeshRendererEditor: ffddd086008fb36dffddd086008fb36d -> 
-  custom:DOTSType/Michsky.UI.ModernUIPack.SwitchManagerEditor: ee4ef263f8749a4eee4ef263f8749a4e -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandMoveTo: f7a2284a2836c2b1f7a2284a2836c2b1 -> 
-  custom:DOTSType/FixedListTests+ScriptableObjectFixedListFloat128: 7d0fb9f19652f3cd7d0fb9f19652f3cd -> 
   custom:DOTSType/DungeonArchitect.Editors.DungeonPropertyEditor: 512423f01573fb71512423f01573fb71 -> 
+  custom:DOTSType/Michsky.UI.ModernUIPack.SwitchManagerEditor: ee4ef263f8749a4eee4ef263f8749a4e -> 
   custom:DOTSType/PixelCrushers.SaveSystemMethods: 7b487375314f04247b487375314f0424 -> 
   custom:DOTSType/UnityEditor.Polybrush.BrushSettingsEditor: 6c62f11351dbb23e6c62f11351dbb23e -> 
   custom:DOTSType/Unity.Entities.BurstCompatibleSharedComponentData: 6239fcd2cd3b1c316239fcd2cd3b1c31 -> 
-  custom:DOTSType/MovesManager: a2cea90ef79902f2a2cea90ef79902f2 -> 
+  custom:DOTSType/FixedListTests+ScriptableObjectFixedListFloat128: 7d0fb9f19652f3cd7d0fb9f19652f3cd -> 
   custom:DOTSType/UnityEditor.ProjectWindowCallback.DoCreateScene: 63707b03c78968a763707b03c78968a7 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.StartSequenceOnDialogueEvent: be8dd63f92a7c9e7be8dd63f92a7c9e7 -> 
+  custom:DOTSType/MovesManager: a2cea90ef79902f2a2cea90ef79902f2 -> 
   custom:DOTSType/Unity.VisualScripting.StateMachine: f210dd7e94681b22f210dd7e94681b22 -> 
   custom:DOTSType/ControlPower: a3d8f1ef43359b5ea3d8f1ef43359b5e -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.BarkOnIdle: f11461246565304cf11461246565304c -> 
@@ -10159,7 +10017,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.Rendering.UI.DebugUIHandlerPanel: 4ca2f5d3d855e3784ca2f5d3d855e378 -> 
   custom:DOTSType/UnityEngine.TestRunner.Utils.TestRunCallbackListener: be8e9fd807bd1303be8e9fd807bd1303 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.SequencerCommands.SequencerCommandCamera: 0c48109ba2b849980c48109ba2b84998 -> 
-  custom:DOTSType/Ludiq.Peek.EditorPopup: 4d2437ec2ddc9be04d2437ec2ddc9be0 -> 
   custom:DOTSType/UnityEditor.UIElements.Debugger.UIElementsDebugger: 30bc2363ab7249f930bc2363ab7249f9 -> 
   custom:DOTSType/UnityEditor.TreeViewExamples.TreeViewTestWindow: 7b444b9c14b8baa07b444b9c14b8baa0 -> 
   custom:DOTSType/BossWeaponComponent: 9500c3f6f29e2ad19500c3f6f29e2ad1 -> 
@@ -10172,7 +10029,6 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/PixelCrushers.DialogueSystem.ProximitySelector: eee8b1111314e05beee8b1111314e05b -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.DialogueDatabase: 311cf8976d3946b6311cf8976d3946b6 -> 
   custom:DOTSType/DungeonArchitect.Themeing.DungeonMarkerVisualizerComponent: bf47be3d1ca3cd9dbf47be3d1ca3cd9d -> 
-  custom:DOTSType/Ludiq.Peek.ReparentingPrompt: 7178af188443b0c07178af188443b0c0 -> 
   custom:DOTSType/UnityEngine.Effector2D: 5923a4e47043fd275923a4e47043fd27 -> 
   custom:DOTSType/UnityEditor.Rendering.Universal.Converters.ColorGradingConverter: 6b9c8c279da41bf56b9c8c279da41bf5 -> 
   custom:DOTSType/RootMotion.FinalIK.LookAtController: 84a784b4cf368b6684a784b4cf368b66 -> 
@@ -10180,7 +10036,7 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/Unity.VisualScripting.UnityOnScrollMessageListener: 064c4bc4e4db64a7064c4bc4e4db64a7 -> 
   custom:DOTSType/UnityEditor.ScriptReloadProperties: 3feae7b52eb44b493feae7b52eb44b49 -> 
   custom:DOTSType/UnityEditor.VFX.VFXOutputEvent: 05f40b8caf34482305f40b8caf344823 -> 
-  custom:DOTSType/PowerItemComponent: 893c29967a4b05de893c29967a4b05de -> 
+  custom:DOTSType/PowerItemComponent: 2d9b8df4a4d7198b2d9b8df4a4d7198b -> 
   custom:DOTSType/UnityEditor.UI.TextEditor: 5eda947aa1b364635eda947aa1b36463 -> 
   custom:DOTSType/UnityEditor.LookAtConstraintEditor: b2c669ce84ceb72cb2c669ce84ceb72c -> 
   custom:DOTSType/PixelCrushers.Wrappers.SaveSystem: 155f9cc00db4267f155f9cc00db4267f -> 
@@ -10408,19 +10264,19 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/UnityEngine.FailedToLoadScriptObject: 39a2a1e4ae40c69139a2a1e4ae40c691 -> 
   custom:DOTSType/UnityEditor.AudioReverbFilterEditor: b3f29485865eb643b3f29485865eb643 -> 
   custom:DOTSType/PixelCrushers.DialogueSystem.Wrappers.SendMessageOnDialogueEvent: 26a718f2041e974126a718f2041e9741 -> 
-  custom:DOTSType/TMPro.Examples.SimpleScript: 48c3ba447e74614548c3ba447e746145 -> 
+  custom:DOTSType/UnityEditor.VFX.URP.VFXURPLitQuadStripOutput: e91d385f76bfca81e91d385f76bfca81 -> 
   custom:DOTSType/UnityEditor.Presets.PresetSelector: 80cae4221594363380cae42215943633 -> 
   custom:DOTSType/VFXContextEditor: b551f45aa85f98dbb551f45aa85f98db -> 
   custom:DOTSType/RootMotion.FinalIK.AimIKJ: bfa14e578d347427bfa14e578d347427 -> 
   custom:DOTSType/UnityEngine.Timeline.SignalAsset: 40a0d26b5718303e40a0d26b5718303e -> 
   custom:DOTSType/UnityEditor.SavedSearchFilters: c875ec487eb82b33c875ec487eb82b33 -> 
   custom:DOTSType/RootMotion.FinalIK.EditorIKPose: 48b3a2a05d9444e148b3a2a05d9444e1 -> 
+  custom:DOTSType/TMPro.Examples.SimpleScript: 48c3ba447e74614548c3ba447e746145 -> 
   custom:DOTSType/UnityEditor.UI.ContentSizeFitterEditor: 7b574be00a84b3d37b574be00a84b3d3 -> 
   custom:DOTSType/RootMotion.Demos.FBIKBoxing: c3cc1fd29261b93ac3cc1fd29261b93a -> 
   custom:DOTSType/UnityEngine.SpriteMask: 8c8555da233824978c8555da23382497 -> 
   custom:DOTSType/UnityEditor.TestTools.TestRunner.CommandLineTest.ExitCallbacks: 5cdc6cdeddd7fee35cdc6cdeddd7fee3 -> 
   custom:DOTSType/UnityEngine.CanvasRenderer: 2c4d642f145776f52c4d642f145776f5 -> 
-  custom:DOTSType/UnityEditor.VFX.URP.VFXURPLitQuadStripOutput: e91d385f76bfca81e91d385f76bfca81 -> 
   custom:DOTSType/SaveLevelManager: fb1a95a66472112efb1a95a66472112e -> 
   custom:DOTSType/UnityEditor.VFX.Block.CollisionSphere: 485ef68c4b9196e7485ef68c4b9196e7 -> 
   custom:DOTSType/RoomMidEmitter: 027d535634194b3b027d535634194b3b -> 
@@ -11399,3 +11255,91 @@ AssetImportParameters requested are different than current active one (requested
   custom:DOTSType/DungeonArchitect.Navigation.DungeonNavAgent2D: f9c10d018df33527f9c10d018df33527 -> 
   custom:DOTSType/UnityEditor.U2D.Sprites.SpriteUtilityWindow: 766fc4f2b14d7b62766fc4f2b14d7b62 -> 
   custom:DOTSType/UnityEditor.Snap.SnapSettingsWindow: 23aaf38655ec118d23aaf38655ec118d -> 
+========================================================================
+Received Import Request.
+  Time since last request: 5141.011812 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '030dedd1d024474a1085d5834653f05c') in 0.862467 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 355.805405 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b90da34491c48fd31a34ff523ff4245e') in 0.090060 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 25.179635 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '859d711d88377feff2f300d9a1ad17f7') in 0.078032 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.548655 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ede23974e6eaafccac827acdb7d94fec') in 0.075125 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 25.800800 seconds.
+  path: Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat
+  artifactKey: Guid(719f8d52fe2e6b444b41c2f7a8fe587b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Epic Toon FX/Materials/Basics/cloud_2x2_soft_AB.mat using Guid(719f8d52fe2e6b444b41c2f7a8fe587b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8651266dbe3ca7ee9dd22ce10a9ab61') in 0.194830 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 232.638356 seconds.
+  path: Assets/VFX/Visual Effect 1.prefab
+  artifactKey: Guid(d0baf56fd22e9fd4586ddaddf7676ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/Visual Effect 1.prefab using Guid(d0baf56fd22e9fd4586ddaddf7676ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6f078f72cfacc7405305ca9d57b69563') in 0.047966 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.642638 seconds.
+  path: Assets/VFX/Visual Effect.prefab
+  artifactKey: Guid(b1e7d1c37d6015c488fff634432dbd3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/Visual Effect.prefab using Guid(b1e7d1c37d6015c488fff634432dbd3e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8f0f5b7aedc9bf30268981a4f462abab') in 0.018805 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 63.186429 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aeba8c94422b5a893edd4361699f058b') in 0.016792 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 5.978519 seconds.
+  path: Assets/VFX/Sandbox VFX.vfx
+  artifactKey: Guid(9139a979662ba9d46a206da6e40e0ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/Sandbox VFX.vfx using Guid(9139a979662ba9d46a206da6e40e0ecc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3323af4afc2eead9e8aab8951958fb1') in 0.009657 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 162.484678 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5f18045399737a71a94ac80b69886a2b') in 0.047290 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.140493 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e80fcd20eac9f686cd9fa682cf06b260') in 0.051744 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 10.859529 seconds.
+  path: Assets/VFX/Visual Effect 1.prefab
+  artifactKey: Guid(d0baf56fd22e9fd4586ddaddf7676ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/Visual Effect 1.prefab using Guid(d0baf56fd22e9fd4586ddaddf7676ff9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0acb4fa51a89bb7001bda954fb6dc875') in 0.028840 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 243.885908 seconds.
+  path: Assets/VFX/smoke and fire 1.prefab
+  artifactKey: Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/VFX/smoke and fire 1.prefab using Guid(aca02d7ce6f260349867517b55ff839f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '782ee88e179824a16fdd3325b424dc62') in 0.053317 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.042667 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll
+Symbol file LoadedFromMemory doesn't match image C:\Projects\GitJam\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 7.35 ms, found 5 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
