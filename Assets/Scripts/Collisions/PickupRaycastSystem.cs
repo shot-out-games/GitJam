@@ -323,7 +323,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
         Entity pickedUpActor = Entity.Null;
         //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
-        var healthPowerList = GetBufferFromEntity<HealthPower>(false);
+        //var healthPowerList = GetBufferFromEntity<HealthPower>(false);
 
         Entities.WithAny<UseItem1, UseItem2>().ForEach((
             ref PowerItemComponent powerItemComponent,
@@ -338,8 +338,9 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
             pickedUpActor = powerItemComponent.pickedUpActor;
             if (pickedUpActor == Entity.Null) return;
 
-            var healthPower = healthPowerList[entity];
-            if(healthPower.Length > 0)
+            if (HasComponent<HealthPower>(entity) && powerItemComponent.enabled == false)
+            //var healthPower = healthPowerList[entity];
+            //if(healthPower.Length > 0)
             {
                 if (powerItemComponent.enabled == false)
                 {
@@ -354,19 +355,21 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
                     ecb.AddComponent(instanceEntity, ps);
 
-                   
-
+                    var healthPower = GetComponent<HealthPower>(entity);
                     HealthPower healthPowerPlayer = new HealthPower
                     {
                         psAttached = instanceEntity,//attached to player picking up
                         pickedUpActor = pickedUpActor,
                         itemEntity = entity,
                         enabled = true,
-                        healthMultiplier = healthPower[0].healthMultiplier
+                        //healthMultiplier = healthPower[0].healthMultiplier
+                        healthMultiplier = healthPower.healthMultiplier
                     };
                     Debug.Log("health pu");
                     //ecb.RemoveComponent<UseItem1>(entity);
-                    ecb.AddBuffer<HealthPower>(pickedUpActor).Add(healthPowerPlayer);
+                    //ecb.AddBuffer<HealthPower>(pickedUpActor).Add(healthPowerPlayer);
+                    ecb.AddComponent(pickedUpActor, healthPowerPlayer);
+
 
 
                 }

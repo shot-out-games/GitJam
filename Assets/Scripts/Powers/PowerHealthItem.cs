@@ -10,7 +10,7 @@ using Unity.Mathematics;
 
 
 
-public struct HealthPower : IBufferElementData
+public struct HealthPower : IComponentData
 {
     public Translation translation;
     public Entity psAttached;
@@ -29,6 +29,7 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
     [Header("Health")]
     public bool active = true;
     public float healthMultiplier = .75f;
+    public PickupType pickupType = PickupType.Health;
 
     //public ItemClass PowerItem;
 
@@ -44,7 +45,7 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
     public AudioSource audioSource;
     public string powerItemDescription;
 
-    public List<ItemClass> items = new List<ItemClass>();
+    //public List<ItemClass> items = new List<ItemClass>();
 
 
 
@@ -58,11 +59,11 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
     public void DeclareReferencedPrefabs(List<GameObject> referencedPrefabs)
     {
         referencedPrefabs.Add(powerEnabledEffectPrefab);
-        for (int i = 0; i < items.Count; i++)
-        {
-            referencedPrefabs.Add(items[i].ItemPrefab);
+        ///for (int i = 0; i < items.Count; i++)
+       // {
+          //  referencedPrefabs.Add(items[i].ItemPrefab);
 
-        }
+       // }
         
     }
 
@@ -95,32 +96,37 @@ public class PowerHealthItem : MonoBehaviour, IConvertGameObjectToEntity, IDecla
             active = active,
             description = powerItemDescription,
             pickupEntity = entity,
-            index = entity.Index
+            index = entity.Index,
+            pickupType = pickupType
             //powerType = (int)powerItems[i].powerType,
             //speedTimeOn = powerItems[i].speedTimeOn,
             //speedTimeMultiplier = powerItems[i].speedMultiplier,
             //healthMultiplier = powerItems[i].healthMultiplier
         });
 
-        for (int i = 0; i < items.Count; i++)
-        {
-           
+        //  for (int i = 0; i < items.Count; i++)
+        //  {
 
 
-            dstManager.AddBuffer<HealthPower>(entity).Add
-                (
-                    new HealthPower
-                    {
-                       
-                        enabled = false,
-                        healthMultiplier = healthMultiplier,
-                        translation = new Translation { Value = items[i].location.position} 
-   
-                    }
-                );
 
-        }
-        
+
+
+        //dstManager.AddBuffer<HealthPower>(entity).Add
+        // (
+        //   new HealthPower
+        //     {
+
+        //       enabled = false,
+        //     healthMultiplier = healthMultiplier
+        //translation = new Translation { Value = items[i].location.position }
+
+        //}
+        //);
+
+        //}
+
+
+        dstManager.AddComponentData<HealthPower>(entity, new HealthPower { enabled = false, healthMultiplier = healthMultiplier });
 
         if (immediateUse)
         {

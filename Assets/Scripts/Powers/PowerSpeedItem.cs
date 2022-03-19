@@ -13,6 +13,8 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
 
     public bool active = true;
     public bool immediateUse;
+    public PickupType pickupType = PickupType.Speed;
+
 
     public float speedTimeOn;
     public float speedTimeMultiplier;
@@ -63,7 +65,9 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
             active = active,
             description = powerItemDescription,
             pickupEntity = entity,
-            index = entity.Index
+            index = entity.Index,
+            pickupType = pickupType
+
 
 
         });
@@ -75,6 +79,7 @@ public class PowerSpeedItem : MonoBehaviour, IConvertGameObjectToEntity, IDeclar
             enabled = false,
             timeOn = speedTimeOn,
             multiplier = speedTimeMultiplier
+
         });
 
         if (immediateUse)

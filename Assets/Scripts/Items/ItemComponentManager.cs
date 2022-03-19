@@ -32,6 +32,7 @@ public struct PowerItemComponent : IComponentData
     public bool useSlot1;
     public bool useSlot2;
     public int index;
+    public PickupType pickupType;
     //public int count;
 
 }
@@ -144,10 +145,11 @@ public struct PickupManagerComponent : IComponentData //used for managed compone
 
 public enum PickupType
 {
-    None = 0,
-    Speed = 1,
-    Health = 2,
-    Control = 3,
+    None,
+    Speed,
+    Health,
+    Dash,
+    Control
 }
 
 [System.Serializable]

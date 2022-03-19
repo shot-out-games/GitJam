@@ -254,6 +254,18 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+        Count();
+        
+    }
+
+    public void Count()
+    {
+
+        //powerItemComponents.Select(x => x.pickupType).Distinct();
+
+
+
+        
     }
 
     public void HideMenu()
