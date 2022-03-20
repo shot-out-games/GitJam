@@ -72,7 +72,7 @@ public class PowersSystem : SystemBase
                     speed.triggered = true;
                     speed.startTimer = true;
                     speed.timer = 0;
-                    ecb.AddComponent(speed.itemEntity, new DestroyComponent());
+                    //ecb.AddComponent(speed.itemEntity, new DestroyComponent());
                     ratings.gameSpeed = ratings.gameSpeed * speed.multiplier;
                     Debug.Log("game speed " + ratings.gameSpeed);
                 }
@@ -96,47 +96,47 @@ public class PowersSystem : SystemBase
         ).Run();
 
 
-       
 
 
 
-        //Entities.ForEach(
-        //    (
-        //        ref HealthPower healthPower, ref HealthComponent healthComponent, in RatingsComponent ratings, in Entity e
 
-        //    ) =>
-        //    {
-        //        if (healthPower.enabled == true)
-        //        {
-        //            //healthPower.enabled = false;
-        //            healthComponent.TotalDamageReceived = healthComponent.TotalDamageReceived * healthPower.healthMultiplier;
-        //            //Rare used if multiplier is > 1 meaning health damage increased
-        //            if (healthComponent.TotalDamageReceived > ratings.maxHealth)
-        //            {
-        //                healthComponent.TotalDamageReceived = ratings.maxHealth;
-        //            }
-        //            ecb.RemoveComponent<HealthPower>(e);
-        //            ecb.AddComponent(healthPower.itemEntity, new DestroyComponent());
-        //            ecb.DestroyEntity(healthPower.psAttached);
+        Entities.ForEach(
+            (
+                ref HealthPower healthPower, ref HealthComponent healthComponent, in RatingsComponent ratings, in Entity e
 
-        //        }
+            ) =>
+            {
+                if (healthPower.enabled == true)
+                {
+                    //healthPower.enabled = false;
+                    healthComponent.TotalDamageReceived = healthComponent.TotalDamageReceived * healthPower.healthMultiplier;
+                    //Rare used if multiplier is > 1 meaning health damage increased
+                    if (healthComponent.TotalDamageReceived > ratings.maxHealth)
+                    {
+                        healthComponent.TotalDamageReceived = ratings.maxHealth;
+                    }
+                    ecb.RemoveComponent<HealthPower>(e);
+                    ecb.AddComponent(healthPower.itemEntity, new DestroyComponent());
+                    ecb.DestroyEntity(healthPower.psAttached);
 
-        //    }
-        //).Schedule();
+                }
+
+            }
+        ).Schedule();
 
 
-        //Entities.WithoutBurst().ForEach(
-        //    (
-        //        HealthBar healthBar, ref HealthPower healthPower) =>
-        //    {
-        //        if (healthPower.enabled == true)
-        //        {
-        //            healthPower.enabled = false;
-        //            healthBar.HealthChange();
-        //            Debug.Log("Health Changed");
-        //        }
-        //    }
-        //).Run();
+        Entities.WithoutBurst().ForEach(
+            (
+                HealthBar healthBar, ref HealthPower healthPower) =>
+            {
+                if (healthPower.enabled == true)
+                {
+                    healthPower.enabled = false;
+                    healthBar.HealthChange();
+                    Debug.Log("Health Changed");
+                }
+            }
+        ).Run();
 
 
 

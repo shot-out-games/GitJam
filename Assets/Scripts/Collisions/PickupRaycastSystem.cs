@@ -186,7 +186,7 @@ public class PickupPowerUpRaycastSystem : SystemBase
         base.OnCreate();
         // Find the ECB system once and store it for later usage
         //m_EndSimulationEcbSystem = World
-          //  .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        //  .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
     protected override void OnUpdate()
@@ -213,8 +213,8 @@ public class PickupPowerUpRaycastSystem : SystemBase
             float distance = 2f;
             float3 end = start + direction * distance;
 
-            
-            
+
+
 
             PointDistanceInput pointDistanceInput = new PointDistanceInput
             {
@@ -301,8 +301,8 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
     {
         base.OnCreate();
         // Find the ECB system once and store it for later usage
-       // m_EndSimulationEcbSystem = World
-         //   .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        // m_EndSimulationEcbSystem = World
+        //   .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
 
@@ -325,14 +325,14 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
         //var healthPowerList = GetBufferFromEntity<HealthPower>(false);
 
-        Entities.WithAny<UseItem1, UseItem2>().ForEach((
+        Entities.WithAny<UseItem1, UseItem2>().WithoutBurst().ForEach((
             ref PowerItemComponent powerItemComponent,
             in ImmediateUseComponent immediateUseComponent,
             in Translation translation,
             in Entity entity
         ) =>
         {
-         
+
             //NativeList<Entity> pickups = new NativeList<Entity>(32, Allocator.TempJob);
             //if (HasComponent<UseItem1>(entity) == false && HasComponent<UseItem2>(entity) == false) return;
             pickedUpActor = powerItemComponent.pickedUpActor;
@@ -376,7 +376,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
             }
 
-          
+
 
 
 
@@ -385,8 +385,8 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
 
                 var speedPower = GetComponent<Speed>(entity);
-
-
+                Debug.Log("pi " + powerItemComponent.count);
+                powerItemComponent.count -= 1;
                 powerItemComponent.enabled = true;
                 Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
 
@@ -398,7 +398,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
                 ecb.AddComponent(instanceEntity, ps);
 
-               // Debug.Log(" speed " + pickedUpActor);
+                // Debug.Log(" speed " + pickedUpActor);
 
 
 
@@ -414,6 +414,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
                 //ecb.RemoveComponent<UseItem1>(entity);
                 ecb.RemoveComponent<ImmediateUseComponent>(entity);
+                //if (powerItemComponent.count < 0)
                 ecb.AddComponent(entity, new DestroyComponent());
                 ecb.AddComponent(pickedUpActor, speedPowerPlayer);
 

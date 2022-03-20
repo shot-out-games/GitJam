@@ -135,7 +135,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
         for (int i = 0; i < powerItemComponents.Count; i++)
         {
-            pickuplabel[i].text = powerItemComponents[i].description.ToString();
+            pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
         }
 
         for (int i = 0; i < powerItemComponents.Count; i++)
@@ -201,12 +201,14 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void AssignSelectedPower(int use_index)
     {
+        Count();
         if (use_index <= 0 || powerItemComponents.Count < use_index) return;
         if (entity == Entity.Null || manager == default) return;
         Debug.Log("assign " + selectedPower);
         Entity pickupEntity = powerItemComponents[selectedPower].pickupEntity;
         bool pickedUp = powerItemComponents[selectedPower].itemPickedUp;
-        var item = manager.GetComponentData<PowerItemComponent>(pickupEntity);
+        //var item = manager.GetComponentData<PowerItemComponent>(pickupEntity);
+        var item = powerItemComponents[selectedPower];
         //item1.useSlot1 = false;
         if (pickupEntity != Entity.Null && pickedUp == true)
         {
@@ -265,21 +267,37 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         //powerItemComponents.Select(x => x.pickupType).Distinct();
 
 
-        var tempItems = powerItemComponents;
-        
+        var tempItems = new List<PowerItemComponent>(powerItemComponents);
+        //Debug.Log("temp count " + tempItems.Count);
+        powerItemComponents.Clear();
+        //Debug.Log("temp count after " + tempItems.Count);
         int powerUps = 2;
+        if (powerUps > tempItems.Count) powerUps = tempItems.Count;
+
+        int first = -1;
         for (int j = 0; j < powerUps; j++)
         {
-            for (int i = 0; i < powerItemComponents.Count; i++)
+            first = -1;
+            int count = 0;
+            for (int i = 0; i < tempItems.Count; i++)
             {
                 if((int) tempItems[i].pickupType == j+1)
                 {
-                    var item = tempItems[j];
-                    item.count += 1;
-                    tempItems[j] = item;
-                    Debug.Log("count " + item.count);
+                    if (first == -1) first = i;
+                    //var item = tempItems[i];
+                    count += 1;
+                    //tempItems[i] = item;
+                    //Debug.Log("count " + item.count);
+                   // Debug.Log("text " + tempItems[i].description);
                 }
 
+            }
+            if (first >= 0)
+            {
+                var item = tempItems[first];
+                item.count = count;
+                tempItems[first] = item;
+                powerItemComponents.Add(tempItems[first]);
             }
 
         }

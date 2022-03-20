@@ -50,7 +50,7 @@ public class DestroySystem : SystemBase
             //}
 
             destroyComponent.frames++;
-            if (destroyComponent.frames > 600)
+            if (destroyComponent.frames > 60)
             {
                 //ecb.RemoveComponent<C>(e);
                 ecb.DestroyEntity(e);
