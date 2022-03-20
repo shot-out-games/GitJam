@@ -321,6 +321,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
     {
         //bool pickedUp = false;
         Entity pickedUpActor = Entity.Null;
+        bool usedItem = false;
         //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
         //var healthPowerList = GetBufferFromEntity<HealthPower>(false);
@@ -332,19 +333,23 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
             in Entity entity
         ) =>
         {
-
+            
             //NativeList<Entity> pickups = new NativeList<Entity>(32, Allocator.TempJob);
             //if (HasComponent<UseItem1>(entity) == false && HasComponent<UseItem2>(entity) == false) return;
             pickedUpActor = powerItemComponent.pickedUpActor;
             if (pickedUpActor == Entity.Null) return;
 
+
+          
+
             if (HasComponent<HealthPower>(entity) && powerItemComponent.enabled == false)
+
             //var healthPower = healthPowerList[entity];
             //if(healthPower.Length > 0)
             {
                 if (powerItemComponent.enabled == false)
                 {
-
+                    usedItem = true;
                     powerItemComponent.enabled = true;
                     Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
                     var ps = new ParticleSystemComponent
@@ -365,9 +370,10 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                         //healthMultiplier = healthPower[0].healthMultiplier
                         healthMultiplier = healthPower.healthMultiplier
                     };
-                    Debug.Log("health pu");
+                    //Debug.Log("health pu");
                     //ecb.RemoveComponent<UseItem1>(entity);
                     //ecb.AddBuffer<HealthPower>(pickedUpActor).Add(healthPowerPlayer);
+                    ecb.AddComponent(entity, new DestroyComponent());
                     ecb.AddComponent(pickedUpActor, healthPowerPlayer);
 
 
@@ -383,7 +389,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
             if (HasComponent<Speed>(entity) && powerItemComponent.enabled == false)
             {
 
-
+                usedItem = true;
                 var speedPower = GetComponent<Speed>(entity);
                 Debug.Log("pi " + powerItemComponent.count);
                 powerItemComponent.count -= 1;
@@ -427,6 +433,22 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
 
         }).Run();
+
+
+
+        if(HasSingleton<PickupMenuComponent>())
+        {
+            var _e = GetSingletonEntity<PickupMenuComponent>();
+            var pu = GetComponent<PickupMenuComponent>(_e);
+            if(usedItem)
+            {
+                pu.usedItem = usedItem;
+            }
+
+            Debug.Log("pu " + pu.usedItem);
+            SetSingleton<PickupMenuComponent>(pu);
+
+        }
 
         // Make sure that the ECB system knows about our job
         //m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);

@@ -16,6 +16,7 @@ public struct PickupMenuComponent : IComponentData
     public bool showMenu;
     public bool exitClicked;
     public bool menuStateChanged;
+    public bool usedItem;
 }
 
 public class PowerItemClass
@@ -52,6 +53,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     private TextMeshProUGUI[] pickuplabel;
     [SerializeField]
     private TextMeshProUGUI[] uselabel;
+
+    [SerializeField]
+    private TextMeshProUGUI[] gameViewUse;
 
     //public int speedPts;
     //public int powerPts;
@@ -185,7 +189,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void ShowLabels()
     {
-        Debug.Log("pu count " + powerItemComponents.Count);
+       // Debug.Log("pu count " + powerItemComponents.Count);
 
 
         for (int i = 0; i < uselabel.Length; i++)
@@ -201,7 +205,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < powerItemComponents.Count; i++)
         {
             pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
-            Debug.Log("pu text show labels " + pickuplabel[i].text);
+           // Debug.Log("pu text show labels " + pickuplabel[i].text);
         }
 
         //for (int i = 0; i < powerItemComponents.Count; i++)
@@ -222,7 +226,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         Debug.Log("use length " + useItemComponents.Length);
         for (int i = 0; i < useItemComponents.Length; i++)
         {
-            Debug.Log("use " + useItemComponents[i].description.ToString());
+            //Debug.Log("use " + useItemComponents[i].description.ToString());
             for (int j = 0; j < powerItemComponents.Count; j++)
             {
                 if (powerItemComponents[j].useSlot1 && i == 0)//deletes entity after use so now this is still true :( useslotindex = selected power
@@ -239,11 +243,24 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
         }
 
+        GameLabels();
 
         buttons[0].Select();
 
 
 
+    }
+
+    public void GameLabels()
+    {
+        for (int i = 0; i < gameViewUse.Length; i++)
+        {
+
+            gameViewUse[i].text = uselabel[i].text;
+           // Debug.Log(gameViewUse[i].text + " game text " + i);
+
+        }
+        //Canvas.ForceUpdateCanvases();
     }
 
     void ButtonClickedIndex(int index)
@@ -294,7 +311,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         Count();
         if (use_index <= 0 || powerItemComponents.Count < use_index) return;
         if (entity == Entity.Null || manager == default) return;
-        Debug.Log("assign " + selectedPower);
+        //Debug.Log("assign " + selectedPower);
         Entity pickupEntity = powerItemComponents[selectedPower].pickupEntity;
         bool pickedUp = powerItemComponents[selectedPower].itemPickedUp;
         //var item = manager.GetComponentData<PowerItemComponent>(pickupEntity);
@@ -302,7 +319,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         //item1.useSlot1 = false;
         if (pickupEntity != Entity.Null && pickedUp == true)
         {
-            Debug.Log("use  " + pickupEntity + " " + use_index);
+            //Debug.Log("use  " + pickupEntity + " " + use_index);
 
             if (use_index == 1)
             {
@@ -472,15 +489,28 @@ public class PickupSystem : SystemBase
             pickupMenu.menuStateChanged = true;
             pickupMenu.showMenu = !pickupMenu.showMenu;
         }
-        SetSingleton(pickupMenu);
+        
 
 
         Entities.WithoutBurst().ForEach((PickupMenuGroup pickupMenuGroup) =>
         {
-
+            if (pickupMenu.usedItem)
+            {
+                pickupMenu.usedItem = false;
+                pickupMenu.menuStateChanged = true;
+                //pickupMenuGroup.Count();
+                //pickupMenuGroup.ShowMenu();
+                //pickupMenuGroup.EnableButtons();
+                pickupMenuGroup.ShowLabels();
+                //pickupMenuGroup.HideMenu();
+                Debug.Log("pu sho " + pickupMenu.showMenu);
+                //pickupMenuGroup.ShowLabels();
+            }
             //Debug.Log("pu sho " + pickupMenu.showMenu);
             if (pickupMenu.menuStateChanged == false) return;
             //pickupMenuGroup.ShowLabels();
+         
+            
             if (pickupMenu.showMenu)
             {
                 pickupMenuGroup.ShowMenu();
@@ -528,8 +558,8 @@ public class PickupSystem : SystemBase
             //Debug.Log("add use2 " + pickupEntity2);
         }
 
-
-
+        //SetSingleton<PickupMenuComponent>(pickupMenu);
+        SetSingleton(pickupMenu);
 
 
 

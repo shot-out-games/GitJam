@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using SandBox.Player;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -14,15 +15,15 @@ using UnityEngine;
 public class PowersSystem : SystemBase
 {
 
-    EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
+    //EndSimulationEntityCommandBufferSystem m_EndSimulationEcbSystem;
 
 
     protected override void OnCreate()
     {
         base.OnCreate();
         // Find the ECB system once and store it for later usage
-        m_EndSimulationEcbSystem = World
-            .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        //m_EndSimulationEcbSystem = World
+        //    .GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
 
@@ -30,9 +31,9 @@ public class PowersSystem : SystemBase
     protected override void OnUpdate()
     {
 
-        var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
+        //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
 
-
+        EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.TempJob);
 
 
         Entities.WithoutBurst().ForEach((in ParticleSystemComponent ps, in Entity e) =>
@@ -179,12 +180,12 @@ public class PowersSystem : SystemBase
 
 
 
-
-
+        ecb.Playback(EntityManager);
+        ecb.Dispose();
 
 
         // Make sure that the ECB system knows about our job
-        m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
+        //m_EndSimulationEcbSystem.AddJobHandleForProducer(this.Dependency);
 
 
 

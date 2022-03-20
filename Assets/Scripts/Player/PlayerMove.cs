@@ -79,7 +79,7 @@ namespace SandBox.Player
                 Application.targetFrameRate = targetFrameRate;
             }
             var ps = Instantiate(psPrefab, psParent);
-            ps.transform.position = new Vector3(transform.position.x, transform.position.y + .5f, transform.position.z);
+            ps.transform.position = new Vector3(transform.position.x, transform.position.y + 2f, transform.position.z);
             psInstance = ps;
             psInstance.GetComponent<VisualEffect>().Play();
             animator = GetComponent<Animator>();
