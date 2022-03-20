@@ -34,7 +34,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     public Entity entity;
     public static List<PowerItemComponent> powerItemComponents = new List<PowerItemComponent>();
     //public static List<PowerItemComponent> tempItems = new List<PowerItemComponent>();
-    //public PowerItemComponent[] useItemComponents = new PowerItemComponent[2];
+    public PowerItemComponent[] useItemComponents = new PowerItemComponent[2];
 
     //public SkillTreeComponent player0_skillSet;
 
@@ -121,8 +121,73 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     }
 
+
+    public void Count()
+    {
+
+        //powerItemComponents.Select(x => x.pickupType).Distinct();
+        useSlotIndex1 = -1;
+        useSlotIndex2 = -1;
+
+        var tempItems = new List<PowerItemComponent>(powerItemComponents);
+        //for (int i = 0; i < tempItems.Count; i++)
+        //{
+        //    if (tempItems[i].useSlot1)
+        //    {
+        //        useSlotIndex1 = i;
+        //    }
+        //    else if (tempItems[i].useSlot2)
+        //    {
+        //        useSlotIndex2 = i;
+        //    }
+        //}
+
+        Debug.Log("temp count " + tempItems.Count);
+        powerItemComponents.Clear();
+        //Debug.Log("temp count after " + tempItems.Count);
+        int powerUps = 2;
+        //if (powerUps > tempItems.Count) powerUps = tempItems.Count;
+
+        int first = -1;
+        for (int j = 0; j < powerUps; j++)
+        {
+            first = -1;
+            int count = 0;
+            for (int i = 0; i < tempItems.Count; i++)
+            {
+                if ((int)tempItems[i].pickupType == j + 1)
+                {
+                    if (first == -1) first = i;
+                    //var item = tempItems[i];
+                    count += 1;
+                    //tempItems[i] = item;
+                    //Debug.Log("count " + item.count);
+                    // Debug.Log("text " + tempItems[i].description);
+                }
+
+            }
+            if (first >= 0)
+            {
+                var item = tempItems[first];
+                item.count = count;
+                tempItems[first] = item;
+                powerItemComponents.Add(tempItems[first]);
+            }
+
+        }
+
+
+        //ShowLabels();
+
+
+    }
+
+
     public void ShowLabels()
     {
+        Debug.Log("pu count " + powerItemComponents.Count);
+
+
         for (int i = 0; i < uselabel.Length; i++)
         {
             uselabel[i].text = "";
@@ -136,19 +201,44 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < powerItemComponents.Count; i++)
         {
             pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
+            Debug.Log("pu text show labels " + pickuplabel[i].text);
         }
 
-        for (int i = 0; i < powerItemComponents.Count; i++)
+        //for (int i = 0; i < powerItemComponents.Count; i++)
+        //{
+        //    if (i == 0 && powerItemComponents.Count > 0 && useSlotIndex1 >= 0)//deletes entity after use so now this is still true :( useslotindex = selected power
+        //    {
+        //        //if (powerItemComponents[useSlotIndex1].useSlot1 == true)
+        //            uselabel[i].text = powerItemComponents[useSlotIndex1].description.ToString();
+        //    }
+        //    else if (i == 1 && powerItemComponents.Count > 1 && useSlotIndex2 >= 0)
+        //    {
+        //        //if (powerItemComponents[useSlotIndex1].useSlot2 == true)
+        //            uselabel[i].text = powerItemComponents[useSlotIndex2].description.ToString();
+        //    }
+        //}
+
+
+        Debug.Log("use length " + useItemComponents.Length);
+        for (int i = 0; i < useItemComponents.Length; i++)
         {
-            if (i == 0 && powerItemComponents.Count > 0 && useSlotIndex1 >= 0)
+            Debug.Log("use " + useItemComponents[i].description.ToString());
+            for (int j = 0; j < powerItemComponents.Count; j++)
             {
-                uselabel[i].text = powerItemComponents[useSlotIndex1].description.ToString();
+                if (powerItemComponents[j].useSlot1 && i == 0)//deletes entity after use so now this is still true :( useslotindex = selected power
+                {
+                    uselabel[0].text = useItemComponents[0].description.ToString();
+                }
+
+                if (powerItemComponents[j].useSlot2 && i == 1)//deletes entity after use so now this is still true :( useslotindex = selected power
+                {
+                    uselabel[1].text = useItemComponents[1].description.ToString();
+                }
+
             }
-            else if (i == 1 && powerItemComponents.Count > 1 && useSlotIndex2 >= 0)
-            {
-                uselabel[i].text = powerItemComponents[useSlotIndex2].description.ToString();
-            }
+
         }
+
 
         buttons[0].Select();
 
@@ -219,19 +309,22 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
                 useSlotIndex1 = selectedPower;
                 useSlot1 = pickupEntity;
-                item.useSlot2 = false;
+                //item.useSlot2 = false;
                 item.useSlot1 = true;
+                useItemComponents[0] = item;
             }
             else if (use_index == 2)
             {
                 useSlotIndex2 = selectedPower;
                 useSlot2 = pickupEntity;
-                item.useSlot1 = false;
+                //item.useSlot1 = false;
                 item.useSlot2 = true;
+                useItemComponents[1] = item;
             }
-            ShowLabels();
         }
+        powerItemComponents[selectedPower] = item;
         manager.SetComponentData<PowerItemComponent>(pickupEntity, item);
+        ShowLabels();
 
 
 
@@ -258,52 +351,6 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
         Count();
-
-    }
-
-    public  void Count()
-    {
-
-        //powerItemComponents.Select(x => x.pickupType).Distinct();
-
-
-        var tempItems = new List<PowerItemComponent>(powerItemComponents);
-        //Debug.Log("temp count " + tempItems.Count);
-        powerItemComponents.Clear();
-        //Debug.Log("temp count after " + tempItems.Count);
-        int powerUps = 2;
-        if (powerUps > tempItems.Count) powerUps = tempItems.Count;
-
-        int first = -1;
-        for (int j = 0; j < powerUps; j++)
-        {
-            first = -1;
-            int count = 0;
-            for (int i = 0; i < tempItems.Count; i++)
-            {
-                if((int) tempItems[i].pickupType == j+1)
-                {
-                    if (first == -1) first = i;
-                    //var item = tempItems[i];
-                    count += 1;
-                    //tempItems[i] = item;
-                    //Debug.Log("count " + item.count);
-                   // Debug.Log("text " + tempItems[i].description);
-                }
-
-            }
-            if (first >= 0)
-            {
-                var item = tempItems[first];
-                item.count = count;
-                tempItems[first] = item;
-                powerItemComponents.Add(tempItems[first]);
-            }
-
-        }
-
-
-
 
     }
 
