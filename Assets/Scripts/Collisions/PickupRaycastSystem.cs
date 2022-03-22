@@ -343,9 +343,6 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
           
 
             if (HasComponent<HealthPower>(entity) && powerItemComponent.enabled == false)
-
-            //var healthPower = healthPowerList[entity];
-            //if(healthPower.Length > 0)
             {
                 if (powerItemComponent.enabled == false)
                 {
@@ -394,6 +391,14 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                 Debug.Log("pi " + powerItemComponent.count);
                 powerItemComponent.count -= 1;
                 powerItemComponent.enabled = true;
+                //if (powerItemComponent.useSlot1)
+                //{
+                //    powerItemComponent.useSlot1 = false;
+                //}
+                //if (powerItemComponent.useSlot2)
+                //{
+                //    powerItemComponent.useSlot2 = false;
+                //}
                 Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
 
                 var ps = new ParticleSystemComponent
@@ -445,7 +450,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                 pu.usedItem = usedItem;
             }
 
-            Debug.Log("pu " + pu.usedItem);
+           // Debug.Log("pu " + pu.usedItem);
             SetSingleton<PickupMenuComponent>(pu);
 
         }

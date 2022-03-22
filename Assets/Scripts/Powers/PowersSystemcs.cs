@@ -117,7 +117,7 @@ public class PowersSystem : SystemBase
                         healthComponent.TotalDamageReceived = ratings.maxHealth;
                     }
                     ecb.RemoveComponent<HealthPower>(e);
-                    ecb.AddComponent(healthPower.itemEntity, new DestroyComponent());
+                    //ecb.AddComponent(healthPower.itemEntity, new DestroyComponent());
                     ecb.DestroyEntity(healthPower.psAttached);
 
                 }

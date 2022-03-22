@@ -15,8 +15,8 @@ public struct DestroyComponent : IComponentData
 
 
 
-//[UpdateInGroup((typeof(PresentationSystemGroup)))]
-[UpdateInGroup(typeof(SimulationSystemGroup))]
+[UpdateInGroup((typeof(PresentationSystemGroup)))]
+//[UpdateInGroup(typeof(FixedStepSimulationSystemGroup), OrderLast = true)]
 
 public class DestroySystem : SystemBase
 {
@@ -42,19 +42,25 @@ public class DestroySystem : SystemBase
 
         Entities.WithoutBurst().ForEach((ref DestroyComponent destroyComponent, ref Translation translation, in Entity e) =>
         {
-            translation.Value = new float3(0, -50, 0);
-            ecb.AddComponent(e, new DisableRendering());//not needed because it doesn't turn off child particle system render
-            //if(HasComponent<UseItem1>(e))
-            //{
-              //  ecb.RemoveComponent<UseItem1>(e);
-            //}
-
-            destroyComponent.frames++;
-            if (destroyComponent.frames > 0)
+            //translation.Value = new float3(0, -50, 0);
+            //ecb.AddComponent(e, new DisableRendering());//not needed because it doesn't turn off child particle system render
+            if (HasComponent<UseItem1>(e))
             {
-                //ecb.RemoveComponent<C>(e);
-                ecb.DestroyEntity(e);
+                Debug.Log("destroy use1");
+                ecb.RemoveComponent<UseItem1>(e);
             }
+            else if (HasComponent<UseItem2>(e))
+            {
+                ecb.RemoveComponent<UseItem2>(e);
+                Debug.Log("destroy use2");
+            }
+
+            //destroyComponent.frames++;
+            //if (destroyComponent.frames > 0)
+            //{
+            //ecb.RemoveComponent<C>(e);
+            ecb.DestroyEntity(e);
+            //}
 
         }).Run();
 

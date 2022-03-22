@@ -39,6 +39,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     //public static event Action<bool> PauseGame;
     public static event Action<bool> HideSubscriberMenu;
+    public static bool UseUpdated;
 
     private EntityManager manager;
     public Entity entity;
@@ -90,8 +91,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         AddMenuButtonHandlers();
-        //useItemComponents.Add(new PowerItemComponent());
-        //useItemComponents.Add(new PowerItemComponent());
+     
     }
 
     public void UpdateItemEntities()
@@ -202,7 +202,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void ShowLabels()
     {
-       // Debug.Log("pu count " + powerItemComponents.Count);
+        // Debug.Log("pu count " + powerItemComponents.Count);
 
 
         for (int i = 0; i < uselabel.Length; i++)
@@ -218,22 +218,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < powerItemComponents.Count; i++)
         {
             pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
-           // Debug.Log("pu text show labels " + pickuplabel[i].text);
+            // Debug.Log("pu text show labels " + pickuplabel[i].text);
         }
-
-        //for (int i = 0; i < powerItemComponents.Count; i++)
-        //{
-        //    if (i == 0 && powerItemComponents.Count > 0 && useSlotIndex1 >= 0)//deletes entity after use so now this is still true :( useslotindex = selected power
-        //    {
-        //        //if (powerItemComponents[useSlotIndex1].useSlot1 == true)
-        //            uselabel[i].text = powerItemComponents[useSlotIndex1].description.ToString();
-        //    }
-        //    else if (i == 1 && powerItemComponents.Count > 1 && useSlotIndex2 >= 0)
-        //    {
-        //        //if (powerItemComponents[useSlotIndex1].useSlot2 == true)
-        //            uselabel[i].text = powerItemComponents[useSlotIndex2].description.ToString();
-        //    }
-        //}
 
 
         Debug.Log("use length " + useItemComponents.Length);
@@ -270,7 +256,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         {
 
             gameViewUse[i].text = uselabel[i].text;
-           // Debug.Log(gameViewUse[i].text + " game text " + i);
+            // Debug.Log(gameViewUse[i].text + " game text " + i);
 
         }
         //Canvas.ForceUpdateCanvases();
@@ -333,13 +319,15 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         bool pickedUp = powerItemComponents[selectedPower].itemPickedUp;
         //var item = manager.GetComponentData<PowerItemComponent>(pickupEntity);
         var item = powerItemComponents[selectedPower];
+        
         //item1.useSlot1 = false;
         if (pickupEntity != Entity.Null && pickedUp == true && slot_used == 0)
         {
-            //Debug.Log("use  " + pickupEntity + " " + use_index);
-        
+            Debug.Log("use  " + pickupEntity + " " + use_index);
+
 
             slot_used = use_index;
+            UseUpdated = true;
 
 
             if (use_index == 1)
@@ -351,7 +339,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 item.useSlot1 = true;
                 useItemComponents[0] = item;
             }
-            else if (use_index == 2)
+
+            if (use_index == 2)
             {
                 useSlotIndex2 = selectedPower;
                 useSlot2 = pickupEntity;
@@ -360,14 +349,14 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 useItemComponents[1] = item;
             }
             menuPickupItem[selectedPower].SlotUsed[current_index] = slot_used;
-            menuPickupItem[selectedPower].CurrentIndex = current_index;
             current_index--;
+            menuPickupItem[selectedPower].CurrentIndex = current_index;
+            powerItemComponents[selectedPower] = item;
+            manager.SetComponentData<PowerItemComponent>(pickupEntity, item);
+            ShowLabels();
 
 
         }
-        powerItemComponents[selectedPower] = item;
-        manager.SetComponentData<PowerItemComponent>(pickupEntity, item);
-        ShowLabels();
 
 
 
@@ -445,14 +434,18 @@ public class PickupSystem : SystemBase
 
     protected override void OnUpdate()
     {
+
+
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
 
         var itemQuery = GetEntityQuery(ComponentType.ReadOnly<PowerItemComponent>());
         var itemList = itemQuery.ToEntityArray(Allocator.Persistent);
         var itemGroup = itemQuery.ToComponentDataArray<PowerItemComponent>(Allocator.Persistent);
 
-        List<PowerItemComponent> powerItems = new List<PowerItemComponent>();
-        List<PowerItemComponent> useItems = new List<PowerItemComponent>();
+
+
+        List<PowerItemComponent> powerItems = new();
+        List<PowerItemComponent> useItems = new();
 
         for (int i = 0; i < 2; i++)
         {
@@ -464,6 +457,8 @@ public class PickupSystem : SystemBase
             if (itemGroup[i].itemPickedUp)
             {
                 powerItems.Add(itemGroup[i]);
+                Debug.Log("use slot1 i " + i + " " + itemGroup[i].useSlot1);
+                Debug.Log("use slot2 i " + i + " " + itemGroup[i].useSlot2);
             }
         }
 
@@ -471,34 +466,66 @@ public class PickupSystem : SystemBase
 
         PickupMenuGroup.powerItemComponents = powerItems;
 
-        for (int i = 0; i < itemGroup.Length; i++)
+
+
+
+            for (int i = 0; i < itemGroup.Length; i++)
+            {
+                if (itemGroup[i].useSlot1)
+                {
+                    useItems[0] = itemGroup[i];
+                }
+                if (itemGroup[i].useSlot2)
+                {
+                    useItems[1] = itemGroup[i];
+                }
+            }
+
+        if (PickupMenuGroup.UseUpdated)
         {
-            if (itemGroup[i].useSlot1)
+            PickupMenuGroup.UseUpdated = false;
+
+            Entity pickupEntity1 = useItems[0].pickupEntity;
+            bool pickedUp1 = useItems[0].itemPickedUp;
+            bool use1 = useItems[0].useSlot1;
+
+            Entity pickupEntity2 = useItems[1].pickupEntity;
+            bool pickedUp2 = useItems[1].itemPickedUp;
+            bool use2 = useItems[1].useSlot2;
+
+
+
+
+            if (pickupEntity1 != Entity.Null && pickedUp1 == true && use1)
             {
-                useItems[0] = itemGroup[i];
+                var power = GetComponent<PowerItemComponent>(pickupEntity1);
+                power.useSlot1 = true;
+                power.useSlot2 = false;
+                ecb.SetComponent<PowerItemComponent>(pickupEntity1, power);
+                ecb.RemoveComponent<UseItem2>(pickupEntity1);
+                ecb.AddComponent<UseItem1>(pickupEntity1);
+                Debug.Log("add use1 " + pickupEntity1);
             }
-            else if (itemGroup[i].useSlot2)
+
+            if (pickupEntity2 != Entity.Null && pickedUp2 == true && use2)
             {
-                useItems[1] = itemGroup[i];
+                var power = GetComponent<PowerItemComponent>(pickupEntity2);
+                power.useSlot2 = true;
+                power.useSlot1 = false;
+                ecb.SetComponent<PowerItemComponent>(pickupEntity2, power);
+                ecb.RemoveComponent<UseItem1>(pickupEntity2);
+                ecb.AddComponent<UseItem2>(pickupEntity2);
+                Debug.Log("add use2 " + pickupEntity2);
             }
+
         }
 
-
-
-
-        //for (int i = 0; i < useItems.Length; i++)
-        //{
-        //    if (i < powerItems.Count)
-        //        //if (useItems[i].buttonAssigned == false && i < powerItems.Count)
-        //        //{
-        //        //useItems[i].buttonAssigned = true;
-        //        useItems[i] = powerItems[i];
-        //    //}
-
-        //}
-
+        itemGroup.Dispose();
+        itemList.Dispose();
 
         var pickupMenu = GetSingleton<PickupMenuComponent>();
+
+
         pickupMenu.menuStateChanged = false;
 
         var dpadR = ReInput.players.GetPlayer(0).GetButtonDown("DpadR");
@@ -515,7 +542,7 @@ public class PickupSystem : SystemBase
             pickupMenu.menuStateChanged = true;
             pickupMenu.showMenu = !pickupMenu.showMenu;
         }
-        
+
 
 
         Entities.WithoutBurst().ForEach((PickupMenuGroup pickupMenuGroup) =>
@@ -524,19 +551,13 @@ public class PickupSystem : SystemBase
             {
                 pickupMenu.usedItem = false;
                 pickupMenu.menuStateChanged = true;
-                //pickupMenuGroup.Count();
-                //pickupMenuGroup.ShowMenu();
-                //pickupMenuGroup.EnableButtons();
+                pickupMenuGroup.Count();
                 pickupMenuGroup.ShowLabels();
-                //pickupMenuGroup.HideMenu();
                 Debug.Log("pu sho " + pickupMenu.showMenu);
-                //pickupMenuGroup.ShowLabels();
             }
-            //Debug.Log("pu sho " + pickupMenu.showMenu);
             if (pickupMenu.menuStateChanged == false) return;
-            //pickupMenuGroup.ShowLabels();
-         
-            
+
+
             if (pickupMenu.showMenu)
             {
                 pickupMenuGroup.ShowMenu();
@@ -553,37 +574,6 @@ public class PickupSystem : SystemBase
 
 
 
-
-
-
-
-
-
-
-
-        Entity pickupEntity1 = useItems[0].pickupEntity;
-        bool pickedUp1 = useItems[0].itemPickedUp;
-
-        Entity pickupEntity2 = useItems[1].pickupEntity;
-        bool pickedUp2 = useItems[1].itemPickedUp;
-
-
-
-
-        if (pickupEntity1 != Entity.Null && pickedUp1 == true)
-        {
-            ecb.RemoveComponent<UseItem2>(pickupEntity1);
-            ecb.AddComponent<UseItem1>(pickupEntity1);
-            //Debug.Log("add use1 " + pickupEntity1);
-        }
-
-        if (pickupEntity2 != Entity.Null && pickedUp2 == true)
-        {
-            ecb.RemoveComponent<UseItem1>(pickupEntity2);
-            ecb.AddComponent<UseItem2>(pickupEntity2);
-            //Debug.Log("add use2 " + pickupEntity2);
-        }
-
         //SetSingleton<PickupMenuComponent>(pickupMenu);
         SetSingleton(pickupMenu);
 
@@ -592,8 +582,7 @@ public class PickupSystem : SystemBase
 
         ecb.Playback(EntityManager);
         ecb.Dispose();
-        itemGroup.Dispose();
-        itemList.Dispose();
+
     }
 
 }
