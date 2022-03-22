@@ -388,7 +388,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
 
                 usedItem = true;
                 var speedPower = GetComponent<Speed>(entity);
-                Debug.Log("pi " + powerItemComponent.count);
+                //Debug.Log("pi " + powerItemComponent.count);
                 powerItemComponent.count -= 1;
                 powerItemComponent.enabled = true;
                 //if (powerItemComponent.useSlot1)

@@ -46,13 +46,13 @@ public class DestroySystem : SystemBase
             //ecb.AddComponent(e, new DisableRendering());//not needed because it doesn't turn off child particle system render
             if (HasComponent<UseItem1>(e))
             {
-                Debug.Log("destroy use1");
+                //Debug.Log("destroy use1");
                 ecb.RemoveComponent<UseItem1>(e);
             }
             else if (HasComponent<UseItem2>(e))
             {
                 ecb.RemoveComponent<UseItem2>(e);
-                Debug.Log("destroy use2");
+                //Debug.Log("destroy use2");
             }
 
             //destroyComponent.frames++;

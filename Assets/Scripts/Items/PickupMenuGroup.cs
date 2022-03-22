@@ -31,6 +31,7 @@ public class MenuPickupItemData
     public int[] SlotUsed = new int[4];
     public Entity[] ItemEntity = new Entity[4];
     public int CurrentIndex;
+    public int Count;
 
 }
 
@@ -155,7 +156,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         //    }
         //}
 
-        Debug.Log("temp count " + tempItems.Count);
+        //Debug.Log("temp count " + tempItems.Count);
         powerItemComponents.Clear();
         //Debug.Log("temp count after " + tempItems.Count);
         int powerUps = 2;
@@ -175,11 +176,11 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                     //var item = tempItems[i];
                     menuPickupItem[j].ItemEntity[count] = tempItems[i].pickupEntity;
                     menuPickupItem[j].ItemIndex[count] = tempItems[i].pickupEntity.Index;
-                    menuPickupItem[j].CurrentIndex = count;
                     count += 1;
+                    menuPickupItem[j].Count = count;
                     //tempItems[i] = item;
                     //Debug.Log("count " + item.count);
-                    Debug.Log("Entity " + tempItems[i].pickupEntity);
+                    //Debug.Log("Entity " + tempItems[i].pickupEntity);
                 }
 
             }
@@ -222,7 +223,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         }
 
 
-        Debug.Log("use length " + useItemComponents.Length);
+        //Debug.Log("use length " + useItemComponents.Length);
         for (int i = 0; i < useItemComponents.Length; i++)
         {
             //Debug.Log("use " + useItemComponents[i].description.ToString());
@@ -309,7 +310,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         Count();
         int current_index = menuPickupItem[selectedPower].CurrentIndex;
-        if (use_index <= 0 || powerItemComponents.Count < use_index || current_index < 0) return;
+        int count = menuPickupItem[selectedPower].Count;
+        if (use_index <= 0 || powerItemComponents.Count < use_index || current_index > 1) return;
         if (entity == Entity.Null || manager == default) return;
         //Debug.Log("assign " + selectedPower);
         var pickupEntity = menuPickupItem[selectedPower].ItemEntity[current_index];
@@ -349,7 +351,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 useItemComponents[1] = item;
             }
             menuPickupItem[selectedPower].SlotUsed[current_index] = slot_used;
-            current_index--;
+            current_index++;
             menuPickupItem[selectedPower].CurrentIndex = current_index;
             powerItemComponents[selectedPower] = item;
             manager.SetComponentData<PowerItemComponent>(pickupEntity, item);
@@ -457,8 +459,8 @@ public class PickupSystem : SystemBase
             if (itemGroup[i].itemPickedUp)
             {
                 powerItems.Add(itemGroup[i]);
-                Debug.Log("use slot1 i " + i + " " + itemGroup[i].useSlot1);
-                Debug.Log("use slot2 i " + i + " " + itemGroup[i].useSlot2);
+                //Debug.Log("use slot1 i " + i + " " + itemGroup[i].useSlot1);
+                //Debug.Log("use slot2 i " + i + " " + itemGroup[i].useSlot2);
             }
         }
 
@@ -504,7 +506,7 @@ public class PickupSystem : SystemBase
                 ecb.SetComponent<PowerItemComponent>(pickupEntity1, power);
                 ecb.RemoveComponent<UseItem2>(pickupEntity1);
                 ecb.AddComponent<UseItem1>(pickupEntity1);
-                Debug.Log("add use1 " + pickupEntity1);
+                //Debug.Log("add use1 " + pickupEntity1);
             }
 
             if (pickupEntity2 != Entity.Null && pickedUp2 == true && use2)
@@ -515,7 +517,7 @@ public class PickupSystem : SystemBase
                 ecb.SetComponent<PowerItemComponent>(pickupEntity2, power);
                 ecb.RemoveComponent<UseItem1>(pickupEntity2);
                 ecb.AddComponent<UseItem2>(pickupEntity2);
-                Debug.Log("add use2 " + pickupEntity2);
+                //Debug.Log("add use2 " + pickupEntity2);
             }
 
         }
