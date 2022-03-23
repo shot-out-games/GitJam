@@ -27,11 +27,13 @@ public class PowerItemClass
 [Serializable]
 public class MenuPickupItemData
 {
+    
     public int[] ItemIndex = new int[4];
     public int[] SlotUsed = new int[4];
     public Entity[] ItemEntity = new Entity[4];
     public int CurrentIndex;
     public int Count;
+    public Image Image;
 
 }
 
@@ -144,23 +146,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         useSlotIndex2 = -1;
 
         var tempItems = new List<PowerItemComponent>(powerItemComponents);
-        //for (int i = 0; i < tempItems.Count; i++)
-        //{
-        //    if (tempItems[i].useSlot1)
-        //    {
-        //        useSlotIndex1 = i;
-        //    }
-        //    else if (tempItems[i].useSlot2)
-        //    {
-        //        useSlotIndex2 = i;
-        //    }
-        //}
-
-        //Debug.Log("temp count " + tempItems.Count);
         powerItemComponents.Clear();
-        //Debug.Log("temp count after " + tempItems.Count);
-        int powerUps = 2;
-        //if (powerUps > tempItems.Count) powerUps = tempItems.Count;
+        int powerUps = 3;
 
         int first = -1;
         for (int j = 0; j < powerUps; j++)
