@@ -34,6 +34,7 @@ public struct PowerItemComponent : IComponentData
     public int index;
     public PickupType pickupType;
     public int count;
+    public int menuIndex;
 
 }
 
