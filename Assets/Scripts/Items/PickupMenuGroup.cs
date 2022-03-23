@@ -68,7 +68,10 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     private TextMeshProUGUI[] uselabel;
 
     [SerializeField]
-    private TextMeshProUGUI[] gameViewUse;
+    private TextMeshProUGUI[] gameViewUse = new TextMeshProUGUI[2];
+    [SerializeField]
+    private Button[] gameViewUseButton = new Button[2];//blank button with image
+    [SerializeField]
 
     //public int speedPts;
     //public int powerPts;
@@ -198,6 +201,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < uselabel.Length; i++)
         {
             uselabel[i].text = "";
+            gameViewUseButton[i].gameObject.SetActive(false);
         }
 
         for (int i = 0; i < pickuplabel.Length; i++)
@@ -205,13 +209,22 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             pickuplabel[i].text = "";
         }
 
-        for (int i = 0; i < powerItemComponents.Count; i++)
+        for (int i = 0; i < pickuplabel.Length; i++)
         {
-            pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
-            int index = powerItemComponents[i].menuIndex;
-            Debug.Log("i " + i + " " + index);
-            buttons[i+1].GetComponent<Image>().sprite = menuPickupItem[index].Image;
-            // Debug.Log("pu text show labels " + pickuplabel[i].text);
+
+            if (i < powerItemComponents.Count)
+            {
+                pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
+                int index = powerItemComponents[i].menuIndex;
+                Debug.Log("i " + i + " " + index);
+                buttons[i + 1].GetComponent<Image>().sprite = menuPickupItem[index].Image;
+                buttons[i + 1].interactable = true;
+            }
+            else
+            {
+                buttons[i + 1].interactable = false;
+                buttons[i + 1].GetComponent<Image>().sprite = null;
+            }
         }
 
 
@@ -223,12 +236,16 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             {
                 if (powerItemComponents[j].useSlot1 && i == 0)//deletes entity after use so now this is still true :( useslotindex = selected power
                 {
+                    gameViewUseButton[0].gameObject.SetActive(true);
                     uselabel[0].text = useItemComponents[0].description.ToString();
+                    gameViewUseButton[0].GetComponent<Image>().sprite = menuPickupItem[useItemComponents[0].menuIndex].Image;
                 }
 
                 if (powerItemComponents[j].useSlot2 && i == 1)//deletes entity after use so now this is still true :( useslotindex = selected power
                 {
+                    gameViewUseButton[1].gameObject.SetActive(true);
                     uselabel[1].text = useItemComponents[1].description.ToString();
+                    gameViewUseButton[1].GetComponent<Image>().sprite = menuPickupItem[useItemComponents[1].menuIndex].Image;
                 }
 
             }
@@ -237,7 +254,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
         GameLabels();
 
-        buttons[0].Select();
+        buttons[1].Select();
 
 
 
