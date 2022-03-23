@@ -33,7 +33,7 @@ public class MenuPickupItemData
     public Entity[] ItemEntity = new Entity[4];
     public int CurrentIndex;
     public int Count;
-    public Image Image;
+    public Sprite Image;
 
 }
 
@@ -152,7 +152,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         int first = -1;
         for (int j = 0; j < powerUps; j++)
         {
-            menuPickupItem[j] = new MenuPickupItemData();
+            var ico = menuPickupItem[j].Image;
+            menuPickupItem[j] = new MenuPickupItemData { Image = ico };
             first = -1;
             int count = 0;
             for (int i = 0; i < tempItems.Count; i++)
@@ -207,6 +208,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < powerItemComponents.Count; i++)
         {
             pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
+            int index = powerItemComponents[i].menuIndex;
+            Debug.Log("i " + i + " " + index);
+            buttons[i+1].GetComponent<Image>().sprite = menuPickupItem[index].Image;
             // Debug.Log("pu text show labels " + pickuplabel[i].text);
         }
 
