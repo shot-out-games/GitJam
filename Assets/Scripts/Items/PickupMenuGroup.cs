@@ -125,10 +125,10 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         useButtons[0].interactable = true;
         useButtons[1].interactable = true;
-        if (powerItemComponents.Count == 1)
-        {
-            useButtons[1].interactable = false;
-        }
+        //if (powerItemComponents.Count == 1)
+        //{
+        //    useButtons[1].interactable = false;
+        //}
         if (powerItemComponents.Count == 0)
         {
             useButtons[0].interactable = false;
@@ -156,6 +156,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int j = 0; j < powerUps; j++)
         {
             var ico = menuPickupItem[j].Image;
+            var _currentIndex = menuPickupItem[j].CurrentIndex;
+            //menuPickupItem[j] = new MenuPickupItemData { Image = ico, CurrentIndex = _currentIndex };
+            //var slot_used = menuPickupItem[j].SlotUsed[_currentIndex];
             menuPickupItem[j] = new MenuPickupItemData { Image = ico };
             first = -1;
             int count = 0;
@@ -169,6 +172,11 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                     menuPickupItem[j].ItemIndex[count] = tempItems[i].pickupEntity.Index;
                     count += 1;
                     menuPickupItem[j].Count = count;
+                    //if (tempItems[i].useSlot1 || tempItems[i].useSlot2)
+                    //{
+                      //  menuPickupItem[j].CurrentIndex++;
+                        //first = i;
+                    //}
                     //tempItems[i] = item;
                     //Debug.Log("count " + item.count);
                     //Debug.Log("Entity " + tempItems[i].pickupEntity);
@@ -269,23 +277,14 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             // Debug.Log(gameViewUse[i].text + " game text " + i);
 
         }
-        //Canvas.ForceUpdateCanvases();
+      
     }
 
     void ButtonClickedIndex(int index)
     {
         buttonClickedIndex = index;
         Debug.Log("btn idx " + buttonClickedIndex);
-        //if (index >= 1 && index <= 3)
-        //{
-        //    if (manager.HasComponent<SkillTreeComponent>(entity) == false) return;
-        //    availablePoints = availablePoints - index;
-        //    speedPts = index;
-        //    player0_skillSet.availablePoints = availablePoints;
-        //    player0_skillSet.SpeedPts = speedPts;
-        //    EnableButtons();
-
-        //}
+        
     }
 
 
@@ -318,10 +317,11 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     public void AssignSelectedPower(int use_index)
     {
         Count();
+        if (powerItemComponents.Count == 0) return;
         int menuIndex = powerItemComponents[selectedPower].menuIndex;
         int current_index = menuPickupItem[menuIndex].CurrentIndex;
         int count = menuPickupItem[menuIndex].Count;
-        if (use_index <= 0 || powerItemComponents.Count < use_index || current_index >= count) return;
+        if (use_index <= 0 || current_index >= count) return;
         if (entity == Entity.Null || manager == default) return;
         Debug.Log("menu index  " + menuIndex);
         var pickupEntity = menuPickupItem[menuIndex].ItemEntity[current_index];
@@ -335,32 +335,36 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             Debug.Log("use  " + pickupEntity + " " + use_index);
 
 
-            slot_used = use_index;
-            UseUpdated = true;
 
 
-            if (use_index == 1)
+            if (use_index == 1 && slot_used != 1 && item.useSlot2 == false)
             {
-
+                slot_used = 1;
                 useSlotIndex1 = selectedPower;
                 useSlot1 = pickupEntity;
                 item.useSlot1 = true;
                 useItemComponents[0] = item;
             }
 
-            if (use_index == 2)
+            if (use_index == 2 && slot_used != 2 && item.useSlot1 == false)//item.useslot only one for each item (pickup entity)
             {
+                slot_used = 2;
                 useSlotIndex2 = selectedPower;
                 useSlot2 = pickupEntity;
                 item.useSlot2 = true;
                 useItemComponents[1] = item;
             }
-            menuPickupItem[menuIndex].SlotUsed[current_index] = slot_used;
-            current_index++;
-            menuPickupItem[menuIndex].CurrentIndex = current_index;
-            powerItemComponents[selectedPower] = item;
-            manager.SetComponentData<PowerItemComponent>(pickupEntity, item);
-            ShowLabels();
+
+            if (slot_used > 0)
+            {
+                UseUpdated = true;
+                menuPickupItem[menuIndex].SlotUsed[current_index] = slot_used;
+                current_index++;
+                menuPickupItem[menuIndex].CurrentIndex = current_index;
+                powerItemComponents[selectedPower] = item;
+                manager.SetComponentData<PowerItemComponent>(pickupEntity, item);
+                ShowLabels();
+            }
 
 
         }
@@ -371,24 +375,25 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     private void ExitClicked()
     {
-        //WriteCurrentPlayerSkillSet();
-        //SkillTreeMenuComponent skillTreeMenu = manager.GetComponentData<SkillTreeMenuComponent>(entity);
-        //skillTreeMenu.exitClicked = true;
-        //manager.SetComponentData(entity, skillTreeMenu);
+        
 
     }
 
 
     public void ShowMenu()
     {
-        //InitCurrentPlayerSkillSet();
-        //PauseGame?.Invoke(true);
+       
         HideSubscriberMenu?.Invoke(false);
         GameInterface.Paused = true;
         GameInterface.StateChange = true;
         canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+
+        for (int i = 0; i < menuPickupItem.Length; i++)
+        {
+            menuPickupItem[i].CurrentIndex = 0;
+        }
         Count();
 
     }
