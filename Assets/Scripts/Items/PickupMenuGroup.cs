@@ -164,7 +164,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             int count = 0;
             for (int i = 0; i < tempItems.Count; i++)
             {
-                if ((int)tempItems[i].pickupType == j + 1)
+                if ((int)tempItems[i].pickupType == j + 1 && tempItems[i].useSlot1 == false && tempItems[i].useSlot2 == false)
                 {
                     if (first == -1) first = i;
                     //var item = tempItems[i];
@@ -363,12 +363,12 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 menuPickupItem[menuIndex].CurrentIndex = current_index;
                 powerItemComponents[selectedPower] = item;
                 manager.SetComponentData<PowerItemComponent>(pickupEntity, item);
-                ShowLabels();
+                //Count();
             }
 
 
         }
-
+        ShowLabels();
 
 
     }
