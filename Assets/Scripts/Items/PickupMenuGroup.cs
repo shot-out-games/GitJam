@@ -27,7 +27,7 @@ public class PowerItemClass
 [Serializable]
 public class MenuPickupItemData
 {
-    
+
     public int[] ItemIndex = new int[4];
     public int[] SlotUsed = new int[4];
     public Entity[] ItemEntity = new Entity[4];
@@ -97,7 +97,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         AddMenuButtonHandlers();
-     
+
     }
 
     public void UpdateItemEntities()
@@ -148,6 +148,12 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         useSlotIndex1 = -1;
         useSlotIndex2 = -1;
 
+        for (int i = 0; i < menuPickupItem.Length; i++)
+        {
+            menuPickupItem[i].CurrentIndex = 0;
+        }
+
+
         var tempItems = new List<PowerItemComponent>(powerItemComponents);
         powerItemComponents.Clear();
         int powerUps = 3;
@@ -174,8 +180,8 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                     menuPickupItem[j].Count = count;
                     //if (tempItems[i].useSlot1 || tempItems[i].useSlot2)
                     //{
-                      //  menuPickupItem[j].CurrentIndex++;
-                        //first = i;
+                    //  menuPickupItem[j].CurrentIndex++;
+                    //first = i;
                     //}
                     //tempItems[i] = item;
                     //Debug.Log("count " + item.count);
@@ -190,6 +196,10 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 item.menuIndex = j;
                 tempItems[first] = item;
                 powerItemComponents.Add(tempItems[first]);
+            }
+            else
+            {
+                powerItemComponents.Add(new());
             }
 
         }
@@ -220,7 +230,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < pickuplabel.Length; i++)
         {
 
-            if (i < powerItemComponents.Count)
+            if (i < powerItemComponents.Count && powerItemComponents[i].count > 0)
             {
                 pickuplabel[i].text = powerItemComponents[i].description.ToString() + " " + powerItemComponents[i].count;
                 int index = powerItemComponents[i].menuIndex;
@@ -240,23 +250,21 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         for (int i = 0; i < useItemComponents.Length; i++)
         {
             //Debug.Log("use " + useItemComponents[i].description.ToString());
-            for (int j = 0; j < powerItemComponents.Count; j++)
+            if (useItemComponents[i].useSlot1 && i == 0)//deletes entity after use so now this is still true :( useslotindex = selected power
             {
-                if (powerItemComponents[j].useSlot1 && i == 0)//deletes entity after use so now this is still true :( useslotindex = selected power
-                {
-                    gameViewUseButton[0].gameObject.SetActive(true);
-                    uselabel[0].text = useItemComponents[0].description.ToString();
-                    gameViewUseButton[0].GetComponent<Image>().sprite = menuPickupItem[useItemComponents[0].menuIndex].Image;
-                }
-
-                if (powerItemComponents[j].useSlot2 && i == 1)//deletes entity after use so now this is still true :( useslotindex = selected power
-                {
-                    gameViewUseButton[1].gameObject.SetActive(true);
-                    uselabel[1].text = useItemComponents[1].description.ToString();
-                    gameViewUseButton[1].GetComponent<Image>().sprite = menuPickupItem[useItemComponents[1].menuIndex].Image;
-                }
-
+                gameViewUseButton[0].gameObject.SetActive(true);
+                uselabel[0].text = useItemComponents[0].description.ToString();
+                gameViewUseButton[0].GetComponent<Image>().sprite = menuPickupItem[useItemComponents[0].menuIndex].Image;
             }
+
+            if (useItemComponents[i].useSlot2 && i == 1)//deletes entity after use so now this is still true :( useslotindex = selected power
+            {
+                gameViewUseButton[1].gameObject.SetActive(true);
+                uselabel[1].text = useItemComponents[1].description.ToString();
+                gameViewUseButton[1].GetComponent<Image>().sprite = menuPickupItem[useItemComponents[1].menuIndex].Image;
+            }
+
+
 
         }
 
@@ -277,14 +285,14 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             // Debug.Log(gameViewUse[i].text + " game text " + i);
 
         }
-      
+
     }
 
     void ButtonClickedIndex(int index)
     {
         buttonClickedIndex = index;
         Debug.Log("btn idx " + buttonClickedIndex);
-        
+
     }
 
 
@@ -329,7 +337,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
         bool pickedUp = powerItemComponents[selectedPower].itemPickedUp;
         var item = powerItemComponents[selectedPower];
-        
+
         if (pickupEntity != Entity.Null && pickedUp == true && slot_used == 0)
         {
             Debug.Log("use  " + pickupEntity + " " + use_index);
@@ -375,14 +383,14 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     private void ExitClicked()
     {
-        
+
 
     }
 
 
     public void ShowMenu()
     {
-       
+
         HideSubscriberMenu?.Invoke(false);
         GameInterface.Paused = true;
         GameInterface.StateChange = true;
@@ -390,10 +398,6 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
 
-        for (int i = 0; i < menuPickupItem.Length; i++)
-        {
-            menuPickupItem[i].CurrentIndex = 0;
-        }
         Count();
 
     }
@@ -481,17 +485,17 @@ public class PickupSystem : SystemBase
 
 
 
-            for (int i = 0; i < itemGroup.Length; i++)
+        for (int i = 0; i < itemGroup.Length; i++)
+        {
+            if (itemGroup[i].useSlot1)
             {
-                if (itemGroup[i].useSlot1)
-                {
-                    useItems[0] = itemGroup[i];
-                }
-                if (itemGroup[i].useSlot2)
-                {
-                    useItems[1] = itemGroup[i];
-                }
+                useItems[0] = itemGroup[i];
             }
+            if (itemGroup[i].useSlot2)
+            {
+                useItems[1] = itemGroup[i];
+            }
+        }
 
         if (PickupMenuGroup.UseUpdated)
         {
