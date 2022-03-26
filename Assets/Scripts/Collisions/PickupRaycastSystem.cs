@@ -321,7 +321,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
     {
         //bool pickedUp = false;
         Entity pickedUpActor = Entity.Null;
-        bool usedItem = false;
+        int usedItem = 0;
         //var ecb = m_EndSimulationEcbSystem.CreateCommandBuffer();
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
         //var healthPowerList = GetBufferFromEntity<HealthPower>(false);
@@ -340,13 +340,48 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
             if (pickedUpActor == Entity.Null) return;
 
 
-          
+
+            if (HasComponent<DashPower>(entity) && powerItemComponent.enabled == false)
+            {
+                if (powerItemComponent.enabled == false)
+                {
+                    usedItem = entity.Index;
+                    powerItemComponent.enabled = true;
+                    Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
+                    var ps = new ParticleSystemComponent
+                    {
+                        followActor = true,
+                        pickedUpActor = pickedUpActor
+                    };
+
+                    ecb.AddComponent(instanceEntity, ps);
+
+                    var power = GetComponent<DashPower>(entity);
+                    DashPower PowerPlayer = new DashPower
+                    {
+                        psAttached = instanceEntity,//attached to player picking up
+                        pickedUpActor = pickedUpActor,
+                        itemEntity = entity,
+                        enabled = true,
+                    };
+                    ecb.AddComponent(entity, new DestroyComponent());
+                    ecb.AddComponent(pickedUpActor, PowerPlayer);
+
+
+
+                }
+
+            }
+
+
+
+
 
             if (HasComponent<HealthPower>(entity) && powerItemComponent.enabled == false)
             {
                 if (powerItemComponent.enabled == false)
                 {
-                    usedItem = true;
+                    usedItem = entity.Index;
                     powerItemComponent.enabled = true;
                     Entity instanceEntity = ecb.Instantiate(powerItemComponent.particleSystemEntity);
                     var ps = new ParticleSystemComponent
@@ -386,7 +421,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
             if (HasComponent<Speed>(entity) && powerItemComponent.enabled == false)
             {
 
-                usedItem = true;
+                usedItem = entity.Index;
                 var speedPower = GetComponent<Speed>(entity);
                 //Debug.Log("pi " + powerItemComponent.count);
                 powerItemComponent.count -= 1;
@@ -445,7 +480,7 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
         {
             var _e = GetSingletonEntity<PickupMenuComponent>();
             var pu = GetComponent<PickupMenuComponent>(_e);
-            if(usedItem)
+            if(usedItem > 0)
             {
                 pu.usedItem = usedItem;
             }

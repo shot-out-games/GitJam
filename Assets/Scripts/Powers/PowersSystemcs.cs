@@ -117,13 +117,13 @@ public class PowersSystem : SystemBase
                         healthComponent.TotalDamageReceived = ratings.maxHealth;
                     }
                     ecb.RemoveComponent<HealthPower>(e);
-                    //ecb.AddComponent(healthPower.itemEntity, new DestroyComponent());
                     ecb.DestroyEntity(healthPower.psAttached);
 
                 }
 
             }
         ).Schedule();
+
 
 
         Entities.WithoutBurst().ForEach(
@@ -139,6 +139,17 @@ public class PowersSystem : SystemBase
             }
         ).Run();
 
+
+
+        Entities.ForEach(
+        (
+           ref DashPower power, in Entity e
+
+        ) =>
+            {
+                ecb.RemoveComponent<DashPower>(e);
+            }
+        ).Schedule();
 
 
 
