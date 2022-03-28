@@ -342,7 +342,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     public void RemoveUsePower(int use_power)
     {
-
+        //Count();
         int index = useItemComponents[use_power - 1].menuIndex;
         if (index >= powerItemComponents.Count) return;
         var power = powerItemComponents[index];
@@ -360,7 +360,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         }
         manager.SetComponentData<PowerItemComponent>(power.pickupEntity, power);
         useItemComponents[use_power - 1] = new();
-        powerItemComponents[index] = new();
+        //powerItemComponents[index] = new();
         Count();
         ShowLabels();
 
