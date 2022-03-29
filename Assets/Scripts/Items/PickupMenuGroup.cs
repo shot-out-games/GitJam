@@ -28,10 +28,10 @@ public class PowerItemClass
 public class MenuPickupItemData
 {
 
-    public int[] ItemIndex = new int[4];
-    public int[] SlotUsed = new int[4];
+    public int[] ItemIndex = new int[65];
+    //public int[] SlotUsed = new int[65];
     public int[] UseSlot = new int[4];//use buttons 1-4
-    public Entity[] ItemEntity = new Entity[4];
+    public Entity[] ItemEntity = new Entity[65];
     public int CurrentIndex;
     public int Count;
     public int Remain;//how many still available left to choose from pick up list
@@ -165,7 +165,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         int first = -1;
         for (int j = 0; j < powerUps; j++)
         {
-            var menu = menuPickupItem[j];
+            MenuPickupItemData menu = menuPickupItem[j];
             var ico = menu.Image;
             int useSlot1 = menu.UseSlot[0];
             int useSlot2 = menu.UseSlot[1];
