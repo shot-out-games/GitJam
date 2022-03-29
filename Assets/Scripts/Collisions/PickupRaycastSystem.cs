@@ -199,7 +199,7 @@ public class PickupPowerUpRaycastSystem : SystemBase
 
         Entities.WithoutBurst().WithNone<DestroyComponent>().ForEach((
             ref PowerItemComponent powerItemComponent,
-            in Translation translation,
+            ref Translation translation,
             in Entity entity
         ) =>
         {
@@ -247,6 +247,7 @@ public class PickupPowerUpRaycastSystem : SystemBase
 
                     powerItemComponent.addPickupEntityToInventory = pickedUpActor;
                     powerItemComponent.itemPickedUp = true;
+                    translation.Value.y = -100;
                     ecb.AddComponent(entity, powerItemComponent);
 
                     //if(HasComponent<HealthPower>(entity))

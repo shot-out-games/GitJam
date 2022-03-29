@@ -85,7 +85,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
     private int buttonClickedIndex;
     public static bool UpdateMenu = true;
-    private bool[] inUsedItemList = new bool[30];
+    //private bool[] inUsedItemList = new bool[30];
     public MenuPickupItemData[] menuPickupItem = new MenuPickupItemData[10];//10 items (buttons) max currently
 
     //Player player;
@@ -168,7 +168,15 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             MenuPickupItemData menu = menuPickupItem[j];
             var ico = menu.Image;
             int useSlot1 = menu.UseSlot[0];
+            if(useItemComponents[0].pickupEntity == Entity.Null)
+            {
+                useSlot1 = 0;
+            }
             int useSlot2 = menu.UseSlot[1];
+            if (useItemComponents[1].pickupEntity == Entity.Null)
+            {
+                useSlot2 = 0;
+            }
             first = -1;
             int count = 0;
             menu.Count = count;
@@ -384,7 +392,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         //int current_index = menuPickupItem[menuIndex].CurrentIndex;
         int current_index = 0;
         int count = menuPickupItem[menuIndex].Count;
-        if (use_index <= 0 || current_index >= count) return;
+        if (use_index <= 0 || count <= 0) return;
         if (entity == Entity.Null || manager == default) return;
         var pickupEntity = menuPickupItem[menuIndex].ItemEntity[current_index];
         int usedSlot1 = menuPickupItem[menuIndex].UseSlot[0];
@@ -396,7 +404,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
         if (pickupEntity != Entity.Null && pickedUp == true)
         {
-            if (use_index == 1 && usedSlot1 == 0 && item.useSlot2 == false)
+            if (use_index == 1 && usedSlot1 == 0)
             {
                 Debug.Log("use  " + pickupEntity + " " + use_index);
                 //var useItem = powerItemComponents[useSlotIndex1];
@@ -409,7 +417,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 useItemComponents[0] = item;
                 UseUpdated = true;
             }
-            else if (use_index == 2 && usedSlot2 == 0 && item.useSlot1 == false)
+            else if (use_index == 2 && usedSlot2 == 0)
             {
                 Debug.Log("use  " + pickupEntity + " " + use_index);
                 //var useItem = powerItemComponents[useSlotIndex2];
@@ -682,6 +690,7 @@ public class InputUseItemSystem : SystemBase
                 var useItem1 = PickupMenuGroup.useItemComponents[0];
                 useItem1 = new();
                 PickupMenuGroup.useItemComponents[0] = useItem1;
+               
             }
 
         }

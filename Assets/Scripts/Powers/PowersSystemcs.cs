@@ -147,7 +147,11 @@ public class PowersSystem : SystemBase
 
         ) =>
             {
-                ecb.RemoveComponent<DashPower>(e);
+                if (power.enabled)
+                {
+                    ecb.RemoveComponent<DashPower>(e);
+                    ecb.DestroyEntity(power.psAttached);
+                }
             }
         ).Schedule();
 
