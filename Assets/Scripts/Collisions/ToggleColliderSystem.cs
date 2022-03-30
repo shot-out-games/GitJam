@@ -107,7 +107,7 @@ namespace SandBox.Player
             //Entities.WithoutBurst().ForEach((Entity e, ref PlayerDashComponent playerDashComponent) =>
             {
                 DynamicBuffer<ActorCollisionBufferElement> actorCollisionElement = actorCollisionBufferElement[e];
-                if (actorCollisionElement.Length <= 0)
+                if (actorCollisionElement.Length <= 0 || playerDashComponent.active == false)
                     return;
 
                 bool addColliders = false;

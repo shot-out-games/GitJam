@@ -50,6 +50,11 @@ namespace SandBox.Player
                         //bool check = Rewired.ReInput.players.GetPlayer(0)
                         //bool check = true;
                         bool hasDash = HasComponent<PlayerDashComponent>(e);
+                        if(hasDash)
+                        {
+                            hasDash = GetComponent<PlayerDashComponent>(e).active;
+                        }
+                        
                         bool invincible = false;
 
 

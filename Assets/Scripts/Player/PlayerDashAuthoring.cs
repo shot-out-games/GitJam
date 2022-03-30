@@ -10,6 +10,7 @@ using UnityEngine;
 
 public struct PlayerDashComponent : IComponentData
 {
+    public bool active;
     public float power;
     public float dashTime;
     public float DashTimeTicker;
@@ -39,6 +40,7 @@ public class PlayerDashAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     public float delayTime = .5f;
     public float invincibleStart = .1f;
     public float invincibleEnd = 1f;
+    public bool active = true;
 
     public AudioSource audioSource;
     public AudioClip clip;
@@ -54,6 +56,7 @@ public class PlayerDashAuthoring : MonoBehaviour, IConvertGameObjectToEntity
     {
         dstManager.AddComponentData(entity, new PlayerDashComponent
         {
+            active = active,
             power = power,
             dashTime = dashTime,
             delayTime = delayTime,

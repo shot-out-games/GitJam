@@ -35,6 +35,7 @@ namespace SandBox.Player
 
                 ) =>
                 {
+                    if (playerDash.active == false) return;
                     AudioSource audioSource = player.audioSource;
                     if (playerDash.DelayTimeTicker > 0)
                     {

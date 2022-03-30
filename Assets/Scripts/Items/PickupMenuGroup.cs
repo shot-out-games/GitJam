@@ -42,7 +42,6 @@ public class MenuPickupItemData
 public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 {
 
-    //public static event Action<bool> PauseGame;
     public static event Action<bool> HideSubscriberMenu;
     public static bool UseUpdated;
 
@@ -52,8 +51,6 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     public static List<PowerItemComponent> PassedPowerItemComponents = new List<PowerItemComponent>();
     //public static List<PowerItemComponent> tempItems = new List<PowerItemComponent>();
     public static PowerItemComponent[] useItemComponents = new PowerItemComponent[2];
-
-    //public SkillTreeComponent player0_skillSet;
 
     AudioSource audioSource;
     [SerializeField]
@@ -78,10 +75,6 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     private Button[] gameViewUseButton = new Button[2];//blank button with image
     [SerializeField]
 
-    //public int speedPts;
-    //public int powerPts;
-    //public int chinPts;
-    //public int availablePoints;
 
     private int buttonClickedIndex;
     public static bool UpdateMenu = true;
@@ -102,6 +95,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         audioSource = GetComponent<AudioSource>();
         canvasGroup = GetComponent<CanvasGroup>();
         AddMenuButtonHandlers();
+        ShowLabels();
 
     }
 
@@ -130,10 +124,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     {
         useButtons[0].interactable = true;
         useButtons[1].interactable = true;
-        //if (powerItemComponents.Count == 1)
-        //{
-        //    useButtons[1].interactable = false;
-        //}
+       
         if (powerItemComponents.Count == 0)
         {
             useButtons[0].interactable = false;
@@ -141,8 +132,6 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         }
 
 
-        //useButton[0].interactable = true;
-        //useButton[1].interactable = true;
 
 
 
@@ -186,8 +175,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 menu.ItemEntity[i] = Entity.Null;
                 if ((int)tempItems[i].pickupType == j + 1 && useSlot1 != tempItems[i].pickupEntity.Index && useSlot2 != tempItems[i].pickupEntity.Index)
                 {
-                    //int use1 = menuPickupItem[j].UseSlot[0];
-                    //int use2 = menuPickupItem[j].UseSlot[1];
+                
 
                     Debug.Log("put " + tempItems[i].pickupEntity);
                     if (first == -1)
@@ -210,14 +198,14 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
                 item.menuIndex = j;
                 tempItems[first] = item;
                 powerItemComponents.Add(tempItems[first]);
-                //manager.SetComponentData<PowerItemComponent>(item.pickupEntity, item);
+                
             }
             else
             {
                 powerItemComponents.Add(new());
             }
 
-            //menuPickupItem[j] = new MenuPickupItemData { Image = ico };
+           
             menu.Image = ico;
             menu.UseSlot[0] = useSlot1;
             menu.UseSlot[1] = useSlot2;
@@ -242,6 +230,9 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         {
             uselabel[i].text = "";
             gameViewUseButton[i].gameObject.SetActive(false);
+            useButton[i].GetComponent<Image>().sprite = null;
+            useButton[i].GetComponent<Image>().color = Color.black;
+
         }
 
         for (int i = 0; i < pickuplabel.Length; i++)
@@ -290,6 +281,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
             Debug.Log("use 1 " + useItemComponents[i].useSlot2);
             if (useItemComponents[i].useSlot1 && i == 0)//deletes entity after use so now this is still true :( useslotindex = selected power
             {
+                useButton[0].GetComponent<Image>().color = Color.white;
                 useButton[0].interactable = true;
                 gameViewUseButton[0].gameObject.SetActive(true);
                 uselabel[0].text = useItemComponents[0].description.ToString();
@@ -300,6 +292,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
 
             if (useItemComponents[i].useSlot2 && i == 1)//deletes entity after use so now this is still true :( useslotindex = selected power
             {
+                useButton[1].GetComponent<Image>().color = Color.white;
                 useButton[1].interactable = true;
                 gameViewUseButton[1].gameObject.SetActive(true);
                 uselabel[1].text = useItemComponents[1].description.ToString();
@@ -457,6 +450,7 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
         canvasGroup.blocksRaycasts = true;
 
         Count();
+        ShowLabels();
 
     }
 
@@ -533,18 +527,7 @@ public class PickupSystem : SystemBase
         //powerItems.Sort(new PowerItemIndexComparer());
         PickupMenuGroup.PassedPowerItemComponents = powerItems;
 
-        //for (int i = 0; i < itemGroup.Length; i++)
-        //{
-        //    if (itemGroup[i].useSlot1)
-        //    {
-        //        useItems[0] = itemGroup[i];
-        //    }
-        //    if (itemGroup[i].useSlot2)
-        //    {
-        //        useItems[1] = itemGroup[i];
-        //    }
-        //}
-
+      
         EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Persistent);
 
 
@@ -552,16 +535,11 @@ public class PickupSystem : SystemBase
         {
             PickupMenuGroup.UseUpdated = false;
 
-            //Entity pickupEntity1 = useItems[0].pickupEntity;
-            //bool pickedUp1 = useItems[0].itemPickedUp;
-            //bool use1 = useItems[0].useSlot1;
+            
             Entity pickupEntity1 = PickupMenuGroup.useItemComponents[0].pickupEntity;
             bool pickedUp1 = PickupMenuGroup.useItemComponents[0].itemPickedUp;
             bool use1 = PickupMenuGroup.useItemComponents[0].useSlot1;
 
-            //Entity pickupEntity2 = useItems[1].pickupEntity;
-            //bool pickedUp2 = useItems[1].itemPickedUp;
-            //bool use2 = useItems[1].useSlot2;
             Entity pickupEntity2 = PickupMenuGroup.useItemComponents[1].pickupEntity;
             bool pickedUp2 = PickupMenuGroup.useItemComponents[1].itemPickedUp;
             bool use2 = PickupMenuGroup.useItemComponents[1].useSlot2;

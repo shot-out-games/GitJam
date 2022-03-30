@@ -367,6 +367,13 @@ public class PickupInputPowerUpUseImmediateSystem : SystemBase//move to new file
                     };
                     ecb.AddComponent(entity, new DestroyComponent());
                     ecb.AddComponent(pickedUpActor, PowerPlayer);
+                    if(HasComponent<PlayerDashComponent>(pickedUpActor))
+                    {
+                        var playerDash = GetComponent<PlayerDashComponent>(pickedUpActor);
+                        playerDash.active = true;
+                        SetComponent(pickedUpActor, playerDash);
+                    }
+
 
 
 
