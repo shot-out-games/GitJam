@@ -11,28 +11,19 @@ using UnityEngine;
 public class NdeMechanicSystem : SystemBase
 {
 
-    //[NativeDisableParallelForRestriction] 
-    //EndSimulationEntityCommandBufferSystem ecbSystem;
+    
 
     protected override void OnCreate()
     {
         base.OnCreate();
-        //ecbSystem = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
     }
 
     protected override void OnUpdate()
     {
-        //var ecb = ecbSystem.CreateCommandBuffer();
-        //EntityCommandBuffer ecb = new EntityCommandBuffer(Allocator.Temp);
-
-
-        //var gunGroup = GetComponentDataFromEntity<WeaponComponent>(true);
-
 
         Entities.ForEach(
             (
                 Entity e,
-                //int entityInQueryIndex,
                 ref ControlBarComponent controlBar,
                 ref NdeMechanicComponent ndeMechanic,
                 ref RatingsComponent ratings,
@@ -68,35 +59,13 @@ public class NdeMechanicSystem : SystemBase
                 float pct = health.TotalDamageReceived / ratings.maxHealth;
                 float f1 = pct * .5f;
                 //float f2 = pct * .66f;
-
-
-                //bool hasGun = gunGroup.HasComponent(e);
-                //bool hasGun = HasComponent<WeaponComponent>(e);
-                //if (hasGun)
-                //{
-                // var gun = gunGroup[e];
                 gun.gameStrength = gun.Strength * (.50f + f1);
                 gun.gameRate =  gun.Rate + gun.Rate * (1 - pct);
                 gun.gameDamage = gun.Damage * (.50f + f1);
 
-                //ecb.SetComponent(entityInQueryIndex, e, gun);
-                //ecb.SetComponent(e, gun);
-                //}
-
             }
 
         ).ScheduleParallel();
-
-
-
-        //ecbSystem.AddJobHandleForProducer(Dependency);
-
-        //ecb.Playback(EntityManager);
-        //ecb.Dispose();
-
-
-        //ecbSystem.AddJobHandleForProducer(Dependency);
-
 
 
 

@@ -87,7 +87,13 @@ public class PickupMenuGroup : MonoBehaviour, IConvertGameObjectToEntity
     int useSlotIndex1 = -1, useSlotIndex2 = -1;
     Entity useSlot1, useSlot2;
 
-
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void Init()
+    {
+        Debug.Log("Counter reset.");
+        //var tempItems = new List<PowerItemComponent>(PassedPowerItemComponents);
+        PassedPowerItemComponents.Clear();
+    }
     void Start()
     {
         if (!ReInput.isReady) return;
